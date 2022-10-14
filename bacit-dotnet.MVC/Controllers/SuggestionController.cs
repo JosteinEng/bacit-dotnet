@@ -25,5 +25,10 @@ namespace bacit_dotnet.MVC.Controllers
 
             return View(indexViewModel);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }

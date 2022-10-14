@@ -1,61 +1,54 @@
 ﻿@model bacit_dotnet.MVC.ViewModels.Suggestions.IndexViewModel
+@{
+	ViewData["Title"] = "Index";
+}
+<h1>Mine forslag</h1>
 
-<div class="row">
-    <div class="col-6">
-        <div class="card">
-            <div class="card-header">
-                <h5>Lag nytt forslag</h5>
-            </div>
-            <div class="card-body">
-                <form action="/Suggestion/Suggestion" method="get">
-                    <div class="mb-3">
-                        <label class="form-label">AnsattNummer</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Team</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Kategori</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-                    <fieldset>Velg Kategori <select id="Kategori" name="Kategori">
+<hr/>
 
-                            <option value=""></option>
-
-                            <option value="0">Kategori</option>
-
-                            <option value="1">Kategori1</option>
-
-                            <option selected="selected" value="2">Kategori2</option>
-
-                            <option value="3">Kategori3</option>
-
-                        </select>
-
-                        <p><input type="submit" value="Submit" /> </p>
-
-                    </fieldset>
-                    <div class="mb-3">
-                        <label class="form-label">Overskrift</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Beskrivelse</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Last opp bilde</label>
-                        <input class="form-control" type="file" id="formFile">
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-primary">Lagre</button>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-            </div>
-        </div>
-    </div>
+<div class="container p-3">
+	<div class="row pt-4">
+		<div class="col-6">
+			<h2 class="text-primary">List of suggestions in the system</h2>
+		</div>
+	</div>
 </div>
+<br /><br />
+<table class="table table-bordered table-striped" style="width: 100%">
+	<thead>
+	<tr>
+		<th>
+			Title:
+		</th>
+		<th>
+			Description:
+		</th>
+		<th>
+			Deadline:
+		</th>
+		<th>
+			Date created:
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	@foreach (var objSuggestion in Model.Suggestions)
+	{
+		<tr>
+			<td width="30%">
+				@objSuggestion.Title
+			</td>
+			<td width="30%">
+				@objSuggestion.Description
+			</td>
+			<td width="30%">
+				@objSuggestion.Deadline
+			</td>
+			<td width="10%">
+				@objSuggestion.CreatedDate
+			</td>
+
+		</tr>
+	}
+	</tbody>
+</table>

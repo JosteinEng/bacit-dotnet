@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Michael\\Documents\\dev\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj": {}
+    "C:\\Users\\joste\\Documents\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Michael\\Documents\\dev\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj": {
+    "C:\\Users\\joste\\Documents\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Michael\\Documents\\dev\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
+        "projectUniqueName": "C:\\Users\\joste\\Documents\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
         "projectName": "bacit-dotnet.MVC",
-        "projectPath": "C:\\Users\\Michael\\Documents\\dev\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
-        "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Michael\\Documents\\dev\\bacit-dotnet\\bacit-dotnet.MVC\\obj\\",
+        "projectPath": "C:\\Users\\joste\\Documents\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
+        "packagesPath": "C:\\Users\\joste\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\joste\\Documents\\bacit-dotnet\\bacit-dotnet.MVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Michael\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\joste\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,8 +77,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -90,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
