@@ -1,4 +1,5 @@
-﻿@model bacit_dotnet.MVC.ViewModels.Suggestions.IndexViewModel
+﻿@using Microsoft.CodeAnalysis.VisualBasic.Syntax
+@model bacit_dotnet.MVC.ViewModels.Suggestions.SuggestionsViewModel
 @{
 	ViewData["Title"] = "Index";
 }
@@ -29,23 +30,36 @@
 		<th>
 			Date created:
 		</th>
+		<th>
+			Attachment:
+		</th>
 	</tr>
 	</thead>
 	<tbody>
 	@foreach (var objSuggestion in Model.Suggestions)
 	{
 		<tr>
-			<td width="30%">
+			<td width="20%">
 				@objSuggestion.Title
 			</td>
-			<td width="30%">
+			<td width="20%">
 				@objSuggestion.Description
 			</td>
-			<td width="30%">
+			<td width="20%">
 				@objSuggestion.Deadline
 			</td>
-			<td width="10%">
+			<td width="20%">
 				@objSuggestion.CreatedDate
+			</td>
+			<td width="20%">
+				@if (objSuggestion.Attachments == null)
+				{
+					@:<p>No attachment</p>
+				}
+				else
+				{
+				@objSuggestion.Attachments
+				}
 			</td>
 
 		</tr>

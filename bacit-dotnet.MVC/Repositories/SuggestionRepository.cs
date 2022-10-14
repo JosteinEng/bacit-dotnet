@@ -18,7 +18,10 @@ namespace bacit_dotnet.MVC.Repositories
 
         public int Add(Suggestions objSuggestion)
         {
-            throw new NotImplementedException();
+            _context.Suggestions.Add(objSuggestion);
+            _context.SaveChanges();
+
+            return objSuggestion.SuggestionId;
         }
 
         public bool Delete(int suggestionId)

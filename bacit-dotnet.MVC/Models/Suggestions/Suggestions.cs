@@ -16,7 +16,7 @@ namespace bacit_dotnet.MVC.Models
 
         public string Description { get; set; } 
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
 
         public DateOnly Deadline { get; set; }
 
