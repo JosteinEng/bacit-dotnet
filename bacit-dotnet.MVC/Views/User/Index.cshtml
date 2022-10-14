@@ -1,0 +1,77 @@
+﻿@model bacit_dotnet.MVC.ViewModels.Users.IndexViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">List of users in system</h2>
+        </div>
+        <div class="col-6 text-end">
+                        <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create New Category
+            </a>
+        </div>
+    </div>
+</div>
+<br /><br />
+<table class="table table-bordered table-striped" style="width: 100%">
+    <thead>
+    <tr>
+        <th>
+            EmployeeID
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Is user active?
+        </th>
+            <th></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var objUser in Model.Users)
+    {
+        <tr>
+            <td width ="30%">
+                @objUser.EmployeeId
+            </td>
+            <td width ="30%">
+                @objUser.F_Name 
+            </td>
+            <td width ="30%">
+                @objUser.L_Name
+            </td>
+            <td width="10%">
+                @objUser.Active
+                @*                @if (!objUser.Active)
+                {
+                    //<i class="bi bi-x-circle"></i> @:&nbsp; 
+                }
+                else
+                {
+                    //<i class="bi bi-check2-square"></i> @: &nbsp; @objUser.Active
+                }*@
+            </td>
+            <td>
+                <div class="w-75 btn-group" role="group">
+                    <a asp-controller="User" asp-action="Edit" asp-route-id="@objUser.UserId"
+                       class="btn btn-primary mx-2">  Edit</a>
+                    <a asp-controller="User" asp-action="Delete" asp-route-id="@objUser.UserId"
+                       class="btn btn-danger mx-2">  Delete</a>
+                </div>
+                    
+                @*                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"
+                           class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> &nbsp; Delete</a>
+                    </div>*@
+            @*</td>*@
+        </tr>
+    }
+    </tbody>
+</table>
