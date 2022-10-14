@@ -18,6 +18,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<ISuggestionRepository, SuggestionRepository>();
 
 // Set culture to NORWEGISH culture
 var cultureInfo = new CultureInfo("nb-NO");
