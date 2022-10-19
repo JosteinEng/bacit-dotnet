@@ -46,12 +46,12 @@ namespace bacit_dotnet.MVC.Controllers
 
             if (newCategoryId > 0)
             {
-                TempData["success"] = "Category created successfully";
+                TempData["success"] = "User created successfully";
                 return RedirectToAction("Index");
             }
             else
             {
-                TempData["error"] = "Category not created!";
+                TempData["error"] = "User not created!";
             }
 
             return View(objUsers);
@@ -96,13 +96,13 @@ namespace bacit_dotnet.MVC.Controllers
             var rowsAffectedByUpdate = _userRepository.Update(objUsers);
             if (rowsAffectedByUpdate > 0)
             {
-                TempData["success"] = "Category edited successfully";
+                TempData["success"] = "User edited successfully";
 
                 return RedirectToAction("Index");
             }
             else
             {
-                TempData["error"] = "Category was not updated!";
+                TempData["error"] = "User was not updated!";
 
             }
 
@@ -145,11 +145,11 @@ namespace bacit_dotnet.MVC.Controllers
 
             if (!hasRowBeenDeleted)
             {
-                TempData["error"] = "Category not deleted";
+                TempData["error"] = "User not deleted";
                 return NotFound(); // TODO: Make 404 page
             }
 
-            TempData["success"] = "Category deleted successfully";
+            TempData["success"] = "User deleted successfully";
 
             return RedirectToAction("Index");
         }

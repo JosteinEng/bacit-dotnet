@@ -7,11 +7,15 @@
 
 <hr/>
 
+<partial name="_Notification"/>
 <div class="container p-3">
 	<div class="row pt-4">
-		<div class="col-6">
-			<h2 class="text-primary">List of suggestions in the system</h2>
-		</div>
+        <div class="col-6">
+            <h2 class="text-primary">List of suggestions in the system</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Suggestion" asp-action="Create" class="btn btn-primary">Opprett nytt forslag</a>
+        </div>
 	</div>
 </div>
 <br /><br />
@@ -35,34 +39,44 @@
 		</th>
 	</tr>
 	</thead>
-	<tbody>
-	@foreach (var objSuggestion in Model.Suggestions)
-	{
-		<tr>
-			<td width="20%">
-				@objSuggestion.Title
-			</td>
-			<td width="20%">
-				@objSuggestion.Description
-			</td>
-			<td width="20%">
-				@objSuggestion.Deadline
-			</td>
-			<td width="20%">
-				@objSuggestion.CreatedDate
-			</td>
-			<td width="20%">
-				@if (objSuggestion.Attachments == null)
-				{
-					@:<p>No attachment</p>
-				}
-				else
-				{
-				@objSuggestion.Attachments
-				}
-			</td>
+    <tbody>
 
-		</tr>
-	}
-	</tbody>
+    @foreach (var objSuggestion in Model.Suggestions)
+    {
+        <tr>
+            <td width="20%">
+                @objSuggestion.Title
+            </td>
+            <td width="20%">
+                @objSuggestion.Description
+            </td>
+            <td width="20%">
+                @objSuggestion.Deadline
+            </td>
+            <td width="20%">
+                @objSuggestion.CreatedDate
+            </td>
+            <td width="20%">
+                @if (objSuggestion.Attachments == null)
+                {
+                    @:<p>No attachment</p>
+                }
+                else
+                {
+                    @objSuggestion.Attachments
+                }
+            </td>
+
+            <td>
+                <div class="w-75 btn-group" role="group">
+                    <a asp-controller="Suggestion" asp-action="Edit" asp-route-id="@objSuggestion.SuggestionId"
+                       class="btn btn-primary mx-2"> Edit</a>
+                    <a asp-controller="Suggestion" asp-action="Delete" asp-route-id="@objSuggestion.SuggestionId"
+                       class="btn btn-danger mx-2"> Delete</a>
+                </div>
+            </td>
+
+        </tr>
+    }
+    </tbody>
 </table>

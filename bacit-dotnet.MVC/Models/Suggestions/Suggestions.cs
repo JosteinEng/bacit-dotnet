@@ -18,7 +18,9 @@ namespace bacit_dotnet.MVC.Models
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
-        public DateOnly Deadline { get; set; }
+        //[DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yy}", ApplyFormatInEditMode = true)] 
+        public string Deadline { get; set; }
 
         public byte[]? Attachments { get; set; }
     }

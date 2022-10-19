@@ -1,0 +1,111 @@
+﻿@model Suggestions
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit suggestion</h2>
+            <hr />
+        </div>
+        @*
+        This line of code will show a summary of all errors at the top of the page.
+        <div asp-validation-summary="All" class="text-danger"></div>*@
+        <div class="mb-3">
+            <label asp-for="SuggestionId">Forslags ID</label>
+            <h6>@Model.SuggestionId</h6>
+            <input asp-for="SuggestionId" type="hidden" class="form-control" />
+            <span asp-validation-for="SuggestionId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="EmployeeId">Ansatt ID</label>
+            <input asp-for="EmployeeId" class="form-control" />
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title">Tittel</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description">Beskrivelse</label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Deadline">Tidsfrist</label>
+            <input asp-for="Deadline" type="date" class="form-control" />
+            <span asp-validation-for="Deadline" class="text-danger"></span>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
+        <a asp-controller="Suggestion" asp-action="Index" class="btn btn-secondary" style="width: 150px">
+            Back to list
+        </a>
+    </div>
+</form>
+
+
+<!--This script makes sure that the validation process is done on client-side instead of server-side-->
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+@*<div class="row">
+    <div class="d-flex justify-content-center">
+        <div class="card col-sm-3 col-md-6">
+            <div class="card-header">
+                <h5>Lag nytt forslag</h5>
+            </div>
+            <div class="card-body">
+
+                <div class="mb-3">
+                    <label asp-for="EmployeeId" class="form-label">AnsattNummer</label>
+                    <input type="text" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Team</label>
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Velg Kategori</label>
+                        <select class="form-control">
+                            <option></option>
+                            <option>HMS</option>
+                            <option>Kvalitet</option>
+                            <option>Ledetid</option>
+                            <option>Kostnader</option>
+                            <option>Effektivisering</option>
+                            <option>Kompetanse</option>
+                            <option>Kommunikasjon</option>
+                            <option>5S</option>
+                            <option>Standardisering</option>
+                            <option>Flyt</option>
+                            <option>Visualisering</option>
+                            <option>Energi</option>
+                            <option>Bærekraft</option>
+                            <option>Industri 4.0</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Overskrift</label>
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Beskrivelse</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Last opp bilde</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary">Lagre</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+</div>*@

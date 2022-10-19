@@ -1,11 +1,11 @@
-﻿    using bacit_dotnet.MVC.Interfaces;
-    using bacit_dotnet.MVC.Models;
-    using bacit_dotnet.MVC.Repositories;
-    using bacit_dotnet.MVC.ViewModels.Suggestions;
-    using bacit_dotnet.MVC.ViewModels.Users;
-    using Microsoft.AspNetCore.Mvc;
+﻿using bacit_dotnet.MVC.Interfaces;
+using bacit_dotnet.MVC.Models;
+using bacit_dotnet.MVC.Repositories;
+using bacit_dotnet.MVC.ViewModels.Suggestions;
+using bacit_dotnet.MVC.ViewModels.Users;
+using Microsoft.AspNetCore.Mvc;
 
-    namespace bacit_dotnet.MVC.Controllers
+namespace bacit_dotnet.MVC.Controllers
 {
     public class SuggestionController : Controller
     {
@@ -56,6 +56,90 @@
             }
 
             return View(objSuggestions);
+        }
+
+        //Get
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var suggestionFromDb = _suggestionRepository.GetSuggestionBySuggestionId(id.Value);
+
+            if (suggestionFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(suggestionFromDb);
+        }
+
+        //Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Suggestions objSuggestions)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["error"] = "Ugyldige verdier i skjem";
+                return View(objSuggestions);
+            }
+
+            var rowsAffectedByUpdate = _suggestionRepository.Update(objSuggestions);
+            if (rowsAffectedByUpdate > 0)
+            {
+                TempData["success"] = "Forslag har blitt oppdatert";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["error"] = "Forslag ble ikke oppdatert";
+            }
+
+            return View(objSuggestions);
+        }
+
+        //Get
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var suggestionFromDb = _suggestionRepository.GetSuggestionBySuggestionId(id.Value);
+
+            if (suggestionFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(suggestionFromDb);
+        }
+
+        //Delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteSuggestion(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var hasRowBeenDeleted = _suggestionRepository.Delete(id.Value);
+
+            if (!hasRowBeenDeleted)
+            {
+                TempData["error"] = "Forslag ble ikke slettet";
+                return NotFound(); // TODO: Make 404 page
+            }
+
+            TempData["success"] = "Forslag har blitt slettet";
+
+            return RedirectToAction("Index");
         }
     }
 }
