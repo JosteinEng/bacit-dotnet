@@ -9,18 +9,17 @@ namespace bacit_dotnet.MVC.Models
     {
         [Key]
         public int SuggestionId { get; set; }
-
+        [Range(1, int.MaxValue)]
         public int EmployeeId { get; set; }
 
+        [StringLength(255)]
         public string Title { get; set; }
-
-        public string Description { get; set; } 
+        [StringLength(255)]
+        public string Description { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
-        //[DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yy}", ApplyFormatInEditMode = true)] 
-        public string Deadline { get; set; }
+        public DateTime Deadline { get; set; }
 
         public byte[]? Attachments { get; set; }
     }

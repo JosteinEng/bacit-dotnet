@@ -30,6 +30,10 @@ namespace bacit_dotnet.MVC.Repositories
                 return 0;
             }
 
+
+            // TODO: Når user system er på plass. Validere at forslag tilhører brukeren ved endring eller sletting.
+
+
             suggestionBeforeEdit.EmployeeId = objSuggestions.EmployeeId;
             suggestionBeforeEdit.Title = objSuggestions.Title;
             suggestionBeforeEdit.Description = objSuggestions.Description;
@@ -62,6 +66,10 @@ namespace bacit_dotnet.MVC.Repositories
             {
                 return false;
             }
+
+
+            // TODO: Når user system er på plass. Validere at forslag tilhører brukeren ved endring eller sletting.
+
 
             _context.Suggestions.Remove(suggestionToDelete);
 

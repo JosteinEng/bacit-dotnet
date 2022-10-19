@@ -35,15 +35,21 @@ namespace bacit_dotnet.MVC.Controllers
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Suggestions objSuggestions)
+        public IActionResult Create([FromForm]CreateSuggestionViewModel objSuggestions)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid is false || objSuggestions.Attachments == null || objSuggestions.Attachments.Length == 0)
             {
-                TempData["error"] = "Test test";
+                TempData["error"] = "Verdier er ikke gyldige";
                 return View(objSuggestions);
             }
 
-            var newSuggestionId = _suggestionRepository.Add(objSuggestions);
+            using (var memoryStream = new MemoryStream())  
+            {  
+                objSuggestions.Attachments.CopyTo(memoryStream);  
+                objSuggestions.Suggestion.Attachments = memoryStream.ToArray();
+            }
+
+            var newSuggestionId = _suggestionRepository.Add(objSuggestions.Suggestion);
 
             if (newSuggestionId > 0)
             {
