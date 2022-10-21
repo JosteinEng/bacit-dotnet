@@ -8,6 +8,7 @@ namespace bacit_dotnet.MVC.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+
         }
         public DbSet<Users> Users { get; set; }
 

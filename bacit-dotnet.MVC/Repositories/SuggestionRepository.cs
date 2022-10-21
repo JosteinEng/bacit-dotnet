@@ -14,8 +14,6 @@ namespace bacit_dotnet.MVC.Repositories
             _context = context;
         }
 
-
-
         public int Add(Suggestions objSuggestion)
         {
             _context.Suggestions.Add(objSuggestion);
@@ -24,9 +22,29 @@ namespace bacit_dotnet.MVC.Repositories
             return objSuggestion.SuggestionId;
         }
 
-        public bool Delete(int suggestionId)
+        public int Update(Suggestions objSuggestions)
         {
-            throw new NotImplementedException();
+            var suggestionBeforeEdit = GetSuggestionBySuggestionId(objSuggestions.SuggestionId);
+            if (suggestionBeforeEdit == null)
+            {
+                return 0;
+            }
+
+
+            // TODO: Når user system er på plass. Validere at forslag tilhører brukeren ved endring eller sletting.
+
+
+            suggestionBeforeEdit.EmployeeId = objSuggestions.EmployeeId;
+            suggestionBeforeEdit.Title = objSuggestions.Title;
+            suggestionBeforeEdit.Description = objSuggestions.Description;
+            suggestionBeforeEdit.Deadline = objSuggestions.Deadline;
+
+            return _context.SaveChanges();
+        }
+
+        public Suggestions? GetSuggestionBySuggestionId(int suggestionId)
+        {
+            return _context.Suggestions.Find(suggestionId);
         }
 
         public Suggestions[] GetAllSuggestions()
@@ -39,14 +57,26 @@ namespace bacit_dotnet.MVC.Repositories
             throw new NotImplementedException();
         }
 
-        public Suggestions? GetSuggestionBySuggestionId(int suggestionId)
-        {
-            throw new NotImplementedException();
-        }
 
-        public int Update(Suggestions objSuggestions)
+        public bool Delete(int suggestionId)
         {
-            throw new NotImplementedException();
+            var suggestionToDelete = GetSuggestionBySuggestionId(suggestionId);
+
+            if (suggestionToDelete == null)
+            {
+                return false;
+            }
+
+
+            // TODO: Når user system er på plass. Validere at forslag tilhører brukeren ved endring eller sletting.
+
+
+            _context.Suggestions.Remove(suggestionToDelete);
+
+            var rowsAffected = _context.SaveChanges();
+            var isSuccessful = rowsAffected > 0;
+
+            return isSuccessful;
         }
     }
 }

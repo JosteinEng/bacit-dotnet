@@ -1,5 +1,4 @@
-﻿@using Microsoft.CodeAnalysis.VisualBasic.Syntax
-@model bacit_dotnet.MVC.ViewModels.Suggestions.SuggestionsViewModel
+﻿@model bacit_dotnet.MVC.ViewModels.Suggestions.SuggestionsViewModel
 @{
 	ViewData["Title"] = "Index";
 }
@@ -7,10 +6,80 @@
 
 <hr/>
 
+
+
+<div class="container-fluid mt-3">
+        <div class="container-fluid">
+               
+                <div class="row">
+                        <div class="col-3 bg-light text-black ms-2"><b>Tittel</b></div>
+                        <div class="col-2 bg-light text-black"><b>Tidsfrist</b></div>
+                        <div class="col-2 bg-light text-black"><b>Team</b></div>
+                        <div class="col-2 bg-light text-black"><b>Ansvarlig</b></div>
+                        <div class="col-2 col-sm bg-light text-black"><b>Status</b></div>
+                </div>
+       
+        </div>
+</div>
+@{var Forslagsnr = 1;
+        foreach (var objSuggestion in Model.Suggestions)
+        {
+        <div class="container-fluid mt-3">
+                <div class="container-fluid">
+                        <div class="border">
+                                <div class="d-grid">
+                                        <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#forslag-@Forslagsnr">
+                                                <div class="row" style="width:100%;">
+                                                        <div class="col-3 bg-light">@objSuggestion.Title</div>
+														<div class="col-2 bg-light">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
+                                                        <div class="col-2 bg-light">2</div>
+                                                        <div class="col-2 bg-light">Ansattnavn</div>
+                                                        <div class="col-2 bg-light">Under behandling</div>
+                                                </div>                                         
+                                        </div>
+                                </div>
+                        </div>
+                <div id="forslag-@Forslagsnr" class="collapse">
+                        <div class="border border-top-0">
+                                <div class="container-fluid mt-3">
+                                        <div class="container-fluid">
+                                                <div class="row">
+                                                        <div class="col-sm-3 col-md-6 p-2 text-black">
+                                                                <p><b>Beskrivelse:</b></p>
+                                                                <p>@objSuggestion.Description</p>
+                                                                <p><b>Vedlagt bilde:</b></p>
+										@if (objSuggestion.Attachments == null)
+										{
+											@:<p>No attachment</p>
+										}
+										else
+										{
+											<img alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" width="250px" height="250px" />
+										}
+                                                               
+                                                        </div>
+                                                        <div class="col-sm-2 col-md-3  text-black">
+                                                                <p><b>Tidslinje:</b></p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                </div>
+        </div>
+        Forslagsnr++;
+        }
+}
+
+<partial name="_Notification"/>
 <div class="container p-3">
 	<div class="row pt-4">
 		<div class="col-6">
 			<h2 class="text-primary">List of suggestions in the system</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-controller="Suggestion" asp-action="Create" class="btn btn-primary">Opprett nytt forslag</a>
 		</div>
 	</div>
 </div>
@@ -36,6 +105,7 @@
 	</tr>
 	</thead>
 	<tbody>
+
 	@foreach (var objSuggestion in Model.Suggestions)
 	{
 		<tr>
@@ -46,7 +116,7 @@
 				@objSuggestion.Description
 			</td>
 			<td width="20%">
-				@objSuggestion.Deadline
+				@objSuggestion.Deadline.ToString("dd/MM/yyyy")
 			</td>
 			<td width="20%">
 				@objSuggestion.CreatedDate
@@ -58,8 +128,17 @@
 				}
 				else
 				{
-				@objSuggestion.Attachments
+					<img alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" width="250px" height="250px"/>
 				}
+			</td>
+
+			<td>
+				<div class="w-75 btn-group" role="group">
+					<a asp-controller="Suggestion" asp-action="Edit" asp-route-id="@objSuggestion.SuggestionId"
+					   class="btn btn-primary mx-2"> Edit</a>
+					<a asp-controller="Suggestion" asp-action="Delete" asp-route-id="@objSuggestion.SuggestionId"
+					   class="btn btn-danger mx-2"> Delete</a>
+				</div>
 			</td>
 
 		</tr>
