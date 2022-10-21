@@ -6,6 +6,70 @@
 
 <hr/>
 
+<div class="container-fluid mt-3">
+        <div class="container-fluid">
+               
+                <div class="row">
+                        <div class="col-3 bg-light text-black ms-2"><b>Tittel</b></div>
+                        <div class="col-2 bg-light text-black"><b>Tidsfrist</b></div>
+                        <div class="col-2 bg-light text-black"><b>Team</b></div>
+                        <div class="col-2 bg-light text-black"><b>Ansvarlig</b></div>
+                        <div class="col-2 col-sm bg-light text-black"><b>Status</b></div>
+                </div>
+       
+        </div>
+</div>
+@{var Forslagsnr = 1;
+        foreach (var objSuggestion in Model.Suggestions)
+        {
+        <div class="container-fluid mt-3">
+                <div class="container-fluid">
+                        <div class="border">
+                                <div class="d-grid">
+                                        <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#forslag-@Forslagsnr">
+                                                <div class="row" style="width:100%;">
+                                                        <div class="col-3 bg-light">@objSuggestion.Title</div>
+														<div class="col-2 bg-light">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
+                                                        <div class="col-2 bg-light">2</div>
+                                                        <div class="col-2 bg-light">Ansattnavn</div>
+                                                        <div class="col-2 bg-light">Under behandling</div>
+                                                </div>                                         
+                                        </div>
+                                </div>
+                        </div>
+                <div id="forslag-@Forslagsnr" class="collapse">
+                        <div class="border border-top-0">
+                                <div class="container-fluid mt-3">
+                                        <div class="container-fluid">
+                                                <div class="row">
+                                                        <div class="col-sm-3 col-md-6 p-2 text-black">
+                                                                <p><b>Beskrivelse:</b></p>
+                                                                <p>@objSuggestion.Description</p>
+                                                                <p><b>Vedlagt bilde:</b></p>
+										@if (objSuggestion.Attachments == null)
+										{
+											@:<p>No attachment</p>
+										}
+										else
+										{
+											<img alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" width="250px" height="250px" />
+										}
+                                                               
+                                                        </div>
+                                                        <div class="col-sm-2 col-md-3  text-black">
+                                                                <p><b>Tidslinje:</b></p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                </div>
+        </div>
+        Forslagsnr++;
+        }
+}
+
 <partial name="_Notification"/>
 <div class="container p-3">
 	<div class="row pt-4">

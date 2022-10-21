@@ -1,7 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@model bacit_dotnet.MVC.ViewModels.Suggestions.CreateSuggestionViewModel
 
-<script src="~/js/createSuggestion.js"></script>
+@model bacit_dotnet.MVC.ViewModels.Suggestions.CreateSuggestionViewModel
 
 <form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
@@ -13,110 +12,49 @@
         This line of code will show a summary of all errors at the top of the page.
         <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
-            <label asp-for="@Model.Suggestion.EmployeeId">Ansatt ID</label>
-            <input asp-for="@Model.Suggestion.EmployeeId" class="form-control" />
-            <span asp-validation-for="@Model.Suggestion.EmployeeId" class="text-danger"></span>
+            <label asp-for="Suggestion.EmployeeId">Ansatt ID</label>
+            <input asp-for="Suggestion.EmployeeId" class="form-control" />
+            <span asp-validation-for="Suggestion.EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="@Model.Suggestion.Title">Tittel</label>
-            <input asp-for="@Model.Suggestion.Title" class="form-control" />
-            <span asp-validation-for="@Model.Suggestion.Title" class="text-danger"></span>
+            <label asp-for="Suggestion.Title">Tittel</label>
+            <input asp-for="Suggestion.Title" class="form-control" minlength ="2" />
+            <span asp-validation-for="Suggestion.Title" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="@Model.Suggestion.Description">Beskrivelse</label>
-            <input asp-for="@Model.Suggestion.Description" class="form-control" />
-            <span asp-validation-for="@Model.Suggestion.Description" class="text-danger"></span>
+            <label asp-for="Suggestion.Description">Beskrivelse</label>
+            <input asp-for="Suggestion.Description" class="form-control" />
+            <span asp-validation-for="Suggestion.Description" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="@Model.Suggestion.Deadline">Tidsfrist</label>
-            <input asp-for="@Model.Suggestion.Deadline" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
-            <span asp-validation-for="@Model.Suggestion.Deadline" class="text-danger"></span>
+            <label asp-for="Suggestion.Deadline">Tidsfrist</label>
+            <input asp-for="Suggestion.Deadline" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
+            <span asp-validation-for="Suggestion.Deadline" class="text-danger"></span>
         </div>
 
         <!-- Image -->  
         <div class="mb-3">
-            <label for="Attachments" class="form-label">Last opp bilde</label>
-            <input id="imageInput" class="form-control pt-1" name="@(nameof(Model.Attachments))" type="file" accept="*/image" size="1" style="cursor: pointer" value="Choose file" aria-describedby="imageFileHelp" />  
-            <small id="imageFileHelp" class="form-text text-muted">Velg et bilde</small>  
+            <label asp-for="Attachments">Last opp bilde</label>
+            <input asp-for="Attachments" id="imageInput" class="form-control pt-1"
+                type="file" accept=".jpg, .png" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(1 * 1024 * 1024)" />  
+            <span id="imageWarning" class="text-danger" style="display: none;"></span>
+            <span id="imageTypeWarning" class="text-danger" style="display: none"></span>
 
             <!-- Image preview field -->  
-@*            <div id="imageContainer" class="col-10 mx-auto">  
-                <img id="imagePreview" class="mx-auto"/>  
-            </div> *@
+            <img id="imagePreview" src="" alt=""/>  
         </div>
 
         <br/>
 
-        <button type="submit" class="btn btn-primary" style="width: 150px">Create</button>
+        <button id="submitBtn" type="submit" class="btn btn-primary" style="width: 150px">Create</button>
         <a asp-controller="Suggestion" asp-action="Index" class="btn btn-secondary" style="width: 150px">
             Back to list
         </a>
     </div>
 </form>
 
-
 <!--This script makes sure that the validation process is done on client-side instead of server-side-->
 @section Scripts{
-
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/createSuggestion.js" charset="ISO-8859-1"></script>
 }
-
-
-@*<div class="row">
-    <div class="d-flex justify-content-center">
-        <div class="card col-sm-3 col-md-6">
-            <div class="card-header">
-                <h5>Lag nytt forslag</h5>
-            </div>
-            <div class="card-body">
-
-                <div class="mb-3">
-                    <label asp-for="EmployeeId" class="form-label">AnsattNummer</label>
-                    <input type="text" class="form-control"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Team</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Velg Kategori</label>
-                        <select class="form-control">
-                            <option></option>
-                            <option>HMS</option>
-                            <option>Kvalitet</option>
-                            <option>Ledetid</option>
-                            <option>Kostnader</option>
-                            <option>Effektivisering</option>
-                            <option>Kompetanse</option>
-                            <option>Kommunikasjon</option>
-                            <option>5S</option>
-                            <option>Standardisering</option>
-                            <option>Flyt</option>
-                            <option>Visualisering</option>
-                            <option>Energi</option>
-                            <option>Bærekraft</option>
-                            <option>Industri 4.0</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Overskrift</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Beskrivelse</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Last opp bilde</label>
-                        <input class="form-control" type="file" id="formFile">
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-primary">Lagre</button>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-            </div>
-        </div>
-    </div>
-</div>*@
