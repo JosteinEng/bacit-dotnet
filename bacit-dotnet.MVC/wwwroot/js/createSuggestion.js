@@ -8,7 +8,9 @@ $(() => {
     const imgInput = $("#imageInput");
     const imgWarning = $("#imageWarning");
     const imgPreview = $("#imagePreview");
-    const imgTypeWarning = $("#imageTypeWarning")
+    const imgTypeWarning = $("#imageTypeWarning");
+    const supportedImageTypes = ["jpeg", "jpg", "png"];
+
 
     let fileReader = new FileReader();
 
@@ -46,42 +48,45 @@ $(() => {
     function validateFileInput() {
         if (imgInput.get(0).files.length > 0) {
             const fileSize = Math.round(Number(imgInput.get(0).files[0].size) / (1024.0 * 1024.0)); // in MB
-            const maxFileSize = Number(imgInput.data("maxSize")) / (1024.0 * 1024.0); // in MB;
+            const maxFileSize = Number(imgInput.data("maxSize")) / (8 * 1024.0 * 1024.0); // in MB;
 
             console.log(imgInput);
 
             if (fileSize > maxFileSize) {
                 imgWarning.text("Fil størrelse på: " + fileSize.toString() + " MB er større enn maks tillatt " + maxFileSize.toString() + " MB");
                 imgWarning.show();
+                submitBtn.disabled = true;
                 return false;
             }
             else {
                 imgWarning.hide();
+                submitBtn.disabled = false;
                 return true;
             }
         }
         return true;
     }
 
-    //function validateFileType() {
+    //Validates the file type the user is trying to upload.
+    function validateFileType() {
 
-    //    console.log(imgInput);
-        
-    //    var fileName = document.getElementById(imgInput).files[0].type;
-    //    var extension = fileName.slice((Math.max(0, fileName.lastIndexOf(".")) || Infinity) + 1);
-    //    var supportedTypes = ["jpg"];
+        var imageInput = document.getElementById('imageInput');
+        var fileType = imageInput.files[0].type;
+        var extension = fileType.slice((Math.max(0, fileType.lastIndexOf("/")) || Infinity) + 1);
 
-    //    console.log(supportedTypes);
+            //Anything file extension that is not in the array is indexOf(-1).
+            if (supportedImageTypes.indexOf(extension) > -1) {
+                imgTypeWarning.hide();
+                submitBtn.disabled = false;
+                return true;
+            }
+            else {
+                imgTypeWarning.text("Filtypen du lastet opp er ikke støttet. Vennligst velg en de følgenede filtypene: "+supportedImageTypes+".");
+                imgTypeWarning.show();
+                submitBtn.disabled = true;
+                return false;
+            }
 
-    //    if (!extension == validFormat) {
-    //        imgTypeWarning.text("Test test");
-    //        imgTypeWarning.show();
-    //        return false;
-    //    }
-    //    else {
-    //        imgTypeWarning.hide();
-    //        return true;
-    //    }
-    //    return true;
-    //}
+        return true;
+    }
 });
