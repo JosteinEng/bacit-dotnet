@@ -18,14 +18,14 @@
         </div>
         <div class="mb-3">
             <label asp-for="Suggestion.Title">Tittel</label>
-            <input asp-for="Suggestion.Title" class="form-control" minlength="2" maxlength="30" /><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">0/30</span>
+            <input asp-for="Suggestion.Title" class="form-control" minlength="2" maxlength="30" /><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">30/30</span>
             <span asp-validation-for="Suggestion.Title" class="text-danger">
             </span>
         </div>
         <div class="mb-3">
             <label asp-for="Suggestion.Description">Beskrivelse</label>
-            <textarea asp-for="Suggestion.Description" class="form-control"></textarea>
-            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">0/500</span>            <span asp-validation-for="Suggestion.Description" class="text-danger"></span>
+            <textarea asp-for="Suggestion.Description" class="form-control" style="min-height: 150px"></textarea>
+            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span>            <span asp-validation-for="Suggestion.Description" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Suggestion.Deadline">Tidsfrist</label>
