@@ -10366,19 +10366,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hans Christian Morka\\.nuget\\packages\\": {}
+    "C:\\Users\\imttv\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hans Christian Morka\\Source\\Repos\\bacit-dotnet2\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
+      "projectUniqueName": "C:\\Users\\imttv\\Documents\\dev\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
       "projectName": "bacit-dotnet.MVC",
-      "projectPath": "C:\\Users\\Hans Christian Morka\\Source\\Repos\\bacit-dotnet2\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
-      "packagesPath": "C:\\Users\\Hans Christian Morka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hans Christian Morka\\Source\\Repos\\bacit-dotnet2\\bacit-dotnet.MVC\\obj\\",
+      "projectPath": "C:\\Users\\imttv\\Documents\\dev\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
+      "packagesPath": "C:\\Users\\imttv\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\imttv\\Documents\\dev\\bacit-dotnet\\bacit-dotnet.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Hans Christian Morka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\imttv\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10454,7 +10454,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

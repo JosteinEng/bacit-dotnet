@@ -19,6 +19,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ISuggestionRepository, SuggestionRepository>();
+builder.Services.AddTransient<ITeamRepository, TeamRepository>();
 
 // Set culture to NORWEGISH culture
 var cultureInfo = new CultureInfo("nb-NO");
@@ -50,7 +51,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Suggestion}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();
