@@ -16,11 +16,11 @@ namespace bacit_dotnet.MVC.Models
         public int EmployeeId { get; set; }
 
         [Required]
-        [StringLength(255,MinimumLength = 2)]
+        [StringLength(30,MinimumLength = 2)]
         public string? Title { get; set; }
 
         [Required]
-        [StringLength(255, MinimumLength = 2)]
+        [StringLength(500, MinimumLength = 2)]
         public string? Description { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
