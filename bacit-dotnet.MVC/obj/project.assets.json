@@ -10366,11 +10366,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\chmor\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\user\\.nuget\\packages\\": {}
+>>>>>>> daniel-fungerende-forms-med-charlimit
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\chmor\\Source\\Repos\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
       "projectName": "bacit-dotnet.MVC",
       "projectPath": "C:\\Users\\chmor\\Source\\Repos\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
@@ -10379,6 +10384,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\chmor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\user\\fellesprosjekt\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
+      "projectName": "bacit-dotnet.MVC",
+      "projectPath": "C:\\Users\\user\\fellesprosjekt\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\fellesprosjekt\\bacit-dotnet\\bacit-dotnet.MVC\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> daniel-fungerende-forms-med-charlimit
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10454,7 +10469,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+>>>>>>> daniel-fungerende-forms-med-charlimit
       }
     }
   }
