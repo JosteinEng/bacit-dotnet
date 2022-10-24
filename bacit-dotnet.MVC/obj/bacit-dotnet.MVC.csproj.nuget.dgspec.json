@@ -1,27 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hans Christian Morka\\Source\\Repos\\bacit-dotnet2\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj": {}
+    "/Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/bacit-dotnet.MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hans Christian Morka\\Source\\Repos\\bacit-dotnet2\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj": {
+    "/Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/bacit-dotnet.MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hans Christian Morka\\Source\\Repos\\bacit-dotnet2\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
+        "projectUniqueName": "/Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/bacit-dotnet.MVC.csproj",
         "projectName": "bacit-dotnet.MVC",
-        "projectPath": "C:\\Users\\Hans Christian Morka\\Source\\Repos\\bacit-dotnet2\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
-        "packagesPath": "C:\\Users\\Hans Christian Morka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hans Christian Morka\\Source\\Repos\\bacit-dotnet2\\bacit-dotnet.MVC\\obj\\",
+        "projectPath": "/Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/bacit-dotnet.MVC.csproj",
+        "packagesPath": "/Users/jostein/.nuget/packages/",
+        "outputPath": "/Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Hans Christian Morka\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/NuGet.Config",
+          "/Users/jostein/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -90,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
         }
       }
     }
