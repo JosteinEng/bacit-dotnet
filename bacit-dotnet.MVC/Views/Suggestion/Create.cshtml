@@ -5,7 +5,7 @@
 <form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Create new Suggestion</h2>
+            <h2 class="text-primary">Legg til nytt forslag</h2>
             <hr />
         </div>
         @*
@@ -18,13 +18,14 @@
         </div>
         <div class="mb-3">
             <label asp-for="Suggestion.Title">Tittel</label>
-            <input asp-for="Suggestion.Title" class="form-control" minlength ="2" />
-            <span asp-validation-for="Suggestion.Title" class="text-danger"></span>
+            <input asp-for="Suggestion.Title" class="form-control" minlength="2" maxlength="30" /><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">0/30</span>
+            <span asp-validation-for="Suggestion.Title" class="text-danger">
+            </span>
         </div>
         <div class="mb-3">
             <label asp-for="Suggestion.Description">Beskrivelse</label>
-            <input asp-for="Suggestion.Description" class="form-control" />
-            <span asp-validation-for="Suggestion.Description" class="text-danger"></span>
+            <textarea asp-for="Suggestion.Description" class="form-control"></textarea>
+            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">0/500</span>            <span asp-validation-for="Suggestion.Description" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Suggestion.Deadline">Tidsfrist</label>
@@ -36,7 +37,7 @@
         <div class="mb-3">
             <label asp-for="Attachments">Last opp bilde</label>
             <input asp-for="Attachments" id="imageInput" class="form-control pt-1"
-                type="file" accept=".jpg, .png" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(1 * 1024 * 1024)" />  
+                type="file" accept=".jpg, .png, .jpeg" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(1 * 1024 * 1024)" />  
             <span id="imageWarning" class="text-danger" style="display: none;"></span>
             <span id="imageTypeWarning" class="text-danger" style="display: none"></span>
 
@@ -58,3 +59,22 @@
     <partial name="_ValidationScriptsPartial" />
     <script src="~/js/createSuggestion.js" charset="ISO-8859-1"></script>
 }
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('Suggestion_Title').onkeyup = function () {
+            document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30" ;
+            
+};
+
+});
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('Suggestion_Description').onkeyup = function () {
+                document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
+
+            };
+
+        });
+
+</script>
