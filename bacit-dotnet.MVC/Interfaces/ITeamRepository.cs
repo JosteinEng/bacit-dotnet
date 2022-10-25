@@ -1,5 +1,4 @@
 ﻿using bacit_dotnet.MVC.Models;
-using bacit_dotnet.MVC.Models.Teams;
 
 namespace bacit_dotnet.MVC.Interfaces
 {
