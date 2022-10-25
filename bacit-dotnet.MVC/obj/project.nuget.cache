@@ -186,12 +186,5 @@
     "/Users/jostein/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/jostein/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file /Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/obj/project.nuget.cache : After parsing a value an unexpected character was encountered: \". Path 'expectedPackageFiles[180]', line 188, position 2."
-    }
-  ]
+  "logs": []
 }
