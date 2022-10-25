@@ -154,67 +154,6 @@
 <br />
 <table class="table table-bordered table-striped" style="width: 100%">
 
-    <thead>
-        <tr>
-            <th>
-                Title:
-            </th>
-            <th>
-                Description:
-            </th>
-            <th>
-                Deadline:
-            </th>
-            <th>
-                Date created:
-            </th>
-            <th>
-                Attachment:
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @foreach (var objSuggestion in Model.Suggestions)
-        {
-            <tr>
-                <td width="20%">
-                    @objSuggestion.Title
-                </td>
-                <td width="20%">
-                    @objSuggestion.Description
-                </td>
-                <td width="20%">
-                    @objSuggestion.Deadline.ToString("dd/MM/yyyy")
-                </td>
-                <td width="20%">
-                    @objSuggestion.CreatedDate
-                </td>
-                <td width="20%">
-                    @if (objSuggestion.Attachments == null)
-                    {
-                        @:<p>No attachment</p>
-                    }
-                    else
-                    {
-                        <img alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" width="250px" height="250px" />
-                    }
-                </td>
-
-                <td>
-                    <div class="w-75 btn-group" role="group">
-                        <a asp-controller="Suggestion" asp-action="Edit" asp-route-id="@objSuggestion.SuggestionId"
-                           class="btn btn-primary mx-2"> Edit</a>
-                        <a asp-controller="Suggestion" asp-action="Delete" asp-route-id="@objSuggestion.SuggestionId"
-                           class="btn btn-danger mx-2"> Delete</a>
-                    </div>
-                </td>
-
-            </tr>
-        }
-    </tbody>
-</table>
-
 	<thead>
 	<tr>
 		<th>

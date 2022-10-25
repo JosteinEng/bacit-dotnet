@@ -9922,10 +9922,6 @@
       "configFilePaths": [
         "/Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/NuGet.Config",
         "/Users/jostein/.nuget/NuGet/NuGet.Config"
-      "projectName": "bacit-dotnet.MVC",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -10001,7 +9997,6 @@
           }
         },
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -10010,7 +10005,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Problem reading the cache file /Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+      "message": "Problem reading the cache file /Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/obj/project.nuget.cache : After parsing a value an unexpected character was encountered: \". Path 'expectedPackageFiles[180]', line 188, position 2."
     }
   ]
 }
