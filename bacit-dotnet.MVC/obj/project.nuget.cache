@@ -1,6 +1,5 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "pc71uKM0wWFdMkOYdrM9Z395V5up/yJ7fvMxpdiEcY0mkYJoukpW/d0tNj3yop5iuA8zovG6AMhJrq40PKq0wA==",
   "success": true,
   "projectFilePath": "/Users/jostein/Documents/GitHub/bacit-dotnet/bacit-dotnet.MVC/bacit-dotnet.MVC.csproj",
@@ -186,7 +185,6 @@
     "/Users/jostein/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512",
     "/Users/jostein/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/jostein/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
-=======
   "dgSpecHash": "EDXpuP+TGQcO/YHcbynD2yr9dm4ZNYengh5d0mwmrZFZenVkm/9jTHDF/DH4jz/etLVQeGhwYuBQcZ26ZKlisw==",
   "success": true,
   "projectFilePath": "C:\\Users\\imttv\\Documents\\dev\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj",
@@ -372,7 +370,6 @@
     "C:\\Users\\imttv\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\imttv\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\imttv\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
->>>>>>> hcdev
   ],
   "logs": [
     {

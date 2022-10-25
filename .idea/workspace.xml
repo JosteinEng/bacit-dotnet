@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cceee0cb-354b-49c6-b4ce-2842c91b25b0" name="Changes" comment="" />
+    <list default="true" id="cceee0cb-354b-49c6-b4ce-2842c91b25b0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/bacit-dotnet.MVC.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/bacit-dotnet.MVC.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/project.nuget.cache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +43,7 @@
       <updated>1666618018328</updated>
       <workItem from="1666618029694" duration="39000" />
       <workItem from="1666686160735" duration="44000" />
+      <workItem from="1666686295515" duration="225000" />
     </task>
     <servers />
   </component>
