@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cceee0cb-354b-49c6-b4ce-2842c91b25b0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.vs/bacit-dotnet.MVC/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/bacit-dotnet.MVC/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/bacit-dotnet.MVC/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/bacit-dotnet.MVC/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/bacit-dotnet.MVC.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/bacit-dotnet.MVC.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/bacit-dotnet.MVC.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/bacit-dotnet.MVC.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/js/createSuggestion.js" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/js/createSuggestion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_logfile0" afterDir="false" />
-    </list>
+    <list default="true" id="cceee0cb-354b-49c6-b4ce-2842c91b25b0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +9,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="2GaDt5BQGkyxwEXCZxeSWZBvpfk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -47,6 +36,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666618018328</updated>
       <workItem from="1666618029694" duration="39000" />
+      <workItem from="1666686160735" duration="44000" />
     </task>
     <servers />
   </component>
