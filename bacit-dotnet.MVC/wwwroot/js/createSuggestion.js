@@ -48,12 +48,12 @@ $(() => {
     function validateFileInput() {
         if (imgInput.get(0).files.length > 0) {
             const fileSize = Math.round(Number(imgInput.get(0).files[0].size) / (1024.0 * 1024.0)); // in MB
-            const maxFileSize = Number(imgInput.data("maxSize")) / (8 * 1024.0 * 1024.0); // in MB;
+            const maxFileSize = Number(imgInput.data("maxSize")) / (1024.0 * 1024.0); // in MB;
 
             console.log(imgInput);
 
             if (fileSize > maxFileSize) {
-                imgWarning.text("Fil st�rrelse p�: " + fileSize.toString() + " MB er st�rre enn maks tillatt " + maxFileSize.toString() + " MB");
+                imgWarning.text("Fil størrelse på: " + fileSize.toString() + " MB er større enn maks tillatt " + maxFileSize.toString() + " MB");
                 imgWarning.show();
                 submitBtn.disabled = true;
                 return false;
