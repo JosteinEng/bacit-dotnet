@@ -10,6 +10,13 @@
 *.userosscache
 *.sln.docstates
 
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -398,4 +405,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Database
-database/
+/database

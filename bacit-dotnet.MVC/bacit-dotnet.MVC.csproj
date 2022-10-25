@@ -21,4 +21,10 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Error\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Error\" />
+  </ItemGroup>
 </Project>

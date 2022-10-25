@@ -19,6 +19,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ISuggestionRepository, SuggestionRepository>();
+builder.Services.AddTransient<ITeamRepository, TeamRepository>();
 
 // Set culture to NORWEGISH culture
 var cultureInfo = new CultureInfo("nb-NO");
@@ -40,6 +41,17 @@ else
     app.UseHsts();
 }
 
+app.Use(async (context, next) =>
+{
+    await next();
+
+    if (context.Response.StatusCode == 404)
+    {
+        context.Request.Path = "/Error/PageNotfound";
+        await next();
+    }
+});
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -50,7 +62,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Suggestion}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();
