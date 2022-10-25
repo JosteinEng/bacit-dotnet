@@ -399,3 +399,15 @@ FodyWeavers.xsd
 
 # Database
 database/
+bacit-dotnet.MVC/obj/bacit-dotnet.MVC.csproj.nuget.g.props
+bacit-dotnet.MVC/obj/bacit-dotnet.MVC.csproj.nuget.g.props
+bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.assets.cache
+bacit-dotnet.MVC/obj/Debug/net6.0/bacit-dotnet.MVC.GeneratedMSBuildEditorConfig.editorconfig
+bacit-dotnet.MVC/obj/project.assets.json
+bacit-dotnet.MVC/obj/project.nuget.cache
+database/ib_logfile0
+database/ibdata1
+database/webAppDatabase/suggestions.ibd
+.vs/bacit-dotnet.MVC/DesignTimeBuild/.dtbcache.v2
+.vs/bacit-dotnet.MVC/v17/.suo
+bacit-dotnet.MVC/obj/bacit-dotnet.MVC.csproj.nuget.dgspec.json
