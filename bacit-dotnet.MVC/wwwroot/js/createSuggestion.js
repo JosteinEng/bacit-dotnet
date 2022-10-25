@@ -53,7 +53,7 @@ $(() => {
             console.log(imgInput);
 
             if (fileSize > maxFileSize) {
-                imgWarning.text("Fil størrelse på: " + fileSize.toString() + " MB er større enn maks tillatt " + maxFileSize.toString() + " MB");
+                imgWarning.text("Fil stï¿½rrelse pï¿½: " + fileSize.toString() + " MB er stï¿½rre enn maks tillatt " + maxFileSize.toString() + " MB");
                 imgWarning.show();
                 submitBtn.disabled = true;
                 return false;
@@ -81,7 +81,7 @@ $(() => {
                 return true;
             }
             else {
-                imgTypeWarning.text("Filtypen du lastet opp er ikke støttet. Vennligst velg en de følgenede filtypene: "+supportedImageTypes+".");
+                imgTypeWarning.text("Filtypen du lastet opp er ikke stï¿½ttet. Vennligst velg en de fï¿½lgenede filtypene: "+supportedImageTypes+".");
                 imgTypeWarning.show();
                 submitBtn.disabled = true;
                 return false;
