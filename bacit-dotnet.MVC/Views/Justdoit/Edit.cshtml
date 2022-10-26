@@ -1,0 +1,46 @@
+﻿@model Justdoit
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Just Do It</h2>
+            <hr />
+        </div>
+        @*
+        This line of code will show a summary of all errors at the top of the page.
+        <div asp-validation-summary="All" class="text-danger"></div>*@
+        <div class="mb-3">
+            <label asp-for="JustdoitId">Forslags ID</label>
+            <h6>@Model.JustdoitId</h6>
+            <input asp-for="JustdoitId" type="hidden" class="form-control" />
+            <span asp-validation-for="JustdoitId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="EmployeeId">Ansatt ID</label>
+            <input asp-for="EmployeeId" class="form-control" />
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title">Tittel</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description">Beskrivelse</label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
+        <a asp-controller="Justdoit" asp-action="Index" class="btn btn-secondary" style="width: 150px">
+            Back to list
+        </a>
+    </div>
+</form>
+
+
+<!--This script makes sure that the validation process is done on client-side instead of server-side-->
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+}

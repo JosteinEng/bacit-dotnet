@@ -1,4 +1,3 @@
-
 namespace bacit_dotnet.MVC.ViewModels.Suggestions
 {
     public class CreateSuggestionViewModel

@@ -15,5 +15,6 @@ namespace bacit_dotnet.MVC.Data
         //public DbSet<team> Teams { get; set; }
 
         public DbSet<Suggestions> Suggestions { get; set; }
+        public DbSet<Justdoit> Justdoit { get; set; }
     }
 }

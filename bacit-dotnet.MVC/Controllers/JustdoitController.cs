@@ -1,26 +1,26 @@
 ﻿using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
 using bacit_dotnet.MVC.Repositories;
-using bacit_dotnet.MVC.ViewModels.Suggestions;
+using bacit_dotnet.MVC.ViewModels.Justdoit;
 using bacit_dotnet.MVC.ViewModels.Users;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    public class SuggestionController : Controller
+    public class JustdoitController : Controller
     {
-        private readonly ISuggestionRepository _suggestionRepository;
+        private readonly IJustdoitRepository _justdoitRepository;
 
-        public SuggestionController(ISuggestionRepository useRepository)
+        public JustdoitController(IJustdoitRepository useRepository)
         {
-            _suggestionRepository = useRepository;
+            _justdoitRepository = useRepository;
         }
 
         public IActionResult Index()
         {
-            var indexViewModel = new SuggestionsViewModel()
+            var indexViewModel = new JustdoitViewModel()
             {
-                Suggestions = _suggestionRepository.GetAllSuggestions()
+                Justdoit = _justdoitRepository.GetAllJustdoit()
             };
 
             return View(indexViewModel);
@@ -35,27 +35,27 @@ namespace bacit_dotnet.MVC.Controllers
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([FromForm] CreateSuggestionViewModel objSuggestions)
+        public IActionResult Create([FromForm]CreateJustdoitViewModel objJustdoit)
         {
             if (ModelState.IsValid is false)
             {
                 TempData["error"] = "Verdier er ikke gyldige";
-                return View(objSuggestions);
+                return View(objJustdoit);
             }
 
-            if (objSuggestions.Attachments != null && objSuggestions.Attachments.Length > 0)
+            if(objJustdoit.Attachments != null && objJustdoit.Attachments.Length > 0)
             {
                 using (var memoryStream = new MemoryStream())
                 {
-                    objSuggestions.Attachments.CopyTo(memoryStream);
-                    objSuggestions.Suggestion.Attachments = memoryStream.ToArray();
+                    objJustdoit.Attachments.CopyTo(memoryStream);
+                    objJustdoit.Justdoit.Attachments = memoryStream.ToArray();
                 }
             }
 
 
-            var newSuggestionId = _suggestionRepository.Add(objSuggestions.Suggestion);
+            var newJustdoitId = _justdoitRepository.Add(objJustdoit.Justdoit);
 
-            if (newSuggestionId > 0)
+            if (newJustdoitId > 0)
             {
                 TempData["success"] = "Forslag ble opprettet";
                 return RedirectToAction("Index");
@@ -65,7 +65,7 @@ namespace bacit_dotnet.MVC.Controllers
                 TempData["error"] = "Forslag ble ikke opprettet";
             }
 
-            return View(objSuggestions);
+            return View(objJustdoit);
         }
 
         //Get
@@ -76,28 +76,28 @@ namespace bacit_dotnet.MVC.Controllers
                 return NotFound();
             }
 
-            var suggestionFromDb = _suggestionRepository.GetSuggestionBySuggestionId(id.Value);
+            var justdoitFromDb = _justdoitRepository.GetJustdoitByJustdoitId(id.Value);
 
-            if (suggestionFromDb == null)
+            if (justdoitFromDb == null)
             {
                 return NotFound();
             }
 
-            return View(suggestionFromDb);
+            return View(justdoitFromDb);
         }
 
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Suggestions objSuggestions)
+        public IActionResult Edit(Justdoit objJustdoit)
         {
             if (!ModelState.IsValid)
             {
                 TempData["error"] = "Ugyldige verdier i skjem";
-                return View(objSuggestions);
+                return View(objJustdoit);
             }
 
-            var rowsAffectedByUpdate = _suggestionRepository.Update(objSuggestions);
+            var rowsAffectedByUpdate = _justdoitRepository.Update(objJustdoit);
             if (rowsAffectedByUpdate > 0)
             {
                 TempData["success"] = "Forslag har blitt oppdatert";
@@ -108,7 +108,7 @@ namespace bacit_dotnet.MVC.Controllers
                 TempData["error"] = "Forslag ble ikke oppdatert";
             }
 
-            return View(objSuggestions);
+            return View(objJustdoit);
         }
 
         //Get
@@ -119,27 +119,27 @@ namespace bacit_dotnet.MVC.Controllers
                 return NotFound();
             }
 
-            var suggestionFromDb = _suggestionRepository.GetSuggestionBySuggestionId(id.Value);
+            var justdoitFromDb = _justdoitRepository.GetJustdoitByJustdoitId(id.Value);
 
-            if (suggestionFromDb == null)
+            if (justdoitFromDb == null)
             {
                 return NotFound();
             }
 
-            return View(suggestionFromDb);
+            return View(justdoitFromDb);
         }
 
         //Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteSuggestion(int? id)
+        public IActionResult DeleteJustdoit(int? id)
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
 
-            var hasRowBeenDeleted = _suggestionRepository.Delete(id.Value);
+            var hasRowBeenDeleted = _justdoitRepository.Delete(id.Value);
 
             if (!hasRowBeenDeleted)
             {

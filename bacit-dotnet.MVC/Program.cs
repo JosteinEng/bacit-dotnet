@@ -20,6 +20,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ISuggestionRepository, SuggestionRepository>();
 builder.Services.AddTransient<ITeamRepository, TeamRepository>();
+builder.Services.AddTransient<IJustdoitRepository, JustdoitRepository>();
 
 // Set culture to NORWEGISH culture
 var cultureInfo = new CultureInfo("nb-NO");

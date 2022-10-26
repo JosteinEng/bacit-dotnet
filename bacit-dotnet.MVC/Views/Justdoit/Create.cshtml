@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model bacit_dotnet.MVC.ViewModels.Justdoit.CreateJustdoitViewModel
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Just Do It</h2>
+            <hr />
+        </div>
+        @*
+        This line of code will show a summary of all errors at the top of the page.
+        <div asp-validation-summary="All" class="text-danger"></div>*@
+        <div class="mb-3">
+            <label asp-for="Justdoit.EmployeeId">Ansatt ID</label>
+            <input asp-for="Justdoit.EmployeeId" class="form-control" />
+            <span asp-validation-for="Justdoit.EmployeeId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Justdoit.Title">Tittel</label>
+            <input asp-for="Justdoit.Title" class="form-control" minlength="2" maxlength="30" /><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">30/30</span>
+            <span asp-validation-for="Justdoit.Title" class="text-danger">
+            </span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Justdoit.Description">Beskrivelse</label>
+            <textarea asp-for="Justdoit.Description" class="form-control" style="min-height: 150px"></textarea>
+            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span>            <span asp-validation-for="Justdoit.Description" class="text-danger"></span>
+        </div>
+
+        <!-- Image -->
+        <div class="mb-3">
+            <label asp-for="Attachments">Last opp bilde</label>
+            <input asp-for="Attachments" id="imageInput" class="form-control pt-1"
+                type="file" accept=".jpg, .png, .jpeg" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />  
+            <span id="imageWarning" class="text-danger" style="display: none;"></span>
+            <span id="imageTypeWarning" class="text-danger" style="display: none"></span>
+
+            <!-- Image preview field -->  
+            <img id="imagePreview" src="" alt=""/>  
+        </div>
+
+        <br/>
+
+        <button id="submitBtn" type="submit" class="btn btn-primary" style="width: 150px">Create</button>
+        <a asp-controller="Justdoit" asp-action="Index" class="btn btn-secondary" style="width: 150px">
+            Back to list
+        </a>
+    </div>
+</form>
+
+<!--This script makes sure that the validation process is done on client-side instead of server-side-->
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/createSuggestion.js"></script>
+}
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('Justdoit_Title').onkeyup = function () {
+            document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30" ;
+            
+};
+
+});
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('Justdoit_Description').onkeyup = function () {
+                document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
+
+            };
+
+        });
+
+</script>
