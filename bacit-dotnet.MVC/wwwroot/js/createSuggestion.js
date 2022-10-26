@@ -67,7 +67,7 @@ $(() => {
         return true;
     }
 
-    //Validates the file type the user is trying to upload.
+    // Validates the file type the user is trying to upload.
     function validateFileType() {
 
         var imageInput = document.getElementById('imageInput');
