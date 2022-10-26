@@ -1,9 +1,11 @@
 
-namespace bacit_dotnet.MVC.ViewModels.Suggestions
+using bacit_dotnet.MVC.Models;
+
+namespace bacit_dotnet.MVC.ViewModels
 {
     public class CreateSuggestionViewModel
     {
-        public Models.Suggestions Suggestion { get; set; }
+        public Suggestions Suggestion { get; set; }
         public IFormFile? Attachments { get; set; }
     }
 }

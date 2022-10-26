@@ -6,7 +6,6 @@ using System.Reflection.Metadata;
 
 namespace bacit_dotnet.MVC.Models
 {
-    [Table("suggestions")]
     public class Suggestions
     {
         [Key]

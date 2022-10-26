@@ -1,6 +1,7 @@
 ﻿using bacit_dotnet.MVC.Data;
-using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
+using bacit_dotnet.MVC.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace bacit_dotnet.MVC.Repositories
 {
@@ -13,29 +14,59 @@ namespace bacit_dotnet.MVC.Repositories
             _context = context;
         }
 
-        public int Add(Users objTeam)
+        public int Add(Teams objTeam)
         {
-            throw new NotImplementedException();
+            var existingTeam = GetTeamByTeamId(objTeam.TeamId);
+            if (existingTeam != null)
+            {
+                return 0;
+            }
+
+            _context.Teams.Add(objTeam);
+            _context.SaveChanges();
+
+            return objTeam.TeamId;
         }
 
-        public bool Delete(int teamId)
+        public int Update(Teams objTeam)
         {
-            throw new NotImplementedException();
-        }
+            var teamBeforeEdit = GetTeamByTeamId(objTeam.TeamId);
+            if (teamBeforeEdit == null)
+            {
+                return 0;
+            }
 
-        public Teams[] GetAllTeams()
-        {
-            throw new NotImplementedException();
+            teamBeforeEdit.TeamName = objTeam.TeamName;
+            teamBeforeEdit.UserId = objTeam.UserId;
+
+            return _context.SaveChanges();
         }
 
         public Teams? GetTeamByTeamId(int teamId)
         {
-            throw new NotImplementedException();
+            return _context.Teams.Find(teamId);
         }
 
-        public int Update(Users objTeam)
+        public Teams[] GetAllTeams()
         {
-            throw new NotImplementedException();
+            return _context.Teams.Include(x => x.User).ToArray();
+        }
+
+        public bool Delete(int teamId)
+        {
+            var teamToDelete = GetTeamByTeamId(teamId);
+
+            if(teamToDelete == null)
+            {
+                return false;
+            }
+
+            _context.Teams.Remove(teamToDelete);
+
+            var rowsAffected = _context.SaveChanges();
+            var isSuccessful = rowsAffected > 0;
+
+            return isSuccessful;
         }
     }
 }

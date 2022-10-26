@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
-using bacit_dotnet.MVC.ViewModels.Users;
+using bacit_dotnet.MVC.ViewModels;
 
 namespace bacit_dotnet.MVC.Controllers
 {

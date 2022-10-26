@@ -81,7 +81,8 @@ $(() => {
                 return true;
             }
             else {
-                imgTypeWarning.text("Filtypen du lastet opp er ikke st�ttet. Vennligst velg en de f�lgenede filtypene: "+supportedImageTypes+".");
+                // imgTypeWarning.text("Filtypen du lastet opp er ikke støttet. Vennligst velg en de følgenede filtypene: " + supportedImageTypes + ".");
+                imgTypeWarning.text("Filtypen du lastet opp er ikke støttet. Vennligst velg en av de følgende filtypene: " + supportedImageTypes + ".");
                 imgTypeWarning.show();
                 submitBtn.disabled = true;
                 return false;
