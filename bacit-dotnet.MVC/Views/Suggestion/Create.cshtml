@@ -34,15 +34,33 @@
         </div>
 
         <!-- Image -->
-        <div class="mb-3">
-            <label asp-for="Attachments">Last opp bilde</label>
-            <input asp-for="Attachments" id="imageInput" class="form-control pt-1"
-                type="file" accept=".jpg, .png, .jpeg" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />  
-            <span id="imageWarning" class="text-danger" style="display: none;"></span>
-            <span id="imageTypeWarning" class="text-danger" style="display: none"></span>
+        <div class="container-fluid mb-3">
+            <div class="row">
 
-            <!-- Image preview field -->  
-            <img id="imagePreview" src="" alt=""/>  
+                <!-- Image before -->
+                <div class="col-sm-5 text-black align-content-center">
+                Bilde før
+                    <input asp-for="Attachments" id="imageInput" class="form-control pt-1 mb-1"
+                        type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+
+                    <span id="imageWarning" class="text-danger" style="display: none;"></span>
+                    <span id="imageTypeWarning" class="text-danger" style="display: none"></span>
+                </div>
+
+                <!-- Image after -->
+                <div class="col-sm-5 text-black align-content-center">
+                Bilde etter
+                    <input asp-for="Attachments" id="imageInput2" class="form-control pt-1"
+                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+
+                    <span id="imageWarning2" class="text-danger" style="display: none;"></span>
+                    <span id="imageTypeWarning2" class="text-danger" style="display: none"></span>
+                </div>
+                <!-- Image preview field -->
+
+                <img id="imagePreview" src="" alt=""/>  
+
+            </div>
         </div>
 
         <br/>
