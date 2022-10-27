@@ -5,12 +5,12 @@
 <form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Just Do It</h2>
+            <h3 class="text-dark">Legg til ny Just Do It</h3>
             <hr />
         </div>
         @*
-        This line of code will show a summary of all errors at the top of the page.
-        <div asp-validation-summary="All" class="text-danger"></div>*@
+            This line of code will show a summary of all errors at the top of the page.
+            <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
             <label asp-for="Justdoit.EmployeeId">Ansatt ID</label>
             <input asp-for="Justdoit.EmployeeId" class="form-control" />
@@ -25,27 +25,34 @@
         <div class="mb-3">
             <label asp-for="Justdoit.Description">Beskrivelse</label>
             <textarea asp-for="Justdoit.Description" class="form-control" style="min-height: 150px"></textarea>
-            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span>            <span asp-validation-for="Justdoit.Description" class="text-danger"></span>
+            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span><span asp-validation-for="Justdoit.Description" class="text-danger"></span>
         </div>
 
         <!-- Image -->
         <div class="mb-3">
             <label asp-for="Attachments">Last opp bilde</label>
             <input asp-for="Attachments" id="imageInput" class="form-control pt-1"
-                type="file" accept=".jpg, .png, .jpeg" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />  
+                   type="file" accept=".jpg, .png, .jpeg" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
             <span id="imageWarning" class="text-danger" style="display: none;"></span>
             <span id="imageTypeWarning" class="text-danger" style="display: none"></span>
 
-            <!-- Image preview field -->  
-            <img id="imagePreview" src="" alt=""/>  
+            <!-- Image preview field -->
+            <img id="imagePreview" src="" alt="" />
         </div>
 
-        <br/>
+        <br />
 
-        <button id="submitBtn" type="submit" class="btn btn-primary" style="width: 150px">Create</button>
-        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width: 150px">
-            Back to list
-        </a>
+        @*
+            Creates a group of buttons for submit and return to list buttons.
+            The buttons are set to 100% width of the parent class.
+            Also using a custom button class that extends the bootstrap button classes to specify the font-size.
+        *@
+        <div class="d-grid pb-3">
+            <div class="btn-group role="group">
+                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Opprett</button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til liste</a>
+            </div>
+        </div>
     </div>
 </form>
 
@@ -55,21 +62,18 @@
     <script src="~/js/createSuggestion.js"></script>
 }
 
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById('Justdoit_Title').onkeyup = function () {
-            document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30" ;
-            
-};
+@*
+    This script is used to count the remaining characters in the create suggestion form for the "title" and "description" fields.
+    The function will count backwards from the fields' maximum value until it reaches zero.
+*@
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('Suggestion_Title').onkeyup = function () {
+            document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30";
+        };
+    });
 
-});
-
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById('Justdoit_Description').onkeyup = function () {
-                document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
-
-            };
-
-        });
-
-</script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('Suggestion_Description').onkeyup = function () {
+            document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
+        };
+    });</script>
