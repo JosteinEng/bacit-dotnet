@@ -23,7 +23,7 @@ namespace bacit_dotnet.MVC.Controllers
                 Justdoit = _justdoitRepository.GetAllJustdoit()
             };
 
-            return View(indexViewModel);
+            return RedirectToAction("Index", "Home");
         }
 
         //Get
@@ -58,7 +58,7 @@ namespace bacit_dotnet.MVC.Controllers
             if (newJustdoitId > 0)
             {
                 TempData["success"] = "Forslag ble opprettet";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -101,7 +101,7 @@ namespace bacit_dotnet.MVC.Controllers
             if (rowsAffectedByUpdate > 0)
             {
                 TempData["success"] = "Forslag har blitt oppdatert";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -149,7 +149,7 @@ namespace bacit_dotnet.MVC.Controllers
 
             TempData["success"] = "Forslag har blitt slettet";
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
