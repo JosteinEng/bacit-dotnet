@@ -5,28 +5,31 @@ $(() => {
 
     // # = id, . = css, [data-x-y="x"], attribute
 
-    const imgInput = $("#imageInput");
-    const imgInput2 = $("#imageInput2");
-    const imgWarning = $("#imageWarning");
-    const imgTypeWarning = $("#imageTypeWarning");
-    const imgWarning2 = $("#imageWarning2");
-    const imgTypeWarning2 = $("#imageTypeWarning2");
+    /*All variables and functions which end with "before" belongs to the before image.
+    The same goes for the after image.*/
+
+    const imgInputBefore = $("#imageInputBefore");
+    const imgInputAfter = $("#imageInputAfter");
+    const imgSizeWarningBefore = $("#imageSizeWarningBefore");
+    const imgTypeWarningBefore = $("#imageTypeWarningBefore");
+    const imgSizeWarningAfter = $("#imageSizeWarningAfter");
+    const imgTypeWarningAfter = $("#imageTypeWarningAfter");
     const imgPreview = $("#imagePreview");
     const supportedImageTypes = ["jpeg", "jpg", "png","heic","heif"];
 
     //One unique variable for each validation function
-    var unvalidSize1 = 0;
-    var unvalidSize2 = 0;
-    var unvalidExtension1 = 0;
-    var unvalidExtension2 = 0;
+    var unvalidSizeBefore = 0;
+    var unvalidExtensionBefore = 0;
+    var unvalidSizeAfter = 0;
+    var unvalidExtensionAfter = 0;
 
     let fileReader = new FileReader();
 
-    // * Listen for file change on imageInput
-    imgInput.on("change", () => {
+    // * Listen for file change on imageInputBefore
+    imgInputBefore.on("change", () => {
 
-        validateFileInput();
-        validateFileType();
+        validateFileSizeBefore();
+        validateFileTypeBefore();
         checkImageInputs();
 
         // TODO+Release: Resurrect image-preview
@@ -45,17 +48,18 @@ $(() => {
         /*        };*/
     });
 
-    imgInput2.on("change", () => {
+    // * Listen for file change on imageInputAfter
+    imgInputAfter.on("change", () => {
 
-        validateFileInput2();
-        validateFileType2();
+        validateFileSizeAfter();
+        validateFileTypeAfter();
         checkImageInputs();
 
     });
 
     // * Listen for form submittion
     $("form").submit((e) => {
-        const isValid = validateFileInput();
+        const isValid = validateFileSizeBefore();
 
         if (!isValid) e.preventDefault();
 
@@ -64,91 +68,90 @@ $(() => {
 
 
     //Validates the file size the user is trying to upload.
-    function validateFileInput() {
-        if (imgInput.get(0).files.length > 0) {
-            const fileSize = Math.round(Number(imgInput.get(0).files[0].size) / (1024.0 * 1024.0)); // in MB
-            const maxFileSize = Number(imgInput.data("maxSize")) / (1024.0 * 1024.0); // in MB;
+    function validateFileSizeBefore() {
+        if (imgInputBefore.get(0).files.length > 0) {
+            const fileSizeBefore = Math.round(Number(imgInputBefore.get(0).files[0].size) / (1024.0 * 1024.0)); // in MB
+            const maxFileSizeBefore = Number(imgInputBefore.data("maxSize")) / (1024.0 * 1024.0); // in MB;
 
-            if (fileSize > maxFileSize) {
-                imgWarning.text("Fil størrelse på: " + fileSize.toString() + " MB er større enn maks tillatt " + maxFileSize.toString() + " MB");
-                imgWarning.show();
+            if (fileSizeBefore > maxFileSizeBefore) {
+                imgSizeWarningBefore.text("Fil størrelse på: " + fileSizeBefore.toString() + " MB er større enn maks tillatt " + maxFileSizeBefore.toString() + " MB");
+                imgSizeWarningBefore.show();
                 submitBtn.disabled = true;
-                unvalidSize1 = 1;
+                unvalidSizeBefore = 1;
                 return false;
             }
         }
-        imgWarning.hide();
-        unvalidSize1 = 0;
+        imgSizeWarningBefore.hide();
+        unvalidSizeBefore = 0;
         return true;
     }
 
     //Validates the file type the user is trying to upload.
-    function validateFileType() {
-        if (imgInput.get(0).files.length > 0) {
-            var imageInput = document.getElementById('imageInput');
-            var fileType = imageInput.files[0].type;
-            var extension = fileType.slice((Math.max(0, fileType.lastIndexOf("/")) || Infinity) + 1);
+    function validateFileTypeBefore() {
+        if (imgInputBefore.get(0).files.length > 0) {
+            var imageInputBefore = document.getElementById('imageInputBefore');
+            var fileTypeBefore = imageInputBefore.files[0].type;
+            var extensionBefore = fileTypeBefore.slice((Math.max(0, fileTypeBefore.lastIndexOf("/")) || Infinity) + 1);
 
             //Any file extension that is not in the array is indexOf(-1).
-            if (supportedImageTypes.indexOf(extension) < 0) {
-                imgTypeWarning.text("Innvalid filtype. Vennligst velg en de følgenede filtypene: " + supportedImageTypes + ".");
-                imgTypeWarning.show();
+            if (supportedImageTypes.indexOf(extensionBefore) < 0) {
+                imgTypeWarningBefore.text("Innvalid filtype. Vennligst velg en de følgenede filtypene: " + supportedImageTypes + ".");
+                imgTypeWarningBefore.show();
                 submitBtn.disabled = true;
-                unvalidExtension1 = 1;
+                unvalidExtensionBefore = 1;
                 return false;
-                alert(extension);
             }
         }
-        imgTypeWarning.hide();
-        unvalidExtension1 = 0;
+        imgTypeWarningBefore.hide();
+        unvalidExtensionBefore = 0;
         return true;   
     }
 
 
 
     //Validates the file size the user is trying to upload.
-    function validateFileInput2() {
-        if (imgInput2.get(0).files.length > 0) {
-            const fileSize2 = Math.round(Number(imgInput2.get(0).files[0].size) / (1024.0 * 1024.0)); // in MB
-            const maxFileSize2 = Number(imgInput2.data("maxSize")) / (1024.0 * 1024.0); // in MB;
+    function validateFileSizeAfter() {
+        if (imgInputAfter.get(0).files.length > 0) {
+            const fileSizeAfter = Math.round(Number(imgInputAfter.get(0).files[0].size) / (1024.0 * 1024.0)); // in MB
+            const maxFileSizeAfter = Number(imgInputAfter.data("maxSize")) / (1024.0 * 1024.0); // in MB;
 
-            if (fileSize2 > maxFileSize2) {
-                imgWarning2.text("Fil størrelse på: " + fileSize2.toString() + " MB er større enn maks tillatt " + maxFileSize2.toString() + " MB");
-                imgWarning2.show();
+            if (fileSizeAfter > maxFileSizeAfter) {
+                imgSizeWarningAfter.text("Fil størrelse på: " + fileSizeAfter.toString() + " MB er større enn maks tillatt " + maxFileSizeAfter.toString() + " MB");
+                imgSizeWarningAfter.show();
                 submitBtn.disabled = true;
-                unvalidSize2 = 1;
+                unvalidSizeAfter = 1;
                 return false;
             }
         }
-        imgWarning2.hide();
-        unvalidSize2 = 0;
+        imgSizeWarningAfter.hide();
+        unvalidSizeAfter = 0;
         return true;
     }
 
     //Validates the file type the user is trying to upload.
-    function validateFileType2() {
-        if (imgInput2.get(0).files.length > 0) {
-            var imageInput2 = document.getElementById('imageInput2');
-            var fileType2 = imageInput2.files[0].type;
-            var extension2 = fileType2.slice((Math.max(0, fileType2.lastIndexOf("/")) || Infinity) + 1);
+    function validateFileTypeAfter() {
+        if (imgInputAfter.get(0).files.length > 0) {
+            var imageInputAfter = document.getElementById('imageInputAfter');
+            var fileTypeAfter = imageInputAfter.files[0].type;
+            var extensionAfter = fileTypeAfter.slice((Math.max(0, fileTypeAfter.lastIndexOf("/")) || Infinity) + 1);
 
             //Any file extension that is not in the array is indexOf(-1).
-            if (supportedImageTypes.indexOf(extension2) < 0) {
-                imgTypeWarning2.text("Filtypen du lastet opp er ikke støttet. Vennligst velg en de følgenede filtypene: " + supportedImageTypes + ".");
-                imgTypeWarning2.show();
+            if (supportedImageTypes.indexOf(extensionAfter) < 0) {
+                imgTypeWarningAfter.text("Filtypen du lastet opp er ikke støttet. Vennligst velg en de følgenede filtypene: " + supportedImageTypes + ".");
+                imgTypeWarningAfter.show();
                 submitBtn.disabled = true;
-                unvalidExtension2 = 1;
+                unvalidExtensionAfter = 1;
                 return false;
             }
         }
-        imgTypeWarning2.hide();
-        unvalidExtension2 = 0;
+        imgTypeWarningAfter.hide();
+        unvalidExtensionAfter = 0;
         return true;
     }
 
     //Checks that all validation functions are accepting the users input before enabling the submit button.
     function checkImageInputs() {
-        if (unvalidSize1 == 0 && unvalidExtension1 == 0 && unvalidSize2 == 0 && unvalidExtension2 == 0) {
+        if (unvalidSizeBefore == 0 && unvalidExtensionBefore == 0 && unvalidSizeAfter == 0 && unvalidExtensionAfter == 0) {
             submitBtn.disabled = false;
         }
     }
