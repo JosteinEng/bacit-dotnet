@@ -55,7 +55,9 @@
 
     </div>
 </div>
-@{var Forslagsnr = 1;
+
+@{
+    var Forslagsnr = 1;
     foreach (var objSuggestion in Model.Suggestions)
     {
         <div class="container-fluid mt-3">
@@ -108,7 +110,6 @@
 
 
 
-<partial name="_Notification" />
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
@@ -182,4 +183,3 @@
         }
     </tbody>
 </table>
-

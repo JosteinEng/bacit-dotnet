@@ -23,7 +23,7 @@ namespace bacit_dotnet.MVC.Controllers
         {
             var indexViewModel = new TeamViewModel()
             {
-                Teams = _teamRepository.GetAllTeams()
+                Teams = _teamRepository.GetAllTeamsAndUsers()
             };
 
             return View(indexViewModel);
@@ -50,7 +50,7 @@ namespace bacit_dotnet.MVC.Controllers
             if (!ModelState.IsValid)
             {
                 TempData["error"] = "Ugyldige verdier i skjema";
-                return View(objTeams);
+                return RedirectToAction("Create");
             }
 
             var newCategoryId = _teamRepository.Add(new Teams
@@ -68,6 +68,108 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 TempData["error"] = "Team ikke opprettet!";
             }
+
+            return RedirectToAction("Create");
+        }
+
+        //Get
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var teamFromDb = _teamRepository.GetTeamAndUserByTeamId(id.Value);
+
+            if (teamFromDb == null)
+            {
+                return NotFound();
+            }
+
+            var users = _userRepository.GetAllUsers();
+
+            var teamAndUserGatheredFromDb = new EditTeamViewModel()
+            {
+                TeamId = teamFromDb.TeamId,
+                TeamName = teamFromDb.TeamName,
+                UserId = teamFromDb.UserId,
+                Users = users
+            };
+
+            return View(teamAndUserGatheredFromDb);
+        }
+
+        //Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(EditTeamViewModel objTeams)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["error"] = "Ugyldige verdier i skjema";
+                return RedirectToAction("Edit", objTeams.TeamId);
+            }
+
+            var updatedTeam = new Teams
+            {
+                TeamId = objTeams.TeamId,
+                TeamName = objTeams.TeamName,
+                UserId = objTeams.UserId,
+            };
+
+            var rowsAffectedByUpdate = _teamRepository.Update(updatedTeam);
+            if (rowsAffectedByUpdate > 0)
+            {
+                TempData["success"] = "Team har blitt oppdatert";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["error"] = "Team ble ikke oppdatert";
+            }
+            return RedirectToAction("Edit", objTeams.TeamId);
+        }
+
+        //Get
+        [HttpGet]
+            public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var teamFromDb = _teamRepository.GetTeamAndUserByTeamId(id.Value);
+
+            if (teamFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(teamFromDb);
+        }
+
+        //Delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteTeam(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var hasRowBeenDeleted = _teamRepository.Delete(id.Value);
+
+            if (!hasRowBeenDeleted)
+            {
+                TempData["error"] = "Team ble ikke slettet";
+                return NotFound(); // TODO: Make 404 page
+            }
+
+            TempData["success"] = "Team har blitt slettet";
 
             return RedirectToAction("Index");
         }

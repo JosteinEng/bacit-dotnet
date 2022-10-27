@@ -7,11 +7,6 @@ namespace bacit_dotnet.MVC.Controllers
     public class ErrorController : Controller
     {
         //GET ERROR
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult PageNotfound()
         {
             return View();

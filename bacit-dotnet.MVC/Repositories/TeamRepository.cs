@@ -16,7 +16,7 @@ namespace bacit_dotnet.MVC.Repositories
 
         public int Add(Teams objTeam)
         {
-            var existingTeam = GetTeamByTeamId(objTeam.TeamId);
+            var existingTeam = GetTeamAndUserByTeamId(objTeam.TeamId);
             if (existingTeam != null)
             {
                 return 0;
@@ -30,7 +30,7 @@ namespace bacit_dotnet.MVC.Repositories
 
         public int Update(Teams objTeam)
         {
-            var teamBeforeEdit = GetTeamByTeamId(objTeam.TeamId);
+            var teamBeforeEdit = GetTeamAndUserByTeamId(objTeam.TeamId);
             if (teamBeforeEdit == null)
             {
                 return 0;
@@ -42,19 +42,19 @@ namespace bacit_dotnet.MVC.Repositories
             return _context.SaveChanges();
         }
 
-        public Teams? GetTeamByTeamId(int teamId)
+        public Teams? GetTeamAndUserByTeamId(int teamId)
         {
-            return _context.Teams.Find(teamId);
+            return _context.Teams.Include(x => x.User).FirstOrDefault(x => x.TeamId == teamId);
         }
 
-        public Teams[] GetAllTeams()
+        public Teams[] GetAllTeamsAndUsers()
         {
             return _context.Teams.Include(x => x.User).ToArray();
         }
 
         public bool Delete(int teamId)
         {
-            var teamToDelete = GetTeamByTeamId(teamId);
+            var teamToDelete = GetTeamAndUserByTeamId(teamId);
 
             if(teamToDelete == null)
             {

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace bacit_dotnet.MVC.ViewModels
 {
-	public class CreateTeamViewModel
+	public class EditTeamViewModel
 	{
 		[ValidateNever]
 		public Users[] Users { get; set; }
@@ -16,5 +16,10 @@ namespace bacit_dotnet.MVC.ViewModels
 		[Required]
 		[StringLength(50, MinimumLength = 1)]
 		public string TeamName { get; set; }
+
+		[Required]
+		[Range(1, int.MaxValue)]
+
+		public int TeamId { get; set; }
 	}
 }
