@@ -37,15 +37,15 @@
         <div class="mb-3">
             <label asp-for="Attachments">Last opp bilde</label>
             <input asp-for="Attachments" id="imageInput" class="form-control pt-1"
-                type="file" accept=".jpg, .png, .jpeg" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(1 * 1024.0 * 1024.0)" />  
+                   type="file" accept=".jpg, .png, .jpeg" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
             <span id="imageWarning" class="text-danger" style="display: none;"></span>
             <span id="imageTypeWarning" class="text-danger" style="display: none"></span>
 
-            <!-- Image preview field -->  
-            <img id="imagePreview" src="" alt=""/>  
+            <!-- Image preview field -->
+            <img id="imagePreview" src="" alt="" />
         </div>
 
-        <br/>
+        <br />
         @*
         Creates a group of buttons for submit and return to list buttons.
         The buttons are set to 100% width of the parent class.
@@ -55,7 +55,7 @@
             <div class="btn-group role="group">
                 <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Opprett</button>
                 <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til liste</a>
-        </div>
+            </div>
         </div>
     </div>
 </form>
@@ -66,19 +66,21 @@
     <script src="~/js/createSuggestion.js"></script>
 }
 
-@*
+    @*
 This script is used to count the remaining characters in the create suggestion form for the "title" and "description" fields.
 The function will count backwards from the fields' maximum value until it reaches zero.
 *@
-<script type="text/javascript">
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('Suggestion_Title').onkeyup = function () {
+                document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30";
+            };
+        });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('Suggestion_Title').onkeyup = function () {
-        document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30" ;
-    };
-        document.getElementById('Suggestion_Description').onkeyup = function () {
-            document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('Suggestion_Description').onkeyup = function () {
+                document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
+            };
+        });
 
-    };
-});
-</script>
+    </script>

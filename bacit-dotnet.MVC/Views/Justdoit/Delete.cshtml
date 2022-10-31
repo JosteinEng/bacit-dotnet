@@ -3,7 +3,7 @@
 <form method="post" asp-action="Delete">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Delete Just Do It</h2>
+            <h2 class="text-dark">Slette Just-do-it-forslag</h2>
             <hr />
         </div>
         @*
@@ -26,11 +26,13 @@
             <label asp-for="Description">Beskrivelse</label>
             <input asp-for="Description" disabled="disabled" class="form-control" />
         </div>
-        <br/>
-        <button type="submit" class="btn btn-primary" style="width: 150px">Delete</button>
-        <a asp-controller="Justdoit" asp-action="Index" class="btn btn-secondary" style="width: 150px">
-            Back to list
-        </a>
+        <br />
+        <div class="d-grid pb-3">
+            <div class="btn-group role="group">
+                <button type="submit" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Slett</button>
+                <a asp-controller="Justdoit" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Tilbake</a>
+            </div>
+        </div>
     </div>
 </form>
 

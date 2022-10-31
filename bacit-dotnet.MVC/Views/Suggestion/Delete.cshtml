@@ -3,7 +3,7 @@
 <form method="post" asp-action="Delete">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Delete suggestion</h2>
+            <h2 class="text-dark">Slett forslag</h2>
             <hr />
         </div>
         @*
@@ -30,11 +30,13 @@
             <label asp-for="Deadline">Tidsfrist</label>
             <input asp-for="Deadline" disabled="disabled" type="date" class="form-control" />
         </div>
-        <br/>
-        <button type="submit" class="btn btn-primary" style="width: 150px">Delete</button>
-        <a asp-controller="Suggestion" asp-action="Index" class="btn btn-secondary" style="width: 150px">
-            Back to list
-        </a>
+        <br />
+        <div class="d-grid pb-3">
+            <div class="btn-group role="group">
+                <button type="submit" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Slett</button>
+                <a asp-controller="Suggestion" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Tilbake</a>
+            </div>
+        </div>
     </div>
 </form>
 
@@ -46,7 +48,7 @@
 }
 
 
-@*<div class="row">
+    @*<div class="row">
     <div class="d-flex justify-content-center">
         <div class="card col-sm-3 col-md-6">
             <div class="card-header">

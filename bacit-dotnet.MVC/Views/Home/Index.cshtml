@@ -20,14 +20,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Suggestion" asp-action="Create">Nytt forslag</a>
+                            <a class="btn btn-light btn-outline-dark btn-lg extra-button-style" asp-area="" asp-controller="Suggestion" asp-action="Create">Nytt forslag</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Justdoit" asp-action="Create">Just Do It</a>
+                            <a class="btn btn-light btn-outline-dark btn-lg extra-button-style" asp-area="" asp-controller="Justdoit" asp-action="Create">Just Do It</a>
                         </li>
                     </ul>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Lukk</button>
@@ -62,7 +64,8 @@
     that can be expanded and collapsed by the user to view the details of each suggestion. The default value is collapsed.
 
 *@
-@{var forslagsnr = 1;
+@{
+    var forslagsnr = 1;
     foreach (var objSuggestion in Model.Suggestions)
     {
         <div class="container-fluid mt-3">
@@ -82,10 +85,10 @@
                 </div>
 
                 @*
-                    This code creates a new div ID that is used by the loop to display each row.
-                    The last digit of the ID is an increasing number so that each row gets its own unique ID.
-                    This is needed for the expansion of the rows to work.
-                *@
+        This code creates a new div ID that is used by the loop to display each row.
+        The last digit of the ID is an increasing number so that each row gets its own unique ID.
+        This is needed for the expansion of the rows to work.
+        *@
                 <div id="forslag-@forslagsnr" class="collapse">
                     <div class="border border-top-0">
                         <div class="container-fluid mt-3">
@@ -123,9 +126,9 @@
                                 <div class="d-grid pb-3">
                                     <div class="btn-group role="group">
                                         <a asp-controller="Suggestion" asp-action="Edit" asp-route-id="@objSuggestion.SuggestionId"
-                                           class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
+                                   class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
                                         <a asp-controller="Suggestion" asp-action="Delete" asp-route-id="@objSuggestion.SuggestionId"
-                                           class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
+                                   class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +144,7 @@
 <hr />
 
 <div class="text-center">
-    <h3>Alle JustDoIt som er sendt inn</h3>
+    <h3>Alle just-do-it-forslag</h3>
 </div>
 
 <div class="container-fluid mt-3">
@@ -162,69 +165,71 @@
     that can be expanded and collapsed by the user to view the details of each suggestion. The default value is collapsed.
 
 *@
-@{var justdoitnr = 1;
+@{
+    var justdoitnr = 1;
     foreach (var objJustdoit in Model.Justdoit)
     {
-    <div class="container-fluid mt-3">
-        <div class="container-fluid">
-            <div class="border">
-                <div class="d-grid">
-                    <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#justdoit-@justdoitnr">
-                        <div class="row" style="width:100%;">
-                            <div class="col-3 bg-light">@objJustdoit.Title</div>
-                            <div class="col-2 bg-light">2</div>
-                            <div class="col-2 bg-light">Ansattnavn</div>
-                            <div class="col-2 bg-light">Under behandling</div>
+        <div class="container-fluid mt-3">
+            <div class="container-fluid">
+                <div class="border">
+                    <div class="d-grid">
+                        <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#justdoit-@justdoitnr">
+                            <div class="row" style="width:100%;">
+                                <div class="col-3 bg-light">@objJustdoit.Title</div>
+                                <div class="col-2 bg-light">2</div>
+                                <div class="col-2 bg-light">Ansattnavn</div>
+                                <div class="col-2 bg-light">Under behandling</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            @*
-            This code creates a new div ID that is used by the loop to display each row.
-            The last digit of the ID is an increasing number so that each row gets its own unique ID.
-            This is needed for the expansion of the rows to work.
-            *@
-            <div id="justdoit-@justdoitnr" class="collapse">
-                <div class="border border-top-0">
-                    <div class="container-fluid mt-3">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-3 col-md-6 p-2 text-black">
+                @*
+        This code creates a new div ID that is used by the loop to display each row.
+        The last digit of the ID is an increasing number so that each row gets its own unique ID.
+        This is needed for the expansion of the rows to work.
+        *@
+                <div id="justdoit-@justdoitnr" class="collapse">
+                    <div class="border border-top-0">
+                        <div class="container-fluid mt-3">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-6 p-2 text-black">
 
-                                    <div class="border" style="padding: 1rem;">
-                                        <p><b>Beskrivelse</b></p>
-                                        <p>@objJustdoit.Description</p>
+                                        <div class="border" style="padding: 1rem;">
+                                            <p><b>Beskrivelse</b></p>
+                                            <p>@objJustdoit.Description</p>
 
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 col-md-6 p-2 text-black">
+                                        <div class="border" style="padding: 1rem;">
+                                            <p><b>Tidslinje</b></p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-2 col-md-6 p-2 text-black">
-                                    <div class="border" style="padding: 1rem;">
-                                        <p><b>Tidslinje</b></p>
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-6 p-2 text-black">
+                                        <div class="border" style="padding: 1rem;">
+                                            <p><b>Vedlagt bilde</b></p>
+                                            @if (objJustdoit.Attachments == null)
+                                            {
+                                                @:<p>Ingen bilde vedlagt.</p>
+                                            }
+                                            else
+                                            {
+                                                <img alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" width="100%" height="auto" />
+                                            }
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 col-md-6 p-2 text-black">
-                                    <div class="border" style="padding: 1rem;">
-                                        <p><b>Vedlagt bilde</b></p>
-                                        @if (objJustdoit.Attachments == null)
-                                        {
-                                            @:<p>Ingen bilde vedlagt.</p>
-                                        }
-                                        else
-                                        {
-                                            <img alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" width="100%" height="auto" />
-                                        }
+                                <div class="d-grid pb-3">
+                                    <div class="btn-group role="group">
+                                        <a asp-controller="Justdoit" asp-action="Edit" asp-route-id="@objJustdoit.JustdoitId"
+                                   class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
+                                        <a asp-controller="Justdoit" asp-action="Delete" asp-route-id="@objJustdoit.JustdoitId"
+                                   class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="d-grid pb-3">
-                                <div class="btn-group role="group">
-                                    <a asp-controller="Justdoit" asp-action="Edit" asp-route-id="@objJustdoit.JustdoitId"
-                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
-                                    <a asp-controller="Justdoit" asp-action="Delete" asp-route-id="@objJustdoit.JustdoitId"
-                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
                                 </div>
                             </div>
                         </div>
@@ -232,7 +237,6 @@
                 </div>
             </div>
         </div>
-    </div>
         justdoitnr++;
     }
 }
