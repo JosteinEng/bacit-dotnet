@@ -1,8 +1,8 @@
 ﻿using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
 using bacit_dotnet.MVC.Repositories;
+using bacit_dotnet.MVC.ViewModels;
 using bacit_dotnet.MVC.ViewModels.Justdoit;
-using bacit_dotnet.MVC.ViewModels.Users;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers

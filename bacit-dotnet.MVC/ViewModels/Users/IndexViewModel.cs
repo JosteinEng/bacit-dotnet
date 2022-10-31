@@ -5,6 +5,6 @@ namespace bacit_dotnet.MVC.ViewModels
 {
     public class IndexViewModel
     {
-        public Users[] Users { get; set; }
+        public Users[]? Users { get; set; }
     }
 }
