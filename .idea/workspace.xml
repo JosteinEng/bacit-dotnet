@@ -2,12 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cceee0cb-354b-49c6-b4ce-2842c91b25b0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.bacit-dotnet.MVC/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/TeamController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/UsersTeams/UsersTeams.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/TestCode/ExtensionClass.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Teams/CreateTeamViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Teams/EditTeamViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Teams/TeamViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Create.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Delete.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Edit.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/ErrorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/ErrorController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/SuggestionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/SuggestionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Interfaces/ITeamRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Interfaces/ITeamRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/Suggestions/Suggestions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/Suggestions/Suggestions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/Teams/Teams.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/Teams/Teams.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/Users/Users.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/Users/Users.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Repositories/TeamRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Repositories/TeamRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Suggestions/CreateSuggestionViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Suggestions/CreateSuggestionViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Suggestions/SuggestionsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Suggestions/SuggestionsViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Users/IndexViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Users/IndexViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Error/PageNotfound.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Error/PageNotfound.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_Notification.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_Notification.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Create.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/User/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/User/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/User/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/User/Delete.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/User/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/User/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/User/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/User/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/bacit-dotnet.MVC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/bacit-dotnet.MVC.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/js/createSuggestion.js" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/js/createSuggestion.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +79,11 @@
       <workItem from="1666700349379" duration="9000" />
       <workItem from="1666875005124" duration="65000" />
       <workItem from="1666875096083" duration="169000" />
+      <workItem from="1667221175807" duration="133000" />
+      <workItem from="1667221333792" duration="73000" />
+      <workItem from="1667221428604" duration="47000" />
+      <workItem from="1667221497989" duration="134000" />
+      <workItem from="1667221658156" duration="36000" />
     </task>
     <servers />
   </component>
