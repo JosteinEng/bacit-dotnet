@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace bacit_dotnet.MVC.Models
 {
-    [Table("usernew")]
     public class Users
     {
         [Key]
@@ -17,7 +16,6 @@ namespace bacit_dotnet.MVC.Models
         public string L_Name { get; set; }
 
         public bool Active { get; set; }
-
 
         //[Key]
         //public int userId { get; set; }

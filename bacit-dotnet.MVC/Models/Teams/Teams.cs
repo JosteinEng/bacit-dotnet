@@ -3,14 +3,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace bacit_dotnet.MVC.Models
 {
-    [Table("teams")]
     public class Teams
     {
         [Key]
         public int TeamId { get; set; }
+
+        [Column("team_name")]
         [Required]
+        [StringLength(50, MinimumLength = 1)]
         public string TeamName { get; set; }
+
+        [ForeignKey("userID")]
         [Required]
-        public Users TeamManager { get; set; }
+        [Range(1, int.MaxValue)]
+        public int UserId { get; set; }
+        public Users User { get; set; }
     }
 }
