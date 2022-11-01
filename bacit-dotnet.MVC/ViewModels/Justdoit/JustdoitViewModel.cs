@@ -1,4 +1,6 @@
-﻿namespace bacit_dotnet.MVC.ViewModels.Justdoit
+﻿using bacit_dotnet.MVC.Models;
+
+namespace bacit_dotnet.MVC.ViewModels
 {
     public class JustdoitViewModel
     {
