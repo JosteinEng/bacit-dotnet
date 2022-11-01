@@ -1,4 +1,4 @@
-﻿using bacit_dotnet.MVC.Data;
+﻿using bacit_dotnet.MVC.DataAccess;
 using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
 
@@ -7,9 +7,9 @@ namespace bacit_dotnet.MVC.Repositories
     public class JustdoitRepository : IJustdoitRepository
     {
 
-        private readonly ApplicationDbContext _context;
+        private readonly DataContext _context;
 
-        public JustdoitRepository(ApplicationDbContext context)
+        public JustdoitRepository(DataContext context)
         {
             _context = context;
         }

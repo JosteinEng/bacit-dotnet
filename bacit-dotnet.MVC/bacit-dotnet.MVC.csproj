@@ -23,6 +23,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+    <PackageReference Include="NuGet.Packaging" Version="6.3.1" />
+    <PackageReference Include="NuGet.PackageManagement" Version="6.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +32,8 @@
     <None Remove="TestCode\ExtensionClass" />
     <None Remove="TestCode\NewFile.txt" />
     <None Remove="Views\Error\" />
+    <None Remove="NuGet.Packaging" />
+    <None Remove="NuGet.PackageManagement" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Error\" />

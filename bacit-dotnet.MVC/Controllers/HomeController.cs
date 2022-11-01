@@ -1,22 +1,27 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
+using bacit_dotnet.MVC.Repositories;
 using bacit_dotnet.MVC.ViewModels.Home;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ISuggestionRepository _suggestion;
         private readonly IJustdoitRepository _justdoit;
+	    private readonly IUserRepository userRepository;
         public HomeController(ILogger<HomeController> logger, ISuggestionRepository suggestion, IJustdoitRepository justdoit)
         {
             _logger = logger;
             _suggestion = suggestion;
             _justdoit = justdoit;
+	    this.userRepository = userRepository;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -24,16 +24,23 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-	                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Hjem</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Hjem</a>
                         </li>
                         <li class="nav-item">
-	                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Brukere</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Suggestion" asp-action="Index">Forslag</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Justdoit" asp-action="Index">Justdoit</a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-2" style="float: right;">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Logg inn</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOff">Logg ut</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
