@@ -25,7 +25,7 @@ namespace bacit_dotnet.MVC.Controllers
                 Justdoit = _justdoitRepository.GetAllJustdoit()
             };
 
-            return RedirectToAction("Index", "Home");
+            return View(indexViewModel);
         }
 
         //Get
