@@ -48,9 +48,6 @@
 
 
 
-<div class="text-center">
-    <h3>Alle forslag som er sendt inn</h3>
-</div>
 
 <div class="container-fluid mt-3">
     <div class="container-fluid">
@@ -58,7 +55,7 @@
             <div class="d-grid">
                 <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#allSuggestions">
                     <div class="row" style="width:100%;">
-                        <div class="col-3 bg-light"><h4>Alle forslag</h4></div>
+                        <div class="col-3 bg-light pt-2"><h4 class="pb-0">Vanlige forslag</h4></div>
                     </div>
                 </div>
             </div>
@@ -68,6 +65,7 @@
                 <div class="container-fluid mt-3">
                     <div class="row">
                         <div class="col-3 text-black ms-2"><b>Tittel</b></div>
+                        <div class="col-2 text-black p-0"><b>Tidsfrist</b></div>
                         <div class="col-2 text-black p-0"><b>Team</b></div>
                         <div class="col-2 text-black p-0"><b>Ansvarlig</b></div>
                         <div class="col-2 col-sm text-black p-0"><b>Status</b></div>
@@ -90,7 +88,7 @@
                                             <div class="row" style="width:100%;">
                                                 <div class="col-3 bg-light">@objSuggestion.Title</div>
                                                 <div class="col-2 bg-light">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
-                                                <div class="col-2 bg-light">2</div>
+                                                <div class="col-2 bg-light text-left">2</div>
                                                 <div class="col-2 bg-light">Ansattnavn</div>
                                                 <div class="col-2 bg-light">Under behandling</div>
                                             </div>
@@ -161,17 +159,15 @@
 </div>
 
 
-<hr />
+
 
 
 
 
 @*
-### Just do it ###
+### Just do it suggestions ###
 *@
-<div class="text-center">
-    <h3>Alle just-do-it-forslag</h3>
-</div>
+
 
 
 
@@ -182,7 +178,7 @@
             <div class="d-grid">
                 <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#allJDI">
                     <div class="row" style="width:100%;">
-                        <div class="col-3 bg-light"><h4>Alle JDI-forslag</h4></div>
+                        <div class="col-3 bg-light pt-2"><h4 class="pb-0">Just do it-forslag</h4></div>
                     </div>
                 </div>
             </div>
