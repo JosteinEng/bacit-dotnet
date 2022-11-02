@@ -57,13 +57,13 @@
 				<br/>
 				<br/>
 				<div class="text-center">
-					<input class="btn" type="button" value="Allerede bruker?" onclick="location.href='@Url.Action("Login", "Account")'" />
+					<input class="btn" type="button" value="Allerede bruker?" onclick="location.href='@Url.Action("Index", "Home")'" />
 				</div>
 			</form>
 		</section>
 	</div>
 </div>
 
-@*@section Scripts {
+@section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}*@
+}
