@@ -6,7 +6,7 @@
 <div class="text-center">
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-outline-dark btn-lg create-suggestion-main" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Opprett forslag
     </button>
 
@@ -38,22 +38,28 @@
 
 <hr />
 
+@*
+
+### Just do it suggestions list ###
+
+*@
+
+
+
 <div class="text-center">
-    <h3>Alle just-do-it-forslag</h3>
+    <h3>Alle Just do it-forslag</h3>
 </div>
 
-<div class="container-fluid mt-3">
-    <div class="container-fluid">
 
+<div class="border pt-0 pb-3">
+    <div class="container-fluid mt-3">
         <div class="row">
-            <div class="col-3 bg-light text-black ms-2"><b>Tittel</b></div>
-            <div class="col-2 bg-light text-black"><b>Team</b></div>
-            <div class="col-2 bg-light text-black"><b>Ansvarlig</b></div>
-            <div class="col-2 col-sm bg-light text-black"><b>Status</b></div>
+            <div class="col-3 text-black ms-2"><b>Tittel</b></div>
+            <div class="col-2 text-black p-0"><b>Team</b></div>
+            <div class="col-2 text-black p-0"><b>Ansvarlig</b></div>
+            <div class="col-2 col-sm text-black p-0"><b>Status</b></div>
         </div>
-
     </div>
-</div>
 
 @*
     The following loop will loop through all the submitted suggestions and list them in a dropdown list
@@ -63,7 +69,7 @@
     var justdoitnr = 1;
     foreach (var objJustdoit in Model.Justdoit)
     {
-        <div class="container-fluid mt-3">
+        <div class="container-fluid mt-3 p-0">
             <div class="container-fluid">
                 <div class="border">
                     <div class="d-grid">
@@ -134,3 +140,5 @@
         justdoitnr++;
     }
 }
+</div>
+</div>

@@ -16,9 +16,13 @@ html {
 body {
   margin-bottom: 60px;
   font-family: Spartan, sans-serif;
-  font-type: normal;
 }
 /* Custom class that extends bootstrap's button styles. */
 .extra-button-style {
     font-size: 1rem;
+}
+h4 {
+    font-size: 18px;
+    font-family: Spartan, sans-serif;
+    font-weight: lighter;
 }
