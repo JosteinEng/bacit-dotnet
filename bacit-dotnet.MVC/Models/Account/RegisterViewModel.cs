@@ -8,7 +8,7 @@ namespace bacit_dotnet.MVC.Models.Account;
 public class RegisterViewModel
 {
     [Required]
-    [Display(Name = "Email")]
+    [Display(Name = "Ansattnummer")]
     public string Email { get; set; }
 
     [Required]
