@@ -47,7 +47,9 @@
 *@
 
 
-
+<h3 class="text-center">
+    Ordinære forslag
+</h3>
 
 <div class="container-fluid mt-3">
     <div class="container-fluid">
@@ -78,8 +80,9 @@
                 *@
                 @{
                     var forslagsnr = 1;
+                    var attachment = 1;
                     foreach (var objSuggestion in Model.Suggestions)
-                    {                   
+                    {
                         <div class="container-fluid mt-3 p-0">
                             <div class="container-fluid">
                                 <div class="border">
@@ -124,13 +127,38 @@
                                                     <div class="col-sm-3 col-md-6 p-2 text-black">
                                                         <div class="border" style="padding: 1rem;">
                                                             <p><b>Vedlagt bilde</b></p>
+
+                                                    @*
+                                                    The following code will look for attached pictures for each of the suggestions.
+                                                    If a picture is found within the database it will be presented as a clickable thumbnail.
+                                                    When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                                    size will depend on the viewport of the device that is being used.
+                                                    *@
+
                                                             @if (objSuggestion.Attachments == null)
                                                             {
                                                                 @:<p>Ingen bilde vedlagt.</p>
                                                             }
                                                             else
                                                             {
-                                                                <img alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" width="100%" height="auto" />
+                                                                <center>
+                                                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachment-@(attachment)">
+                                                                        <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                                    </button>
+                                                                </center>
+                                                                <p class="text-center">Trykk på bildet for å forstørre</p>
+                                                                <div id="attachment-@(attachment)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachment-@(attachment)Label" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body">
+                                                                                <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" />
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary bottom-50 end-50" data-bs-dismiss="modal">Lukk</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             }
                                                         </div>
                                                     </div>
@@ -150,6 +178,7 @@
                             </div>
                         </div>
                         forslagsnr++;
+                        attachment++;
                     }
                 }
 
@@ -168,7 +197,9 @@
 ### Just do it suggestions ###
 *@
 
-
+<h3 class="text-center pt-3">
+    Just do it-forslag
+</h3>
 
 
 
@@ -204,6 +235,7 @@
                 @{
 
                     var justdoitnr = 1;
+                    var attachmentJDI = 1;
                     foreach (var objJustdoit in Model.Justdoit)
                     {
                         <div class="container-fluid mt-3 p-0">
@@ -220,7 +252,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                @*
+
+                        @*
                         This code creates a new div ID that is used by the loop to display each row.
                         The last digit of the ID is an increasing number so that each row gets its own unique ID.
                         This is needed for the expansion of the rows to work.
@@ -247,13 +280,38 @@
                                                     <div class="col-sm-3 col-md-6 p-2 text-black">
                                                         <div class="border" style="padding: 1rem;">
                                                             <p><b>Vedlagt bilde</b></p>
+
+                                                    @*
+                                                    The following code will look for attached pictures for each of the suggestions.
+                                                    If a picture is found within the database it will be presented as a clickable thumbnail.
+                                                    When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                                    size will depend on the viewport of the device that is being used.
+                                                    *@
+
                                                             @if (objJustdoit.Attachments == null)
                                                             {
                                                                 @:<p>Ingen bilde vedlagt.</p>
                                                             }
                                                             else
                                                             {
-                                                                <img alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" width="100%" height="auto" />
+                                                                <center>
+                                                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachment-@(attachmentJDI)">
+                                                                        <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                                    </button>
+                                                                </center>
+                                                                <p class="text-center">Trykk på bildet for å forstørre</p>
+                                                                <div id="attachment-@(attachmentJDI)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachment-@(attachmentJDI)Label" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body">
+                                                                                <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" />
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary bottom-50 end-50" data-bs-dismiss="modal">Lukk</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             }
                                                         </div>
                                                     </div>
@@ -273,6 +331,7 @@
                             </div>
                         </div>
                         justdoitnr++;
+                        attachmentJDI++;
                     }
 
                 }

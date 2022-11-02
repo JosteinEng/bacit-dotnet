@@ -61,74 +61,101 @@
         </div>
     </div>
 
-@*
+    @*
     The following loop will loop through all the submitted suggestions and list them in a dropdown list
     that can be expanded and collapsed by the user to view the details of each suggestion. The default value is collapsed.
-*@
-@{
-    var justdoitnr = 1;
-    foreach (var objJustdoit in Model.Justdoit)
-    {
-        <div class="container-fluid mt-3 p-0">
-            <div class="container-fluid">
-                <div class="border">
-                    <div class="d-grid">
-                        <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#justdoit-@justdoitnr">
-                            <div class="row" style="width:100%;">
-                                <div class="col-3 bg-light">@objJustdoit.Title</div>
-                                <div class="col-2 bg-light">2</div>
-                                <div class="col-2 bg-light">Ansattnavn</div>
-                                <div class="col-2 bg-light">Under behandling</div>
+    *@
+    @{
+        var justdoitnr = 1;
+        var attachmentJDI = 1;
+        foreach (var objJustdoit in Model.Justdoit)
+        {
+            <div class="container-fluid mt-3 p-0">
+                <div class="container-fluid">
+                    <div class="border">
+                        <div class="d-grid">
+                            <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#justdoit-@justdoitnr">
+                                <div class="row" style="width:100%;">
+                                    <div class="col-3 bg-light">@objJustdoit.Title</div>
+                                    <div class="col-2 bg-light">2</div>
+                                    <div class="col-2 bg-light">Ansattnavn</div>
+                                    <div class="col-2 bg-light">Under behandling</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                @*
-                    This code creates a new div ID that is used by the loop to display each row.
-                    The last digit of the ID is an increasing number so that each row gets its own unique ID.
-                    This is needed for the expansion of the rows to work.
-                *@
-                <div id="justdoit-@justdoitnr" class="collapse">
-                    <div class="border border-top-0">
-                        <div class="container-fluid mt-3">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-3 col-md-6 p-2 text-black">
+                    @*
+            This code creates a new div ID that is used by the loop to display each row.
+            The last digit of the ID is an increasing number so that each row gets its own unique ID.
+            This is needed for the expansion of the rows to work.
+            *@
+                    <div id="justdoit-@justdoitnr" class="collapse">
+                        <div class="border border-top-0">
+                            <div class="container-fluid mt-3">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-3 col-md-6 p-2 text-black">
 
-                                        <div class="border" style="padding: 1rem;">
-                                            <p><b>Beskrivelse</b></p>
-                                            <p>@objJustdoit.Description</p>
+                                            <div class="border" style="padding: 1rem;">
+                                                <p><b>Beskrivelse</b></p>
+                                                <p>@objJustdoit.Description</p>
 
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 col-md-6 p-2 text-black">
+                                            <div class="border" style="padding: 1rem;">
+                                                <p><b>Tidslinje</b></p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2 col-md-6 p-2 text-black">
-                                        <div class="border" style="padding: 1rem;">
-                                            <p><b>Tidslinje</b></p>
+                                    <div class="row">
+                                        <div class="col-sm-3 col-md-6 p-2 text-black">
+                                            <div class="border" style="padding: 1rem;">
+                                                <p><b>Vedlagt bilde</b></p>
+
+                                        @*
+                                        The following code will look for attached pictures for each of the suggestions.
+                                        If a picture is found within the database it will be presented as a clickable thumbnail.
+                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                        size will depend on the viewport of the device that is being used.
+                                        *@
+
+                                                @if (objJustdoit.Attachments == null)
+                                                {
+                                                    @:<p>Ingen bilde vedlagt.</p>
+                                                }
+                                                else
+                                                {
+                                                    <center>
+                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachment-@(attachmentJDI)">
+                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                        </button>
+                                                    </center>
+                                                    <p class="text-center">Trykk på bildet for å forstørre</p>
+                                                    <div id="attachment-@(attachmentJDI)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachment-@(attachmentJDI)Label" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" />
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary bottom-50 end-50" data-bs-dismiss="modal">Lukk</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-3 col-md-6 p-2 text-black">
-                                        <div class="border" style="padding: 1rem;">
-                                            <p><b>Vedlagt bilde</b></p>
-                                            @if (objJustdoit.Attachments == null)
-                                            {
-                                                @:<p>Ingen bilde vedlagt.</p>
-                                            }
-                                            else
-                                            {
-                                                <img alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" width="100%" height="auto" />
-                                            }
+                                    <div class="d-grid pb-3">
+                                        <div class="btn-group role="group">
+                                            <a asp-controller="Justdoit" asp-action="Edit" asp-route-id="@objJustdoit.JustdoitId"
+                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
+                                            <a asp-controller="Justdoit" asp-action="Delete" asp-route-id="@objJustdoit.JustdoitId"
+                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="d-grid pb-3">
-                                    <div class="btn-group role="group">
-                                        <a asp-controller="Justdoit" asp-action="Edit" asp-route-id="@objJustdoit.JustdoitId"
-                                           class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
-                                        <a asp-controller="Justdoit" asp-action="Delete" asp-route-id="@objJustdoit.JustdoitId"
-                                           class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
                                     </div>
                                 </div>
                             </div>
@@ -136,9 +163,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        justdoitnr++;
+            justdoitnr++;
+            attachmentJDI++;
+        }
     }
-}
 </div>
 </div>
