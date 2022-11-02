@@ -14,21 +14,21 @@
                 <input type="password" name="Password" value="@Model.Password" />
             </li>
             <li>
-                <label for="Email">Email</label>
-                <input type="email" name="Email" value="@Model.Email" />
+                <label for="Email">Ansattnummer</label>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" name="Email" value="@Model.Email" />
             </li>
-            <li>
+ @*           <li>
                 <label for="EmployeeNumber">Ansattnummer</label>
                 <input type="text" name="EmployeeNumber" value="@Model.EmployeeNumber" />
-            </li>
+            </li>*@
             <li>
                 <label for="Team">Team</label>
                 <input type="text" name="Team" value="@Model.Team" />
             </li>
-            <li>
+ @*           <li>
                 <label for="Role">Role</label>
                 <input type="Text" name="Role" value="@Model.Role" />
-            </li>
+            </li>*@
         <li>
             <label for="Role">Sett som administrator</label>
                 <input asp-for="@Model.IsAdmin"/>
@@ -42,7 +42,7 @@
 <table>
     <tr>
         <td>Name</td>
-        <td>Email</td>
+        <td>Ansattnummer</td>
     </tr>
     @foreach (var user in Model.Users)
     {
