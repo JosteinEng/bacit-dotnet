@@ -27,52 +27,53 @@
 }
 
 <div class="row p-0 m-0">
-    <div class="text-center content h-100 d-flex align-items-center justify-content-center" style="position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
-        <section>
-            <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal border p-5" role="form">
-	            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Email" class="control-label"></label>
-                    <div class="text-center d-flex justify-content-center">
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                </div>
-	            <div class="form-group">
-		            <label asp-for="Password" class="control-label"></label>
-		            <div class="text-center d-flex justify-content-center">
-			            <input asp-for="Password" class="form-control" />
-			            <span asp-validation-for="Password" class="text-danger"></span>
-		            </div>
-	            </div>
+	<div class="text-center content h-100 d-flex align-items-center justify-content-center" style="position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+		<section>
+			<form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal border p-5" role="form">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<h4>Logg inn</h4>
 				<br/>
-                <div class="form-group">
-	                <div class="text-center">
-		                <div class="checkbox">
-			                <label asp-for="RememberMe">
-				                <input asp-for="RememberMe" />
-				                @Html.DisplayNameFor(m => m.RememberMe)
-			                </label>
-		                </div>
-	                </div>
-                </div>
-                <br/>
-                <div class="form-group">
-	                <div class="text-center">
-		                <button type="submit" class="btn btn-outline-dark">Log in</button>
-	                </div>
-                </div>
-	            <br/>
-	            <br/>
-	            <br/>
-                <p>
-		            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Registere ny bruker?</a>
-	            </p>
-            </form>
-        </section>
-    </div>
+				<div class="form-group">
+					<label asp-for="Email" class="control-label">Email</label>
+					<div class="text-center d-flex justify-content-center">
+						<input asp-for="Email" class="form-control"/>
+					</div>
+					<span asp-validation-for="Email" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Password" class="control-label">Passord</label>
+					<div class="text-center d-flex justify-content-center">
+						<input asp-for="Password" class="form-control"/>
+					</div>
+					<span asp-validation-for="Password" class="text-danger"></span>
+				</div>
+				<br/>
+				<div class="form-group">
+					<div class="text-center">
+						<div class="checkbox">
+							<label asp-for="RememberMe">
+								<input asp-for="RememberMe"/>
+								@Html.DisplayNameFor(m => m.RememberMe)
+							</label>
+						</div>
+					</div>
+				</div>
+				<br/>
+				<div class="d-flex justify-content-center btn-group">
+					<div class="text-center">
+						<button type="submit" class="btn btn-outline-dark">Log in</button>
+					</div>
+				</div>
+				<br/>
+				<br/>
+				<div class="text-center">
+					<input class="btn" type="button" value="Ny bruker?" onclick="location.href='@Url.Action("Register", "Account")'" />
+				</div>
+			</form>
+		</section>
+	</div>
 </div>
-
+@*
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}
+}*@
