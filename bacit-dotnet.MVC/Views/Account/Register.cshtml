@@ -28,9 +28,9 @@
 				<h4>Registrer ny bruker</h4>
 				<br/>
 				<div class="form-group">
-					<label asp-for="Email" class="control-label">Email</label>
+					<label asp-for="Email" class="control-label">Ansattnummer</label>
 					<div class="text-center d-flex justify-content-center">
-						<input asp-for="Email" class="form-control"/>
+						<input asp-for="Email" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control"/>
 					</div>
 					<span asp-validation-for="Email" class="text-danger"></span>
 				</div>
@@ -64,6 +64,6 @@
 	</div>
 </div>
 
-@section Scripts {
+@*@section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}
+}*@

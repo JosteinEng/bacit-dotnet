@@ -8,7 +8,6 @@ namespace bacit_dotnet.MVC.Models.Account;
 public class LoginViewModel
 {
     [Required]
-    [EmailAddress]
     public string Email { get; set; }
 
     [Required]
