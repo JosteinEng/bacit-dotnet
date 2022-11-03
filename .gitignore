@@ -406,3 +406,6 @@ FodyWeavers.xsd
 
 # Database
 /database
+
+#MAC/OS
+.DS_Store
