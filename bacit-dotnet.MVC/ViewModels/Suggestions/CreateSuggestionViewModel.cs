@@ -7,5 +7,6 @@ namespace bacit_dotnet.MVC.ViewModels
     {
         public Suggestions Suggestion { get; set; }
         public IFormFile? Attachments { get; set; }
+
     }
 }
