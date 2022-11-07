@@ -8,7 +8,6 @@ using Microsoft.Extensions.Options;
 using System.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using bacit_dotnet.MVC.Entities;
 using Microsoft.Extensions.Hosting;
 using bacit_dotnet.MVC.Interfaces;
 using System.Globalization;
@@ -22,7 +21,6 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-        builder.Services.AddTransient<ISqlConnector, SqlConnector>();
         builder.Services.AddTransient<ISuggestionRepository, SuggestionRepository>();
         builder.Services.AddTransient<IJustdoitRepository, JustdoitRepository>();
 

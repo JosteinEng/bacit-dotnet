@@ -1,7 +1,7 @@
-﻿using bacit_dotnet.MVC.Entities;
+﻿using bacit_dotnet.MVC.Models;
 using bacit_dotnet.MVC.Repositories;
 
-namespace bacit_dotnet.MVC.Models.Users
+namespace bacit_dotnet.MVC.ViewModels
 {
     public class UserViewModel
     {

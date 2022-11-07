@@ -1,5 +1,6 @@
 ﻿using bacit_dotnet.MVC.DataAccess;
-using bacit_dotnet.MVC.Entities;
+using bacit_dotnet.MVC.Interfaces;
+using bacit_dotnet.MVC.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace bacit_dotnet.MVC.Repositories

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class JustdoitController : Controller
     {
         private readonly IJustdoitRepository _justdoitRepository;

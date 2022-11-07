@@ -1,5 +1,4 @@
-﻿using bacit_dotnet.MVC.Entities;
-using bacit_dotnet.MVC.Models;
+﻿using bacit_dotnet.MVC.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

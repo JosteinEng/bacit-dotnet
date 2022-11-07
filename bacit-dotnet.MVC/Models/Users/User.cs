@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace bacit_dotnet.MVC.Entities
+namespace bacit_dotnet.MVC.Models
 {
     [Table("Users")]
     public class UserEntity

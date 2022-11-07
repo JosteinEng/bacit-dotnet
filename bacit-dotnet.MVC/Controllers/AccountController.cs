@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
 using bacit_dotnet.MVC.Models.Account;
-using bacit_dotnet.MVC.Entities;
-using bacit_dotnet.MVC.Repositories;
+using bacit_dotnet.MVC.Interfaces;
+using bacit_dotnet.MVC.Models;
 
 namespace bacit_dotnet.MVC.Controllers
 {

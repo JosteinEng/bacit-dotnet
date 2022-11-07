@@ -1,13 +1,13 @@
-﻿using bacit_dotnet.MVC.Entities;
-using bacit_dotnet.MVC.Models.Users;
-using bacit_dotnet.MVC.Repositories;
+﻿using bacit_dotnet.MVC.Interfaces;
+using bacit_dotnet.MVC.Models;
+using bacit_dotnet.MVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public class UsersController : Controller
     {
         private readonly IUserRepository userRepository;
