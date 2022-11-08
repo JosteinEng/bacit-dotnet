@@ -60,24 +60,34 @@
                             <div class="container-fluid mt-3">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-sm-3 col-md-6 p-2 text-black">
-
+                                        <div class="col-sm-6 col-md-6 p-2 text-black">
                                             <div class="border" style="padding: 1rem;">
-                                                <p><b>Beskrivelse</b></p>
-                                                <p>@objJustdoit.Description</p>
-
+                                                <p><b>Ansvarlig</b></p>
+                                                <p>Placeholder for ansvarlig</p>
                                             </div>
                                         </div>
-                                        <div class="col-sm-2 col-md-6 p-2 text-black">
+                                        <div class="col-sm-6 col-md-6 p-2 text-black">
                                             <div class="border" style="padding: 1rem;">
                                                 <p><b>Tidslinje</b></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-3 col-md-6 p-2 text-black">
+                                        <div class="col-sm-12 col-md-12 p-2 text-black">
                                             <div class="border" style="padding: 1rem;">
-                                                <p><b>Vedlagt bilde</b></p>
+                                                <p><b>Beskrivelse</b></p>
+                                                <p class="text-break">@objJustdoit.Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6 p-2 text-black">
+                                            <div class="border" style="padding: 1rem;">
+                                                <p><b>Førbilde</b></p>
 
                                         @*
                                         The following code will look for attached pictures for each of the suggestions.
@@ -101,11 +111,50 @@
                                                     <div id="attachmentJDI-@(attachmentJDI)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentJDI-@(attachmentJDI)Label" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
                                                                 <div class="modal-body">
                                                                     <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" />
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary bottom-50 end-50" data-bs-dismiss="modal">Lukk</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6 p-2 text-black">
+                                            <div class="border" style="padding: 1rem;">
+                                                <p><b>Etterbilde</b></p>
+
+                                                @*
+                                        The following code will look for attached pictures for each of the suggestions.
+                                        If a picture is found within the database it will be presented as a clickable thumbnail.
+                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                        size will depend on the viewport of the device that is being used.
+                                        *@
+
+                                                @if (objJustdoit.Attachments == null)
+                                                {
+                                                    @:<p>Ingen bilde vedlagt.</p>
+                                                }
+                                                else
+                                                {
+                                                    <center>
+                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachmentJDI-@(attachmentJDI)">
+                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                        </button>
+                                                    </center>
+                                                    <p class="text-center">Trykk på bildet for å forstørre</p>
+                                                    <div id="attachmentJDI-@(attachmentJDI)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentJDI-@(attachmentJDI)Label" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" />
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -21,8 +21,20 @@ body {
 .extra-button-style {
     font-size: 1rem;
 }
+.extra-iconify-mdi {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+}
+.extra-iconify-mdi-big {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
 h4 {
     font-size: 18px;
     font-family: Spartan, sans-serif;
     font-weight: lighter;
 }
+
