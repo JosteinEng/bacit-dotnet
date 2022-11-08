@@ -25,5 +25,7 @@ namespace bacit_dotnet.MVC.DataAccess
         public DbSet<Suggestions> Suggestions { get; set; }
 
         public DbSet<Justdoit> Justdoit { get; set; }
+        
+        public DbSet<Teams> Teams { get; set; }
     }
 }

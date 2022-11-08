@@ -1,4 +1,4 @@
-﻿@model Suggestions
+﻿@model bacit_dotnet.MVC.Models.Suggestions
 
 <form method="post" asp-action="Delete">
     <div class="border p-3 mt-4">
@@ -26,6 +26,10 @@
             <label asp-for="Description">Beskrivelse</label>
             <input asp-for="Description" disabled="disabled" class="form-control" />
         </div>
+        <div class="mb-3">
+            <label asp-for="TeamId">Team</label>
+            <input asp-for="Team.TeamName" disabled="disabled" class="form-control" />
+        </div>        
         <div class="mb-3">
             <label asp-for="Deadline">Tidsfrist</label>
             <input asp-for="Deadline" disabled="disabled" type="date" class="form-control" />

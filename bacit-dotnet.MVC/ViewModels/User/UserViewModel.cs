@@ -15,7 +15,7 @@ namespace bacit_dotnet.MVC.ViewModels
         public List<string> AvailableRoles { get; set; }
         public string ValididationErrorMessage { get; set; }
 
-        public List<UserEntity> Users { get; set; }
+        public UserEntity[] Users { get; set; }
         public bool IsAdmin { get; set; }
     }
 }

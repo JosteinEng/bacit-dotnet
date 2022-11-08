@@ -28,6 +28,17 @@
             <textarea asp-for="Suggestion.Description" class="form-control" style="min-height: 150px"></textarea>
             <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span>            <span asp-validation-for="Suggestion.Description" class="text-danger"></span>
         </div>
+                <div class="mb-3">
+                    <label asp-for="Suggestion.TeamId">Team</label>
+                    <select asp-for="Suggestion.TeamId">
+                        <option value="" selected disabled>Velg et Team</option>
+                        @foreach (var team in Model.Teams)
+                        {
+                            <option value="@team.TeamId">@team.TeamName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Suggestion.TeamId" class="text-danger"></span>
+                </div>
         <div class="mb-3">
             <label asp-for="Suggestion.Deadline">Tidsfrist</label>
             <input asp-for="Suggestion.Deadline" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />

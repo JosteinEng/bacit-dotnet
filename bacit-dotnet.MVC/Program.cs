@@ -23,6 +23,7 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddTransient<ISuggestionRepository, SuggestionRepository>();
         builder.Services.AddTransient<IJustdoitRepository, JustdoitRepository>();
+        builder.Services.AddTransient<ITeamRepository, TeamRepository>();
 
         builder.Services.AddDbContext<DataContext>(options =>
         {

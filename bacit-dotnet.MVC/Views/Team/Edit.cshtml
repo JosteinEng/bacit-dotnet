@@ -1,0 +1,47 @@
+﻿@model bacit_dotnet.MVC.ViewModels.EditTeamViewModel
+
+
+<form method="post" asp-action="Edit">
+    <input asp-for="TeamId" type="hidden" />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Endre team</h2>
+            <hr />
+        </div>
+        @*
+        This line of code will show a summary of all errors at the top of the page.
+        <div asp-validation-summary="All" class="text-danger"></div>*@
+        <div class="mb-3">
+            <label asp-for="TeamName">Teamnavn</label>
+            <input asp-for="TeamName" class="form-control" />
+            <span asp-validation-for="TeamName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserId">Teamleder</label>
+            @*
+            HTML.DropDownListFor = Dette er en HTML extension methode som tar inn en liste med SelectListItems ( Model.UsersDropDown ) som representerer alle <option> tags i <select> taggen.
+            +++ en property som vil model-binde selected value ( m => m.UserId )
+            *@
+            <select asp-for="UserId">
+                @foreach (var user in Model.Users)
+                {
+                    <option value="@user.Id">@user.Name</option>
+                }
+            </select>
+            <span asp-validation-for="UserId" class="text-danger">
+            </span>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
+        <a asp-controller="Team" asp-action="Index" class="btn btn-secondary" style="width: 150px">
+            Tilbake til listen
+        </a>
+    </div>
+</form>
+
+
+<!--This script makes sure that the validation process is done on client-side instead of server-side-->
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+}

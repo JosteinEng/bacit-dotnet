@@ -1,6 +1,7 @@
 ﻿using bacit_dotnet.MVC.DataAccess;
 using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace bacit_dotnet.MVC.Repositories
 {
@@ -38,18 +39,19 @@ namespace bacit_dotnet.MVC.Repositories
             suggestionBeforeEdit.Title = objSuggestions.Title;
             suggestionBeforeEdit.Description = objSuggestions.Description;
             suggestionBeforeEdit.Deadline = objSuggestions.Deadline;
+            suggestionBeforeEdit.TeamId = objSuggestions.TeamId;
 
             return _context.SaveChanges();
         }
 
         public Suggestions? GetSuggestionBySuggestionId(int suggestionId)
         {
-            return _context.Suggestions.Find(suggestionId);
+            return _context.Suggestions.Include(x => x.Team).FirstOrDefault(x => x.SuggestionId == suggestionId);
         }
 
         public Suggestions[] GetAllSuggestions()
         {
-            return _context.Suggestions.ToArray();
+            return _context.Suggestions.Include(x => x.Team).ToArray();
         }
 
         public Suggestions? GetSuggestionByEmployeeId(int employeeId)

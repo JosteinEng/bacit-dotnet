@@ -28,9 +28,9 @@ namespace bacit_dotnet.MVC.Repositories
             return dataContext.Users.FirstOrDefault(x => x.Email == email);
         }
 
-        public List<UserEntity> GetUsers()
+        public UserEntity[] GetUsers()
         {
-            return dataContext.Users.ToList();
+            return dataContext.Users.ToArray();
         }
 
         public void Add(UserEntity user)

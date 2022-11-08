@@ -1,0 +1,61 @@
+﻿@model bacit_dotnet.MVC.ViewModels.TeamViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Liste over Teams i systemet</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Team" asp-action="Create" class="btn btn-primary">
+                Opprett nytt Team
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<table class="table table-bordered table-striped" style="width: 100%">
+    <thead>
+    <tr>
+        <th>
+            Team navn
+        </th>
+        <th>
+            Team leder
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var objTeam in Model.Teams)
+    {
+        <tr>
+            <td width="40%">
+                @objTeam.TeamName
+            </td>
+            <td width="40%">
+                @string.Concat(objTeam.User.Name)
+            </td>
+            <td>
+            <div class="w-75 btn-group" role="group">
+                <a asp-controller="Team" asp-action="Edit" asp-route-id="@objTeam.TeamId"
+                   class="btn btn-primary mx-2">  Edit</a>
+                <a asp-controller="Team" asp-action="Delete" asp-route-id="@objTeam.TeamId"
+                   class="btn btn-danger mx-2">  Delete</a>
+            </div>
+
+            @*                    <div class="w-75 btn-group" role="group">
+                <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"
+                class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> &nbsp; Delete</a>
+                </div>*@
+            @*</td>*@
+        </tr>
+    }
+    </tbody>
+</table>

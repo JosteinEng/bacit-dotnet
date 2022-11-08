@@ -11,10 +11,12 @@ namespace bacit_dotnet.MVC.Controllers
     public class SuggestionController : Controller
     {
         private readonly ISuggestionRepository _suggestionRepository;
+        private readonly ITeamRepository _teamRepository;
 
-        public SuggestionController(ISuggestionRepository useRepository)
+        public SuggestionController(ISuggestionRepository useRepository, ITeamRepository teamRepository)
         {
             _suggestionRepository = useRepository;
+            _teamRepository = teamRepository;
         }
 
         public IActionResult Index()
@@ -30,7 +32,14 @@ namespace bacit_dotnet.MVC.Controllers
         //Get
         public IActionResult Create()
         {
-            return View();
+            var teams = _teamRepository.GetAllTeamsAndUsers();
+
+            var createSuggestionViewModel = new CreateSuggestionViewModel
+            {
+                Teams = teams
+            };
+            
+            return View(createSuggestionViewModel);
         }
 
         //Post
@@ -84,13 +93,26 @@ namespace bacit_dotnet.MVC.Controllers
                 return NotFound();
             }
 
-            return View(suggestionFromDb);
+            var teams = _teamRepository.GetAllTeamsAndUsers();
+
+            var suggestionToEdit = new EditSuggestionViewModel
+            {
+                SuggestionId = suggestionFromDb.SuggestionId,
+                EmployeeId = suggestionFromDb.EmployeeId,
+                Title = suggestionFromDb.Title,
+                Description = suggestionFromDb.Description,
+                Deadline = suggestionFromDb.Deadline,
+                TeamId = suggestionFromDb.TeamId,
+                Teams = teams
+            };
+
+            return View(suggestionToEdit);
         }
 
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Suggestions objSuggestions)
+        public IActionResult Edit(EditSuggestionViewModel objSuggestions)
         {
             if (!ModelState.IsValid)
             {
@@ -98,7 +120,17 @@ namespace bacit_dotnet.MVC.Controllers
                 return View(objSuggestions);
             }
 
-            var rowsAffectedByUpdate = _suggestionRepository.Update(objSuggestions);
+            var updatedSuggestion = new Suggestions
+            {
+                SuggestionId = objSuggestions.SuggestionId,
+                EmployeeId = objSuggestions.EmployeeId,
+                Title = objSuggestions.Title,
+                Description = objSuggestions.Description,
+                Deadline = objSuggestions.Deadline,
+                TeamId = objSuggestions.TeamId
+            };
+
+            var rowsAffectedByUpdate = _suggestionRepository.Update(updatedSuggestion);
             if (rowsAffectedByUpdate > 0)
             {
                 TempData["success"] = "Forslag har blitt oppdatert";
@@ -109,9 +141,11 @@ namespace bacit_dotnet.MVC.Controllers
                 TempData["error"] = "Forslag ble ikke oppdatert";
             }
 
-            return View(objSuggestions);
+            return RedirectToAction("Edit", objSuggestions.SuggestionId);
         }
 
+        // TODO: Sett opp if check før sletting av brukere og teams.
+        
         //Get
         public IActionResult Delete(int? id)
         {
