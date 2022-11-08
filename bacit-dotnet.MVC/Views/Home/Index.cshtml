@@ -4,42 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-dark btn-lg create-suggestion-main" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Opprett forslag
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Opprett forslag</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="btn btn-light btn-outline-dark btn-lg extra-button-style" asp-area="" asp-controller="Suggestion" asp-action="Create">Nytt forslag</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-light btn-outline-dark btn-lg extra-button-style" asp-area="" asp-controller="Justdoit" asp-action="Create">Just Do It</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Lukk</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<hr />
 
 
 @*
@@ -128,7 +93,7 @@
                                                         <div class="border" style="padding: 1rem;">
                                                             <p><b>Vedlagt bilde</b></p>
 
-                                                    @*
+                                                            @*
                                                     The following code will look for attached pictures for each of the suggestions.
                                                     If a picture is found within the database it will be presented as a clickable thumbnail.
                                                     When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
@@ -253,7 +218,7 @@
                                     </div>
                                 </div>
 
-                        @*
+                                @*
                         This code creates a new div ID that is used by the loop to display each row.
                         The last digit of the ID is an increasing number so that each row gets its own unique ID.
                         This is needed for the expansion of the rows to work.
@@ -281,7 +246,7 @@
                                                         <div class="border" style="padding: 1rem;">
                                                             <p><b>Vedlagt bilde</b></p>
 
-                                                    @*
+                                                            @*
                                                     The following code will look for attached pictures for each of the suggestions.
                                                     If a picture is found within the database it will be presented as a clickable thumbnail.
                                                     When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
