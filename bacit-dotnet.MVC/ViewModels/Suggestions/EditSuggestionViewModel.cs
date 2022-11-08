@@ -23,6 +23,12 @@ public class EditSuggestionViewModel
     [Required]
     [StringLength(500, MinimumLength = 2)]
     public string? Description { get; set; }
+    
+    [Required]
+    public string? Status { get; set; }
+        
+    [Required]
+    public string? Category { get; set; }
 
     public DateTime Deadline { get; set; }
     

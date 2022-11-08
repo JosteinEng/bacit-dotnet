@@ -36,9 +36,6 @@
     <None Remove="NuGet.PackageManagement" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Error\" />
-  </ItemGroup>
-  <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Account\ConfirmEmail.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Account\ExternalLoginConfirmation.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Account\ExternalLoginFailure.cshtml" />
@@ -53,5 +50,26 @@
     <_ContentIncludedByDefault Remove="Views\Account\UseRecoveryCode.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Account\VerifyAuthenticatorCode.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Account\VerifyCode.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Error\PageNotfound.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Justdoit\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Justdoit\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Justdoit\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Justdoit\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Error.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\_Notification.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Suggestion\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Suggestion\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Suggestion\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Suggestion\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Team\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Team\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Team\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Team\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Users\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
   </ItemGroup>
 </Project>

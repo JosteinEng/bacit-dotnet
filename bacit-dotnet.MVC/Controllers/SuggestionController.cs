@@ -102,6 +102,8 @@ namespace bacit_dotnet.MVC.Controllers
                 Title = suggestionFromDb.Title,
                 Description = suggestionFromDb.Description,
                 Deadline = suggestionFromDb.Deadline,
+                Status = suggestionFromDb.Status,
+                Category = suggestionFromDb.Category,
                 TeamId = suggestionFromDb.TeamId,
                 Teams = teams
             };
@@ -127,6 +129,8 @@ namespace bacit_dotnet.MVC.Controllers
                 Title = objSuggestions.Title,
                 Description = objSuggestions.Description,
                 Deadline = objSuggestions.Deadline,
+                Status = objSuggestions.Status,
+                Category = objSuggestions.Category,
                 TeamId = objSuggestions.TeamId
             };
 
