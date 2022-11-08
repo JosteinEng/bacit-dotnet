@@ -44,6 +44,31 @@
             <input asp-for="Suggestion.Deadline" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
             <span asp-validation-for="Suggestion.Deadline" class="text-danger"></span>
         </div>
+        
+        <select asp-for="Suggestion.Status" hidden>
+            <option value="Opprettet" selected>Opprettet</option>
+        </select>
+        
+        <div class="mb-3">
+            <label asp-for="Suggestion.Category">Kategori</label>
+            <select asp-for="Suggestion.Category"class="form-control">
+                <option value="" selected disabled>Velg en kategori for forslaget</option>
+                <option value="HMS">HMS</option>
+                <option value="Kvalitet">Kvalitet</option>
+                <option value="Ledetid">Ledetid</option>
+                <option value="Kostnader">Kostnader</option>
+                <option value="Effektivisering">Effektivisering</option>
+                <option value="Kompetanse">Kompetanse</option>
+                <option value="Kommunikasjon">Kommunikasjon</option>
+                <option value="5S">5S</option>
+                <option value="Standardisering">Standardisering</option>
+                <option value="Flyt">Flyt</option>
+                <option value="Visualisering">Visualisering</option>
+                <option value="Bærekraft">Bærekraft</option>
+                <option value="Industri 4.0">Industri 4.0</option>
+            </select>
+            <span asp-validation-for="Suggestion.Category" class="text-danger"></span>
+        </div>
 
         <!-- Image -->
         <div class="container-fluid mb-3">

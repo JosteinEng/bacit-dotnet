@@ -26,6 +26,14 @@
             <label asp-for="Description">Beskrivelse</label>
             <input asp-for="Description" disabled="disabled" class="form-control" />
         </div>
+        
+        <div class="mb-3">
+            <label asp-for="Category">Kategori</label>
+            <select asp-for="Category" disabled="disabled" class="form-control">
+                <option value="@Model.Category" disabled>@Model.Category</option>
+            </select>
+        </div>
+        
         <br />
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">

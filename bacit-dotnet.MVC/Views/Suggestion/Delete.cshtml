@@ -34,6 +34,18 @@
             <label asp-for="Deadline">Tidsfrist</label>
             <input asp-for="Deadline" disabled="disabled" type="date" class="form-control" />
         </div>
+        <div class="mb-3">
+            <label asp-for="Status">Status</label>
+            <select asp-for="Status" disabled="disabled" class="form-control">
+                <option value="@Model.Status" disabled>@Model.Status</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Category">Kategori</label>
+            <select asp-for="Category" disabled="disabled" class="form-control">
+                <option value="@Model.Category" disabled>@Model.Category</option>
+            </select>
+        </div>
         <br />
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">

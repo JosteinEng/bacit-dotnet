@@ -93,7 +93,7 @@
                                                 <div class="col-2 bg-light">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
                                                 <div class="col-2 bg-light text-left">@objSuggestion.Team.TeamName</div>
                                                 <div class="col-2 bg-light">Ansattnavn</div>
-                                                <div class="col-2 bg-light">Under behandling</div>
+                                                <div class="col-2 bg-light">@objSuggestion.Status</div>
                                             </div>
                                         </div>
                                     </div>
@@ -123,6 +123,21 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="col-sm-2 col-md-6 p-2 text-black">
+                                                    <div class="border" style="padding: 1rem;">
+                                                        <p><b>Status</b></p>
+                                                        <p>@objSuggestion.Status</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-sm-2 col-md-6 p-2 text-black">
+                                                    <div class="border" style="padding: 1rem;">
+                                                        <p><b>Kategori</b></p>
+                                                        <p>@objSuggestion.Category</p>
+                                                    </div>
+                                                </div>
+                                                
                                                 <div class="row">
                                                     <div class="col-sm-3 col-md-6 p-2 text-black">
                                                         <div class="border" style="padding: 1rem;">
@@ -276,6 +291,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="col-sm-2 col-md-6 p-2 text-black">
+                                                    <div class="border" style="padding: 1rem;">
+                                                        <p><b>Kategori</b></p>
+                                                        <p>@objJustdoit.Category</p>
+                                                    </div>
+                                                </div>
+                                                
                                                 <div class="row">
                                                     <div class="col-sm-3 col-md-6 p-2 text-black">
                                                         <div class="border" style="padding: 1rem;">

@@ -40,6 +40,8 @@ namespace bacit_dotnet.MVC.Repositories
             suggestionBeforeEdit.Description = objSuggestions.Description;
             suggestionBeforeEdit.Deadline = objSuggestions.Deadline;
             suggestionBeforeEdit.TeamId = objSuggestions.TeamId;
+            suggestionBeforeEdit.Status = objSuggestions.Status;
+            suggestionBeforeEdit.Category = objSuggestions.Category;
 
             return _context.SaveChanges();
         }

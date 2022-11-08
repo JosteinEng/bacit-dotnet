@@ -116,7 +116,7 @@ namespace bacit_dotnet.MVC.Controllers
         {
             if (!ModelState.IsValid)
             {
-                TempData["error"] = "Ugyldige verdier i skjem";
+                TempData["error"] = "Ugyldige verdier i skjema";
                 return View(objSuggestions);
             }
 

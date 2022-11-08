@@ -37,6 +37,7 @@ namespace bacit_dotnet.MVC.Repositories
             justdoitBeforeEdit.EmployeeId = objJustdoit.EmployeeId;
             justdoitBeforeEdit.Title = objJustdoit.Title;
             justdoitBeforeEdit.Description = objJustdoit.Description;
+            justdoitBeforeEdit.Category = objJustdoit.Category;
 
             return _context.SaveChanges();
         }

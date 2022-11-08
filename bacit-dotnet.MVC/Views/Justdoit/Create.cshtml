@@ -27,6 +27,27 @@
             <textarea asp-for="Justdoit.Description" class="form-control" style="min-height: 150px"></textarea>
             <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span><span asp-validation-for="Justdoit.Description" class="text-danger"></span>
         </div>
+        
+        <div class="mb-3">
+            <label asp-for="Justdoit.Category">Kategori</label>
+            <select asp-for="Justdoit.Category"class="form-control">
+                <option value="" selected disabled>Velg en kategori</option>
+                <option value="HMS">HMS</option>
+                <option value="Kvalitet">Kvalitet</option>
+                <option value="Ledetid">Ledetid</option>
+                <option value="Kostnader">Kostnader</option>
+                <option value="Effektivisering">Effektivisering</option>
+                <option value="Kompetanse">Kompetanse</option>
+                <option value="Kommunikasjon">Kommunikasjon</option>
+                <option value="5S">5S</option>
+                <option value="Standardisering">Standardisering</option>
+                <option value="Flyt">Flyt</option>
+                <option value="Visualisering">Visualisering</option>
+                <option value="Bærekraft">Bærekraft</option>
+                <option value="Industri 4.0">Industri 4.0</option>
+            </select>
+            <span asp-validation-for="Justdoit.Category" class="text-danger"></span>
+        </div>
 
         <!-- Image -->
         <div class="mb-3">

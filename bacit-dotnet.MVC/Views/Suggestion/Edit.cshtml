@@ -45,6 +45,40 @@
             <input asp-for="Deadline" type="date" class="form-control" />
             <span asp-validation-for="Deadline" class="text-danger"></span>
         </div>
+        
+        <div class="mb-3">
+            <label asp-for="Status">Status</label>
+            <select asp-for="Status" class="form-control">
+                <option value="@Model.Status" disabled>@Model.Status</option>
+                <option value="Opprettet">Opprettet</option>
+                <option value="Avslått">Avslått</option>
+                <option value="Under behandling">Under behandling</option>
+                <option value="Gjennomført">Gjennomført</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="Category">Kategori</label>
+            <select asp-for="Category" class="form-control">
+                <option value="@Model.Category" disabled>@Model.Category</option>
+                <option value="HMS">HMS</option>
+                <option value="Kvalitet">Kvalitet</option>
+                <option value="Ledetid">Ledetid</option>
+                <option value="Kostnader">Kostnader</option>
+                <option value="Effektivisering">Effektivisering</option>
+                <option value="Kompetanse">Kompetanse</option>
+                <option value="Kommunikasjon">Kommunikasjon</option>
+                <option value="5S">5S</option>
+                <option value="Standardisering">Standardisering</option>
+                <option value="Flyt">Flyt</option>
+                <option value="Visualisering">Visualisering</option>
+                <option value="Bærekraft">Bærekraft</option>
+                <option value="Industri 4.0">Industri 4.0</option>
+            </select>
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+        
         <br />
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">
