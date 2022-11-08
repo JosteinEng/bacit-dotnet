@@ -24,6 +24,9 @@ namespace bacit_dotnet.MVC.Models
         public string? Description { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
+        
+        [Required]
+        public string? Category { get; set; }
 
         public byte[]? Attachments { get; set; }
     }

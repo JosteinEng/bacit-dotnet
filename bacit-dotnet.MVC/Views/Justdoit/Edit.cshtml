@@ -30,6 +30,17 @@
             <input asp-for="Description" class="form-control" />
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
+        
+        <div class="mb-3">
+            <label asp-for="Category">Kategori</label>
+            <select asp-for="Category" class="form-control">
+                <option value="@Model.Category" disabled>@Model.Category</option>
+                <option value="HMS">HMS</option>
+                <option value="5S">5S</option>
+            </select>
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+        
         <br />
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">

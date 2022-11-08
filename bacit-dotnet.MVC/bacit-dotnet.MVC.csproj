@@ -38,4 +38,20 @@
   <ItemGroup>
     <Folder Include="Views\Error\" />
   </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Account\ConfirmEmail.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ExternalLoginFailure.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ForgotPassword.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Lockout.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Login.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ResetPassword.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\SendCode.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\UseRecoveryCode.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\VerifyAuthenticatorCode.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\VerifyCode.cshtml" />
+  </ItemGroup>
 </Project>
