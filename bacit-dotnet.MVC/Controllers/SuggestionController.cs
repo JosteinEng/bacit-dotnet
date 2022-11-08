@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SuggestionController : Controller
     {
         private readonly ISuggestionRepository _suggestionRepository;

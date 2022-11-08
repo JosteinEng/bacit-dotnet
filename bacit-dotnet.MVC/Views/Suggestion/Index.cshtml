@@ -1,44 +1,10 @@
 ﻿@model bacit_dotnet.MVC.ViewModels.SuggestionsViewModel
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-dark btn-lg create-suggestion-main" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Opprett forslag
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Opprett forslag</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="btn btn-light btn-outline-dark btn-lg extra-button-style" asp-area="" asp-controller="Suggestion" asp-action="Create">Nytt forslag</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-light btn-outline-dark btn-lg extra-button-style" asp-area="" asp-controller="Justdoit" asp-action="Create">Just Do It</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Lukk</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<hr />
 
 
 @*
@@ -58,7 +24,6 @@
             <div class="col-3 text-black ms-2"><b>Tittel</b></div>
             <div class="col-2 text-black ms-2"><b>Tidsfrist</b></div>
             <div class="col-2 text-black p-0"><b>Team</b></div>
-            <div class="col-2 text-black p-0"><b>Ansvarlig</b></div>
             <div class="col-2 col-sm text-black p-0"><b>Status</b></div>
         </div>
     </div>
@@ -82,6 +47,7 @@
                                     <div class="col-2 bg-light">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
                                     <div class="col-2 bg-light">@objSuggestion.Team.TeamName</div>
                                     <div class="col-2 bg-light">Ansattnavn</div>
+                                    <div class="col-2 bg-light">2</div>
                                     <div class="col-2 bg-light">Under behandling</div>
                                 </div>
                             </div>
@@ -98,15 +64,13 @@
                             <div class="container-fluid mt-3">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-sm-3 col-md-6 p-2 text-black">
-
+                                        <div class="col-sm-6 col-md-6 p-2 text-black">
                                             <div class="border" style="padding: 1rem;">
-                                                <p><b>Beskrivelse</b></p>
-                                                <p>@objSuggestion.Description</p>
-
+                                                <p><b>Ansvarlig</b></p>
+                                                <p>Placeholder for ansvarlig</p>
                                             </div>
                                         </div>
-                                        <div class="col-sm-2 col-md-6 p-2 text-black">
+                                        <div class="col-sm-6 col-md-6 p-2 text-black">
                                             <div class="border" style="padding: 1rem;">
                                                 <p><b>Tidslinje</b></p>
                                             </div>
@@ -128,11 +92,19 @@
                                     </div>
                                     
                                     <div class="row">
-                                        <div class="col-sm-3 col-md-6 p-2 text-black">
+                                        <div class="col-sm-12 col-md-12 p-2 text-black">
                                             <div class="border" style="padding: 1rem;">
-                                                <p><b>Vedlagt bilde</b></p>
+                                                <p><b>Beskrivelse</b></p>
+                                                <p class="text-break">@objSuggestion.Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6 p-2 text-black">
+                                            <div class="border" style="padding: 1rem;">
+                                                <p><b>Førbilde</b></p>
 
-                                        @*
+                                                @*
                                         The following code will look for attached pictures for each of the suggestions.
                                         If a picture is found within the database it will be presented as a clickable thumbnail.
                                         When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
@@ -155,11 +127,52 @@
                                                     <div id="attachment-@(attachment)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachment-@(attachment)Label" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
                                                                 <div class="modal-body">
                                                                     <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" />
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary bottom-50 end-50" data-bs-dismiss="modal">Lukk</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-6 col-md-6 p-2 text-black">
+                                            <div class="border" style="padding: 1rem;">
+                                                <p><b>Etterbilde</b></p>
+
+                                                @*
+                                        The following code will look for attached pictures for each of the suggestions.
+                                        If a picture is found within the database it will be presented as a clickable thumbnail.
+                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                        size will depend on the viewport of the device that is being used.
+                                        *@
+
+
+                                                @if (objSuggestion.Attachments == null)
+                                                {
+                                                    @:<p>Ingen bilde vedlagt.</p>
+                                                }
+                                                else
+                                                {
+                                                    <center>
+                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachment-@(attachment)">
+                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                        </button>
+                                                    </center>
+                                                    <p class="text-center">Trykk på bildet for å forstørre</p>
+                                                    <div id="attachment-@(attachment)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachment-@(attachment)Label" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" />
                                                                 </div>
                                                             </div>
                                                         </div>
