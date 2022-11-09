@@ -5,7 +5,7 @@
     <input asp-for="TeamId" type="hidden" />
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Endre team</h2>
+            <h3 class="text-dark">Endre team</h3>
             <hr />
         </div>
         @*
@@ -31,11 +31,13 @@
             <span asp-validation-for="UserId" class="text-danger">
             </span>
         </div>
-        <br/>
-        <button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
-        <a asp-controller="Team" asp-action="Index" class="btn btn-secondary" style="width: 150px">
-            Tilbake til listen
-        </a>
+        <br />
+        <div class="d-grid pb-3">
+            <div class="btn-group" role="group">
+                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Update</button>
+                <a asp-controller="Team" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til listen</a>
+            </div>
+        </div>
     </div>
 </form>
 

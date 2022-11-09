@@ -48,9 +48,62 @@
             </div>
         </nav>
     </header>
-
-
     <div class="container">
+
+
+
+        @*
+
+        The following code will create a popup modal for all index-pages.
+        In this popup the user may choose what type of suggestion they want to create.
+
+        *@
+
+        <div class="text-center">
+
+            <!-- Button trigger modal -->
+
+            <a type="button" class="btn btn-outline-dark btn-lg create-suggestion-main p-4 mb-3" style="width:300px;" data-bs-toggle="modal" data-bs-target="#createSuggestion">
+                Opprett forslag
+            </a>
+
+            @*
+
+        The following code adds a popup modal which allows the user to select what type of suggestion they want to create.
+        The popup can be closed by pressing the x-button toggle in the upper right corner or click anywhere outside of the popup. On a desktop computer a user can also press the ESC key.
+
+            *@
+            <div class="modal fade" id="createSuggestion" tabindex="-1" aria-labelledby="createSuggestionLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createSuggestionLabel">Opprett forslag</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="d-grid">
+                                <div class="btn-group-vertical" role="group">
+                                    <a asp-area="" asp-controller="Suggestion" asp-action="Create" class="btn btn-light btn-outline-dark btn-lg p-4 mb-3 extra-button-style">
+                                        <span class="iconify extra-iconify-mdi" data-icon="mdi-file-document-outline"></span>
+                                        <h4 class="d-inline">Ordinære forslag</h4>
+                                    </a>
+                                    <a asp-area="" asp-controller="Justdoit" asp-action="Create" class="btn btn-light btn-outline-dark btn-lg p-4 extra-button-style">
+                                        <span class="iconify extra-iconify-mdi" data-icon="mdi-run-fast"></span>
+                                        <h4 class="d-inline">Just do it</h4>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+
+
         <main role="main" class="pb-3">
             <partial name="_Notification" />
             @RenderBody()

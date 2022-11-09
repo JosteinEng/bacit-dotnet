@@ -3,24 +3,26 @@
 <form method="post" asp-action="Delete">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Slett Team</h2>
-            <hr/>
+            <h3 class="text-dark">Slett Team</h3>
+            <hr />
         </div>
         @*
-        This line of code will show a summary of all errors at the top of the page.
-        <div asp-validation-summary="All" class="text-danger"></div>*@
+            This line of code will show a summary of all errors at the top of the page.
+            <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
             <label asp-for="TeamName">Team navn</label>
             <input asp-for="TeamName" disabled="" class="form-control" />
         </div>
         <div class="mb-3">
             <label asp-for="UserId">Teamleder</label>
-            <input value="@string.Concat(Model.User.Name)" disabled="" class="form-control"/>
+            <input value="@string.Concat(Model.User.Name)" disabled="" class="form-control" />
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 150px">Delete</button>
-        <a asp-controller="Team" asp-action="Index" class="btn btn-secondary" style="width: 150px">
-            Back to list
-        </a>
+        <div class="d-grid pb-3">
+            <div class="btn-group" role="group">
+                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Delete</button>
+                <a asp-controller="Team" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til listen</a>
+            </div>
+        </div>
     </div>
 </form>
 
