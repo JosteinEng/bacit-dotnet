@@ -35,6 +35,7 @@
     @{
         var forslagsnr = 1;
         var attachment = 1;
+        var suggestionStatus = 1;
         foreach (var objSuggestion in Model.Suggestions)
         {
             <div class="container-fluid mt-3 p-0">
@@ -47,8 +48,13 @@
                                     <div class="col-2 bg-light">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
                                     <div class="col-2 bg-light">@objSuggestion.Team.TeamName</div>
                                     <div class="col-3 bg-light">@objSuggestion.Status</div>
+
                                 </div>
+
                             </div>
+                        </div>
+                        <div class="progress" style="height:3px;">
+                            <div class="progress-bar bg-success" style="width:100%;height:3px;"></div>
                         </div>
                     </div>
 
@@ -75,56 +81,60 @@
 
                                                 <b>Status:</b><i> @objSuggestion.Status </i>
 
+                                                <div class="col-md p-3 my-0 text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#status-@suggestionStatus">
 
-                                                <section class="py-5">
-                                                    <ul class="timeline">
-                                                        <li class="timeline-item mb-5">
-                                                            <h5 class="fw-bold">Forslag opprettet</h5>
-                                                            <p class="text-muted mb-2 fw-bold">07/11/2022</p>
-                                                            <p class="text-muted">
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                                                                necessitatibus adipisci, ad alias, voluptate pariatur officia
-                                                                repellendus repellat inventore fugit perferendis totam dolor
-                                                                voluptas et corrupti distinctio maxime corporis optio?
-                                                            </p>
-                                                        </li>
+                                                    <div id="status-@suggestionStatus" class="collapse">
+                                                    <div class="bg-white text-black">
+                                                        <section class="py-5">
+                                                            <ul class="timeline">
+                                                                <li class="timeline-item mb-5">
+                                                                    <h5 class="fw-bold">Forslag opprettet</h5>
+                                                                    <p class="text-muted mb-2 fw-bold">07/11/2022</p>
+                                                                    <p class="text-muted">
+                                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
+                                                                        necessitatibus adipisci, ad alias, voluptate pariatur officia
+                                                                        repellendus repellat inventore fugit perferendis totam dolor
+                                                                        voluptas et corrupti distinctio maxime corporis optio?
+                                                                    </p>
+                                                                </li>
 
-                                                        <li class="timeline-item mb-5">
-                                                            <h5 class="fw-bold">Forslag sendt til ansvarlig person</h5>
-                                                            <p class="text-muted mb-2 fw-bold">07/11/2022</p>
-                                                            <p class="text-muted">
-                                                                Quisque ornare dui nibh, sagittis egestas nisi luctus nec. Sed
-                                                                aliquet laoreet sapien, eget pulvinar lectus maximus vel.
-                                                                Phasellus suscipit porta mattis.
-                                                            </p>
-                                                        </li>
+                                                                <li class="timeline-item mb-5">
+                                                                    <h5 class="fw-bold">Forslag sendt til ansvarlig person</h5>
+                                                                    <p class="text-muted mb-2 fw-bold">07/11/2022</p>
+                                                                    <p class="text-muted">
+                                                                        Quisque ornare dui nibh, sagittis egestas nisi luctus nec. Sed
+                                                                        aliquet laoreet sapien, eget pulvinar lectus maximus vel.
+                                                                        Phasellus suscipit porta mattis.
+                                                                    </p>
+                                                                </li>
 
-                                                        <li class="timeline-item mb-5">
-                                                            <h5 class="fw-bold">Under behandling</h5>
-                                                            <p class="text-muted mb-2 fw-bold">07/11/2022</p>
-                                                            <p class="text-muted">
-                                                                Orci varius natoque penatibus et magnis dis parturient montes,
-                                                                nascetur ridiculus mus. Nulla ullamcorper arcu lacus, maximus
-                                                                facilisis erat pellentesque nec. Duis et dui maximus dui aliquam
-                                                                convallis. Quisque consectetur purus erat, et ullamcorper sapien
-                                                                tincidunt vitae.
-                                                            </p>
-                                                        </li>
+                                                                <li class="timeline-item mb-5">
+                                                                    <h5 class="fw-bold">Under behandling</h5>
+                                                                    <p class="text-muted mb-2 fw-bold">07/11/2022</p>
+                                                                    <p class="text-muted">
+                                                                        Orci varius natoque penatibus et magnis dis parturient montes,
+                                                                        nascetur ridiculus mus. Nulla ullamcorper arcu lacus, maximus
+                                                                        facilisis erat pellentesque nec. Duis et dui maximus dui aliquam
+                                                                        convallis. Quisque consectetur purus erat, et ullamcorper sapien
+                                                                        tincidunt vitae.
+                                                                    </p>
+                                                                </li>
 
-                                                        <li class="timeline-item mb-5">
-                                                            <h5 class="fw-bold">Forslag er gjennomført</h5>
-                                                            <p class="text-muted mb-2 fw-bold">09/11/2022</p>
-                                                            <p class="text-muted">
-                                                                Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
-                                                                et urna sit amet massa dapibus tristique non finibus ligula. Nam
-                                                                pharetra libero nibh, id feugiat tortor rhoncus vitae. Ut suscipit
-                                                                vulputate mattis.
-                                                            </p>
-                                                        </li>
-                                                    </ul>
-                                                </section>
-
-
+                                                                <li class="timeline-item mb-5">
+                                                                    <h5 class="fw-bold">Forslag er gjennomført</h5>
+                                                                    <p class="text-muted mb-2 fw-bold">09/11/2022</p>
+                                                                    <p class="text-muted">
+                                                                        Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
+                                                                        et urna sit amet massa dapibus tristique non finibus ligula. Nam
+                                                                        pharetra libero nibh, id feugiat tortor rhoncus vitae. Ut suscipit
+                                                                        vulputate mattis.
+                                                                    </p>
+                                                                </li>
+                                                            </ul>
+                                                        </section>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -234,12 +244,13 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                     </div>
                 </div>
             </div>
             forslagsnr++;
             attachment++;
+            suggestionStatus++;
         }
     }
 
