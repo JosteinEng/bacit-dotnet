@@ -2,6 +2,7 @@
 using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace bacit_dotnet.MVC.Repositories
 {
@@ -17,6 +18,7 @@ namespace bacit_dotnet.MVC.Repositories
         public void Delete(string email)
         {
             UserEntity? user = GetUserByEmail(email);
+            //var aspNetUsersEntity = GetUserByNetMail(email)
             if (user == null)
                 return;
             dataContext.Users.Remove(user);
@@ -25,7 +27,7 @@ namespace bacit_dotnet.MVC.Repositories
 
         private UserEntity? GetUserByEmail(string email)
         {
-            return dataContext.Users.FirstOrDefault(x => x.Email == email);
+            return dataContext.Users/*.Include(x => x.AspNetUsers)*/.FirstOrDefault(x => x.Email == email);
         }
 
         public List<UserEntity> GetUsers()
@@ -53,7 +55,8 @@ namespace bacit_dotnet.MVC.Repositories
 
             existingUser.Email = user.Email;
             existingUser.EmployeeNumber = user.EmployeeNumber;
-            existingUser.Name = user.Name;
+            existingUser.FirstName = user.FirstName;
+            existingUser.LastName = user.LastName;
             existingUser.Role = user.Role;
             existingUser.Team = user.Team;
 

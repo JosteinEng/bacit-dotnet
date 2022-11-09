@@ -1,0 +1,52 @@
+﻿@using bacit_dotnet.MVC.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model bacit_dotnet.MVC.ViewModels.UserViewModel
+
+<h3>Rediger registrerte brukere</h3>
+
+@if (Model.Email != null)
+{
+    <form asp-action="save" asp-controller="users" method="post">
+        <ul>
+            <li>
+                <label for="Name">Fornavn</label>
+                <input type="text" name="FirstName" value="@Model.FirstName" />
+            </li>
+            <li>
+                <label for="LastName">Etternavn</label>
+                <input type="text" name="LastName" value="@Model.LastName" />
+            </li>
+            <li>
+                <label for="Password">Passord</label>
+                <input type="password" name="Password" value="@Model.Password" />
+            </li>
+            <li>
+                <label for="Email">Ansattnummer</label>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" name="Email" value="@Model.Email" />
+            </li>
+            @*           <li>
+        <label for="EmployeeNumber">Ansattnummer</label>
+        <input type="text" name="EmployeeNumber" value="@Model.EmployeeNumber" />
+        </li>*@
+            <li>
+                <label for="Team">Team</label>
+                <input type="text" name="Team" value="@Model.Team" />
+            </li>
+            @*           <li>
+        <label for="Role">Role</label>
+        <input type="Text" name="Role" value="@Model.Role" />
+        </li>*@
+            <li>
+                <label for="Role">Sett som administrator</label>
+                <input asp-for="@Model.IsAdmin" />
+            </li>
+            <li>
+                <input type="submit" value="Lagre" />
+            </li>
+            <li>
+                <a asp-controller="Users" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Avbryt</a>
+
+            </li>
+        </ul>
+    </form>
+}
