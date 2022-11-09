@@ -1,31 +1,33 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
-  font-family: Spartan, sans-serif;
+    margin-bottom: 60px;
+    font-family: Spartan, sans-serif;
 }
 /* Custom class that extends bootstrap's button styles. */
 .extra-button-style {
     font-size: 1rem;
 }
+
 .extra-iconify-mdi {
     width: 24px;
     height: 24px;
     display: inline-block;
 }
+
 .extra-iconify-mdi-big {
     width: 30px;
     height: 30px;
@@ -38,3 +40,27 @@ h4 {
     font-weight: lighter;
 }
 
+.timeline {
+    border-left: 1px solid hsl(0, 0%, 90%);
+    position: relative;
+    list-style: none;
+}
+
+    .timeline .timeline-item {
+        position: relative;
+    }
+
+        .timeline .timeline-item:after {
+            position: absolute;
+            display: block;
+            top: 0;
+        }
+
+        .timeline .timeline-item:after {
+            background-color: hsl(0, 0%, 90%);
+            left: -38px;
+            border-radius: 50%;
+            height: 11px;
+            width: 11px;
+            content: "";
+        }
