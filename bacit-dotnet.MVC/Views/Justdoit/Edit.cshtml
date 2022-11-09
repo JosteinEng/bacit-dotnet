@@ -1,4 +1,4 @@
-﻿@model Justdoit
+﻿@model bacit_dotnet.MVC.ViewModels.Justdoit.EditJustdoitViewModel
 
 <form method="post" asp-action="Edit">
     <div class="border p-3 mt-4">
@@ -30,7 +30,16 @@
             <input asp-for="Description" class="form-control" />
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-        
+        <div class="mb-3">
+            <label asp-for="TeamId">Team</label>
+            <select asp-for="TeamId">
+                @foreach (var team in Model.Teams)
+                {
+                    <option value="@team.TeamId">@team.TeamName</option>
+                }
+            </select>
+            <span asp-validation-for="TeamId" class="text-danger"></span>
+        </div>        
         <div class="mb-3">
             <label asp-for="Category">Kategori</label>
             <select asp-for="Category" class="form-control">

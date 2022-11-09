@@ -141,7 +141,7 @@ create or replace table users
         unique (Id)
 );
 
-create table Teams
+create or replace table Teams
 (
     teamID    int auto_increment
         primary key,

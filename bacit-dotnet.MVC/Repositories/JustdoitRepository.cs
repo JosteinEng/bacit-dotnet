@@ -1,6 +1,7 @@
 ﻿using bacit_dotnet.MVC.DataAccess;
 using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace bacit_dotnet.MVC.Repositories
 {
@@ -38,18 +39,19 @@ namespace bacit_dotnet.MVC.Repositories
             justdoitBeforeEdit.Title = objJustdoit.Title;
             justdoitBeforeEdit.Description = objJustdoit.Description;
             justdoitBeforeEdit.Category = objJustdoit.Category;
+            justdoitBeforeEdit.TeamId = objJustdoit.TeamId;
 
             return _context.SaveChanges();
         }
 
         public Justdoit? GetJustdoitByJustdoitId(int justdoitId)
         {
-            return _context.Justdoit.Find(justdoitId);
+            return _context.Justdoit.Include(x => x.Team).FirstOrDefault(x => x.JustdoitId == justdoitId);
         }
 
         public Justdoit[] GetAllJustdoit()
         {
-            return _context.Justdoit.ToArray();
+            return _context.Justdoit.Include(x => x.Team).ToArray();
         }
 
         public Justdoit? GetJustdoitByEmployeeId(int employeeId)

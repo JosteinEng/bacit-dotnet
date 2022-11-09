@@ -2,6 +2,7 @@
 using bacit_dotnet.MVC.Models;
 using bacit_dotnet.MVC.Repositories;
 using bacit_dotnet.MVC.ViewModels;
+using bacit_dotnet.MVC.ViewModels;
 using bacit_dotnet.MVC.ViewModels.Justdoit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,12 @@ namespace bacit_dotnet.MVC.Controllers
     public class JustdoitController : Controller
     {
         private readonly IJustdoitRepository _justdoitRepository;
+        private readonly ITeamRepository _teamRepository;
 
-        public JustdoitController(IJustdoitRepository useRepository)
+        public JustdoitController(IJustdoitRepository useRepository, ITeamRepository teamRepository)
         {
             _justdoitRepository = useRepository;
+            _teamRepository = teamRepository;
         }
 
         public IActionResult Index()
@@ -31,7 +34,14 @@ namespace bacit_dotnet.MVC.Controllers
         //Get
         public IActionResult Create()
         {
-            return View();
+            var teams = _teamRepository.GetAllTeamsAndUsers();
+
+            var createSuggestionViewModel = new CreateJustdoitViewModel()
+            {
+                Teams = teams
+            };
+            
+            return View(createSuggestionViewModel);
         }
 
         //Post
@@ -85,13 +95,26 @@ namespace bacit_dotnet.MVC.Controllers
                 return NotFound();
             }
 
-            return View(justdoitFromDb);
+            var teams = _teamRepository.GetAllTeamsAndUsers();
+
+            var justdoitToEdit = new EditJustdoitViewModel()
+            {
+                JustdoitId = justdoitFromDb.JustdoitId,
+                EmployeeId = justdoitFromDb.EmployeeId,
+                Title = justdoitFromDb.Title,
+                Description = justdoitFromDb.Description,
+                Category = justdoitFromDb.Category,
+                TeamId = justdoitFromDb.TeamId,
+                Teams = teams
+            };
+            
+            return View(justdoitToEdit);
         }
 
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Justdoit objJustdoit)
+        public IActionResult Edit(EditJustdoitViewModel objJustdoit)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +122,17 @@ namespace bacit_dotnet.MVC.Controllers
                 return View(objJustdoit);
             }
 
-            var rowsAffectedByUpdate = _justdoitRepository.Update(objJustdoit);
+            var updatedJustdoit = new Justdoit()
+            {
+                JustdoitId = objJustdoit.JustdoitId,
+                EmployeeId = objJustdoit.EmployeeId,
+                Title = objJustdoit.Title,
+                Description = objJustdoit.Description,
+                Category = objJustdoit.Category,
+                TeamId = objJustdoit.TeamId
+            };
+
+            var rowsAffectedByUpdate = _justdoitRepository.Update(updatedJustdoit);
             if (rowsAffectedByUpdate > 0)
             {
                 TempData["success"] = "Forslag har blitt oppdatert";
@@ -110,7 +143,7 @@ namespace bacit_dotnet.MVC.Controllers
                 TempData["error"] = "Forslag ble ikke oppdatert";
             }
 
-            return View(objJustdoit);
+            return RedirectToAction("Edit", objJustdoit.JustdoitId);
         }
 
         //Get

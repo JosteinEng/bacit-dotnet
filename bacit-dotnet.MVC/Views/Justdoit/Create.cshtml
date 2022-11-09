@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 
-@model bacit_dotnet.MVC.ViewModels.Justdoit.CreateJustdoitViewModel
+@model bacit_dotnet.MVC.ViewModels.CreateJustdoitViewModel
 
 <form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
@@ -27,6 +27,17 @@
             <textarea asp-for="Justdoit.Description" class="form-control" style="min-height: 150px"></textarea>
             <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span><span asp-validation-for="Justdoit.Description" class="text-danger"></span>
         </div>
+                <div class="mb-3">
+                    <label asp-for="Justdoit.TeamId">Team</label>
+                    <select asp-for="Justdoit.TeamId">
+                        <option value="" selected disabled>Velg et Team</option>
+                        @foreach (var team in Model.Teams)
+                        {
+                            <option value="@team.TeamId">@team.TeamName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Justdoit.TeamId" class="text-danger"></span>
+                </div>        
         
         <div class="mb-3">
             <label asp-for="Justdoit.Category">Kategori</label>
