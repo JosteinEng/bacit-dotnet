@@ -41,8 +41,6 @@ create or replace table AspNetRoles
     ConcurrencyStamp varchar(255) null
 );
 
-insert into AspNetRoles(id, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
-
 create or replace table AspNetUsers
 (
     Id                   varchar(255)                          not null
@@ -166,7 +164,8 @@ create or replace table Suggestions
     description  varchar(500) not null,
     createdDate  datetime     not null,
     deadline     date         not null,
-    status	 varchar(50)  not null,
+    status	     varchar(50)  not null,
+    phase 	     varchar(50)  not null,
     category     varchar(50)  not null,
     attachments  longblob     null,
     teamID       int          not null,
@@ -174,7 +173,7 @@ create or replace table Suggestions
         foreign key (teamID) references Teams (teamID)
 );
 
-
+INSERT INTO AspNetRoles(id, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
 INSERT INTO users(FirstName, LastName, Email) values('Admin','Admin', '1337');
 INSERT INTO AspNetUsers (Id, UserName, NormalizedUserName, Email, NormalizedEmail, EmailConfirmed, PasswordHash, SecurityStamp, ConcurrencyStamp, PhoneNumber, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnd, LockoutEnabled, AccessFailedCount) VALUES ('606e1db6-5c43-498e-af7c-e71584a996d9', '1337', '1337', '1337', '1337', false, 'AQAAAAEAACcQAAAAELQ/9cNgM3ennubpIne79w06/vzScUYxAurHgtfGfFSlD/DnN+mIJIrrvd3tajjGVg==', '5S5BZLOOPQTHUNKU4NZPS46OWSOY3I44', '6eb488b9-617c-4e32-a036-1c7879ba7cec', null, false, false, '2022-11-03 10:17:59', false, 0);
 INSERT INTO webAppDatabase.AspNetUserRoles (UserId, RoleId) VALUES ('606e1db6-5c43-498e-af7c-e71584a996d9', 'Administrator');
