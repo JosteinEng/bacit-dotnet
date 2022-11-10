@@ -124,7 +124,8 @@ namespace bacit_dotnet.MVC.Controllers
                     _logger.LogInformation(3, "User created a new account with password.");
 
 
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    return RedirectToAction(nameof(UsersController.Index), "Users");
                 }
                 AddErrors(result);
             }

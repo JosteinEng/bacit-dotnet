@@ -2,68 +2,97 @@
 @model RegisterViewModel
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@ViewData["Title"] - bacit_dotnet.MVC</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spartan">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - bacit_dotnet.MVC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spartan">
 </head>
 
 @{
-	ViewData["Title"] = "Register";
+    ViewData["Title"] = "Register";
 }
+@*
+    <div class="row p-0 m-0">
+        <div class="text-center content h-100 d-flex align-items-center justify-content-center" style="position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+            <section>
+                <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal border p-5" role="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <h4>Registrer ny bruker</h4>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Ansattnummer</label>
+                        <div class="text-center d-flex justify-content-center">
+                            <input asp-for="Email" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" />
+                        </div>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label">Passord</label>
+                        <div class="text-center d-flex justify-content-center">
+                            <input asp-for="Password" class="form-control" />
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="control-label">Bekreft passord</label>
+                        <div class="text-center d-flex justify-content-center">
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                        </div>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="d-flex justify-content-center btn-group">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-outline-dark">Registrer</button>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="text-center">
+                        <input class="btn" type="button" value="Allerede bruker?" onclick="location.href='@Url.Action("Index", "Home")'" />
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+*@
+<h3>Regitrer bruker</h3>
 
-@{
-	Layout = "";
-}
+<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Ansattnummer</label>
+        <div class="text-center d-flex justify-content-center">
+            <input asp-for="Email" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" />
+        </div>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label">Passord</label>
+        <div class="text-center d-flex justify-content-center">
+            <input asp-for="Password" class="form-control" />
+        </div>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword" class="control-label">Bekreft passord</label>
+        <div class="text-center d-flex justify-content-center">
+            <input asp-for="ConfirmPassword" class="form-control" />
+        </div>
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="d-flex justify-content-center btn-group">
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-dark">Registrer</button>
+        </div>
+    </div>
+</form>
 
-<div class="row p-0 m-0">
-	<div class="text-center content h-100 d-flex align-items-center justify-content-center" style="position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
-		<section>
-			<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal border p-5" role="form">
-				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<h4>Registrer ny bruker</h4>
-				<br/>
-				<div class="form-group">
-					<label asp-for="Email" class="control-label">Ansattnummer</label>
-					<div class="text-center d-flex justify-content-center">
-						<input asp-for="Email" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control"/>
-					</div>
-					<span asp-validation-for="Email" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-					<label asp-for="Password" class="control-label">Passord</label>
-					<div class="text-center d-flex justify-content-center">
-						<input asp-for="Password" class="form-control"/>
-					</div>
-					<span asp-validation-for="Password" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-					<label asp-for="ConfirmPassword" class="control-label">Bekreft passord</label>
-					<div class="text-center d-flex justify-content-center">
-						<input asp-for="ConfirmPassword" class="form-control"/>
-					</div>
-					<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-				</div>
-				<br/>
-				<div class="d-flex justify-content-center btn-group">
-					<div class="text-center">
-						<button type="submit" class="btn btn-outline-dark">Registrer</button>
-					</div>
-				</div>
-				<br/>
-				<br/>
-				<div class="text-center">
-					<input class="btn" type="button" value="Allerede bruker?" onclick="location.href='@Url.Action("Index", "Home")'" />
-				</div>
-			</form>
-		</section>
-	</div>
-</div>
-
-@*@section Scripts {
+@section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}*@
+}
