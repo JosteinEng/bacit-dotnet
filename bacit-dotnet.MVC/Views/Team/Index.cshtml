@@ -32,7 +32,7 @@
                 @objTeam.TeamName
             </td>
             <td width="40%">
-                @string.Concat(objTeam.User.FirstName)
+                @string.Concat(objTeam.User.FirstName, " ", objTeam.User.LastName)
             </td>
             <td class="text-center">
                 <div class="w-75 btn-group text-center" role="group">
@@ -49,4 +49,5 @@
                 @*</td>*@
         </tr>
     }
+    </div>
     </table>

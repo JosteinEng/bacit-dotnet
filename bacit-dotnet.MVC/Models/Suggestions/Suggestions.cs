@@ -40,7 +40,11 @@ namespace bacit_dotnet.MVC.Models
         [Required(ErrorMessage = "Vennligst velg et gyldig team.")]
         [Range(1, int.MaxValue)]
         public int TeamId { get; set; }
-        
         public Teams? Team { get; set; }
+        
+        [ForeignKey("userID")]
+        [Required]
+        public int UserId { get; set; }
+        public UserEntity? User { get; set; }
     }
 }

@@ -12,11 +12,13 @@ namespace bacit_dotnet.MVC.Controllers
     {
         private readonly ISuggestionRepository _suggestionRepository;
         private readonly ITeamRepository _teamRepository;
+        private readonly IUserRepository _userRepository;
 
-        public SuggestionController(ISuggestionRepository useRepository, ITeamRepository teamRepository)
+        public SuggestionController(ISuggestionRepository suggestionRepository, ITeamRepository teamRepository, IUserRepository userRepository)
         {
-            _suggestionRepository = useRepository;
+            _suggestionRepository = suggestionRepository;
             _teamRepository = teamRepository;
+            _userRepository = userRepository;
         }
 
         public IActionResult Index()
@@ -33,10 +35,12 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult Create()
         {
             var teams = _teamRepository.GetAllTeamsAndUsers();
+            var users = _userRepository.GetUsers();
 
             var createSuggestionViewModel = new CreateSuggestionViewModel
             {
-                Teams = teams
+                Teams = teams,
+                Users = users
             };
             
             return View(createSuggestionViewModel);
@@ -47,10 +51,10 @@ namespace bacit_dotnet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([FromForm] CreateSuggestionViewModel objSuggestions)
         {
-            if (ModelState.IsValid is false)
+            if (!ModelState.IsValid)
             {
                 TempData["error"] = "Verdier er ikke gyldige";
-                return View(objSuggestions);
+                return RedirectToAction("Create");
             }
 
             if (objSuggestions.Attachments != null && objSuggestions.Attachments.Length > 0)
@@ -63,7 +67,17 @@ namespace bacit_dotnet.MVC.Controllers
             }
 
 
-            var newSuggestionId = _suggestionRepository.Add(objSuggestions.Suggestion);
+            var newSuggestionId = _suggestionRepository.Add(new Suggestions
+            {
+                EmployeeId = objSuggestions.EmployeeId,
+                Title = objSuggestions.Title,
+                Description = objSuggestions.Description,
+                Deadline = objSuggestions.Deadline,
+                Status = objSuggestions.Status,
+                Category = objSuggestions.Category,
+                TeamId = objSuggestions.TeamId,
+                UserId = objSuggestions.UserId
+            });
 
             if (newSuggestionId > 0)
             {
@@ -75,7 +89,7 @@ namespace bacit_dotnet.MVC.Controllers
                 TempData["error"] = "Forslag ble ikke opprettet";
             }
 
-            return View(objSuggestions);
+            return RedirectToAction("Create");
         }
 
         //Get

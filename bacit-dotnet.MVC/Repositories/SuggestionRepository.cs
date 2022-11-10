@@ -17,6 +17,12 @@ namespace bacit_dotnet.MVC.Repositories
 
         public int Add(Suggestions objSuggestion)
         {
+            var existingTeam = GetSuggestionBySuggestionId(objSuggestion.SuggestionId);
+            if (existingTeam != null)
+            {
+                return 0;
+            }
+            
             _context.Suggestions.Add(objSuggestion);
             _context.SaveChanges();
 
@@ -53,7 +59,8 @@ namespace bacit_dotnet.MVC.Repositories
 
         public Suggestions[] GetAllSuggestions()
         {
-            return _context.Suggestions.Include(x => x.Team).ToArray();
+            
+            return _context.Suggestions.Include(x => x.Team).Include(x => x.User).ToArray();
         }
 
         public Suggestions? GetSuggestionByEmployeeId(int employeeId)
