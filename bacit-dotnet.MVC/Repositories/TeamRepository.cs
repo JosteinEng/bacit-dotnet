@@ -52,6 +52,11 @@ namespace bacit_dotnet.MVC.Repositories
             return _context.Teams.Include(x => x.User).ToArray();
         }
 
+        public bool ForeignKeyInUse(int teamId)
+        {
+            return _context.Suggestions.Any(x => x.TeamId == teamId);
+        }
+        
         public bool Delete(int teamId)
         {
             var teamToDelete = GetTeamAndUserByTeamId(teamId);

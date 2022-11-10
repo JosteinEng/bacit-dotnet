@@ -37,10 +37,13 @@ namespace bacit_dotnet.MVC.Repositories
                 return 0;
             }
 
-
+            if (objSuggestions.Attachments != null && objSuggestions.Attachments.Length > 0)
+            {
+                suggestionBeforeEdit.Attachments = objSuggestions.Attachments;
+            }
+            
             // TODO: Når user system er på plass. Validere at forslag tilhører brukeren ved endring eller sletting.
-
-
+            
             suggestionBeforeEdit.EmployeeId = objSuggestions.EmployeeId;
             suggestionBeforeEdit.Title = objSuggestions.Title;
             suggestionBeforeEdit.Description = objSuggestions.Description;
@@ -48,13 +51,14 @@ namespace bacit_dotnet.MVC.Repositories
             suggestionBeforeEdit.Status = objSuggestions.Status;
             suggestionBeforeEdit.Category = objSuggestions.Category;
             suggestionBeforeEdit.TeamId = objSuggestions.TeamId;
+            suggestionBeforeEdit.UserId = objSuggestions.UserId;
 
             return _context.SaveChanges();
         }
 
         public Suggestions? GetSuggestionBySuggestionId(int suggestionId)
         {
-            return _context.Suggestions.Include(x => x.Team).FirstOrDefault(x => x.SuggestionId == suggestionId);
+            return _context.Suggestions.Include(x => x.Team).Include(x => x.User).FirstOrDefault(x => x.SuggestionId == suggestionId);
         }
 
         public Suggestions[] GetAllSuggestions()

@@ -6,7 +6,7 @@ namespace bacit_dotnet.MVC.ViewModels
 
 {
     public class CreateSuggestionViewModel
-    { public Suggestions Suggestion { get; set; }
+    { 
         public IFormFile? Attachments { get; set; }
         
         [ValidateNever]
@@ -15,8 +15,9 @@ namespace bacit_dotnet.MVC.ViewModels
         [ValidateNever]
         public UserEntity[] Users { get; set; }
         
+        [Required]
         [Range(1, int.MaxValue)]
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
         
         [Required(ErrorMessage = "Vennligst fyll inn tittelen.")]
         [StringLength(30,MinimumLength = 2)]
@@ -27,7 +28,7 @@ namespace bacit_dotnet.MVC.ViewModels
         public string? Description { get; set; }
         
         [Required(ErrorMessage = "Vennligst velg en tidsfrist.")]
-        public DateTime Deadline { get; set; }
+        public DateTime? Deadline { get; set; }
         
         [Required(ErrorMessage = "Vennligst velg en status.")]
         public string? Status { get; set; }

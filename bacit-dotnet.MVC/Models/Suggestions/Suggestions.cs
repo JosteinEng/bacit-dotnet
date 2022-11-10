@@ -12,6 +12,7 @@ namespace bacit_dotnet.MVC.Models
         [Key]
         public int SuggestionId { get; set; }
         
+        [Required]
         [Range(1, int.MaxValue)]
         public int EmployeeId { get; set; }
 
@@ -42,7 +43,7 @@ namespace bacit_dotnet.MVC.Models
         public int TeamId { get; set; }
         public Teams? Team { get; set; }
         
-        [ForeignKey("userID")]
+        [ForeignKey("UserId")]
         [Required]
         public int UserId { get; set; }
         public UserEntity? User { get; set; }

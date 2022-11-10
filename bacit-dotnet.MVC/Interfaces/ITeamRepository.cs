@@ -20,5 +20,8 @@ namespace bacit_dotnet.MVC.Interfaces
 
         // returns all teams added to the db
         public Teams[] GetAllTeamsAndUsers();
+
+        public bool ForeignKeyInUse(int teamId);
+
     }
 }

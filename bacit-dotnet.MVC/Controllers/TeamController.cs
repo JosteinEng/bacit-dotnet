@@ -76,7 +76,7 @@ namespace bacit_dotnet.MVC.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id <= 0)
             {
                 return NotFound();
             }
@@ -134,11 +134,17 @@ namespace bacit_dotnet.MVC.Controllers
 
         //Get
         [HttpGet]
-            public IActionResult Delete(int? id)
+        public IActionResult Delete(int? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id <= 0)
             {
                 return NotFound();
+            }
+            
+            if (_teamRepository.ForeignKeyInUse(id.Value))
+            {
+                TempData["error"] = "Kan ikke slette team. Team tilhører et forslag!";
+                return RedirectToAction("Index");
             }
 
             var teamFromDb = _teamRepository.GetTeamAndUserByTeamId(id.Value);
@@ -156,7 +162,7 @@ namespace bacit_dotnet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteTeam(int? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id <= 0)
             {
                 return NotFound();
             }
