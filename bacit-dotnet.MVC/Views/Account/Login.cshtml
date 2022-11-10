@@ -63,16 +63,11 @@
 						<button type="submit" class="btn btn-outline-dark">Log in</button>
 					</div>
 				</div>
-				<br/>
-				<br/>
-				<div class="text-center">
-					<a class="btn" type="button" style="text-decoration: none" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Ny bruker?</a>
-				</div>
 			</form>
 		</section>
 	</div>
 </div>
 
-@*@section Scripts {
+@section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}*@
+}
