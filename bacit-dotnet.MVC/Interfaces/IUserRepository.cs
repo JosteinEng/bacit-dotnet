@@ -1,4 +1,5 @@
 ﻿using bacit_dotnet.MVC.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace bacit_dotnet.MVC.Interfaces
 {

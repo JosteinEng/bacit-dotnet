@@ -7,12 +7,21 @@ using System.Security.Claims;
 using bacit_dotnet.MVC.Models.Account;
 using bacit_dotnet.MVC.Interfaces;
 using bacit_dotnet.MVC.Models;
+using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Manage.Internal;
+using bacit_dotnet.MVC.Repositories;
+using bacit_dotnet.MVC.ViewModels;
+using System.Data;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Net;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace bacit_dotnet.MVC.Controllers
 {
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IdentityUser user;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly IUserRepository userRepository;
@@ -169,7 +178,7 @@ namespace bacit_dotnet.MVC.Controllers
                 // Update any authentication tokens if login succeeded
                 await _signInManager.UpdateExternalAuthenticationTokensAsync(info);
 
-                _logger.LogInformation(5, "User logged in with {Name} provider.", info.LoginProvider);
+                _logger.LogInformation(5, "User logged in with {FirstName} provider.", info.LoginProvider);
                 return RedirectToLocal(returnUrl);
             }
             if (result.RequiresTwoFactor)
@@ -550,5 +559,28 @@ namespace bacit_dotnet.MVC.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
+
+        public async Task<ActionResult> Delete(RegisterViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            //var user = new IdentityUser { UserName = model.Email, Email = model.Email, EmailConfirmed = false, LockoutEnabled = false, LockoutEnd = null };
+            var result = await _userManager.DeleteAsync(user);
+
+            if (result.Succeeded)
+            {
+                userRepository.Delete(model.Email);
+
+
+                return RedirectToAction("Register");
+            }
+
+
+            // If we got this far, something failed, redisplay form
+            return RedirectToAction("login");
+        }
+
+
     }
 }
