@@ -572,15 +572,12 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 userRepository.Delete(model.Email);
 
-
-                return RedirectToAction("Register");
+                return RedirectToAction("Index","Users");
             }
 
 
             // If we got this far, something failed, redisplay form
-            return RedirectToAction("login");
+            return RedirectToAction("Index","Home");
         }
-
-
     }
 }
