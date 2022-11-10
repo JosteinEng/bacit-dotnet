@@ -4,11 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-
-
+@{
+    Layout = "_LayoutButton";
+}
 
 @*
-### All suggestions list ###
+    ### All suggestions list ###
 *@
 
 <div class="border p-3 pb-5">
@@ -42,8 +43,8 @@
                     </div>
 
                     @*
-                    The following loop will loop through all the submitted suggestions and list them in a dropdown list
-                    that can be expanded and collapsed by the user to view the details of each suggestion. The default value is collapsed.
+                        The following loop will loop through all the submitted suggestions and list them in a dropdown list
+                        that can be expanded and collapsed by the user to view the details of each suggestion. The default value is collapsed.
                     *@
                     @{
                         var forslagsnr = 1;
@@ -67,10 +68,10 @@
                                     </div>
 
                                     @*
-                            This code creates a unique div ID that is used by the loop to display each row.
-                            The last digit of the ID is an increasing number so that each row gets its own unique ID.
-                            This is needed for the expansion of the rows to work.
-                            *@
+                                        This code creates a unique div ID that is used by the loop to display each row.
+                                        The last digit of the ID is an increasing number so that each row gets its own unique ID.
+                                        This is needed for the expansion of the rows to work.
+                                    *@
                                     <div id="forslag-@forslagsnr" class="collapse">
                                         <div class="border border-top-0">
                                             <div class="container-fluid mt-3">
@@ -89,7 +90,7 @@
 
                                                                 <b>Status:</b><i> @objSuggestion.Status </i>
 
-                                                                
+
                                                                 <section class="py-5">
                                                                     <ul class="timeline">
                                                                         <li class="timeline-item mb-5">
@@ -137,7 +138,7 @@
                                                                         </li>
                                                                     </ul>
                                                                 </section>
-                                                                
+
 
                                                             </div>
                                                         </div>
@@ -164,11 +165,11 @@
                                                                 <p><b>Førbilde</b></p>
 
                                                                 @*
-                                                        The following code will look for attached pictures for each of the suggestions.
-                                                        If a picture is found within the database it will be presented as a clickable thumbnail.
-                                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
-                                                        size will depend on the viewport of the device that is being used.
-                                                        *@
+                                                                    The following code will look for attached pictures for each of the suggestions.
+                                                                    If a picture is found within the database it will be presented as a clickable thumbnail.
+                                                                    When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                                                    size will depend on the viewport of the device that is being used.
+                                                                *@
 
                                                                 @if (objSuggestion.Attachments == null)
                                                                 {
@@ -203,11 +204,11 @@
                                                                 <p><b>Etterbilde</b></p>
 
                                                                 @*
-                                                        The following code will look for attached pictures for each of the suggestions.
-                                                        If a picture is found within the database it will be presented as a clickable thumbnail.
-                                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
-                                                        size will depend on the viewport of the device that is being used.
-                                                        *@
+                                                                    The following code will look for attached pictures for each of the suggestions.
+                                                                    If a picture is found within the database it will be presented as a clickable thumbnail.
+                                                                    When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                                                    size will depend on the viewport of the device that is being used.
+                                                                *@
 
                                                                 @if (objSuggestion.Attachments == null)
                                                                 {
@@ -240,9 +241,9 @@
                                                     <div class="d-grid pb-3">
                                                         <div class="btn-group" role="group">
                                                             <a asp-controller="Suggestion" asp-action="Edit" asp-route-id="@objSuggestion.SuggestionId"
-                                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
+                                                               class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
                                                             <a asp-controller="Suggestion" asp-action="Delete" asp-route-id="@objSuggestion.SuggestionId"
-                                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
+                                                               class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -265,7 +266,7 @@
 
 
     @*
-    ### Just do it suggestions ###
+        ### Just do it suggestions ###
     *@
 
     <h3 class="text-center pt-3">
@@ -301,8 +302,8 @@
 
 
                     @*
-                    The following loop will loop through all the submitted Just-do-it-suggestions and list them in a dropdown list
-                    that can be expanded and collapsed by the user to view the details of each suggestion. The default value is collapsed.
+                        The following loop will loop through all the submitted Just-do-it-suggestions and list them in a dropdown list
+                        that can be expanded and collapsed by the user to view the details of each suggestion. The default value is collapsed.
                     *@
 
 
@@ -328,10 +329,10 @@
                                     </div>
 
                                     @*
-                            This code creates a new div ID that is used by the loop to display each row.
-                            The last digit of the ID is an increasing number so that each row gets its own unique ID.
-                            This is needed for the expansion of the rows to work.
-                            *@
+                                        This code creates a new div ID that is used by the loop to display each row.
+                                        The last digit of the ID is an increasing number so that each row gets its own unique ID.
+                                        This is needed for the expansion of the rows to work.
+                                    *@
                                     <div id="justdoit-@justdoitnr" class="collapse">
                                         <div class="border border-top-0">
                                             <div class="container-fluid mt-3">
@@ -359,7 +360,7 @@
                                                         </div>
 
                                                     </div>
-                                          
+
 
 
 
@@ -369,11 +370,11 @@
                                                                 <p><b>Førbilde</b></p>
 
                                                                 @*
-                                                        The following code will look for attached pictures for each of the suggestions.
-                                                        If a picture is found within the database it will be presented as a clickable thumbnail.
-                                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
-                                                        size will depend on the viewport of the device that is being used.
-                                                        *@
+                                                                    The following code will look for attached pictures for each of the suggestions.
+                                                                    If a picture is found within the database it will be presented as a clickable thumbnail.
+                                                                    When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                                                    size will depend on the viewport of the device that is being used.
+                                                                *@
 
                                                                 @if (objJustdoit.Attachments == null)
                                                                 {
@@ -409,11 +410,11 @@
                                                                 <p><b>Etterbilde</b></p>
 
                                                                 @*
-                                                        The following code will look for attached pictures for each of the suggestions.
-                                                        If a picture is found within the database it will be presented as a clickable thumbnail.
-                                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
-                                                        size will depend on the viewport of the device that is being used.
-                                                        *@
+                                                                    The following code will look for attached pictures for each of the suggestions.
+                                                                    If a picture is found within the database it will be presented as a clickable thumbnail.
+                                                                    When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                                                    size will depend on the viewport of the device that is being used.
+                                                                *@
 
                                                                 @if (objJustdoit.Attachments == null)
                                                                 {
@@ -446,9 +447,9 @@
                                                     <div class="d-grid pb-3">
                                                         <div class="btn-group" role="group">
                                                             <a asp-controller="Justdoit" asp-action="Edit" asp-route-id="@objJustdoit.JustdoitId"
-                                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
+                                                               class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
                                                             <a asp-controller="Justdoit" asp-action="Delete" asp-route-id="@objJustdoit.JustdoitId"
-                                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
+                                                               class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
                                                         </div>
                                                     </div>
                                                 </div>

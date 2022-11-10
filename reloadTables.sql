@@ -3,11 +3,11 @@ use webAppDatabase;
 
 drop table if exists Suggestions;
 
+drop table if exists justdoit;
+
 drop table if exists Teams;
 
 drop table if exists users;
-
-drop table if exists justdoit;
 
 drop table if exists AspNetUserLogins;
 
@@ -115,6 +115,33 @@ create or replace table AspNetUserLogins
         foreign key (UserId) references AspNetUsers (Id)
 );
 
+create or replace table users
+(
+    Id             int auto_increment
+        primary key,
+    FirstName      varchar(255) null,
+    LastName       varchar(255) null,
+    Email          varchar(255) null,
+    Password       varchar(255) null,
+    EmployeeNumber varchar(255) null,
+    Team           varchar(255) null,
+    Role           varchar(255) null,
+    constraint Email
+        unique (Email),
+    constraint Id
+        unique (Id)
+);
+
+create table Teams
+(
+    teamID    int auto_increment
+        primary key,
+    team_name varchar(255) not null,
+    userID    int          not null,
+    constraint team_user_fk
+        foreign key (userID) references users (Id)
+);
+
 create or replace table justdoit
 (
     justdoitId  int auto_increment
@@ -128,32 +155,6 @@ create or replace table justdoit
     teamId      int          not null,
     constraint justdoit_team_fk
         foreign key (teamId) references Teams (teamID)
-);
-
-create or replace table users
-(
-    Id             int auto_increment
-        primary key,
-    Name           varchar(255) null,
-    Email          varchar(255) null,
-    Password       varchar(255) null,
-    EmployeeNumber varchar(255) null,
-    Team           varchar(255) null,
-    Role           varchar(255) null,
-    constraint Email
-        unique (Email),
-    constraint Id
-        unique (Id)
-);
-
-create or replace table Teams
-(
-    teamID    int auto_increment
-        primary key,
-    team_name varchar(255) not null,
-    userID    int          not null,
-    constraint team_user_fk
-        foreign key (userID) references users (Id)
 );
 
 create or replace table Suggestions
