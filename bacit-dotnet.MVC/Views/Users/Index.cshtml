@@ -2,85 +2,44 @@
 @using bacit_dotnet.MVC.Models.Account
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model bacit_dotnet.MVC.ViewModels.UserViewModel
-<h3>Registrerte brukere</h3>
 
-<a href="https://localhost:7041/Account/Register?returnurl=%2F">Lag ny bruker</a>
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <h3 class="text-dark d-inline-block">Brukere i systemet</h3>
+        <a class="btn btn-outline-dark d-inline-block float-end" href="https://localhost:7041/Account/Register?returnurl=%2F">Lag ny bruker</a>
+        <div class="row pb-2">
+            <hr />
+            <table>
+                <tr>
+                    <td>Fornavn</td>
+                    <td>Etternavn</td>
+                    <td>Ansattnummer</td>
+                    <td>Delete</td>
 
-@*@if(Model.Email!=null)
-    {
-        <form asp-action="save" asp-controller="users" method="post">
-            <ul>
-                <li>
-                    <label for="Name">Fornavn</label>
-                    <input type="text" name="FirstName" value="@Model.FirstName" />
-                </li>
-                <li>
-                    <label for="LastName">Etternavn</label>
-                    <input type="text" name="LastName" value="@Model.LastName" />
-                </li>
-                <li>
-                    <label for="Password">Passord</label>
-                    <input type="password" name="Password" value="@Model.Password" />
-                </li>
-                <li>
-                    <label for="Email">Ansattnummer</label>
-                    <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" name="Email" value="@Model.Email" />
-                </li>
-                <li>
-                    <label for="EmployeeNumber">Ansattnummer</label>
-                    <input type="text" name="EmployeeNumber" value="@Model.EmployeeNumber" />
-                </li>
-                <li>
-                    <label for="Team">Team</label>
-                    <input type="text" name="Team" value="@Model.Team" />
-                </li>
-                <li>
-                    <label for="Role">Role</label>
-                    <input type="Text" name="Role" value="@Model.Role" />
-                </li>
-            <li>
-                <label for="Role">Sett som administrator</label>
-                    <input asp-for="@Model.IsAdmin"/>
-            </li>
-                <li>
-                    <input type="submit" value="Lagre" />
-                </li>
-                <li>
-                    <a asp-controller="Users" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Avbryt</a>
+                </tr>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Email</td>
 
-                </li>
-            </ul>
-        </form>
-    }*@
+                        <td>
+                            <form asp-action="delete" asp-controller="account" method="post">
+                                <input type="hidden" name="Email" value="@user.Email" />
+                                <input type="submit" value="Slett" />
+                            </form>
+                        </td>
 
-<table>
-    <tr>
-        <td>Fornavn</td>
-        <td>Etternavn</td>
-        <td>Ansattnummer</td>
-        <td>Delete</td>
-
-    </tr>
-    @foreach (var user in Model.Users)
-    {
-        <tr>
-            <td>@user.FirstName</td>
-            <td>@user.LastName</td>
-            <td>@user.Email</td>
-
-            <td>
-                <form asp-action="delete" asp-controller="account" method="post">
-                    <input type="hidden" name="Email" value="@user.Email" />
-                    <input type="submit" value="Slett" />
-                </form>
-            </td>
-
-            <td>
-                <form asp-action="edit" asp-controller="users" method="get">
-                    <input type="hidden" name="Email" value="@user.Email" />
-                    <input type="submit" value="Endre" />
-                </form>
-            </td>
-        </tr>
-    }
-</table>
+                        <td>
+                            <form asp-action="edit" asp-controller="users" method="get">
+                                <input type="hidden" name="Email" value="@user.Email" />
+                                <input type="submit" value="Endre" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</form>
