@@ -41,6 +41,8 @@ create or replace table AspNetRoles
     ConcurrencyStamp varchar(255) null
 );
 
+insert into AspNetRoles(id, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
+
 create or replace table AspNetUsers
 (
     Id                   varchar(255)                          not null
@@ -122,7 +124,10 @@ create or replace table justdoit
     description varchar(500) not null,
     createdDate datetime     not null,
     category    varchar(50)  not null,
-    attachments longblob     null
+    attachments longblob     null,
+    teamId      int          not null,
+    constraint justdoit_team_fk
+        foreign key (teamId) references Teams (teamID)
 );
 
 create or replace table users
