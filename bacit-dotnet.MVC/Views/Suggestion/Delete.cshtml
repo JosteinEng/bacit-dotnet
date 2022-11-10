@@ -41,6 +41,12 @@
             </select>
         </div>
         <div class="mb-3">
+            <label asp-for="Phase">PDSA-fase</label>
+            <select asp-for="Phase" disabled="disabled" class="form-control">
+                <option value="@Model.Phase" disabled>@Model.Phase</option>
+            </select>
+        </div>
+        <div class="mb-3">
             <label asp-for="Category">Kategori</label>
             <select asp-for="Category" disabled="disabled" class="form-control">
                 <option value="@Model.Category" disabled>@Model.Category</option>

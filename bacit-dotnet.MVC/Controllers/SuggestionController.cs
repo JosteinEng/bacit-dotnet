@@ -103,6 +103,7 @@ namespace bacit_dotnet.MVC.Controllers
                 Description = suggestionFromDb.Description,
                 Deadline = suggestionFromDb.Deadline,
                 Status = suggestionFromDb.Status,
+                Phase = suggestionFromDb.Phase,
                 Category = suggestionFromDb.Category,
                 TeamId = suggestionFromDb.TeamId,
                 Teams = teams
@@ -130,6 +131,7 @@ namespace bacit_dotnet.MVC.Controllers
                 Description = objSuggestions.Description,
                 Deadline = objSuggestions.Deadline,
                 Status = objSuggestions.Status,
+                Phase = objSuggestions.Phase,
                 Category = objSuggestions.Category,
                 TeamId = objSuggestions.TeamId
             };

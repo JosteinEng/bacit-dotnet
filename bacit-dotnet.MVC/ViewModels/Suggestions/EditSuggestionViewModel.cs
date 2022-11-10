@@ -26,7 +26,10 @@ public class EditSuggestionViewModel
     
     [Required]
     public string? Status { get; set; }
-        
+
+    [Required]
+    public string? Phase { get; set; }
+
     [Required]
     public string? Category { get; set; }
 

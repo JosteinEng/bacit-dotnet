@@ -51,9 +51,22 @@
             <select asp-for="Status" class="form-control">
                 <option value="@Model.Status" disabled>@Model.Status</option>
                 <option value="Opprettet">Opprettet</option>
-                <option value="Avslått">Avslått</option>
                 <option value="Under behandling">Under behandling</option>
+                <option value="Sluttfase">Sluttfase</option>
+                <option value="Avslått">Avslått</option>
                 <option value="Gjennomført">Gjennomført</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Phase">PDSA-fase</label>
+            <select asp-for="Phase" class="form-control">
+                <option value="@Model.Phase" disabled>@Model.Phase</option>
+                <option value="Plan">Plan</option>
+                <option value="Do">Do</option>
+                <option value="Study">Study</option>
+                <option value="Act">Act</option>
             </select>
             <span asp-validation-for="Status" class="text-danger"></span>
         </div>
