@@ -15,6 +15,7 @@ $(() => {
     const imgSizeWarningAfter = $("#imageSizeWarningAfter");
     const imgTypeWarningAfter = $("#imageTypeWarningAfter");
     const imgPreview = $("#imagePreview");
+    const submitBtn = $("#submitBtn");
     const supportedImageTypes = ["jpeg", "jpg", "png","heic","heif"];
 
     //One unique variable for each validation function
@@ -22,30 +23,23 @@ $(() => {
     var unvalidExtensionBefore = 0;
     var unvalidSizeAfter = 0;
     var unvalidExtensionAfter = 0;
-
-    let fileReader = new FileReader();
-
+    
     // * Listen for file change on imageInputBefore
-    imgInputBefore.on("change", () => {
+    imgInputBefore.on("change", (e) => {
 
         validateFileSizeBefore();
         validateFileTypeBefore();
         checkImageInputs();
-
-        // TODO+Release: Resurrect image-preview
-
-        //fileReader.readAsDataURL(imgInput.get(0).files[0]);
-        //fileReader.onload = function () {
-
-        //    imgPreview.onload = function () {
-        //        imgPreview.height = 400;
-        //        imgPreview.width = 400;
-        //    }
-        //    imgPreview.onerror = function () {
-        //        alert("Make sure image has correct file type");
-        //    }
-        //    imgPreview.src = fileReader.result.toString();
-        /*        };*/
+        
+        if (e.target.files.length === 0) {
+            console.log("no files")
+            return;
+        }
+        
+        let src = URL.createObjectURL(e.target.files[0]);
+               
+        imgPreview.attr("src", src);
+        imgPreview.css("display", "block");
     });
 
     // * Listen for file change on imageInputAfter

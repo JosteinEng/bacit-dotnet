@@ -20,5 +20,12 @@ namespace bacit_dotnet.MVC.Interfaces
 
         // returns all teams added to the db
         public Teams[] GetAllTeamsAndUsers();
+
+        // returns bool for usage of a team in a suggestion
+        public bool IsTeamInUseSuggestion(int teamId);
+        
+        // returns bool for usage of a team in a justdoit
+        public bool IsTeamInUseJustdoit(int teamId);
+
     }
 }

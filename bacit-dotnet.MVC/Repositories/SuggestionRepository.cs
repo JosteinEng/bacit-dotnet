@@ -17,6 +17,12 @@ namespace bacit_dotnet.MVC.Repositories
 
         public int Add(Suggestions objSuggestion)
         {
+            var existingTeam = GetSuggestionBySuggestionId(objSuggestion.SuggestionId);
+            if (existingTeam != null)
+            {
+                return 0;
+            }
+            
             _context.Suggestions.Add(objSuggestion);
             _context.SaveChanges();
 
@@ -31,10 +37,13 @@ namespace bacit_dotnet.MVC.Repositories
                 return 0;
             }
 
-
+            if (objSuggestions.Attachments != null && objSuggestions.Attachments.Length > 0)
+            {
+                suggestionBeforeEdit.Attachments = objSuggestions.Attachments;
+            }
+            
             // TODO: Når user system er på plass. Validere at forslag tilhører brukeren ved endring eller sletting.
-
-
+            
             suggestionBeforeEdit.EmployeeId = objSuggestions.EmployeeId;
             suggestionBeforeEdit.Title = objSuggestions.Title;
             suggestionBeforeEdit.Description = objSuggestions.Description;
@@ -43,18 +52,20 @@ namespace bacit_dotnet.MVC.Repositories
             suggestionBeforeEdit.Phase = objSuggestions.Phase;
             suggestionBeforeEdit.Category = objSuggestions.Category;
             suggestionBeforeEdit.TeamId = objSuggestions.TeamId;
+            suggestionBeforeEdit.UserId = objSuggestions.UserId;
 
             return _context.SaveChanges();
         }
 
         public Suggestions? GetSuggestionBySuggestionId(int suggestionId)
         {
-            return _context.Suggestions.Include(x => x.Team).FirstOrDefault(x => x.SuggestionId == suggestionId);
+            return _context.Suggestions.Include(x => x.Team).Include(x => x.User).FirstOrDefault(x => x.SuggestionId == suggestionId);
         }
 
         public Suggestions[] GetAllSuggestions()
         {
-            return _context.Suggestions.Include(x => x.Team).ToArray();
+            
+            return _context.Suggestions.Include(x => x.Team).Include(x => x.User).ToArray();
         }
 
         public Suggestions? GetSuggestionByEmployeeId(int employeeId)

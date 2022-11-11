@@ -12,11 +12,13 @@ namespace bacit_dotnet.MVC.Controllers
     {
         private readonly ISuggestionRepository _suggestionRepository;
         private readonly ITeamRepository _teamRepository;
+        private readonly IUserRepository _userRepository;
 
-        public SuggestionController(ISuggestionRepository useRepository, ITeamRepository teamRepository)
+        public SuggestionController(ISuggestionRepository suggestionRepository, ITeamRepository teamRepository, IUserRepository userRepository)
         {
-            _suggestionRepository = useRepository;
+            _suggestionRepository = suggestionRepository;
             _teamRepository = teamRepository;
+            _userRepository = userRepository;
         }
 
         public IActionResult Index()
@@ -33,10 +35,12 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult Create()
         {
             var teams = _teamRepository.GetAllTeamsAndUsers();
+            var users = _userRepository.GetUsers();
 
             var createSuggestionViewModel = new CreateSuggestionViewModel
             {
-                Teams = teams
+                Teams = teams,
+                Users = users
             };
             
             return View(createSuggestionViewModel);
@@ -47,23 +51,36 @@ namespace bacit_dotnet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([FromForm] CreateSuggestionViewModel objSuggestions)
         {
-            if (ModelState.IsValid is false)
+            if (!ModelState.IsValid)
             {
                 TempData["error"] = "Verdier er ikke gyldige";
-                return View(objSuggestions);
+                return RedirectToAction("Create");
             }
 
+            var uploadedAttachment = Array.Empty<byte>();
+            
             if (objSuggestions.Attachments != null && objSuggestions.Attachments.Length > 0)
             {
                 using (var memoryStream = new MemoryStream())
                 {
                     objSuggestions.Attachments.CopyTo(memoryStream);
-                    objSuggestions.Suggestion.Attachments = memoryStream.ToArray();
+                    uploadedAttachment  = memoryStream.ToArray();
                 }
             }
 
 
-            var newSuggestionId = _suggestionRepository.Add(objSuggestions.Suggestion);
+            var newSuggestionId = _suggestionRepository.Add(new Suggestions
+            {
+                EmployeeId = objSuggestions.EmployeeId.Value,
+                Title = objSuggestions.Title,
+                Description = objSuggestions.Description,
+                Deadline = (DateTime)objSuggestions.Deadline,
+                Status = objSuggestions.Status,
+                Category = objSuggestions.Category,
+                TeamId = objSuggestions.TeamId,
+                UserId = objSuggestions.UserId,
+                Attachments = uploadedAttachment
+            });
 
             if (newSuggestionId > 0)
             {
@@ -75,13 +92,13 @@ namespace bacit_dotnet.MVC.Controllers
                 TempData["error"] = "Forslag ble ikke opprettet";
             }
 
-            return View(objSuggestions);
+            return RedirectToAction("Create");
         }
 
         //Get
         public IActionResult Edit(int? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id <= 0)
             {
                 return NotFound();
             }
@@ -94,6 +111,7 @@ namespace bacit_dotnet.MVC.Controllers
             }
 
             var teams = _teamRepository.GetAllTeamsAndUsers();
+            var users = _userRepository.GetUsers();
 
             var suggestionToEdit = new EditSuggestionViewModel
             {
@@ -106,7 +124,9 @@ namespace bacit_dotnet.MVC.Controllers
                 Phase = suggestionFromDb.Phase,
                 Category = suggestionFromDb.Category,
                 TeamId = suggestionFromDb.TeamId,
-                Teams = teams
+                UserId = suggestionFromDb.UserId,
+                Teams = teams,
+                Users = users
             };
 
             return View(suggestionToEdit);
@@ -115,7 +135,7 @@ namespace bacit_dotnet.MVC.Controllers
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(EditSuggestionViewModel objSuggestions)
+        public IActionResult Edit([FromForm]EditSuggestionViewModel objSuggestions)
         {
             if (!ModelState.IsValid)
             {
@@ -123,6 +143,19 @@ namespace bacit_dotnet.MVC.Controllers
                 return View(objSuggestions);
             }
 
+            
+            
+            var uploadedAttachment = Array.Empty<byte>();
+            
+            if (objSuggestions.Attachment != null && objSuggestions.Attachment.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    objSuggestions.Attachment.CopyTo(memoryStream);
+                    uploadedAttachment  = memoryStream.ToArray();
+                }
+            }
+            
             var updatedSuggestion = new Suggestions
             {
                 SuggestionId = objSuggestions.SuggestionId,
@@ -133,7 +166,10 @@ namespace bacit_dotnet.MVC.Controllers
                 Status = objSuggestions.Status,
                 Phase = objSuggestions.Phase,
                 Category = objSuggestions.Category,
-                TeamId = objSuggestions.TeamId
+                TeamId = objSuggestions.TeamId,
+                UserId = objSuggestions.UserId,
+                
+                Attachments = uploadedAttachment
             };
 
             var rowsAffectedByUpdate = _suggestionRepository.Update(updatedSuggestion);
@@ -155,7 +191,7 @@ namespace bacit_dotnet.MVC.Controllers
         //Get
         public IActionResult Delete(int? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id <= 0)
             {
                 return NotFound();
             }
@@ -175,7 +211,7 @@ namespace bacit_dotnet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteSuggestion(int? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id <= 0)
             {
                 return NotFound();
             }

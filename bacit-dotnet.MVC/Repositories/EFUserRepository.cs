@@ -63,5 +63,15 @@ namespace bacit_dotnet.MVC.Repositories
             dataContext.SaveChanges();
             SetRoles(user.Email, roles);
         }
+
+        public bool IsUserInUseTeam(string email)
+        {
+            return dataContext.Teams.Any(x => x.User.Email == email);
+        }
+
+        public bool IsUserInUseSuggestion(string email)
+        {
+            return dataContext.Suggestions.Any(x => x.User.Email == email);
+        }
     }
 }

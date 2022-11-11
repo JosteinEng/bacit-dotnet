@@ -6,14 +6,14 @@
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h3 class="text-dark">Legg til nytt team</h3>
-            <hr />
+            <hr/>
         </div>
         @*
         This line of code will show a summary of all errors at the top of the page.
         <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
             <label asp-for="TeamName">Team navn</label>
-            <input asp-for="TeamName" class="form-control" />
+            <input asp-for="TeamName" class="form-control"/>
             <span asp-validation-for="TeamName" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -26,26 +26,27 @@
                 <option value="" selected diasbled>Velg en Teamleder</option>
                 @foreach (var user in Model.Users)
                 {
-                    <option value="@user.Id">@user.FirstName</option>
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
                 }
             </select>
 
             <span asp-validation-for="UserId" class="text-danger">
             </span>
         </div>
+    </div>
 
-        <br />
+    <br/>
 
-        <div class="d-grid pb-3">
-            <div class="btn-group" role="group">
-                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Opprett</button>
-                <a asp-controller="Team" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til Team</a>
-            </div>
+    <div class="d-grid pb-3">
+        <div class="btn-group" role="group">
+            <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Opprett</button>
+            <a asp-controller="Team" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til Team</a>
         </div>
     </div>
 </form>
 
 @*This script makes sure that the validation process is done on client-side instead of server-side*@
+
 @section Scripts{
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
 }

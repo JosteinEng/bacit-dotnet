@@ -1,10 +1,10 @@
 ﻿@model bacit_dotnet.MVC.ViewModels.EditSuggestionViewModel
 
-<form method="post" asp-action="Edit">
+<form method="post" enctype="multipart/form-data" asp-action="Edit">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-dark">Rediger forslag</h2>
-            <hr />
+            <hr/>
         </div>
         @*
         This line of code will show a summary of all errors at the top of the page.
@@ -12,22 +12,22 @@
         <div class="mb-3">
             <label asp-for="SuggestionId">Forslags ID</label>
             <h6>@Model.SuggestionId</h6>
-            <input asp-for="SuggestionId" type="hidden" class="form-control" />
+            <input asp-for="SuggestionId" type="hidden" class="form-control"/>
             <span asp-validation-for="SuggestionId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="EmployeeId">Ansatt ID</label>
-            <input asp-for="EmployeeId" class="form-control" />
+            <input asp-for="EmployeeId" class="form-control"/>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Title">Tittel</label>
-            <input asp-for="Title" class="form-control" />
+            <input asp-for="Title" class="form-control"/>
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Description">Beskrivelse</label>
-            <input asp-for="Description" class="form-control" />
+            <input asp-for="Description" class="form-control"/>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -41,11 +41,21 @@
             <span asp-validation-for="TeamId" class="text-danger"></span>
         </div>
         <div class="mb-3">
+            <label asp-for="UserId">Ansvar</label>
+            <select asp-for="UserId">
+                @foreach (var user in Model.Users)
+                {
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
+                }
+            </select>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
             <label asp-for="Deadline">Tidsfrist</label>
-            <input asp-for="Deadline" type="date" class="form-control" />
+            <input asp-for="Deadline" type="date" class="form-control"/>
             <span asp-validation-for="Deadline" class="text-danger"></span>
         </div>
-        
+
         <div class="mb-3">
             <label asp-for="Status">Status</label>
             <select asp-for="Status" class="form-control">
@@ -91,11 +101,39 @@
             </select>
             <span asp-validation-for="Category" class="text-danger"></span>
         </div>
+        <!-- Image -->
+        <div class="container-fluid mb-3">
+            <div class="row">
+
+                <!-- Image before -->
+                <div class="col-sm-5 text-black align-content-center">
+                    Bilde før
+                    <input asp-for="Attachment" id="imageInputBefore" class="form-control pt-1 mb-1"
+                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)"/>
+
+                    <span id="imageSizeWarningBefore" class="text-danger" style="display: none;"></span>
+                    <span id="imageTypeWarningBefore" class="text-danger" style="display: none"></span>
+                </div>
+
+                <!-- Image after -->
+                @*<div class="col-sm-5 text-black align-content-center">
+                        Bilde etter
+                            <input asp-for="Attachments" id="imageInputAfter" class="form-control pt-1"
+                                   type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
         
-        <br />
+                            <span id="imageSizeWarningAfter" class="text-danger" style="display: none;"></span>
+                            <span id="imageTypeWarningAfter" class="text-danger" style="display: none"></span>
+                        </div>*@
+                <!-- Image preview field -->
+
+                <img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>  
+
+            </div>
+        </div>
+        <br/>
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">
-                <button type="submit" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Oppdater</button>
+                <button id="submitBtn" type="submit" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Oppdater</button>
                 <a asp-controller="Suggestion" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Tilbake</a>
             </div>
         </div>
@@ -104,7 +142,10 @@
 
 
 <!--This script makes sure that the validation process is done on client-side instead of server-side-->
+
 @section Scripts{
 
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
+    <script src="~/js/createSuggestion.js"></script>
+
 }
