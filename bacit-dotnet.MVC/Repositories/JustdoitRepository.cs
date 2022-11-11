@@ -31,6 +31,10 @@ namespace bacit_dotnet.MVC.Repositories
                 return 0;
             }
 
+            if (objJustdoit.Attachments != null && objJustdoit.Attachments.Length > 0)
+            {
+                justdoitBeforeEdit.Attachments = objJustdoit.Attachments;
+            }
 
             // TODO: Når user system er på plass. Validere at forslag tilhører brukeren ved endring eller sletting.
 

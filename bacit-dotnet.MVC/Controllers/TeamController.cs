@@ -141,9 +141,15 @@ namespace bacit_dotnet.MVC.Controllers
                 return NotFound();
             }
             
-            if (_teamRepository.ForeignKeyInUse(id.Value))
+            if (_teamRepository.IsTeamInUseSuggestion(id.Value))
             {
                 TempData["error"] = "Kan ikke slette team. Team tilhører et forslag!";
+                return RedirectToAction("Index");
+            }
+            
+            if (_teamRepository.IsTeamInUseJustdoit(id.Value))
+            {
+                TempData["error"] = "Kan ikke slette team. Team tilhører et JustDoIt!";
                 return RedirectToAction("Index");
             }
 

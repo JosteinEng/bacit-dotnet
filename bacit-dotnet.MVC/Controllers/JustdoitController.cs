@@ -49,35 +49,44 @@ namespace bacit_dotnet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([FromForm]CreateJustdoitViewModel objJustdoit)
         {
-            if (ModelState.IsValid is false)
+            if (!ModelState.IsValid)
             {
                 TempData["error"] = "Verdier er ikke gyldige";
-                return View(objJustdoit);
+                return RedirectToAction("Create");
             }
 
+            var uploadedAttachment = Array.Empty<byte>();
+            
             if(objJustdoit.Attachments != null && objJustdoit.Attachments.Length > 0)
             {
                 using (var memoryStream = new MemoryStream())
                 {
                     objJustdoit.Attachments.CopyTo(memoryStream);
-                    objJustdoit.Justdoit.Attachments = memoryStream.ToArray();
+                    uploadedAttachment = memoryStream.ToArray();
                 }
             }
-
-
-            var newJustdoitId = _justdoitRepository.Add(objJustdoit.Justdoit);
+            
+            var newJustdoitId = _justdoitRepository.Add(new Justdoit
+            {
+                EmployeeId = objJustdoit.EmployeeId.Value,
+                Title = objJustdoit.Title,
+                Description = objJustdoit.Description,
+                Category = objJustdoit.Category,
+                TeamId = objJustdoit.TeamId,
+                Attachments = uploadedAttachment
+            });
 
             if (newJustdoitId > 0)
             {
-                TempData["success"] = "Forslag ble opprettet";
+                TempData["success"] = "JustDoIt ble opprettet";
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                TempData["error"] = "Forslag ble ikke opprettet";
+                TempData["error"] = "JustDoIt ble ikke opprettet";
             }
 
-            return View(objJustdoit);
+            return RedirectToAction("Create");
         }
 
         //Get
@@ -114,14 +123,25 @@ namespace bacit_dotnet.MVC.Controllers
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(EditJustdoitViewModel objJustdoit)
+        public IActionResult Edit([FromForm]EditJustdoitViewModel objJustdoit)
         {
             if (!ModelState.IsValid)
             {
                 TempData["error"] = "Ugyldige verdier i skjem";
                 return View(objJustdoit);
             }
-
+            
+            var uploadedAttachment = Array.Empty<byte>();
+            
+            if (objJustdoit.Attachment != null && objJustdoit.Attachment.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    objJustdoit.Attachment.CopyTo(memoryStream);
+                    uploadedAttachment  = memoryStream.ToArray();
+                }
+            }
+            
             var updatedJustdoit = new Justdoit()
             {
                 JustdoitId = objJustdoit.JustdoitId,
@@ -129,7 +149,9 @@ namespace bacit_dotnet.MVC.Controllers
                 Title = objJustdoit.Title,
                 Description = objJustdoit.Description,
                 Category = objJustdoit.Category,
-                TeamId = objJustdoit.TeamId
+                TeamId = objJustdoit.TeamId,
+                
+                Attachments = uploadedAttachment
             };
 
             var rowsAffectedByUpdate = _justdoitRepository.Update(updatedJustdoit);

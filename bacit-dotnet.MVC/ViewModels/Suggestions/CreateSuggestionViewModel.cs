@@ -15,7 +15,7 @@ namespace bacit_dotnet.MVC.ViewModels
         [ValidateNever]
         public UserEntity[] Users { get; set; }
         
-        [Required]
+        [Required(ErrorMessage = "Vennligst velg en bruker.")]
         [Range(1, int.MaxValue)]
         public int? EmployeeId { get; set; }
         

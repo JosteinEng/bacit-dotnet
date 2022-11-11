@@ -10,5 +10,7 @@ namespace bacit_dotnet.MVC.Interfaces
         UserEntity[] GetUsers();
         void Delete(string email);
         bool IsAdmin(string email);
+        public bool IsUserInUseTeam(string email);
+        public bool IsUserInUseSuggestion(string email);
     }
 }

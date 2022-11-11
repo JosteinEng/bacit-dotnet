@@ -6,42 +6,43 @@
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h3 class="text-dark">Legg til ny Just Do It</h3>
-            <hr />
+            <hr/>
         </div>
         @*
         This line of code will show a summary of all errors at the top of the page.
         <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
-            <label asp-for="Justdoit.EmployeeId">Ansatt ID</label>
-            <input asp-for="Justdoit.EmployeeId" class="form-control" />
-            <span asp-validation-for="Justdoit.EmployeeId" class="text-danger"></span>
+            <label asp-for="EmployeeId">Ansatt ID</label>
+            <input asp-for="EmployeeId" class="form-control"/>
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Justdoit.Title">Tittel</label>
-            <input asp-for="Justdoit.Title" class="form-control" minlength="2" maxlength="30" /><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">30/30</span>
-            <span asp-validation-for="Justdoit.Title" class="text-danger">
+            <label asp-for="Title">Tittel</label>
+            <input asp-for="Title" class="form-control" minlength="2" maxlength="30"/><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">30/30</span>
+            <span asp-validation-for="Title" class="text-danger">
             </span>
         </div>
         <div class="mb-3">
-            <label asp-for="Justdoit.Description">Beskrivelse</label>
-            <textarea asp-for="Justdoit.Description" class="form-control" style="min-height: 150px"></textarea>
-            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span><span asp-validation-for="Justdoit.Description" class="text-danger"></span>
+            <label asp-for="Description">Beskrivelse</label>
+            <textarea asp-for="Description" class="form-control" style="min-height: 150px"></textarea>
+            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span>
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-                <div class="mb-3">
-                    <label asp-for="Justdoit.TeamId">Team</label>
-                    <select asp-for="Justdoit.TeamId">
-                        <option value="" selected disabled>Velg et Team</option>
-                        @foreach (var team in Model.Teams)
-                        {
-                            <option value="@team.TeamId">@team.TeamName</option>
-                        }
-                    </select>
-                    <span asp-validation-for="Justdoit.TeamId" class="text-danger"></span>
-                </div>        
-        
         <div class="mb-3">
-            <label asp-for="Justdoit.Category">Kategori</label>
-            <select asp-for="Justdoit.Category"class="form-control">
+            <label asp-for="TeamId">Team</label>
+            <select asp-for="TeamId">
+                <option value="" selected disabled>Velg et Team</option>
+                @foreach (var team in Model.Teams)
+                {
+                    <option value="@team.TeamId">@team.TeamName</option>
+                }
+            </select>
+            <span asp-validation-for="TeamId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Category">Kategori</label>
+            <select asp-for="Category"class="form-control">
                 <option value="" selected disabled>Velg en kategori</option>
                 <option value="HMS">HMS</option>
                 <option value="Kvalitet">Kvalitet</option>
@@ -57,22 +58,29 @@
                 <option value="Bærekraft">Bærekraft</option>
                 <option value="Industri 4.0">Industri 4.0</option>
             </select>
-            <span asp-validation-for="Justdoit.Category" class="text-danger"></span>
+            <span asp-validation-for="Category" class="text-danger"></span>
         </div>
+        <div class="container-fluid mb-3">
+            <div class="row">
 
-        <!-- Image -->
-        <div class="mb-3">
-            <label asp-for="Attachments">Last opp bilde</label>
-            <input asp-for="Attachments" id="imageInput" class="form-control pt-1"
-                   type="file" accept=".jpg, .png, .jpeg" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
-            <span id="imageWarning" class="text-danger" style="display: none;"></span>
-            <span id="imageTypeWarning" class="text-danger" style="display: none"></span>
+                <!-- Image before -->
+                <div class="col-sm-5 text-black align-content-center">
+                    Last opp et bilde
+                    <input asp-for="Attachments" id="imageInputBefore" class="form-control pt-1 mb-1"
+                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
 
-            <!-- Image preview field -->
-            <img id="imagePreview" src="" alt="" />
-        </div>
+                    <span id="imageSizeWarningBefore" class="text-danger" style="display: none;"></span>
+                    <span id="imageTypeWarningBefore" class="text-danger" style="display: none"></span>
+                </div>
+                
+                <!-- Image preview field -->
 
-        <br />
+                <img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>  
+
+            </div>
+        </div>        
+
+        <br/>
 
         @*
         Creates a group of buttons for submit and return to list buttons.
@@ -89,16 +97,17 @@
 </form>
 
 <!--This script makes sure that the validation process is done on client-side instead of server-side-->
+
 @section Scripts{
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
     <script src="~/js/createSuggestion.js"></script>
 }
 
-    @*
+@*
     This script is used to count the remaining characters in the create suggestion form for the "title" and "description" fields.
     The function will count backwards from the fields' maximum value until it reaches zero.
 *@
-    <script type="text/javascript">
+<script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('Justdoit_Title').onkeyup = function () {
                 document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30";

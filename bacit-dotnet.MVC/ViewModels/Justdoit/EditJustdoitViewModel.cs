@@ -26,4 +26,7 @@ public class EditJustdoitViewModel
     
     [Required]
     public string? Category { get; set; }
+    
+    public IFormFile? Attachment { get; set; }
+
 }
