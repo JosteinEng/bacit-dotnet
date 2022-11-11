@@ -35,7 +35,7 @@
     @{
         var forslagsnr = 1;
         var attachment = 1;
-        var suggestionStatus = 1;
+        var suggestionTimeline = 1;
         var status = 0;
         var stateSuggestion = "success";
         foreach (var objSuggestion in Model.Suggestions)
@@ -50,7 +50,6 @@
                                     <div class="col-2 bg-light">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
                                     <div class="col-2 bg-light">@objSuggestion.Team.TeamName</div>
                                     <div class="col-3 bg-light">@objSuggestion.Status</div>
-
                                 </div>
 
                             </div>
@@ -113,20 +112,20 @@
                                             <div class="border" style="padding: 1rem;">
                                                 <p><b>Tidslinje</b></p>
                                                 <b>Status:</b><i> @objSuggestion.Status </i>
-                                                <div class="col-md p-3 my-0 text-black bg-white accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#status-@suggestionStatus">
+                                                <div class="col-md p-3 my-0 text-black bg-white accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#timeline-@suggestionTimeline">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             Trykk for å utvide
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="status-@suggestionStatus" class="collapse">
+                                                <div id="timeline-@suggestionTimeline" class="collapse">
                                                     <div class="bg-white text-black">
                                                         <section class="py-5">
                                                             <ul class="timeline">
                                                                 <li class="timeline-item mb-5">
-                                                                    <h5 class="fw-bold">Forslag opprettet</h5>
-                                                                    <p class="text-muted mb-2 fw-bold">07/11/2022</p>
+                                                                    <h5>Forslag opprettet</h5>
+                                                                    <p class="text-muted mb-2">07-11-2022</p>
                                                                     <p class="text-muted">
                                                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
                                                                         necessitatibus adipisci, ad alias, voluptate pariatur officia
@@ -136,8 +135,8 @@
                                                                 </li>
 
                                                                 <li class="timeline-item mb-5">
-                                                                    <h5 class="fw-bold">Forslag sendt til ansvarlig person</h5>
-                                                                    <p class="text-muted mb-2 fw-bold">07/11/2022</p>
+                                                                    <h5>Forslag sendt til ansvarlig person</h5>
+                                                                    <p class="text-muted mb-2">07-11-2022</p>
                                                                     <p class="text-muted">
                                                                         Quisque ornare dui nibh, sagittis egestas nisi luctus nec. Sed
                                                                         aliquet laoreet sapien, eget pulvinar lectus maximus vel.
@@ -146,8 +145,8 @@
                                                                 </li>
 
                                                                 <li class="timeline-item mb-5">
-                                                                    <h5 class="fw-bold">Under behandling</h5>
-                                                                    <p class="text-muted mb-2 fw-bold">07/11/2022</p>
+                                                                    <h5>Under behandling</h5>
+                                                                    <p class="text-muted mb-2">07-11-2022</p>
                                                                     <p class="text-muted">
                                                                         Orci varius natoque penatibus et magnis dis parturient montes,
                                                                         nascetur ridiculus mus. Nulla ullamcorper arcu lacus, maximus
@@ -158,8 +157,8 @@
                                                                 </li>
 
                                                                 <li class="timeline-item mb-5">
-                                                                    <h5 class="fw-bold">Forslag er gjennomført</h5>
-                                                                    <p class="text-muted mb-2 fw-bold">09/11/2022</p>
+                                                                    <h5>Forslag er gjennomført</h5>
+                                                                    <p class="text-muted mb-2">09-11-2022</p>
                                                                     <p class="text-muted">
                                                                         Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
                                                                         et urna sit amet massa dapibus tristique non finibus ligula. Nam
@@ -287,7 +286,7 @@
             </div>
             forslagsnr++;
             attachment++;
-            suggestionStatus++;
+            suggestionTimeline++;
         }
     }
 

@@ -1,14 +1,5 @@
 html {
     font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-html {
     position: relative;
     min-height: 100%;
 }
@@ -40,6 +31,8 @@ h4 {
     font-weight: lighter;
 }
 
+p, b, i, h5 {font-size: 16px;}
+
 .timeline {
     border-left: 1px solid hsl(0, 0%, 90%);
     position: relative;
@@ -54,9 +47,6 @@ h4 {
             position: absolute;
             display: block;
             top: 0;
-        }
-
-        .timeline .timeline-item:after {
             background-color: hsl(0, 0%, 90%);
             left: -38px;
             border-radius: 50%;
@@ -64,3 +54,14 @@ h4 {
             width: 11px;
             content: "";
         }
+
+        .timeline .timeline-item:after {
+
+        }
+
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
