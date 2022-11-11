@@ -17,39 +17,36 @@
 </div>
 
 <table class="table table-bordered table-striped" style="width: 100%">
+    <div class="border pt-0 pb-3">
+        <div class="container-fluid mt-3">
+            <div class="row">
+                <div class="col-3 text-black ms-2"><b>Teamnavn</b></div>
+                <div class="col-2 text-black p-0"><b>Teamleder</b></div>
+            </div>
+        </div>
+        @foreach (var objTeam in Model.Teams)
+        {
+        <tr>
+            <td width="40%">
+                @objTeam.TeamName
+            </td>
+            <td width="40%">
+                @string.Concat(objTeam.User.FirstName, " ", objTeam.User.LastName)
+            </td>
+            <td class="text-center">
+                <div class="w-75 btn-group text-center" role="group">
+                    <a asp-controller="Team" asp-action="Edit" asp-route-id="@objTeam.TeamId"
+                       class="btn btn-outline-dark create-suggestion-main">  Edit</a>
+                    <a asp-controller="Team" asp-action="Delete" asp-route-id="@objTeam.TeamId"
+                       class="btn btn-outline-dark create-suggestion-main">  Delete</a>
+                </div>
 
-	<div class="border pt-0 pb-3">
-		<div class="container-fluid mt-3">
-			<div class="row">
-				<div class="col-3 text-black ms-2"><b>Teamnavn</b></div>
-				<div class="col-2 text-black p-0"><b>Teamleder</b></div>
-			</div>
-		</div>
-
-		@foreach (var objTeam in Model.Teams)
-			{
-				<tr>
-					<td width="40%">
-						@objTeam.TeamName
-					</td>
-					<td width="40%">
-						@string.Concat(objTeam.User.FirstName)
-					</td>
-					<td class="text-center">
-					<div class="w-75 btn-group text-center" role="group">
-						<a asp-controller="Team" asp-action="Edit" asp-route-id="@objTeam.TeamId"
-						   class="btn btn-outline-dark create-suggestion-main">  Rediger</a>
-						<a asp-controller="Team" asp-action="Delete" asp-route-id="@objTeam.TeamId"
-						   class="btn btn-outline-dark create-suggestion-main">  Slett</a>
-					</div>
-
-					@*                    <div class="w-75 btn-group" role="group">
-		                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"
-		                    class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> &nbsp; Delete</a>
-		                    </div>*@
-					@*</td>*@
-		            
-				</tr>
-			}
-	</div>
-</table>
+                @*                    <div class="w-75 btn-group" role="group">
+                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"
+                    class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> &nbsp; Delete</a>
+                    </div>*@
+                @*</td>*@
+        </tr>
+    }
+    </div>
+    </table>

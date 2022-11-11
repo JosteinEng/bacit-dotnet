@@ -34,6 +34,7 @@
     @{
         var justdoitnr = 1;
         var attachmentJDI = 1;
+        var attachmentAfterJDI = 1;
         foreach (var objJust in Model.Justdoit)
         {
             <div class="container-fluid mt-3 p-0">
@@ -153,26 +154,27 @@
                                                     size will depend on the viewport of the device that is being used.
                                                 *@
 
-                                                @if (objJust.Attachments.Length == 0)
+                                                @if (objJust.AttachmentAfter.Length == 0)
+												
                                                 {
                                                     @:<p>Ingen bilde vedlagt.</p>
                                                 }
                                                 else
                                                 {
                                                     <center>
-                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachmentJDI-@(attachmentJDI)">
-                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJust.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachmentAfterJDI-@(attachmentAfterJDI)">
+                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJust.AttachmentAfter))" style="max-height: 300px; max-width: 100%;" />
                                                         </button>
                                                     </center>
                                                     <p class="text-center">Trykk på bildet for å forstørre</p>
-                                                    <div id="attachmentJDI-@(attachmentJDI)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentJDI-@(attachmentJDI)Label" aria-hidden="true">
+                                                    <div id="attachmentAfterJDI-@(attachmentAfterJDI)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentAfterJDI-@(attachmentAfterJDI)Label" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objJust.Attachments))" />
+                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objJust.AttachmentAfter))" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -197,6 +199,7 @@
             </div>
             justdoitnr++;
             attachmentJDI++;
+            attachmentAfterJDI++;
         }
     }
 </div>

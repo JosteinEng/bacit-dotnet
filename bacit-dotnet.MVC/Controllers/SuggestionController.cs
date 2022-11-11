@@ -67,8 +67,18 @@ namespace bacit_dotnet.MVC.Controllers
                     uploadedAttachment  = memoryStream.ToArray();
                 }
             }
-
-
+            
+            var uploadedAttachmentsAfter = Array.Empty<byte>();
+            
+            if (objSuggestions.AttchmentsAfter != null && objSuggestions.AttchmentsAfter.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    objSuggestions.AttchmentsAfter.CopyTo(memoryStream);
+                    uploadedAttachmentsAfter  = memoryStream.ToArray();
+                }
+            }
+            
             var newSuggestionId = _suggestionRepository.Add(new Suggestions
             {
                 EmployeeId = objSuggestions.EmployeeId.Value,
@@ -80,7 +90,9 @@ namespace bacit_dotnet.MVC.Controllers
                 Category = objSuggestions.Category,
                 TeamId = objSuggestions.TeamId,
                 UserId = objSuggestions.UserId,
+				
                 Attachments = uploadedAttachment
+                AttachmentsAfter = uploadedAttachmentsAfter
             });
 
             if (newSuggestionId > 0)
@@ -144,8 +156,6 @@ namespace bacit_dotnet.MVC.Controllers
                 return View(objSuggestions);
             }
 
-            
-            
             var uploadedAttachment = Array.Empty<byte>();
             
             if (objSuggestions.Attachment != null && objSuggestions.Attachment.Length > 0)
@@ -154,6 +164,17 @@ namespace bacit_dotnet.MVC.Controllers
                 {
                     objSuggestions.Attachment.CopyTo(memoryStream);
                     uploadedAttachment  = memoryStream.ToArray();
+                }
+            }
+
+            var uploadedAttachmentsAfter = Array.Empty<byte>();
+            
+            if (objSuggestions.AttchmentsAfter != null && objSuggestions.AttchmentsAfter.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    objSuggestions.AttchmentsAfter.CopyTo(memoryStream);
+                    uploadedAttachmentsAfter  = memoryStream.ToArray();
                 }
             }
             
@@ -170,7 +191,8 @@ namespace bacit_dotnet.MVC.Controllers
                 TeamId = objSuggestions.TeamId,
                 UserId = objSuggestions.UserId,
                 
-                Attachments = uploadedAttachment
+                Attachments = uploadedAttachment,
+                AttachmentsAfter = uploadedAttachmentsAfter
             };
 
             var rowsAffectedByUpdate = _suggestionRepository.Update(updatedSuggestion);

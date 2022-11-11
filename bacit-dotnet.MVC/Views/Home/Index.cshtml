@@ -51,6 +51,8 @@
                         var suggestionTimeline = 1;
                         var status = 0;
                         var stateSuggestion = "success";
+                        var attachmentAfter = 1;
+
                         foreach (var objSuggestion in Model.Suggestions)
                         {
                             <div class="container-fluid mt-3 p-0">
@@ -274,19 +276,19 @@
                                                                 else
                                                                 {
                                                                     <center>
-                                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachment-@(attachment)">
-                                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachmentAfter-@(attachmentAfter)">
+                                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" style="max-height: 300px; max-width: 100%;" />
                                                                         </button>
                                                                     </center>
                                                                     <p class="text-center">Trykk på bildet for å forstørre</p>
-                                                                    <div id="attachment-@(attachment)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachment-@(attachment)Label" aria-hidden="true">
+                                                                    <div id="attachmentAfter-@(attachmentAfter)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentAfter-@(attachmentAfter)Label" aria-hidden="true">
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" />
+                                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -313,6 +315,7 @@
                             forslagsnr++;
                             attachment++;
                             suggestionTimeline++;
+                            attachmentAfter++;
                         }
                     }
                 </div>
@@ -368,6 +371,7 @@
 
                         var justdoitnr = 1;
                         var attachmentJDI = 1;
+                        var attachmentAfterJDI = 1;
                         foreach (var objJustdoit in Model.Justdoit)
                         {
                             <div class="container-fluid mt-3 p-0">
@@ -480,19 +484,19 @@
                                                                 else
                                                                 {
                                                                     <center>
-                                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachmentJDI-@(attachmentJDI)">
-                                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachmentAfterJDI-@(attachmentAfterJDI)">
+                                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.AttachmentAfter))" style="max-height: 300px; max-width: 100%;" />
                                                                         </button>
                                                                     </center>
                                                                     <p class="text-center">Trykk på bildet for å forstørre</p>
-                                                                    <div id="attachmentJDI-@(attachmentJDI)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentJDI-@(attachmentJDI)Label" aria-hidden="true">
+                                                                    <div id="attachmentAfterJDI-@(attachmentAfterJDI)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentAfterJDI-@(attachmentAfterJDI)Label" aria-hidden="true">
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.Attachments))" />
+                                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objJustdoit.AttachmentAfter))" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -517,6 +521,7 @@
                             </div>
                             justdoitnr++;
                             attachmentJDI++;
+                            attachmentAfterJDI++;
                         }
                     }
                 </div>

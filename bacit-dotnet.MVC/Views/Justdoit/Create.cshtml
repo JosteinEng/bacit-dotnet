@@ -60,25 +60,35 @@
             </select>
             <span asp-validation-for="Category" class="text-danger"></span>
         </div>
+
+        <!-- Image -->
         <div class="container-fluid mb-3">
             <div class="row">
 
                 <!-- Image before -->
                 <div class="col-sm-5 text-black align-content-center">
-                    Last opp et bilde
+                Bilde før
                     <input asp-for="Attachments" id="imageInputBefore" class="form-control pt-1 mb-1"
-                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+                        type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
 
                     <span id="imageSizeWarningBefore" class="text-danger" style="display: none;"></span>
                     <span id="imageTypeWarningBefore" class="text-danger" style="display: none"></span>
                 </div>
-                
+
+                <!-- Image after -->
+                <div class="col-sm-5 text-black align-content-center">
+                    <input asp-for="AttachmentsAfter" id="imageInputAfter" class="form-control pt-1"
+                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+
+                    <span id="imageSizeWarningAfter" class="text-danger" style="display: none;"></span>
+                    <span id="imageTypeWarningAfter" class="text-danger" style="display: none"></span>
+                </div>
                 <!-- Image preview field -->
 
                 <img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>  
 
             </div>
-        </div>        
+        </div>       
 
         <br/>
 

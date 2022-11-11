@@ -40,6 +40,8 @@ namespace bacit_dotnet.MVC.Models
 
         public byte[]? Attachments { get; set; }
         
+        public byte[]? AttachmentsAfter { get; set; }
+        
         [ForeignKey("teamId")]
         [Required(ErrorMessage = "Vennligst velg et gyldig team.")]
         [Range(1, int.MaxValue)]
