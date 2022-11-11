@@ -406,3 +406,7 @@ FodyWeavers.xsd
 
 # Database
 /database
+
+#MAC/OS
+.DS_Store
+.idea/workspace.xml

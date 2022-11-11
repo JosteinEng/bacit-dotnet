@@ -1,7 +1,9 @@
-﻿namespace bacit_dotnet.MVC.ViewModels.Suggestions
+﻿using bacit_dotnet.MVC.Models;
+
+namespace bacit_dotnet.MVC.ViewModels
 {
     public class SuggestionsViewModel
     {
-        public Models.Suggestions[] Suggestions { get; set; }
+        public Suggestions[] Suggestions { get; set; }
     }
 }

@@ -1,0 +1,76 @@
+﻿@using bacit_dotnet.MVC.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model bacit_dotnet.MVC.ViewModels.UserViewModel
+
+<head>
+    <style>
+        ul {
+          list-style-type: none;
+        }
+    </style>
+</head>
+
+    <form asp-action="save" asp-controller="users" method="post" enctype="multipart/form-data">
+        <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h3 class="text-dark d-inline-block">Rediger bruker</h3>
+
+                <hr />
+
+            </div>
+                <ul class="p-0 m-0">
+                    <li>
+                        <div class="mb-3">
+                        <label for="Name">Fornavn</label>
+                        <br />
+                        <input class="form-control" type="text" name="FirstName" value="@Model.FirstName" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                        <label for="LastName">Etternavn</label>
+                        <br />
+                        <input class="form-control" type="text" name="LastName" value="@Model.LastName" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                        <label for="Password">Passord</label>
+                        <br />
+                        <input class="form-control" type="password" name="Password" value="@Model.Password" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                        <label for="Email">Ansattnummer</label>
+                        <br />
+                        <input class="form-control" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" name="Email" value="@Model.Email" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                        <label for="Team">Team</label>
+                        <br />
+                        <input class="form-control" type="text" name="Team" value="@Model.Team" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                        <div class="form-check form-switch">
+                          <label for="Role" class="form-check-label">Sett som administrator</label>
+                          <input asp-for="@Model.IsAdmin" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        </div>
+                        </div>
+                    </li>
+
+                    <br />
+
+                    <div class="d-grid pb-3">
+                        <div class="btn-group" role="group">
+                            <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Lagre</button>
+                            <a asp-controller="Users" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
+                        </div>
+                    </div>
+                </ul>
+        </div>
+    </form>

@@ -3,13 +3,13 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using bacit_dotnet.MVC.Data;
+using bacit_dotnet.MVC.DataAccess;
 
 #nullable disable
 
-namespace bacit_dotnet.MVC.Data.Migrations
+namespace bacit_dotnet.MVC.DataAccess
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(DataContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

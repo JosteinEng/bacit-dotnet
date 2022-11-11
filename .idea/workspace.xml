@@ -2,19 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cceee0cb-354b-49c6-b4ce-2842c91b25b0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Justdoit/EditJustdoitViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.bacit-dotnet.MVC/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/bacit-dotnet.MVC/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/bacit-dotnet.MVC/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Interfaces/ITeamRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Interfaces/ITeamRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/aria_log.00000001" beforeDir="false" afterPath="$PROJECT_DIR$/database/aria_log.00000001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/aria_log_control" beforeDir="false" afterPath="$PROJECT_DIR$/database/aria_log_control" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_buffer_pool" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_logfile0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/database/ibdata1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ibtmp1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mysql/innodb_index_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/mysql/innodb_index_stats.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mysql/innodb_table_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/mysql/innodb_table_stats.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/webAppDatabase/suggestions.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/webAppDatabase/suggestions.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/JustdoitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/JustdoitController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/Justdoit/Justdoit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/Justdoit/Justdoit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Repositories/JustdoitRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Repositories/JustdoitRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Justdoit/CreateJustdoitViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/ViewModels/Justdoit/CreateJustdoitViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Delete.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reloadTables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/reloadTables.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +54,16 @@
       <workItem from="1666686160735" duration="44000" />
       <workItem from="1666686295515" duration="1013000" />
       <workItem from="1666700349379" duration="9000" />
+      <workItem from="1666875005124" duration="65000" />
+      <workItem from="1666875096083" duration="169000" />
+      <workItem from="1667221175807" duration="133000" />
+      <workItem from="1667221333792" duration="73000" />
+      <workItem from="1667221428604" duration="47000" />
+      <workItem from="1667221497989" duration="134000" />
+      <workItem from="1667221658156" duration="36000" />
+      <workItem from="1667985908404" duration="313000" />
+      <workItem from="1668002494831" duration="260000" />
+      <workItem from="1668002808992" duration="41000" />
     </task>
     <servers />
   </component>

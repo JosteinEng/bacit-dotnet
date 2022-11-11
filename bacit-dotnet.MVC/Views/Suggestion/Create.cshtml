@@ -1,56 +1,134 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 
-@model bacit_dotnet.MVC.ViewModels.Suggestions.CreateSuggestionViewModel
+
+@model bacit_dotnet.MVC.ViewModels.CreateSuggestionViewModel
 
 <form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Legg til nytt forslag</h2>
+            <h3 class="text-dark">Legg til nytt forslag</h3>
             <hr />
         </div>
         @*
-        This line of code will show a summary of all errors at the top of the page.
-        <div asp-validation-summary="All" class="text-danger"></div>*@
+            This line of code will show a summary of all errors at the top of the page.
+            <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
-            <label asp-for="Suggestion.EmployeeId">Ansatt ID</label>
-            <input asp-for="Suggestion.EmployeeId" class="form-control" />
-            <span asp-validation-for="Suggestion.EmployeeId" class="text-danger"></span>
+            <label asp-for="EmployeeId">Ansatt ID</label>
+            <input asp-for="EmployeeId" class="form-control" />
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Suggestion.Title">Tittel</label>
-            <input asp-for="Suggestion.Title" class="form-control" minlength="2" maxlength="30" /><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">30/30</span>
-            <span asp-validation-for="Suggestion.Title" class="text-danger">
+            <label asp-for="Title">Tittel</label>
+            <input asp-for="Title" class="form-control" minlength="2" maxlength="30" /><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">30/30</span>
+            <span asp-validation-for="Title" class="text-danger">
             </span>
         </div>
         <div class="mb-3">
-            <label asp-for="Suggestion.Description">Beskrivelse</label>
-            <textarea asp-for="Suggestion.Description" class="form-control" style="min-height: 150px"></textarea>
-            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span>            <span asp-validation-for="Suggestion.Description" class="text-danger"></span>
+            <label asp-for="Description">Beskrivelse</label>
+            <textarea asp-for="Description" class="form-control" style="min-height: 150px"></textarea>
+            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span>            
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Suggestion.Deadline">Tidsfrist</label>
-            <input asp-for="Suggestion.Deadline" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
-            <span asp-validation-for="Suggestion.Deadline" class="text-danger"></span>
+            <label asp-for="TeamId">Team</label>
+            <select asp-for="TeamId">
+                <option value="" selected disabled>Velg et Team</option>
+                @foreach (var team in Model.Teams)
+                {
+                    <option value="@team.TeamId">@team.TeamName</option>
+                }
+            </select>
+            <span asp-validation-for="TeamId" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="UserId">Ansvarlig</label>
+            <select asp-for="UserId">
+                <option value="" selected disabled>Velg en ansvarlig ansatt</option>
+                @foreach (var user  in Model.Users)
+                {
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
+                }
+            </select>
+            <span asp-validation-for="TeamId" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="Deadline">Tidsfrist</label>
+            <input asp-for="Deadline" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
+            <span asp-validation-for="Deadline" class="text-danger"></span>
+        </div>
+        
+        <select asp-for="Status" hidden>
+            <option value="Opprettet" selected>Opprettet</option>
+        </select>
+
+        <select asp-for="Phase" hidden>
+            <option value="Plan" selected>Plan</option>
+        </select>
+        
+        <div class="mb-3">
+            <label asp-for="Category">Kategori</label>
+            <select asp-for="Category"class="form-control">
+                <option value="" selected disabled>Velg en kategori for forslaget</option>
+                <option value="HMS">HMS</option>
+                <option value="Kvalitet">Kvalitet</option>
+                <option value="Ledetid">Ledetid</option>
+                <option value="Kostnader">Kostnader</option>
+                <option value="Effektivisering">Effektivisering</option>
+                <option value="Kompetanse">Kompetanse</option>
+                <option value="Kommunikasjon">Kommunikasjon</option>
+                <option value="5S">5S</option>
+                <option value="Standardisering">Standardisering</option>
+                <option value="Flyt">Flyt</option>
+                <option value="Visualisering">Visualisering</option>
+                <option value="Bærekraft">Bærekraft</option>
+                <option value="Industri 4.0">Industri 4.0</option>
+            </select>
+            <span asp-validation-for="Category" class="text-danger"></span>
         </div>
 
         <!-- Image -->
-        <div class="mb-3">
-            <label asp-for="Attachments">Last opp bilde</label>
-            <input asp-for="Attachments" id="imageInput" class="form-control pt-1"
-                type="file" accept=".jpg, .png, .jpeg" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />  
-            <span id="imageWarning" class="text-danger" style="display: none;"></span>
-            <span id="imageTypeWarning" class="text-danger" style="display: none"></span>
+        <div class="container-fluid mb-3">
+            <div class="row">
 
-            <!-- Image preview field -->  
-            <img id="imagePreview" src="" alt=""/>  
+                <!-- Image before -->
+                <div class="col-sm-5 text-black align-content-center">
+                Bilde før
+                    <input asp-for="Attachments" id="imageInputBefore" class="form-control pt-1 mb-1"
+                        type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+
+                    <span id="imageSizeWarningBefore" class="text-danger" style="display: none;"></span>
+                    <span id="imageTypeWarningBefore" class="text-danger" style="display: none"></span>
+                </div>
+
+                <!-- Image after -->
+                <div class="col-sm-5 text-black align-content-center">
+                    <input asp-for="AttchmentsAfter" hidden="hidden"  id="imageInputAfter" class="form-control pt-1"
+                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+
+                    <span id="imageSizeWarningAfter" class="text-danger" style="display: none;"></span>
+                    <span id="imageTypeWarningAfter" class="text-danger" style="display: none"></span>
+                </div>
+                <!-- Image preview field -->
+
+                <img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>  
+
+            </div>
         </div>
 
-        <br/>
-
-        <button id="submitBtn" type="submit" class="btn btn-primary" style="width: 150px">Create</button>
-        <a asp-controller="Suggestion" asp-action="Index" class="btn btn-secondary" style="width: 150px">
-            Back to list
-        </a>
+        <br />
+        @*
+            Creates a group of buttons for submit and return to list buttons.
+            The buttons are set to 100% width of the parent class.
+            Also using a custom button class that extends the bootstrap button classes to specify the font-size.
+        *@
+        <div class="d-grid pb-3">
+            <div class="btn-group" role="group">
+                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Opprett</button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til liste</a>
+            </div>
+        </div>
     </div>
 </form>
 
@@ -60,21 +138,18 @@
     <script src="~/js/createSuggestion.js"></script>
 }
 
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById('Suggestion_Title').onkeyup = function () {
-            document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30" ;
-            
-};
+@*
+    This script is used to count the remaining characters in the create suggestion form for the "title" and "description" fields.
+    The function will count backwards from the fields' maximum value until it reaches zero.
+*@
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('Title').onkeyup = function () {
+            document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30";
+        };
+    });
 
-});
-
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById('Suggestion_Description').onkeyup = function () {
-                document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
-
-            };
-
-        });
-
-</script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('Description').onkeyup = function () {
+            document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
+        };
+    });</script>

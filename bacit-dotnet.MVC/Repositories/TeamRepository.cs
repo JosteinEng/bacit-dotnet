@@ -1,41 +1,82 @@
-﻿using bacit_dotnet.MVC.Data;
-using bacit_dotnet.MVC.Interfaces;
+﻿using bacit_dotnet.MVC.DataAccess;
 using bacit_dotnet.MVC.Models;
+using bacit_dotnet.MVC.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace bacit_dotnet.MVC.Repositories
 {
     public class TeamRepository : ITeamRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly DataContext _context;
 
-        public TeamRepository(ApplicationDbContext context)
+        public TeamRepository(DataContext context)
         {
             _context = context;
         }
 
-        public int Add(Users objTeam)
+        public int Add(Teams objTeam)
         {
-            throw new NotImplementedException();
+            var existingTeam = GetTeamAndUserByTeamId(objTeam.TeamId);
+            if (existingTeam != null)
+            {
+                return 0;
+            }
+
+            _context.Teams.Add(objTeam);
+            _context.SaveChanges();
+
+            return objTeam.TeamId;
         }
 
+        public int Update(Teams objTeam)
+        {
+            var teamBeforeEdit = GetTeamAndUserByTeamId(objTeam.TeamId);
+            if (teamBeforeEdit == null)
+            {
+                return 0;
+            }
+
+            teamBeforeEdit.TeamName = objTeam.TeamName;
+            teamBeforeEdit.UserId = objTeam.UserId;
+
+            return _context.SaveChanges();
+        }
+
+        public Teams? GetTeamAndUserByTeamId(int teamId)
+        {
+            return _context.Teams.Include(x => x.User).FirstOrDefault(x => x.TeamId == teamId);
+        }
+
+        public Teams[] GetAllTeamsAndUsers()
+        {
+            return _context.Teams.Include(x => x.User).ToArray();
+        }
+
+        public bool IsTeamInUseSuggestion(int teamId)
+        {
+            return _context.Suggestions.Any(x => x.TeamId == teamId);
+        }
+        
+        public bool IsTeamInUseJustdoit(int teamId)
+        {
+            return _context.Justdoit.Any(x => x.TeamId == teamId);
+        }
+        
         public bool Delete(int teamId)
         {
-            throw new NotImplementedException();
-        }
+            var teamToDelete = GetTeamAndUserByTeamId(teamId);
 
-        public Teams[] GetAllTeams()
-        {
-            throw new NotImplementedException();
-        }
+            if(teamToDelete == null)
+            {
+                return false;
+            }
 
-        public Teams? GetTeamByTeamId(int teamId)
-        {
-            throw new NotImplementedException();
-        }
+            _context.Teams.Remove(teamToDelete);
 
-        public int Update(Users objTeam)
-        {
-            throw new NotImplementedException();
+            var rowsAffected = _context.SaveChanges();
+            var isSuccessful = rowsAffected > 0;
+
+            return isSuccessful;
         }
     }
 }

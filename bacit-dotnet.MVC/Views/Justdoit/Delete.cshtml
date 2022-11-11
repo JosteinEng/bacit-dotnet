@@ -1,0 +1,55 @@
+﻿@model Justdoit
+
+<form method="post" asp-action="Delete">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-dark">Slette Just-do-it-forslag</h2>
+            <hr />
+        </div>
+        @*
+        This line of code will show a summary of all errors at the top of the page.
+        <div asp-validation-summary="All" class="text-danger"></div>*@
+        <div class="mb-3">
+            <label asp-for="JustdoitId">Forslags ID</label>
+            <h6>@Model.JustdoitId</h6>
+            <input asp-for="JustdoitId" type="hidden" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="EmployeeId">Ansatt ID</label>
+            <input asp-for="EmployeeId" disabled="disabled" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title">Tittel</label>
+            <input asp-for="Title" disabled="disabled" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description">Beskrivelse</label>
+            <input asp-for="Description" disabled="disabled" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="TeamId">Team</label>
+            <input asp-for="Team.TeamName" disabled="disabled" class="form-control" />
+        </div>          
+        <div class="mb-3">
+            <label asp-for="Category">Kategori</label>
+            <select asp-for="Category" disabled="disabled" class="form-control">
+                <option value="@Model.Category" disabled>@Model.Category</option>
+            </select>
+        </div>
+        
+        <br />
+        <div class="d-grid pb-3">
+            <div class="btn-group" role="group">
+                <button type="submit" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Slett</button>
+                <a asp-controller="Justdoit" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Tilbake</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<!--This script makes sure that the validation process is done on client-side instead of server-side-->
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+}
