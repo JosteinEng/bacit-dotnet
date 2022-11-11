@@ -114,7 +114,9 @@ namespace bacit_dotnet.MVC.Controllers
                 {
                     userRepository.Add(new UserEntity
                     {
-                        Email = model.Email
+                        Email = model.Email,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName
                     });
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link

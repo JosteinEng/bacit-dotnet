@@ -30,6 +30,23 @@
 				             </div>
 				             <span asp-validation-for="Email" class="text-danger"></span>
 			             </div>
+			             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			             <div class="form-group">
+				             <label asp-for="FirstName" class="control-label">Fornavn</label>
+				             <div class="text-center d-flex justify-content-center">
+					             <input asp-for="FirstName" type="text" class="form-control" />
+				             </div>
+				             <span asp-validation-for="FirstName" class="text-danger"></span>
+			             </div>
+				             </div>
+			             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			             <div class="form-group">
+				             <label asp-for="LastName" class="control-label">Etternavn</label>
+				             <div class="text-center d-flex justify-content-center">
+					             <input asp-for="LastName" type="text" class="form-control" />
+				             </div>
+				             <span asp-validation-for="LastName" class="text-danger"></span>
+			             </div>
 			             <div class="form-group">
 				             <label asp-for="Password" class="control-label">Passord</label>
 				             <div class="text-center d-flex justify-content-center">
