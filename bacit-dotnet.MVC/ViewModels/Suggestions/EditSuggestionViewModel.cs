@@ -40,4 +40,6 @@ public class EditSuggestionViewModel
     public DateTime Deadline { get; set; }
 
     public IFormFile? Attachment { get; set; }
+    
+    public IFormFile? AttchmentsAfter { get; set; }
 }

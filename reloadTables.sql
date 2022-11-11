@@ -152,6 +152,7 @@ create or replace table justdoit
     createdDate datetime     not null,
     category    varchar(50)  not null,
     attachments longblob     null,
+    attachmentAfter longblob     null,
     teamId      int          not null,
     constraint justdoit_team_fk
         foreign key (teamId) references Teams (teamID)
@@ -169,6 +170,7 @@ create table Suggestions
     status       varchar(50)  not null,
     category     varchar(50)  not null,
     attachments  longblob     null,
+    attachmentsAfter longblob     null,
     teamID       int          not null,
     userID       int          not null,
     constraint suggestion_team_fk

@@ -7,6 +7,8 @@ namespace bacit_dotnet.MVC.ViewModels
     public class CreateJustdoitViewModel
     {
         public IFormFile? Attachments { get; set; }
+
+        public IFormFile? AttachmentsAfter { get; set; }
         
         [ValidateNever]
         public Teams[] Teams { get; set; }

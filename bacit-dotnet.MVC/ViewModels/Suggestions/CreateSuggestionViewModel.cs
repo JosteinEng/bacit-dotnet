@@ -9,6 +9,8 @@ namespace bacit_dotnet.MVC.ViewModels
     { 
         public IFormFile? Attachments { get; set; }
         
+        public IFormFile? AttchmentsAfter { get; set; }
+        
         [ValidateNever]
         public Teams[] Teams { get; set; }
         

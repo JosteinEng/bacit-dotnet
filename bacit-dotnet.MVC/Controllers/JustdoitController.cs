@@ -66,6 +66,17 @@ namespace bacit_dotnet.MVC.Controllers
                 }
             }
             
+            var uploadedAttachmentsAfter = Array.Empty<byte>();
+            
+            if (objJustdoit.AttachmentsAfter != null && objJustdoit.AttachmentsAfter.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    objJustdoit.AttachmentsAfter.CopyTo(memoryStream);
+                    uploadedAttachmentsAfter  = memoryStream.ToArray();
+                }
+            }
+            
             var newJustdoitId = _justdoitRepository.Add(new Justdoit
             {
                 EmployeeId = objJustdoit.EmployeeId.Value,
@@ -73,7 +84,8 @@ namespace bacit_dotnet.MVC.Controllers
                 Description = objJustdoit.Description,
                 Category = objJustdoit.Category,
                 TeamId = objJustdoit.TeamId,
-                Attachments = uploadedAttachment
+                Attachments = uploadedAttachment,
+                AttachmentAfter = uploadedAttachmentsAfter
             });
 
             if (newJustdoitId > 0)
@@ -142,6 +154,17 @@ namespace bacit_dotnet.MVC.Controllers
                 }
             }
             
+            var uploadedAttachmentsAfter = Array.Empty<byte>();
+            
+            if (objJustdoit.AttachmentsAfter != null && objJustdoit.AttachmentsAfter.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    objJustdoit.AttachmentsAfter.CopyTo(memoryStream);
+                    uploadedAttachmentsAfter  = memoryStream.ToArray();
+                }
+            }
+            
             var updatedJustdoit = new Justdoit()
             {
                 JustdoitId = objJustdoit.JustdoitId,
@@ -151,7 +174,8 @@ namespace bacit_dotnet.MVC.Controllers
                 Category = objJustdoit.Category,
                 TeamId = objJustdoit.TeamId,
                 
-                Attachments = uploadedAttachment
+                Attachments = uploadedAttachment,
+                AttachmentAfter = uploadedAttachmentsAfter
             };
 
             var rowsAffectedByUpdate = _justdoitRepository.Update(updatedJustdoit);

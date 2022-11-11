@@ -37,6 +37,7 @@
     @{
         var forslagsnr = 1;
         var attachment = 1;
+        var attachmentAfter = 1;
         var suggestionStatus = 1;
         foreach (var objSuggestion in Model.Suggestions)
         {
@@ -207,26 +208,26 @@
                                                     size will depend on the viewport of the device that is being used.
                                                 *@
 
-                                                @if (objSuggestion.Attachments.Length == 0)
+                                                @if (objSuggestion.AttachmentsAfter.Length == 0)
                                                 {
                                                     @:<p>Ingen bilde vedlagt.</p>
                                                 }
                                                 else
                                                 {
                                                     <center>
-                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachment-@(attachment)">
-                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachmentAfter-@(attachmentAfter)">
+                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" style="max-height: 300px; max-width: 100%;" />
                                                         </button>
                                                     </center>
                                                     <p class="text-center">Trykk på bildet for å forstørre</p>
-                                                    <div id="attachment-@(attachment)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachment-@(attachment)Label" aria-hidden="true">
+                                                    <div id="attachmentAfter-@(attachmentAfter)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentAfter-@(attachmentAfter)Label" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" />
+                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -252,6 +253,7 @@
             </div>
             forslagsnr++;
             attachment++;
+            attachmentAfter++;
             suggestionStatus++;
         }
     }
