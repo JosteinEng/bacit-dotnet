@@ -91,7 +91,7 @@ namespace bacit_dotnet.MVC.Controllers
                 TeamId = objSuggestions.TeamId,
                 UserId = objSuggestions.UserId,
 				
-                Attachments = uploadedAttachment
+                Attachments = uploadedAttachment,
                 AttachmentsAfter = uploadedAttachmentsAfter
             });
 
