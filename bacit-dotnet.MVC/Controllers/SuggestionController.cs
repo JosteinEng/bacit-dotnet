@@ -76,6 +76,7 @@ namespace bacit_dotnet.MVC.Controllers
                 Description = objSuggestions.Description,
                 Deadline = (DateTime)objSuggestions.Deadline,
                 Status = objSuggestions.Status,
+                Phase = objSuggestions.Phase,
                 Category = objSuggestions.Category,
                 TeamId = objSuggestions.TeamId,
                 UserId = objSuggestions.UserId,

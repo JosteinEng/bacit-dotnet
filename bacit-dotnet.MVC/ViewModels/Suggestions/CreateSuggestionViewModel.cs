@@ -32,7 +32,10 @@ namespace bacit_dotnet.MVC.ViewModels
         
         [Required(ErrorMessage = "Vennligst velg en status.")]
         public string? Status { get; set; }
-        
+
+        [Required(ErrorMessage = "Vennligst velg en PDSA-fase.")]
+        public string? Phase { get; set; }
+
         [Required(ErrorMessage = "Vennligst velg en kategori.")]
         public string? Category { get; set; }
 
