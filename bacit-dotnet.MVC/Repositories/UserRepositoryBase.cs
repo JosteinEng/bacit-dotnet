@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
+//FJERNER WARNINGS!
+#pragma warning disable
+///////////////////////
+
 namespace bacit_dotnet.MVC.Repositories
 {
     public abstract class UserRepositoryBase

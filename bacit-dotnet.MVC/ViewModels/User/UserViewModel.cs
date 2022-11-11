@@ -1,6 +1,10 @@
 ﻿using bacit_dotnet.MVC.Models;
 using bacit_dotnet.MVC.Repositories;
 
+//FJERNER WARNINGS!
+#pragma warning disable
+///////////////////////
+
 namespace bacit_dotnet.MVC.ViewModels
 {
     public class UserViewModel

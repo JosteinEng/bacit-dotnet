@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+#pragma warning disable
+
 namespace bacit_dotnet.MVC.DataAccess
 {
     public class DataContext : IdentityDbContext<IdentityUser>

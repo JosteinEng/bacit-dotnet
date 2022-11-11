@@ -1,5 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
+//FJERNER WARNINGS!
+#pragma warning disable
+///////////////////////
+
 namespace bacit_dotnet.MVC.Models
 {
     [Table("Users")]

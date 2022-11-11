@@ -16,6 +16,10 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Net;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
+//FJERNER WARNINGS!
+#pragma warning disable
+///////////////////////
+
 namespace bacit_dotnet.MVC.Controllers
 {
     public class AccountController : Controller

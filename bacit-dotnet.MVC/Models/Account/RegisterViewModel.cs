@@ -5,6 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace bacit_dotnet.MVC.Models.Account;
 
+//FJERNER WARNINGS!
+#pragma warning disable
+///////////////////////
+
 public class RegisterViewModel
 {
     [Required]

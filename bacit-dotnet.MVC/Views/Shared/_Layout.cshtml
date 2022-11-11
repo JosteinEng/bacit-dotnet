@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,7 +11,13 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spartan">
-
+    
+    <style>
+	    body {
+		    background-image: url('https://img.freepik.com/free-vector/copy-space-wavy-white-background-layers_23-2148845469.jpg?w=2000');
+		    margin: 0;
+	    }
+    </style>
 
 </head>
 <body>
@@ -32,12 +40,12 @@
 	                    <li class="nav-item">
 		                    <a class="nav-link text-dark" asp-area="" asp-controller="Justdoit" asp-action="Index">Justdoit</a>
 	                    </li>
-						<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Brukere</a>
-                        </li>	                    
+	                    <li class="nav-item">
+		                    <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
+	                    </li>
+	                    <li class="nav-item">
+		                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Brukere</a>
+	                    </li>
                     </ul>
                     <ul class="navbar-nav flex-grow-2" style="float: right;">
 	                    <li class="nav-item">

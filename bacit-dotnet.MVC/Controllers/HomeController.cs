@@ -5,6 +5,9 @@ using bacit_dotnet.MVC.ViewModels.Home;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+//FJERNER WARNINGS!
+#pragma warning disable
+///////////////////////
 
 namespace bacit_dotnet.MVC.Controllers
 {

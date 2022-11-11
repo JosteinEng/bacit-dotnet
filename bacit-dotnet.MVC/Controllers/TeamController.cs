@@ -2,11 +2,13 @@
 using bacit_dotnet.MVC.Models;
 using bacit_dotnet.MVC.Repositories;
 using bacit_dotnet.MVC.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    [Authorize]
     public class TeamController : Controller
     {
         private readonly ITeamRepository _teamRepository;
