@@ -31,8 +31,11 @@ Run build.sh file to run image build in docker.
 or
 
 (Windows)
+
 Run startDb.exe to automatic start mariaDb container in docker.
+
 (Mac)
+
 Run startDb.sh to automatic start mariaDb container in docker.
 
 ### 3. Run the reloadTables script to create the database and table for this project.
