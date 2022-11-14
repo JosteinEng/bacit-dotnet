@@ -24,6 +24,11 @@ body {
     height: 30px;
     display: inline-block;
 }
+h1 {
+    font-size: 24px;
+    font-family: Spartan, sans-serif;
+    font-weight: lighter;
+}
 
 h4 {
     font-size: 18px;
