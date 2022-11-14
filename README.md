@@ -1,5 +1,5 @@
-# bacit-dotnet (based on https://github.com/espenlimi/-bacit_dotnet)
-##Student group project in subject IS-202 - UiA 2022
+### bacit-dotnet (based on https://github.com/espenlimi/-bacit_dotnet)
+# Student group project in subject IS-202 - UiA 2022 (Group 2)
 
 ### How to use
 Prerequisites:
