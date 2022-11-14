@@ -15,12 +15,11 @@ Type the following in the terminal:
 
 ```docker container run --rm -it -d --name webapp --publish 80:80 webapp```
 
-or
+### **or**
 
-(Windows)
-Run build.exe file to run image build in docker.
-(Mac)
-Run build.sh file to run image build in docker.
+| Mac  | Windows |
+| ------------- | ------------- |
+| Run ```build.sh``` file to run image build in docker.  | Run ```build.exe``` file to run image build in docker.  |
 
 ### 2. Start a mariadb container using the localdirectory "database" to store the data:
 
@@ -28,20 +27,19 @@ Run build.sh file to run image build in docker.
 | ------------- | ------------- |
 | ```docker run --rm --name mariadb -p 3308:3306/tcp -v "$(pwd)/database":/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 -d mariadb:10.5.11```  | ```docker run --rm --name mariadb -p 3308:3306/tcp -v "%cd%\database":/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 -d mariadb:10.5.11```  |
 
-or
+### **or**
 
-(Windows)
-
-Run startDb.exe to automatic start mariaDb container in docker.
-
-(Mac)
-
-Run startDb.sh to automatic start mariaDb container in docker.
+| Mac  | Windows |
+| ------------- | ------------- |
+| Run ```startDb.sh``` to automatic start mariaDb container in docker.  | Run ```startDb.exe``` to automatic start mariaDb container in docker.  |
 
 ### 3. Run the reloadTables script to create the database and table for this project.
-reloadTables.exe - Execute database and tables on Windows
-reloadTables.sh - Execute database and tables on Mac
-reloadTables.sql - SQL file
+
+```reloadTables.exe``` - Execute database and tables on Windows
+
+```reloadTables.sh``` - Execute database and tables on Mac
+
+```reloadTables.sql``` - SQL file
 
 ### 4. Test out the code at http://localhost:80/
 
