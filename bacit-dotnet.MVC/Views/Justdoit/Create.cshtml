@@ -12,8 +12,18 @@
         This line of code will show a summary of all errors at the top of the page.
         <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
-            <label asp-for="EmployeeId">Ansatt ID</label>
-            <input asp-for="EmployeeId" class="form-control"/>
+            <label asp-for="EmployeeId">Opprettet av</label>
+            <select asp-for="EmployeeId">
+                <option value="" selected disabled>Velg en ansatt</option>
+                @foreach (var user  in Model.Users)
+                {
+                    if (user.Email.Equals("1337"))
+                    {
+                        continue;
+                    }
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
+                }
+            </select>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">

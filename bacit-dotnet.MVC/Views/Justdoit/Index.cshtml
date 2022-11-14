@@ -45,7 +45,7 @@
                                 <div class="row" style="width:100%;">
                                     <div class="col-3 bg-light">@objJust.Title</div>
                                     <div class="col-2 bg-light">@objJust.Team.TeamName</div>
-                                    <div class="col-2 bg-light">Ansattnavn</div>
+                                    <div class="col-2 bg-light">@objJust.Employee.FirstName @objJust.Employee.LastName</div>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                                         <div class="col-sm-6 col-md-6 p-2 text-black">
                                             <div class="border" style="padding: 1rem;">
                                                 <p><b>Ansvarlig</b></p>
-                                                <p>Placeholder for ansvarlig</p>
+                                                <p>@objJust.Employee.FirstName @objJust.Employee.LastName</p>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 p-2 text-black">

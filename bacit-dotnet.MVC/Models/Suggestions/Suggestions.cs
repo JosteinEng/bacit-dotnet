@@ -51,6 +51,9 @@ namespace bacit_dotnet.MVC.Models
         [ForeignKey("UserId")]
         [Required]
         public int UserId { get; set; }
+        
         public UserEntity? User { get; set; }
+        
+        public UserEntity? Employee { get; set; }
     }
 }

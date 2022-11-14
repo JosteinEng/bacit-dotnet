@@ -11,6 +11,8 @@ namespace bacit_dotnet.MVC.Interfaces
         void Delete(string email);
         bool IsAdmin(string email);
         public bool IsUserInUseTeam(string email);
-        public bool IsUserInUseSuggestion(string email);
+        public bool IsUserInUseSuggestionUser(string email);
+        public bool IsUserInUseSuggestionEmployee(string email);
+        public bool IsUserInUseJustDoIt(string email);
     }
 }

@@ -66,13 +66,13 @@ namespace bacit_dotnet.MVC.Repositories
 
         public Suggestions? GetSuggestionBySuggestionId(int suggestionId)
         {
-            return _context.Suggestions.Include(x => x.Team).Include(x => x.User).FirstOrDefault(x => x.SuggestionId == suggestionId);
+            return _context.Suggestions.Include(x => x.Team).Include(x => x.User).Include(x => x.Employee).FirstOrDefault(x => x.SuggestionId == suggestionId);
         }
 
         public Suggestions[] GetAllSuggestions()
         {
             
-            return _context.Suggestions.Include(x => x.Team).Include(x => x.User).ToArray();
+            return _context.Suggestions.Include(x => x.Team).Include(x => x.User).Include(x => x.Employee).ToArray();
         }
 
         public Suggestions? GetSuggestionByEmployeeId(int employeeId)

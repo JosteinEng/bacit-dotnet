@@ -57,12 +57,12 @@ namespace bacit_dotnet.MVC.Repositories
 
         public Justdoit? GetJustdoitByJustdoitId(int justdoitId)
         {
-            return _context.Justdoit.Include(x => x.Team).FirstOrDefault(x => x.JustdoitId == justdoitId);
+            return _context.Justdoit.Include(x => x.Team).Include(x => x.Employee).FirstOrDefault(x => x.JustdoitId == justdoitId);
         }
 
         public Justdoit[] GetAllJustdoit()
         {
-            return _context.Justdoit.Include(x => x.Team).ToArray();
+            return _context.Justdoit.Include(x => x.Team).Include(x => x.Employee).ToArray();
         }
 
         public Justdoit? GetJustdoitByEmployeeId(int employeeId)

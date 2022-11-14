@@ -17,11 +17,13 @@ namespace bacit_dotnet.MVC.Controllers
     {
         private readonly IJustdoitRepository _justdoitRepository;
         private readonly ITeamRepository _teamRepository;
+        private readonly IUserRepository _userRepository;
 
-        public JustdoitController(IJustdoitRepository useRepository, ITeamRepository teamRepository)
+        public JustdoitController(IJustdoitRepository useRepository, ITeamRepository teamRepository, IUserRepository userRepository)
         {
             _justdoitRepository = useRepository;
             _teamRepository = teamRepository;
+            _userRepository = userRepository;
         }
 
         public IActionResult Index()
@@ -38,10 +40,12 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult Create()
         {
             var teams = _teamRepository.GetAllTeamsAndUsers();
-
+            var users = _userRepository.GetUsers()
+                ;
             var createSuggestionViewModel = new CreateJustdoitViewModel()
             {
-                Teams = teams
+                Teams = teams,
+                Users = users
             };
             
             return View(createSuggestionViewModel);
@@ -121,6 +125,7 @@ namespace bacit_dotnet.MVC.Controllers
             }
 
             var teams = _teamRepository.GetAllTeamsAndUsers();
+            var users = _userRepository.GetUsers();
 
             var justdoitToEdit = new EditJustdoitViewModel()
             {
@@ -130,7 +135,8 @@ namespace bacit_dotnet.MVC.Controllers
                 Description = justdoitFromDb.Description,
                 Category = justdoitFromDb.Category,
                 TeamId = justdoitFromDb.TeamId,
-                Teams = teams
+                Teams = teams,
+                Users = users
             };
             
             return View(justdoitToEdit);

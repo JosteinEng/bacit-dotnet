@@ -38,5 +38,7 @@ namespace bacit_dotnet.MVC.Models
         public int TeamId { get; set; }
         
         public Teams? Team { get; set; }
+        
+        public UserEntity? Employee { get; set; }
     }
 }

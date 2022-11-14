@@ -579,11 +579,24 @@ namespace bacit_dotnet.MVC.Controllers
                 return RedirectToAction("Index", "Users");
             }
 
-            if (userRepository.IsUserInUseSuggestion(model.Email))
+            if (userRepository.IsUserInUseSuggestionUser(model.Email))
+            {
+                TempData["error"] = "Kan ikke slette bruker. Bruker er ansvarlig i et forslag!";
+                return RedirectToAction("Index", "Users");                
+            }
+            
+            if (userRepository.IsUserInUseSuggestionEmployee(model.Email))
             {
                 TempData["error"] = "Kan ikke slette bruker. Bruker tilhører et forslag!";
                 return RedirectToAction("Index", "Users");                
             }
+
+            if (userRepository.IsUserInUseJustDoIt(model.Email))
+            {
+                TempData["error"] = "Kan ikke slette bruker. Bruker tilhører et JustDoIt!";
+                return RedirectToAction("Index", "Users");                 
+            }
+            
 
             //var user = new IdentityUser { UserName = model.Email, Email = model.Email, EmailConfirmed = false, LockoutEnabled = false, LockoutEnd = null };
             var result = await _userManager.DeleteAsync(user);

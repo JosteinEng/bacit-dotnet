@@ -81,7 +81,7 @@ namespace bacit_dotnet.MVC.Controllers
             
             var newSuggestionId = _suggestionRepository.Add(new Suggestions
             {
-                EmployeeId = objSuggestions.EmployeeId.Value,
+                EmployeeId = objSuggestions.EmployeeId,
                 Title = objSuggestions.Title,
                 Description = objSuggestions.Description,
                 Deadline = (DateTime)objSuggestions.Deadline,

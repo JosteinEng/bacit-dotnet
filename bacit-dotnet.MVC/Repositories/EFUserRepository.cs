@@ -64,14 +64,28 @@ namespace bacit_dotnet.MVC.Repositories
             SetRoles(user.Email, roles);
         }
 
+        // This method checks if a user has been set as the connected team for a suggestions.
         public bool IsUserInUseTeam(string email)
         {
             return dataContext.Teams.Any(x => x.User.Email == email);
         }
 
-        public bool IsUserInUseSuggestion(string email)
+        // This method checks if a user has been set as a responsible employee in a suggestion.
+        public bool IsUserInUseSuggestionUser(string email)
         {
             return dataContext.Suggestions.Any(x => x.User.Email == email);
+        }
+        
+        // This method checks if a user has been set as the author of a suggestion.
+        public bool IsUserInUseSuggestionEmployee(string email)
+        {
+            return dataContext.Suggestions.Any(x => x.Employee.Email == email);
+        }
+        
+        // This method checks if a user has been set as the author of a JustDoIt
+        public bool IsUserInUseJustDoIt(string email)
+        {
+            return dataContext.Justdoit.Any(x => x.Employee.Email == email);
         }
     }
 }
