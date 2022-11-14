@@ -1,26 +1,18 @@
 ﻿@{
-    Layout = null;
+    ViewData["Title"] = "404: Siden finnes ikke";
+}
+
+@{
+    Layout = "_Layout";
 }
 
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width-device-width" />
-        <title>PageNotfound</title>
-
-        <style>
-            .text-center {
-                text-align: center;
-            }
-        </style>
-    </head>
-
-    <body>
+<div class="d-grid pb-3">
         <div class="text-center">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4RqjykGVCv1N75SU5BuV3iIYA7KdR-QSjyA&usqp=CAU" alt="404"/>
-                <h2>40DOOR NOT FOUND</h2>
-                <a class="nav-link text-dark" asp-area="" asp-controller="Suggestion" asp-action="Index">Hjem</a>
+    
+            <img class="rounded-5" src="/image/404.jpg" alt="404" style="width: 70%; height: auto;"/>
+        <h1 class="mt-5">Feil: 404 - Døren du åpnet førte til en murvegg.</h1>
+        <p>(Siden finnes ikke)</p>
+        <a class="nav-link btn btn-lg extra-button-style" asp-area="" asp-controller="Suggestion" asp-action="Index"> Trykk her for å komme til hovedsiden</a>
         </div>
-    </body>
-</html>
+        </div>
