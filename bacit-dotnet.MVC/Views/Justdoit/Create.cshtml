@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 
+
+@* ### Create for Just do it ### *@
+
 @model bacit_dotnet.MVC.ViewModels.CreateJustdoitViewModel
 
 <form method="post" enctype="multipart/form-data">
@@ -119,13 +122,13 @@
 *@
 <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById('Justdoit_Title').onkeyup = function () {
+            document.getElementById('Title').onkeyup = function () {
                 document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30";
             };
         });
 
         document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById('Justdoit_Description').onkeyup = function () {
+            document.getElementById('Description').onkeyup = function () {
                 document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
             };
         });</script>
