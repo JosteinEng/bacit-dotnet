@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class TeamController : Controller
     {
         private readonly ITeamRepository _teamRepository;

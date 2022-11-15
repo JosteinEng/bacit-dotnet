@@ -35,16 +35,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Suggestion" asp-action="Index">Forslag</a>
                         </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-controller="Justdoit" asp-action="Index">Justdoit</a>
-	                    </li>
-						<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Brukere</a>
-                        </li>	                    
-                    </ul>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Justdoit" asp-action="Index">Justdoit</a>
+                        </li>
+                        @*Sjekker om bruker er rollen admin, og gir tilgang til teams og brukere om bruker er admin*@
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Brukere</a>
+                            </li>
+                            }
+                        </ul>
                     <ul class="navbar-nav flex-grow-2" style="float: right;">
 	                    <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOff">Logg ut</a>
