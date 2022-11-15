@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Net;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-//FJERNER WARNINGS!
+//Removes WARNINGS!
 #pragma warning disable
 ///////////////////////
 

@@ -14,7 +14,14 @@ using System.Globalization;
 
 public class Program
 {
-
+    // The Main method is responsible for starting up the key functions of the application on launch. 
+    
+    // Some of the key actions in the main method:
+    // Setting up our controllers
+    // Setting up our dependency injections for suggestions, justdoits, teams and users
+    // Setting up our database connection
+    // Setting the standard culture for the application
+    
     static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -24,15 +31,14 @@ public class Program
         builder.Services.AddTransient<ISuggestionRepository, SuggestionRepository>();
         builder.Services.AddTransient<IJustdoitRepository, JustdoitRepository>();
         builder.Services.AddTransient<ITeamRepository, TeamRepository>();
+        builder.Services.AddScoped<IUserRepository, EFUserRepository>();
 
         builder.Services.AddDbContext<DataContext>(options =>
         {
             options.UseMySql(builder.Configuration.GetConnectionString("MariaDb"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MariaDb")));
         });
 
-        builder.Services.AddScoped<IUserRepository, EFUserRepository>();
-
-        // Set culture to NORWEGISH culture
+        // Set culture to norwegian culture
         var cultureInfo = new CultureInfo("nb-NO");
 
         CultureInfo.CurrentCulture = cultureInfo;
