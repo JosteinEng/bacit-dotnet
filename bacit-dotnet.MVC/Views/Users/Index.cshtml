@@ -13,7 +13,8 @@
                 <tr>
                     <td>Fornavn</td>
                     <td>Etternavn</td>
-                    <td>Ansattnummer</td>
+	                <td>Ansattnummer</td>
+	                <td>Rolle</td>
                     <td>Endre</td>
                     <td>Slett</td>
                     <br />
@@ -23,8 +24,9 @@
                     <tr class="border-top mt-2">
                         <td>@user.FirstName</td>
                         <td>@user.LastName</td>
-                        <td>@user.Email</td>
-                        <td>
+	                    <td>@user.Email</td>
+	                    <td>@user.Role</td>
+	                    <td>
                             <form asp-action="edit" asp-controller="users" method="get">
                                 <input type="hidden" name="Email" value="@user.Email" />
                                 <input class="btn btn-light btn-outline-dark extra-button-style" type="submit" value="Endre" />

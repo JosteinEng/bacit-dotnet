@@ -116,7 +116,8 @@ namespace bacit_dotnet.MVC.Controllers
                     {
                         Email = model.Email,
                         FirstName = model.FirstName,
-                        LastName = model.LastName
+                        LastName = model.LastName,
+                        Role = model.Role
                     });
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link

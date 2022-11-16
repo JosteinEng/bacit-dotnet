@@ -61,10 +61,18 @@
 			            </div>
 			            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 		            </div>
+		            <div style="display: none">
+		            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			            <div class="form-group">
+				            <label asp-for="Role" class="control-label">Rolle</label>
+				            <div class="text-center d-flex justify-content-center">
+					            <input asp-for="Role" type="text" class="form-control" value="Ordinær" />
+				            </div>
+				            <span asp-validation-for="Role" class="text-danger"></span>
+			            </div>
+		            </div>
+	            </div>
 
-		            <br />
-		            <br />
-		            <br />
 		            <br />
 
 		            <div class="d-grid pb-3">
