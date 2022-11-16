@@ -12,6 +12,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    
+    // This is the controller class for JustDoIt. The controller is the C in MVC
+    // The methods in the controller class are used for different CRUD actions related to JustDoIt.
+    // The class uses dependency injections of the justdoit, team -and userRepository to use different CRUD related Db actions and methods.
+    
+    // Keyword Authorize uses Microsoft's authorization system for checking if a user should have access to
+    // the page and it's functions. 
     [Authorize]
     public class JustdoitController : Controller
     {
@@ -251,7 +258,8 @@ namespace bacit_dotnet.MVC.Controllers
         }
 
         //Get
-        // The method return the delete view with populated form field values fetched from the db.
+        // The method return the delete view with populated form field values fetched from the db,
+        // to display what will be deleted.
         // The parameter id is used to fetch the correct Justdoit suggestion from the db.
         public IActionResult Delete(int? id)
         {
@@ -291,7 +299,7 @@ namespace bacit_dotnet.MVC.Controllers
             if (!hasRowBeenDeleted)
             {
                 TempData["error"] = "Forslag ble ikke slettet";
-                return NotFound(); // TODO: Make 404 page
+                return NotFound();
             }
 
             TempData["success"] = "Forslag har blitt slettet";

@@ -7,6 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    
+    // This is the controller class for Suggestions. The controller is the C in MVC
+    // The methods in the controller class are used for different CRUD actions related to Suggestions.
+    // The class uses dependency injections of the suggestion, team -and userRepository to use different CRUD related Db actions and methods.
+
+    // Keyword Authorize uses Microsoft's authorization system for checking if a user should have access to
+    // the page and it's functions. 
     [Authorize]
     public class SuggestionController : Controller
     {
@@ -256,11 +263,10 @@ namespace bacit_dotnet.MVC.Controllers
 
             return RedirectToAction("Edit", objSuggestions.SuggestionId);
         }
-
-        // TODO: Sett opp if check før sletting av brukere og teams.
         
         //Get
-        // The method return the delete view with populated form field values fetched from the db.
+        // The method return the delete view with populated form field values fetched from the db, to
+        // display what will be deleted.
         // The parameter id is used to fetch the correct suggestion from the db.
         public IActionResult Delete(int? id)
         {
@@ -282,7 +288,7 @@ namespace bacit_dotnet.MVC.Controllers
         }
 
         // Delete
-        // Method fires multiple actions for verifying and deleting JustDoIt suggestions.
+        // Method fires multiple actions for verifying and deleting suggestions.
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteSuggestion(int? id)
@@ -300,7 +306,7 @@ namespace bacit_dotnet.MVC.Controllers
             if (!hasRowBeenDeleted)
             {
                 TempData["error"] = "Forslag ble ikke slettet";
-                return NotFound(); // TODO: Make 404 page
+                return NotFound(); 
             }
 
             TempData["success"] = "Forslag har blitt slettet";

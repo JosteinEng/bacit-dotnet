@@ -22,6 +22,9 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    // This is the controller class for Account/Users. The controller is the C in MVC
+    // The methods in the controller class are used for different CRUD and login actions related to Account/Users.
+    // The class uses dependency injections of different repositories to use different CRUD and login related Db actions and methods.
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -573,6 +576,9 @@ namespace bacit_dotnet.MVC.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             var user = await _userManager.FindByEmailAsync(model.Email);
             
+            // The if statements checks if the user to be deleted is connected(foreign key) to a team, suggestion
+            // or Justdoit in the db. If the user is wishes to delete a connected user, the if statements
+            // handles the request and avoids the potential following SQLException.
             if (userRepository.IsUserInUseTeam(model.Email))
             {
                 TempData["error"] = "Kan ikke slette bruker. Bruker tilhører et team!";

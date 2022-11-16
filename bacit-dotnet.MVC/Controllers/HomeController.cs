@@ -11,6 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    // This is the controller class for the Home page. The controller is the C in MVC
+    // The method in the controller class are used for displaying the index view with suggestions and jusdoits fetched from the Db.
+    // The class uses dependency injections of the suggestion -and justdoitRepository to fetch Db data.
+    
     // Keyword Authorize uses Microsoft's authorization system for checking if a user should have access to
     // the page and it's functions. 
     [Authorize]
