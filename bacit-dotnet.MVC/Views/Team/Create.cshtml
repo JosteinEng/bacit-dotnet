@@ -14,7 +14,7 @@
         This line of code will show a summary of all errors at the top of the page.
         <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
-            <label asp-for="TeamName">Team navn</label>
+            <label asp-for="TeamName">Navn på team</label>
             <input asp-for="TeamName" class="form-control"/>
             <span asp-validation-for="TeamName" class="text-danger"></span>
         </div>
@@ -25,7 +25,7 @@
             +++ en property som vil model-binde selected value ( m => m.UserId )
             *@
             <select asp-for="UserId">
-                <option value="" selected diasbled>Velg en Teamleder</option>
+                <option value="selected diasbled">Velg en Teamleder</option>
                 @foreach (var user in Model.Users)
                 {
                     <option value="@user.Id">@user.FirstName @user.LastName</option>
@@ -38,7 +38,7 @@
             <div class="d-grid pb-3">
         <div class="btn-group" role="group">
             <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Opprett</button>
-            <a asp-controller="Team" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til team</a>
+            <a asp-controller="Team" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
         </div>
     </div>
     </div>

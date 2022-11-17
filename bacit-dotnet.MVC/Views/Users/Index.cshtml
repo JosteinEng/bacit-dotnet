@@ -21,7 +21,7 @@
                 <div class="col-md-3">
                     <b>Etternavn</b>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <b>Ansattnummer</b>
                 </div>
             </div>
@@ -36,33 +36,24 @@
                         @user.LastName
                     </div>
                     <div class="col-md-3 pt-2">
-                        @user.Email
-                        
-                        @*@if (user.Role = IsAdmin)
-                        {
-                            <p>test</p>
-                        } else {
-                            <p>test2</p>
-                        }*@
+                        @user.Email                                           
                     </div>
 
-                    <div class="btn-group col-md-3 mb-3" role="group">
+                    <div class="btn-group col-md-3 mb-3 justify-content-md-end" role="group">
                     <div class="col-4">
                         <form asp-action="edit" asp-controller="users" method="get">
                             <input type="hidden" name="Email" value="@user.Email" />
-                            <input class="btn btn-outline-dark" type="submit" value="Endre" />
+                            <input class="btn btn-outline-dark me-5" style="width: 80px;" type="submit" value="Endre" />
                         </form>
                     </div>
                     <div class="col-4">
                         <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
                             <input type="hidden" name="Email" value="@user.Email" />
-                            <input class="btn btn-outline-dark" type="submit" value="Slett" />
+                                <input class="btn btn-outline-dark" style="width: 80px;" type="submit" value="Slett" />
                         </form>
                     </div>
                     </div>
-                </div>
-
-            
+                </div>            
             <hr />
             }
     </div>
