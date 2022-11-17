@@ -13,17 +13,17 @@
 
 
 
-<div class="text-center">
+<div class="text-center p-2 mb-2">
     <h3>Just do it-forslag</h3>
 </div>
 
 
-<div class="border pt-0 pb-3">
+<div class="border pt-0 pb-3 bg-g-l">
     <div class="container-fluid mt-3">
         <div class="row">
-            <div class="col-3 text-black ms-2"><b>Tittel</b></div>
-            <div class="col-2 text-black p-0"><b>Team</b></div>
-            <div class="col-2 text-black p-0"><b>Ansvarlig</b></div>
+            <div class="col-4 text-black p-0 px-3 ms-2"><b>Tittel</b></div>
+            <div class="col-4 text-black p-0"><b>Team</b></div>
+            <div class="col-3 text-black p-0"><b>Ansvarlig</b></div>
         </div>
     </div>
 
@@ -41,11 +41,11 @@
                 <div class="container-fluid">
                     <div class="border">
                         <div class="d-grid">
-                            <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#justdoit-@justdoitnr">
+                            <div class="t-l col-md p-3 my-0 bg-white text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#justdoit-@justdoitnr">
                                 <div class="row" style="width:100%;">
-                                    <div class="col-3 bg-light">@objJust.Title</div>
-                                    <div class="col-2 bg-light">@objJust.Team.TeamName</div>
-                                    <div class="col-2 bg-light">Ansattnavn</div>
+                                    <div class="col-4 p-0 ms-2">@objJust.Title</div>
+                                    <div class="col-4 p-0">@objJust.Team.TeamName</div>
+                                    <div class="col-3 p-0 px-3">Ansattnavn</div>                                  
                                 </div>
                             </div>
                         </div>
@@ -57,54 +57,35 @@
                         This is needed for the expansion of the rows to work.
                     *@
                     <div id="justdoit-@justdoitnr" class="collapse">
-                        <div class="border border-top-0">
-                            <div class="container-fluid mt-3">
+                        <div class="border border-top-0 bg-gr">
+                            <div class="container-fluid">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-sm-12 col-md-12 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
+                                        <div class="col-sm-12 col-md-12 p-2 mt-2 text-black">
+                                            <div class="border bg-white" style="padding: 1rem;">
                                                 <p><b>Beskrivelse</b></p>
                                                 <p class="text-break">@objJust.Description</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
+                                        <div class="col-md-6 col-md-6 p-2 text-black">
+                                            <div class="border bg-white" style="padding: 1rem;">
                                                 <p><b>Ansvarlig</b></p>
-                                                <p>Placeholder for ansvarlig</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
-                                                <p><b>Tidslinje</b></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-2 col-md-6 p-2 text-black">
-                                        <div class="border" style="padding: 1rem;">
-                                            <p><b>Kategori</b></p>
-                                            <p>@objJust.Category</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
-                                                <p><b>Beskrivelse</b></p>
-                                                <p class="text-break">@objJust.Description</p>
+                                                <p>placeholder for ansvarlig</p>
                                             </div>
                                         </div>
 
+                                        <div class="col-md-6 p-2 text-black">
+                                            <div class="border bg-white" style="padding: 1rem;">
+                                                <p><b>Kategori</b></p>
+                                                <p>@objJust.Category</p>
+                                            </div>
+                                        </div>
                                     </div>
-
-
-
-
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
+                                            <div class="border bg-white" style="padding: 1rem;">
                                                 <p><b>Førbilde</b></p>
 
                                                 @*
@@ -144,7 +125,7 @@
 
 
                                         <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
+                                            <div class="border bg-white" style="padding: 1rem;">
                                                 <p><b>Etterbilde</b></p>
 
                                                 @*
@@ -184,7 +165,7 @@
                                         </div>
                                     </div>
                                     <div class="d-grid pb-3">
-                                        <div class="btn-group" role="group">
+                                        <div class="mt-2 btn-group" role="group">
                                             <a asp-controller="Justdoit" asp-action="Edit" asp-route-id="@objJust.JustdoitId"
                                                class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
                                             <a asp-controller="Justdoit" asp-action="Delete" asp-route-id="@objJust.JustdoitId"

@@ -11,6 +11,11 @@ body {
 /* Custom class that extends bootstrap's button styles. */
 .extra-button-style {
     font-size: 1rem;
+    background-color: #ffffff;
+}
+
+.extra-button-style-b {
+    font-size: 1rem;
 }
 
 .extra-iconify-mdi {
@@ -31,7 +36,42 @@ h4 {
     font-weight: lighter;
 }
 
+.count-max-length {
+    font-size: 1.5vw;
+    float: right;
+    color: #4d4d4d;
+}
+
+.bg-g {
+    background-color: #a6b38c;
+}
+
+.bg-g-l {
+    background-color: #d5dac8;
+}
+
+.bg-gr {
+    background-color: #efefef;
+}
+
+.bg-gr-d {
+    background-color: #dadaddb5;
+}
+
+.bg-gr-dl {
+    background-color: #bebfc1db;
+}
+
+.t-l {
+    font-size: 16px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color:#a6b38c !important;
+}
+
 p, b, i, h5 {font-size: 16px;}
+
 
 .timeline {
     border-left: 1px solid hsl(0, 0%, 90%);
@@ -60,8 +100,113 @@ p, b, i, h5 {font-size: 16px;}
         }
 
 
-@media (min-width: 768px) {
-    html {
+
+/*Media queries*/
+
+@media (max-width: 350px) {
+    p, b {
+        font-size: 10px;
+    }    
+    h4 {
         font-size: 16px;
+    }
+    .extra-iconify-mdi {
+        width: 12px;
+        height: 12px;
+    }
+    .t-l, i {
+        font-size: 11px;
+    }
+    .responsive-column {
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 351px) {
+    p, b {
+        font-size: 13px;
+    }
+    h4 {
+        font-size: 16px;
+    }
+    .extra-iconify-mdi {
+        width: 14px;
+        height: 14px;
+    }
+    .t-l, i {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 480px) {
+    p, b {
+        font-size: 14px;
+    }
+    h4 {
+        font-size: 18px;
+    }
+    .extra-iconify-mdi {
+        width: 16px;
+        height: 16px;
+    }
+    .t-l, i {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 576px) {
+    p, b {
+        font-size: 15px;
+    }
+    h4 {
+        font-size: 22px;
+    }
+    .extra-iconify-mdi {
+        width: 18px;
+        height: 18px;
+    }
+    .t-l, i {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    p, b {
+        font-size: 16px;
+    }
+    h4 {
+        font-size: 22px;
+    }
+    .count-max-length {
+        font-size: 12px;
+    }
+    .extra-iconify-mdi {
+        width: 20px;
+        height: 20px;
+    }
+    .t-l, i {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 992px) {
+    p, b, i {
+        font-size: 18px;
+    }
+    h4 {
+        font-size: 24px;
+    }
+    .count-max-length {
+        font-size: 12px;
+    }
+    .extra-iconify-mdi {
+        width: 24px;
+        height: 24px;
+    }
+    .t-l {
+        font-size: 18px;
+    }
+    html {
+        font-size: 18px;
     }
 }

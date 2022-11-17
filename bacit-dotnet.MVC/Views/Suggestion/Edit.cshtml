@@ -1,7 +1,7 @@
 ﻿@model bacit_dotnet.MVC.ViewModels.EditSuggestionViewModel
 
 <form method="post" enctype="multipart/form-data" asp-action="Edit">
-    <div class="border p-3 mt-4">
+    <div class="border p-3 mt-4 bg-gr-d">
         <div class="row pb-2">
             <h2 class="text-dark">Rediger forslag</h2>
             <hr/>
@@ -106,7 +106,7 @@
             <div class="row">
 
                 <!-- Image before -->
-                <div class="col-sm-5 text-black align-content-center">
+                <div class="col-sm-6 text-black align-content-center">
                     Bilde før
                     <input asp-for="Attachment" id="imageInputBefore" class="form-control pt-1 mb-1"
                            type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)"/>
@@ -116,7 +116,7 @@
                 </div>
 
                 <!-- Image after -->
-                <div class="col-sm-5 text-black align-content-center">
+                <div class="col-sm-6 text-black align-content-center">
                         Bilde etter
                             <input asp-for="AttchmentsAfter" id="imageInputAfter" class="form-control pt-1"
                                    type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
