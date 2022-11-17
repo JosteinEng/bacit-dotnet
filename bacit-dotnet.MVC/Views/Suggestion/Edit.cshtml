@@ -16,8 +16,17 @@
             <span asp-validation-for="SuggestionId" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="EmployeeId">Ansatt ID</label>
-            <input asp-for="EmployeeId" class="form-control"/>
+            <label asp-for="EmployeeId">Opprettet av</label>
+            <select asp-for="EmployeeId">
+                @foreach (var user in Model.Users)
+                {
+                    if (user.Email.Equals("1337"))
+                    {
+                        continue;
+                    }
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
+                }
+            </select>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -45,6 +54,10 @@
             <select asp-for="UserId">
                 @foreach (var user in Model.Users)
                 {
+                    if (user.Email.Equals("1337"))
+                    {
+                        continue;
+                    }
                     <option value="@user.Id">@user.FirstName @user.LastName</option>
                 }
             </select>

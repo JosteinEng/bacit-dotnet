@@ -26,6 +26,10 @@
                 <option value="" selected diasbled>Velg en Teamleder</option>
                 @foreach (var user in Model.Users)
                 {
+                    if (user.Email.Equals("1337"))
+                    {
+                        continue;
+                    }
                     <option value="@user.Id">@user.FirstName @user.LastName</option>
                 }
             </select>

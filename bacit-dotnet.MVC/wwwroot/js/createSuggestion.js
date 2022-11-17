@@ -15,7 +15,6 @@ $(() => {
     const imgSizeWarningAfter = $("#imageSizeWarningAfter");
     const imgTypeWarningAfter = $("#imageTypeWarningAfter");
     const imgPreview = $("#imagePreview");
-    const submitBtn = $("#submitBtn");
     const supportedImageTypes = ["jpeg", "jpg", "png","heic","heif"];
 
     //One unique variable for each validation function

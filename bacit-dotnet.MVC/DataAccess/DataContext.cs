@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bacit_dotnet.MVC.DataAccess
 {
+    // The DataContext is the source of all entities mapped over a database connection.
     public class DataContext : IdentityDbContext<IdentityUser>
     {
         public DataContext()

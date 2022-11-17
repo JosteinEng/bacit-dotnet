@@ -11,29 +11,30 @@ namespace bacit_dotnet.MVC.Models.Account;
 
 public class RegisterViewModel
 {
-    [Required]
+    [Required(ErrorMessage = "Vennligst legg inn et ansattnummer.")]
     [Display(Name = "Ansattnummer")]
     public string Email { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Vennligst skriv inn fornavnet til den ansatte.")]
     [Display(Name = "Fornavn")]
     public string FirstName { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Vennligst skriv inn etternavnet til den ansatte.")]
     [Display(Name = "Etternavn")]
     public string LastName { get; set; }
     [Required]
     [Display(Name = "Rolle")]
     public string Role { get; set; }
 
-    [Required]
-    [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+    [Required(ErrorMessage = "Vennligst skriv inn et passord")]
+    [StringLength(100, ErrorMessage = "{0} må være minst {2} karakterer langt.", MinimumLength = 6)]
     [DataType(DataType.Password)]
-    [Display(Name = "Password")]
+    [Display(Name = "Passord")]
     public string Password { get; set; }
 
+    [Required(ErrorMessage = "Vennligst repeter det samme passordet")]
     [DataType(DataType.Password)]
     [Display(Name = "Confirm password")]
-    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+    [Compare("Password", ErrorMessage = "Det er et misforhold mellom passordene")]
     public string ConfirmPassword { get; set; }
 }

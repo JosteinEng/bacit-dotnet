@@ -1,4 +1,5 @@
-﻿@model bacit_dotnet.MVC.Models.Suggestions
+﻿@using Microsoft.VisualBasic
+@model bacit_dotnet.MVC.Models.Suggestions
 
 <form method="post" asp-action="Delete">
     <div class="border p-3 mt-4 bg-white">
@@ -15,9 +16,9 @@
             <input asp-for="SuggestionId" type="hidden" class="form-control" />
         </div>
         <div class="mb-3">
-            <label asp-for="EmployeeId">Ansatt ID</label>
-            <input asp-for="EmployeeId" disabled="disabled" class="form-control" />
-        </div>
+            <label asp-for="EmployeeId">Opprettet av</label>
+            <input value="@string.Concat(Model.Employee.FirstName, " ", Model.Employee.LastName)" disabled="" class="form-control" />
+        </div>  
         <div class="mb-3">
             <label asp-for="Title">Tittel</label>
             <input asp-for="Title" disabled="disabled" class="form-control" />
@@ -29,7 +30,11 @@
         <div class="mb-3">
             <label asp-for="TeamId">Team</label>
             <input asp-for="Team.TeamName" disabled="disabled" class="form-control" />
-        </div>        
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserId">Ansvarlig</label>
+            <input value="@string.Concat(Model.User.FirstName, " ", Model.User.LastName)" disabled="" class="form-control" />
+        </div>           
         <div class="mb-3">
             <label asp-for="Deadline">Tidsfrist</label>
             <input asp-for="Deadline" disabled="disabled" type="date" class="form-control" />

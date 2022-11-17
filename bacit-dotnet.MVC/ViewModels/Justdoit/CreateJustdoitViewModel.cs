@@ -13,7 +13,10 @@ namespace bacit_dotnet.MVC.ViewModels
         [ValidateNever]
         public Teams[] Teams { get; set; }
         
-        [Required(ErrorMessage = "Vennligst velg en bruker.")]
+        [ValidateNever]
+        public UserEntity[] Users { get; set; }
+        
+        [Required(ErrorMessage = "Vennligst velg en ansatt.")]
         [Range(1, int.MaxValue)]
         public int? EmployeeId { get; set; }
 

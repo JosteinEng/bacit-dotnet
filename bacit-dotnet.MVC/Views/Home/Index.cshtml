@@ -211,11 +211,16 @@
                                                     <div class="row">
                                                         <div class="col-sm-6 col-md-6 p-2 text-black">
                                                             <div class="border" style="padding: 1rem;">
+                                                                <p><b>Oprettet av</b></p>
+                                                                <p>@objSuggestion.Employee.FirstName @objSuggestion.Employee.LastName</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 p-2 text-black">
+                                                            <div class="border" style="padding: 1rem;">
                                                                 <p><b>Ansvarlig</b></p>
                                                                 <p>@objSuggestion.User.FirstName @objSuggestion.User.LastName</p>
                                                             </div>
                                                         </div>
-
                                                     </div>
 
                                                     <div class="row">
@@ -382,8 +387,8 @@
                                             <div class="col-md p-3 my-0 bg-light text-black accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#justdoit-@justdoitnr">
                                                 <div class="row" style="width:100%;">
                                                     <div class="col-3 bg-light">@objJustdoit.Title</div>
-                                                    <div class="col-2 bg-light">HMS</div>
-                                                    <div class="col-2 bg-light">Ansattnavn</div>
+                                                    <div class="col-2 bg-light">@objJustdoit.Team.TeamName</div>
+                                                    <div class="col-2 bg-light">@objJustdoit.Employee.FirstName @objJustdoit.Employee.LastName</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -413,7 +418,7 @@
                                                         <div class="col-sm-6 col-md-6 p-2 text-black">
                                                             <div class="border" style="padding: 1rem;">
                                                                 <p><b>Ansvarlig</b></p>
-                                                                <p>Placeholder for ansvarlig</p>
+                                                                <p>@objJustdoit.Employee.FirstName @objJustdoit.Employee.LastName</p>
                                                             </div>
                                                         </div>
 
