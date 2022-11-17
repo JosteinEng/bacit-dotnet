@@ -26,7 +26,7 @@
             <select asp-for="UserId">
                 @foreach (var user in Model.Users)
                 {
-                    <option value="@user.Id">@user.FirstName</option>
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
                 }
             </select>
             <span asp-validation-for="UserId" class="text-danger">
