@@ -576,7 +576,18 @@ namespace bacit_dotnet.MVC.Controllers
         {
             ViewData["ReturnUrl"] = returnUrl;
             var user = await _userManager.FindByEmailAsync(model.Email);
-            
+           
+            // The if statement checks if the user to delete is an admin.
+            // Because of foreign key connections to the AspNet login system, we want to avoid the possibility
+            // of deleting the user in an admin state.
+            //
+            // The status of role has to be changed before being able to delete the user.
+            if (userRepository.IsUserAdmin(model.Email))
+            {
+                TempData["error"] = "Kan ikke slette en administrator. Fjern admin status for å slette bruker!";
+                return RedirectToAction("Index", "Users");
+            }
+
             // The if statements checks if the user to be deleted is connected(foreign key) to a team, suggestion
             // or Justdoit in the db. If the user is wishes to delete a connected user, the if statements
             // handles the request and avoids the potential following SQLException.

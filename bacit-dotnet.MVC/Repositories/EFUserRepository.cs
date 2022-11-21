@@ -74,6 +74,13 @@ namespace bacit_dotnet.MVC.Repositories
             SetRoles(user.Email, roles);
         }
 
+        public bool IsUserAdmin(string email)
+        {
+            var userFromDb = GetUserByEmail(email);
+
+            return userFromDb.Role == "Admin";
+        }
+            
         // This method checks if a user has been set as the connected team leader in a team.
         public bool IsUserInUseTeam(string email)
         {

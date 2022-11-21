@@ -16,6 +16,8 @@ namespace bacit_dotnet.MVC.Interfaces
         
         // returns bool for user admin role
         bool IsAdmin(string email);
+
+        public bool IsUserAdmin(string email);
         
         // returns bool for usage of a user in a team
         public bool IsUserInUseTeam(string email);
