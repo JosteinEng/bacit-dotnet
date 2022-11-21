@@ -77,12 +77,12 @@ namespace bacit_dotnet.MVC.Controllers
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning(2, "User account locked out.");
+                    _logger.LogWarning(2, "Brukeren har blitt låst ute.");
                     return View("Lockout");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Ugyldig login forsøk.");
                     return View(model);
                 }
             }
