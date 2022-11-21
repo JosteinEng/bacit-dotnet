@@ -11,7 +11,7 @@
 </head>
 
     <form asp-action="save" asp-controller="users" method="post" enctype="multipart/form-data">
-        <div class="border p-3 mt-4">
+        <div class="border p-3 mt-4 bg-gr-d">
             <div class="row pb-2">
                 <h3 class="text-dark d-inline-block">Rediger bruker</h3>
 
@@ -67,8 +67,8 @@
 
                     <div class="d-grid pb-3">
                         <div class="btn-group" role="group">
-                            <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Lagre</button>
-                            <a asp-controller="Users" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
+                            <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style-b">Oppdater</button>
+                            <a asp-controller="Users" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til listen</a>
                         </div>
                     </div>
                 </ul>
