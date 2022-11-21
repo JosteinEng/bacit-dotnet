@@ -7,10 +7,10 @@ namespace bacit_dotnet.MVC.Models.Account;
 
 public class LoginViewModel
 {
-    [Required]
+    [Required(ErrorMessage = "Vennligst fyll inn ansattnummer")]
     public string Email { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Vennligst skriv inn et passord")]
     [DataType(DataType.Password)]
     public string Password { get; set; }
 
