@@ -3,11 +3,15 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model bacit_dotnet.MVC.ViewModels.UserViewModel
 
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 <form method="post" enctype="multipart/form-data">
     <div class="border p-4 mt-4 bg-white">
         <h3 class="text-dark d-inline-block">Brukere i systemet</h3>
-        <a class="btn btn-outline-dark d-inline-block float-end" href="~/Account/Register?returnurl=%2F">Lag ny bruker</a>
-        <div class="row pt-3">
+	    <a class="btn btn-outline-dark d-inline-block float-end" href="~/Account/Register?returnurl=%2F">Lag ny bruker</a>
+	    <div class="row pt-3">
             <hr />
             <table>
                 <tr>

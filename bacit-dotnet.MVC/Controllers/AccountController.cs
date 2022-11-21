@@ -20,6 +20,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 #pragma warning disable
 ///////////////////////
 
+
 namespace bacit_dotnet.MVC.Controllers
 {
     // This is the controller class for Account/Users. The controller is the C in MVC
@@ -94,7 +95,7 @@ namespace bacit_dotnet.MVC.Controllers
         //
         // GET: /Account/Register
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
