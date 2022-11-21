@@ -42,12 +42,12 @@ h4 {
     color: #4d4d4d;
 }
 
-.bg-g {
-    background-color: #a6b38c;
+.bg-o {
+    background-color: #cbaf89;
 }
 
-.bg-g-l {
-    background-color: #d5dac8;
+.bg-o-l {
+    background-color: #dfcfb8;
 }
 
 .bg-gr {
@@ -62,12 +62,16 @@ h4 {
     background-color: #bebfc1db;
 }
 
+.bg-nav {
+    background-color: #313030;
+}
+
 .t-l {
     font-size: 16px;
 }
 
 .accordion-button:not(.collapsed) {
-    background-color:#a6b38c !important;
+    background-color: #cbaf89 !important;
 }
 
 p, b, i, h5 {font-size: 16px;}
