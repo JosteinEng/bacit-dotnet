@@ -117,8 +117,8 @@ p, b, i, h5 {font-size: 16px;}
     .t-l, i {
         font-size: 11px;
     }
-    .responsive-column {
-        visibility: hidden;
+    .count-max-length {
+        font-size: 8px;
     }
 }
 
@@ -135,6 +135,9 @@ p, b, i, h5 {font-size: 16px;}
     }
     .t-l, i {
         font-size: 12px;
+    }
+    .count-max-length {
+        font-size: 9px;
     }
 }
 
