@@ -15,15 +15,18 @@
         <div class="mb-3">
             <label asp-for="EmployeeId">Opprettet av</label>
             <select asp-for="EmployeeId">
-                <option value="" selected disabled>Velg en ansatt</option>
-                @foreach (var user  in Model.Users)
-                {
-                    if (user.Email.Equals("1337"))
-                    {
-                        continue;
-                    }
-                    <option value="@user.Id">@user.FirstName @user.LastName</option>
-                }
+	            @foreach (var user in Model.Users)
+		            {
+                        if (@User.Identity.Name == @user.Email)
+			            {
+				            <option value="@user.Id" selected>@user.FirstName @user.LastName</option>
+			            }
+			            if (user.Email.Equals("1337") || user.Email.Equals(@User.Identity.Name))
+			            {
+				            continue;
+			            }
+			            <option value="@user.Id">@user.FirstName @user.LastName</option>
+		            }
             </select>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
