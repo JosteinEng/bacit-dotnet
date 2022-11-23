@@ -25,7 +25,7 @@
             +++ en property som vil model-binde selected value ( m => m.UserId )
             *@
             <select asp-for="UserId">
-                <option value="selected diasbled">Velg en Teamleder</option>
+                <option value="" selected disabled>Velg en Teamleder</option>
                 @foreach (var user in Model.Users)
                 {
                     if (user.Email.Equals("1337"))
