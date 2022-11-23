@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cceee0cb-354b-49c6-b4ce-2842c91b25b0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Account/Register.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Error/PageNotfound.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Error/PageNotfound.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Create.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Delete.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Justdoit/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_LayoutButton.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_LayoutButton.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Create.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Delete.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Suggestion/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Create.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Delete.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Edit.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Team/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Users/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Users/Delete.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Users/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Users/Edit.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Users/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Users/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +49,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -74,6 +79,11 @@
       <workItem from="1669209813777" duration="32000" />
       <workItem from="1669209872661" duration="19000" />
       <workItem from="1669209917168" duration="82000" />
+      <workItem from="1669210576401" duration="319000" />
+      <workItem from="1669210933910" duration="40000" />
+      <workItem from="1669210997023" duration="28000" />
+      <workItem from="1669211049729" duration="21000" />
+      <workItem from="1669211096153" duration="1316000" />
     </task>
     <servers />
   </component>

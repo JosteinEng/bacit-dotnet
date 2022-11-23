@@ -3,7 +3,7 @@
 @* ### Edit for Suggestions ### *@
 
 <form method="post" enctype="multipart/form-data" asp-action="Edit">
-    <div class="border p-3 mt-4 bg-white">
+    <div class="border p-3 mt-4 bg-gr-d">
         <div class="row pb-2">
             <h2 class="text-dark">Rediger forslag</h2>
             <hr />
@@ -111,7 +111,7 @@
             <div class="row">
 
                 <!-- Image before -->
-                <div class="col-sm-5 text-black align-content-center">
+                <div class="col-sm-6 text-black align-content-center">
                     Bilde før
                     <input asp-for="Attachment" id="imageInputBefore" class="form-control pt-1 mb-1"
                            type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
@@ -121,14 +121,14 @@
                 </div>
 
                 <!-- Image after -->
-                <div class="col-sm-5 text-black align-content-center">
-                    Bilde etter
-                    <input asp-for="AttchmentsAfter" id="imageInputAfter" class="form-control pt-1"
-                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
-
-                    <span id="imageSizeWarningAfter" class="text-danger" style="display: none;"></span>
-                    <span id="imageTypeWarningAfter" class="text-danger" style="display: none"></span>
-                </div>
+                <div class="col-sm-6 text-black align-content-center">
+                        Bilde etter
+                            <input asp-for="AttchmentsAfter" id="imageInputAfter" class="form-control pt-1"
+                                   type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+        
+                            <span id="imageSizeWarningAfter" class="text-danger" style="display: none;"></span>
+                            <span id="imageTypeWarningAfter" class="text-danger" style="display: none"></span>
+                        </div>
                 <!-- Image preview field -->
 
                 <img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;" />
@@ -138,8 +138,8 @@
         <br />
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">
-                <button id="submitBtn" type="submit" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px;">Oppdater</button>
-                <a asp-controller="Suggestion" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px;">Tilbake</a>
+                <button id="submitBtn" type="submit" class="btn btn-dark btn-outline-dark text-white btn-lg extra-button-style-b" style="width: 150px">Oppdater</button>
+                <a asp-controller="Suggestion" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Tilbake</a>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
 @model bacit_dotnet.MVC.ViewModels.CreateJustdoitViewModel
 
 <form method="post" enctype="multipart/form-data">
-    <div class="border p-3 mt-4 bg-white">
+    <div class="border p-3 mt-4 bg-gr-d">
         <div class="row pb-2">
             <h3 class="text-dark">Legg til ny Just Do It</h3>
             <hr/>
@@ -34,7 +34,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="Title">Tittel</label>
-            <input asp-for="Title" class="form-control" minlength="2" maxlength="30"/><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">30/30</span>
+            <input asp-for="Title" class="form-control" minlength="2" maxlength="30"/><span id="countCharTitle" class="count-max-length">30/30</span>
             <span asp-validation-for="Title" class="text-danger">
             </span>
         </div>
@@ -82,7 +82,7 @@
             <div class="row">
 
                 <!-- Image before -->
-                <div class="col-sm-5 text-black align-content-center">
+                <div class="col-sm-6 text-black align-content-center">
                 Bilde før
                     <input asp-for="Attachments" id="imageInputBefore" class="form-control pt-1 mb-1"
                         type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
@@ -92,7 +92,8 @@
                 </div>
 
                 <!-- Image after -->
-                <div class="col-sm-5 text-black align-content-center">
+                <div class="col-sm-6 text-black align-content-center">
+                    Bilde etter
                     <input asp-for="AttachmentsAfter" id="imageInputAfter" class="form-control pt-1"
                            type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
 
@@ -103,7 +104,6 @@
 
                 <img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>  
 
-            </div>
         </div>       
 
         <br/>
@@ -115,7 +115,7 @@
         *@
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">
-                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Opprett</button>
+                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style-b">Opprett</button>
                 <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
             </div>
         </div>
