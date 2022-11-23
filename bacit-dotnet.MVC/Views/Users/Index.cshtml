@@ -1,69 +1,61 @@
 ﻿@using bacit_dotnet.MVC.Models
 @using bacit_dotnet.MVC.Models.Account
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@model bacit_dotnet.MVC.ViewModels.UserViewModel
 
-@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@* ### Index for Users ### *@
+
+@model bacit_dotnet.MVC.ViewModels.UserViewModel
 
 <form method="post" enctype="multipart/form-data">
     <div class="border p-4 mt-4 bg-white">
-        <h3 class="text-dark d-inline-block">Brukere i systemet</h3>
-	    <a class="btn btn-outline-dark d-inline-block float-end" href="~/Account/Register?returnurl=%2F">Lag ny bruker</a>
-	    <div class="row pt-3">
+        <h3 class="text-dark d-inline-block mb-5">Brukere</h3>
+        <a class="btn btn-outline-dark d-inline-block float-end" href="~/Account/Register?returnurl=%2F">Lag ny bruker</a>
+        <div class="row pt-3">
+
+
+
+            <div class="row pb-3">
+                <div class="col-md-3">
+                    <b>Fornavn</b>
+                </div>
+                <div class="col-md-3">
+                    <b>Etternavn</b>
+                </div>
+                <div class="col-md-3">
+                    <b>Ansattnummer</b>
+                </div>
+            </div>
             <hr />
-            <table>
-                <tr>
-                    <td>Fornavn</td>
-                    <td>Etternavn</td>
-	                <td>Ansattnummer</td>
-	                <td>Rolle</td>
-                    <td>Endre</td>
-                    <td>Slett</td>
-                    <br />
-                </tr>
-                @foreach (var user in Model.Users)
-                {
-                    <tr class="border-top mt-2">
-                        <td>@user.FirstName</td>
-                        <td>@user.LastName</td>
-                        <td>@user.Email</td>
-						<td>@user.Role</td>
-                        @if (user.Email.Equals("1337"))
-                        {
-                            <td>
-                                <p>Admin kan ikke endres</p>
-                                <form asp-action="index" asp-controller="users" method="get">
-                                    <input type="hidden" name="Email" value="@user.Email"/>
-                                    <input class="btn btn-light btn-outline-dark extra-button-style" hidden type="submit" value="Endre"/>
-                                </form>
-                            </td>
-                            <td>
-                                <p>Admin kan ikke slettes</p>                                
-                                <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
-                                    <input type="hidden" name="Email" value="@user.Email"/>
-                                    <input class="btn btn-light btn-outline-dark extra-button-style" hidden type="submit" value="Slett"/>
-                                </form>
-                            </td> 
-                            continue;
-                        }
-                            <td>
-                                <form asp-action="edit" asp-controller="users" method="get">
-                                    <input type="hidden" name="Email" value="@user.Email"/>
-                                    <input class="btn btn-light btn-outline-dark extra-button-style" type="submit" value="Endre"/>
-                                </form>
-                            </td>
-                        <td>
-                            <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
-                                <input type="hidden" name="Email" value="@user.Email" />
-                                <input class="btn btn-light btn-outline-dark extra-button-style" type="submit" value="Slett" />
-                            </form>
-                        </td>
-                        
-                    </tr>
-                }
-            </table>
-        </div>
+            @foreach (var user in Model.Users)
+            {
+                <div class="row">
+                    <div class="col-md-3 pt-2">
+                        @user.FirstName
+                    </div>
+                    <div class="col-md-3 pt-2">
+                        @user.LastName
+                    </div>
+                    <div class="col-md-3 pt-2">
+                        @user.Email                                           
+                    </div>
+
+                    <div class="btn-group col-md-3 mb-3 justify-content-md-end" role="group">
+                    <div class="col-4">
+                        <form asp-action="edit" asp-controller="users" method="get">
+                            <input type="hidden" name="Email" value="@user.Email" />
+                            <input class="btn btn-outline-dark me-5" style="width: 80px;" type="submit" value="Endre" />
+                        </form>
+                    </div>
+                    <div class="col-4">
+                        <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
+                            <input type="hidden" name="Email" value="@user.Email" />
+                                <input class="btn btn-outline-dark" style="width: 80px;" type="submit" value="Slett" />
+                        </form>
+                    </div>
+                    </div>
+                </div>            
+            <hr />
+            }
+    </div>
     </div>
 </form>

@@ -7,6 +7,8 @@ html {
 body {
     margin-bottom: 60px;
     font-family: Spartan, sans-serif;
+    background-image: url('https://img.freepik.com/free-vector/copy-space-wavy-white-background-layers_23-2148845469.jpg?w=2000');
+    margin: 0;
 }
 /* Custom class that extends bootstrap's button styles. */
 .extra-button-style {
@@ -63,6 +65,7 @@ p, b, i, h5 {font-size: 16px;}
         .timeline .timeline-item:after {
 
         }
+
 
 
 @media (min-width: 768px) {

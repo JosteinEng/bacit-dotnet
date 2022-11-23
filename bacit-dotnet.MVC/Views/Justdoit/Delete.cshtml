@@ -1,5 +1,7 @@
 ﻿@model Justdoit
 
+@* ### Delete for Just do it ### *@
+
 <form method="post" asp-action="Delete">
     <div class="border p-3 mt-4 bg-white">
         <div class="row pb-2">
@@ -24,7 +26,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="Description">Beskrivelse</label>
-            <input asp-for="Description" disabled="disabled" class="form-control" />
+            <textarea asp-for="Description" disabled="disabled" class="form-control" style="min-height: 150px;"></textarea>
         </div>
         <div class="mb-3">
             <label asp-for="TeamId">Team</label>
