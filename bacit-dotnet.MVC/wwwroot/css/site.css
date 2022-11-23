@@ -53,8 +53,16 @@ h4 {
     background-color: #cbaf89;
 }
 
+.bg-o-archived {
+    background-color: #a9b0bd;
+}
+
 .bg-o-l {
     background-color: #dfcfb8;
+}
+
+.bg-o-l-archived {
+    background-color: #c2c7d0;
 }
 
 .bg-gr {
@@ -75,6 +83,18 @@ h4 {
 
 .accordion-button:not(.collapsed) {
     background-color: #cbaf89 !important;
+}
+
+.accordion-button-l:not(.collapsed) {
+    background-color: #dfcfb8 !important;
+}
+
+.accordion-button-archived:not(.collapsed) {
+    background-color: #a9b0bd !important;
+}
+
+.accordion-button-archived-l:not(.collapsed) {
+    background-color: #c2c7d0 !important;
 }
 
 p, b, i, h5 {font-size: 16px;}
