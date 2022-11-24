@@ -50,7 +50,7 @@
                                 </form>
                             </div>
                             <div class="col-4">
-                                <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
+                                <form asp-action="delete" asp-controller="account" method="post">
                                     <input type="hidden" name="Email" value="@user.Email" />
                                     <input class="btn btn-outline-dark" style="width: 80px;" hidden type="submit" value="Slett" />
                                 </form>
@@ -67,9 +67,11 @@
                             </form>
                         </div>
                         <div class="col-4">
-                            <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
+                            <form asp-action="delete" asp-controller="account" method="post">
                                 <input type="hidden" name="Email" value="@user.Email" />
-                                <input class="btn btn-outline-dark" style="width: 80px;" type="submit" value="Slett" />
+                                <a type="button" class="btn btn-outline-dark" style="width:80px;" data-bs-toggle="modal" data-bs-target="#createSuggestion">
+                                    Slett
+                                </a>
                             </form>
                         </div>
                     </div>
@@ -79,3 +81,27 @@
         </div>
     </div>
 </form>
+
+@*
+
+    The following code adds a popup modal which allows the user to select what type of suggestion they want to create.
+    The popup can be closed by pressing the x-button toggle in the upper right corner or click anywhere outside of the popup. On a desktop computer a user can also press the ESC key.
+
+*@
+<div class="modal fade" id="createSuggestion" tabindex="-1" aria-labelledby="createSuggestionLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createSuggestionLabel">Opprett forslag</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-grid">
+                    <div class="btn-group-vertical" role="group">
+                        <input class="btn btn-outline-dark" style="width: 80px;" type="submit" value="Slett" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
