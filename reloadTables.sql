@@ -183,7 +183,7 @@ create or replace table Suggestions
 );
 
 INSERT INTO AspNetRoles(id, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
-INSERT INTO users(FirstName, LastName, Email) values('Admin','Admin', '1337');
-INSERT INTO AspNetUsers (Id, UserName, NormalizedUserName, Email, NormalizedEmail, EmailConfirmed, PasswordHash, SecurityStamp, ConcurrencyStamp, PhoneNumber, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnd, LockoutEnabled, AccessFailedCount) VALUES ('606e1db6-5c43-498e-af7c-e71584a996d9', '1337', '1337', '1337', '1337', false, 'AQAAAAEAACcQAAAAELQ/9cNgM3ennubpIne79w06/vzScUYxAurHgtfGfFSlD/DnN+mIJIrrvd3tajjGVg==', '5S5BZLOOPQTHUNKU4NZPS46OWSOY3I44', '6eb488b9-617c-4e32-a036-1c7879ba7cec', null, false, false, '2022-11-03 10:17:59', false, 0);
+INSERT INTO users(FirstName, LastName, Email) values('Admin','Admin', '0');
+INSERT INTO AspNetUsers (Id, UserName, NormalizedUserName, Email, NormalizedEmail, EmailConfirmed, PasswordHash, SecurityStamp, ConcurrencyStamp, PhoneNumber, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnd, LockoutEnabled, AccessFailedCount) VALUES ('606e1db6-5c43-498e-af7c-e71584a996d9', '0', '0', '0', '0', false, 'AQAAAAEAACcQAAAAELQ/9cNgM3ennubpIne79w06/vzScUYxAurHgtfGfFSlD/DnN+mIJIrrvd3tajjGVg==', '5S5BZLOOPQTHUNKU4NZPS46OWSOY3I44', '6eb488b9-617c-4e32-a036-1c7879ba7cec', null, false, false, '2022-11-03 10:17:59', false, 0);
 INSERT INTO webAppDatabase.AspNetUserRoles (UserId, RoleId) VALUES ('606e1db6-5c43-498e-af7c-e71584a996d9', 'Administrator'
 );
