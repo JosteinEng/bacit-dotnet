@@ -14,44 +14,70 @@
 
 
 
-            <div class="row pb-3">
-                <div class="col-md-3">
+            <div class="row row-cols-5 pb-3">
+                <div class="col">
                     <b>Fornavn</b>
                 </div>
-                <div class="col-md-3">
+                <div class="col">
                     <b>Etternavn</b>
                 </div>
-                <div class="col-md-3">
+                <div class="col">
                     <b>Ansattnummer</b>
+                </div>
+                <div class="col">
+                    <b>Rolle</b>
                 </div>
             </div>
             <hr />
             @foreach (var user in Model.Users)
             {
-                <div class="row">
-                    <div class="col-md-3 pt-2">
+                <div class="row row-cols-5">
+                    <div class="col-md-2 pt-2">
                         @user.FirstName
                     </div>
-                    <div class="col-md-3 pt-2">
+                    <div class="col">
                         @user.LastName
                     </div>
-                    <div class="col-md-3 pt-2">
-                        @user.Email                                           
+                    <div class="col">
+                        @user.Email
                     </div>
+                    <div class="col">
+                        @user.Role
+                    </div>
+                    @if (user.Email.Equals("0"))
+                    {
+                        <div class="btn-group col-md-3 mb-3 justify-content-md-end" role="group">
+                            <div class="col-4">
+                                <p></p>
+                                <form asp-action="index" asp-controller="users" method="get">
+                                    <input type="hidden" name="Email" value="@user.Email" />
+                                    <input class="btn btn-light btn-outline-dark extra-button-style" hidden type="submit" value="Endre" />
+                                </form>
+                            </div>
+                            <div class="col-4">
+                                <p></p>
+                                <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
+                                    <input type="hidden" name="Email" value="@user.Email" />
+                                    <input class="btn btn-outline-dark" style="width: 80px;" hidden type="submit" value="Slett" />
+                                </form>
+                            </div>
+                        </div>
+                        continue;
+                    }
 
                     <div class="btn-group col-md-3 mb-3 justify-content-md-end" role="group">
-                    <div class="col-4">
-                        <form asp-action="edit" asp-controller="users" method="get">
-                            <input type="hidden" name="Email" value="@user.Email" />
-                            <input class="btn btn-outline-dark me-5" style="width: 80px;" type="submit" value="Endre" />
-                        </form>
-                    </div>
-                    <div class="col-4">
-                        <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
-                            <input type="hidden" name="Email" value="@user.Email" />
+                        <div class="col-4">
+                            <form asp-action="edit" asp-controller="users" method="get">
+                                <input type="hidden" name="Email" value="@user.Email" />
+                                <input class="btn btn-outline-dark me-5" style="width: 80px;" type="submit" value="Endre" />
+                            </form>
+                        </div>
+                        <div class="col-4">
+                            <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
+                                <input type="hidden" name="Email" value="@user.Email" />
                                 <input class="btn btn-outline-dark" style="width: 80px;" type="submit" value="Slett" />
-                        </form>
-                    </div>
+                            </form>
+                        </div>
                     </div>
                 </div>            
             <hr />

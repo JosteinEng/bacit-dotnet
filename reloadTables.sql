@@ -158,26 +158,24 @@ create or replace table justdoit
         foreign key (teamId) references Teams (teamID)
 );
 
-create or replace table Suggestions
+create table Suggestions
 (
-    suggestionId     int auto_increment
+    suggestionId int auto_increment
         primary key,
-    employeeId       int          not null,
-    title            varchar(50)  not null,
-    description      varchar(500) not null,
-    createdDate      datetime     not null,
-    deadline         date         not null,
-    status           varchar(50)  not null,
-    phase            varchar(50)  not null,
-    category         varchar(50)  not null,
-    attachments      longblob     null,
+    employeeId   int          not null,
+    title        varchar(50)  not null,
+    description  varchar(500) not null,
+    createdDate  datetime     not null,
+    deadline     date         not null,
+    status	     varchar(50)  not null,
+    phase 	     varchar(50)  not null,
+    category     varchar(50)  not null,
+    attachments  longblob     null,
     attachmentsAfter longblob     null,
-    teamID           int          not null,
-    userID           int          not null,
-    constraint suggestion_employee_fk
-        foreign key (employeeId) references users (Id),
+    teamID       int          not null,
+    userID       int          not null,
     constraint suggestion_team_fk
-        foreign key (teamID) references Teams (teamID),
+		foreign key (teamID) references Teams (teamID),
     constraint suggestion_user_fk
         foreign key (userID) references users (Id)
 );
