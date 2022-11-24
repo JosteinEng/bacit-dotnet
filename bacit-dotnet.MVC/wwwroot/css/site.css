@@ -81,16 +81,17 @@ h4 {
     font-size: 16px;
 }
 
-.accordion-button:not(.collapsed) {
+.background-color-cbaf89:not(.collapsed) {
     background-color: #cbaf89 !important;
 }
 
-
-.accordion-button-archived:not(.collapsed) {
+.background-color-a9b0bd:not(.collapsed) {
     background-color: #a9b0bd !important;
 }
 
-p, b, i, h5 {font-size: 16px;}
+p, b, i, h5 {
+    font-size: 16px;
+}
 
 
 .timeline {
