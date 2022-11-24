@@ -54,7 +54,7 @@ namespace bacit_dotnet.MVC.Models
         
         // a variable that holds a team obj
         public Teams? Team { get; set; }
-        
+
         // a variable that holds a user obj
         public UserEntity? Employee { get; set; }
     }

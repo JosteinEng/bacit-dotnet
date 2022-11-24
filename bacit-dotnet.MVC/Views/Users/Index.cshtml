@@ -9,62 +9,58 @@
 <form method="post" enctype="multipart/form-data">
     <div class="border p-4 mt-4 bg-white">
         <h3 class="text-dark d-inline-block mb-5">Brukere</h3>
-        <a class="btn btn-outline-dark d-inline-block float-end" href="~/Account/Register?returnurl=%2F">Lag ny bruker</a>
-        <div class="row pt-3">
+        <a class="btn btn-outline-dark d-inline-block float-end button-new-user" href="~/Account/Register?returnurl=%2F">Lag ny bruker</a>
+        <div class="row p-0 m-0 pt-3">
 
 
 
-            <div class="row row-cols-5 pb-3">
-                <div class="col">
+            <div class="row p-0 m-0 pb-3 top-text">
+                <div class="col-md-3">
                     <b>Fornavn</b>
                 </div>
-                <div class="col">
+                <div class="col-md-3">
                     <b>Etternavn</b>
                 </div>
-                <div class="col">
+                <div class="col-md-3">
                     <b>Ansattnummer</b>
-                </div>
-                <div class="col">
-                    <b>Rolle</b>
                 </div>
             </div>
             <hr />
             @foreach (var user in Model.Users)
             {
-                <div class="row row-cols-5">
-                    <div class="col-md-2 pt-2">
+                <div class="row p-0 m-0">
+                    <div class="col-md-3 mb-4 pt-2">
                         @user.FirstName
+                        @if (!user.Email.Equals("0") && user.Role.Equals("Admin"))
+                        {
+                            @: (@user.Role)
+                        }
                     </div>
-                    <div class="col">
+                    <div class="col-md-3 mb-4 pt-2">
                         @user.LastName
                     </div>
-                    <div class="col">
+                    <div class="col-md-3 mb-4 pt-2">
                         @user.Email
-                    </div>
-                    <div class="col">
-                        @user.Role
                     </div>
                     @if (user.Email.Equals("0"))
                     {
                         <div class="btn-group col-md-3 mb-3 justify-content-md-end" role="group">
                             <div class="col-4">
-                                <p></p>
-                                <form asp-action="index" asp-controller="users" method="get">
+                                <form asp-action="edit" asp-controller="users" method="get">
                                     <input type="hidden" name="Email" value="@user.Email" />
-                                    <input class="btn btn-light btn-outline-dark extra-button-style" hidden type="submit" value="Endre" />
+                                    <input class="btn btn-outline-dark me-5" style="width: 80px;" hidden type="submit" value="Endre" />
                                 </form>
                             </div>
                             <div class="col-4">
-                                <p></p>
                                 <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
                                     <input type="hidden" name="Email" value="@user.Email" />
                                     <input class="btn btn-outline-dark" style="width: 80px;" hidden type="submit" value="Slett" />
                                 </form>
                             </div>
                         </div>
+                        <hr />
                         continue;
                     }
-
                     <div class="btn-group col-md-3 mb-3 justify-content-md-end" role="group">
                         <div class="col-4">
                             <form asp-action="edit" asp-controller="users" method="get">
@@ -79,9 +75,9 @@
                             </form>
                         </div>
                     </div>
-                </div>            
-            <hr />
+                </div>
+                <hr />
             }
-    </div>
+        </div>
     </div>
 </form>
