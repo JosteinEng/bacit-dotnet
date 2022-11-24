@@ -11,23 +11,23 @@
             <hr />
         </div>
         @*
-            This line of code will show a summary of all errors at the top of the page.
-            <div asp-validation-summary="All" class="text-danger"></div>*@
+        This line of code will show a summary of all errors at the top of the page.
+        <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
             <label asp-for="EmployeeId">Opprettet av</label>
             <select asp-for="EmployeeId">
-	            @foreach (var user in Model.Users)
-		            {
-                        if (@User.Identity.Name == @user.Email)
-			            {
-				            <option value="@user.Id" selected>@user.FirstName @user.LastName</option>
-			            }
-			            if (user.Email.Equals("0") || user.Email.Equals(@User.Identity.Name))
-			            {
-				            continue;
-			            }
-			            <option value="@user.Id">@user.FirstName @user.LastName</option>
-		            }
+                @foreach (var user in Model.Users)
+                {
+                    if (@User.Identity.Name == @user.Email)
+                    {
+                        <option value="@user.Id" selected>@user.FirstName @user.LastName</option>
+                    }
+                    if (user.Email.Equals("0") || user.Email.Equals(@User.Identity.Name))
+                    {
+                        continue;
+                    }
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
+                }
             </select>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
@@ -43,111 +43,110 @@
             <span id="countCharDesc" class="count-max-length">500/500</span>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-        <div class="mb-3">
-            <label asp-for="TeamId">Team</label>
-            <select asp-for="TeamId">
+        <div class="row">
+            <div class="mb-3 col-sm-3">
+                <label asp-for="TeamId">Team</label>
+                <select asp-for="TeamId">
                 <option value="" selected disabled>Velg et Team</option>
-                @foreach (var team in Model.Teams)
-                {
-                    <option value="@team.TeamId">@team.TeamName</option>
-                }
-            </select>
-            <span asp-validation-for="TeamId" class="text-danger"></span>
-        </div>
-        
-        <div class="mb-3">
-            <label asp-for="UserId">Ansvarlig</label>
-            <select asp-for="UserId">
-                <option value="" selected disabled>Velg en ansvarlig ansatt</option>
-                @foreach (var user  in Model.Users)
-                {
-                    if (user.Email.Equals("0"))
-                    {
-                        continue;
+                    @foreach (var team in Model.Teams)
+                        {
+                        <option value="@team.TeamId">@team.TeamName</option>
+                        }
+                </select>
+                <span asp-validation-for="TeamId" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-sm-6">
+                <label asp-for="UserId">Ansvarlig</label>
+                <select asp-for="UserId">
+                    <option value="" selected disabled>Velg en ansvarlig ansatt</option>
+                    @foreach (var user in Model.Users)
+                        {
+                            if (user.Email.Equals("0"))
+                            {
+                                continue;
+                            }
+                        <option value="@user.Id">@user.FirstName @user.LastName </option>
                     }
-                    <option value="@user.Id">@user.FirstName @user.LastName</option>
-                }
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Deadline">Tidsfrist</label>
+                <input asp-for="Deadline" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
+                <span asp-validation-for="Deadline" class="text-danger"></span>
+            </div>
+
+            <select asp-for="Status" hidden>
+                <option value="Opprettet" selected>Opprettet</option>
             </select>
-            <span asp-validation-for="UserId" class="text-danger"></span>
-        </div>
-        
-        <div class="mb-3">
-            <label asp-for="Deadline">Tidsfrist</label>
-            <input asp-for="Deadline" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
-            <span asp-validation-for="Deadline" class="text-danger"></span>
-        </div>
-        
-        <select asp-for="Status" hidden>
-            <option value="Opprettet" selected>Opprettet</option>
-        </select>
 
-        <select asp-for="Phase" hidden>
-            <option value="Plan" selected>Plan</option>
-        </select>
-        
-        <div class="mb-3">
-            <label asp-for="Category">Kategori</label>
-            <select asp-for="Category"class="form-control">
-                <option value="" selected disabled>Velg en kategori for forslaget</option>
-                <option value="HMS">HMS</option>
-                <option value="Kvalitet">Kvalitet</option>
-                <option value="Ledetid">Ledetid</option>
-                <option value="Kostnader">Kostnader</option>
-                <option value="Effektivisering">Effektivisering</option>
-                <option value="Kompetanse">Kompetanse</option>
-                <option value="Kommunikasjon">Kommunikasjon</option>
-                <option value="5S">5S</option>
-                <option value="Standardisering">Standardisering</option>
-                <option value="Flyt">Flyt</option>
-                <option value="Visualisering">Visualisering</option>
-                <option value="Bærekraft">Bærekraft</option>
-                <option value="Industri 4.0">Industri 4.0</option>
+            <select asp-for="Phase" hidden>
+                <option value="Plan" selected>Plan</option>
             </select>
-            <span asp-validation-for="Category" class="text-danger"></span>
-        </div>
 
-        <!-- Image -->
-        <div class="container-fluid mb-3">
-            <div class="row">
+            <div class="mb-3">
+                <label asp-for="Category">Kategori</label>
+                <select asp-for="Category" class="form-control">
+                    <option value="" selected disabled>Velg en kategori for forslaget</option>
+                    <option value="HMS">HMS</option>
+                    <option value="Kvalitet">Kvalitet</option>
+                    <option value="Ledetid">Ledetid</option>
+                    <option value="Kostnader">Kostnader</option>
+                    <option value="Effektivisering">Effektivisering</option>
+                    <option value="Kompetanse">Kompetanse</option>
+                    <option value="Kommunikasjon">Kommunikasjon</option>
+                    <option value="5S">5S</option>
+                    <option value="Standardisering">Standardisering</option>
+                    <option value="Flyt">Flyt</option>
+                    <option value="Visualisering">Visualisering</option>
+                    <option value="Bærekraft">Bærekraft</option>
+                    <option value="Industri 4.0">Industri 4.0</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
 
-                <!-- Image before -->
-                <div class="col-sm-5 text-black align-content-center">
-                Bilde før
-                    <input asp-for="Attachments" id="imageInputBefore" class="form-control pt-1 mb-1"
-                        type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+            <!-- Image -->
+            <div class="container-fluid mb-3">
+                <div class="row">
 
-                    <span id="imageSizeWarningBefore" class="text-danger" style="display: none;"></span>
-                    <span id="imageTypeWarningBefore" class="text-danger" style="display: none;"></span>
+                    <!-- Image before -->
+                    <div class="col-sm-5 text-black align-content-center">
+                        Bilde før
+                        <input asp-for="Attachments" id="imageInputBefore" class="form-control pt-1 mb-1"
+                               type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+
+                        <span id="imageSizeWarningBefore" class="text-danger" style="display: none;"></span>
+                        <span id="imageTypeWarningBefore" class="text-danger" style="display: none;"></span>
+                    </div>
+
+                    <!-- Image after -->
+                    <div class="col-sm-5 text-black align-content-center">
+                        <input asp-for="AttchmentsAfter" hidden="hidden" id="imageInputAfter" class="form-control pt-1"
+                               type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+
+                        <span id="imageSizeWarningAfter" class="text-danger" style="display: none;"></span>
+                        <span id="imageTypeWarningAfter" class="text-danger" style="display: none;"></span>
+                    </div>
+                    <!-- Image preview field -->
+                    @*<img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>*@
+
                 </div>
+            </div>
 
-                <!-- Image after -->
-                <div class="col-sm-5 text-black align-content-center">
-                    <input asp-for="AttchmentsAfter" hidden="hidden"  id="imageInputAfter" class="form-control pt-1"
-                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
-
-                    <span id="imageSizeWarningAfter" class="text-danger" style="display: none;"></span>
-                    <span id="imageTypeWarningAfter" class="text-danger" style="display: none;"></span>
+            <br />
+            @*
+        Creates a group of buttons for submit and return to list buttons.
+        The buttons are set to 100% width of the parent class.
+        Also using a custom button class that extends the bootstrap button classes to specify the font-size.
+            *@
+            <div class="d-grid pb-3">
+                <div class="btn-group" role="group">
+                    <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style-b">Opprett</button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
                 </div>
-                <!-- Image preview field -->
-
-                <img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>  
-
             </div>
         </div>
-
-        <br />
-        @*
-            Creates a group of buttons for submit and return to list buttons.
-            The buttons are set to 100% width of the parent class.
-            Also using a custom button class that extends the bootstrap button classes to specify the font-size.
-        *@
-        <div class="d-grid pb-3">
-            <div class="btn-group" role="group">
-                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style-b">Opprett</button>
-                <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
-            </div>
-        </div>
-    </div>
 </form>
 
 <!--This script makes sure that the validation process is done on client-side instead of server-side-->
