@@ -8,7 +8,9 @@ public class EditJustdoitViewModel
 {
     [ValidateNever]
     public Teams[] Teams { get; set; }
-    
+   
+    [ValidateNever] 
+    public UserEntity[] Users { get; set; }
     public int TeamId { get; set; }
     
     public int JustdoitId { get; set; }

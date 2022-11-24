@@ -1,7 +1,10 @@
-﻿@model bacit_dotnet.MVC.Models.Suggestions
+﻿@using Microsoft.VisualBasic
+@model bacit_dotnet.MVC.Models.Suggestions
+
+@* ### Delete for Suggestions ### *@
 
 <form method="post" asp-action="Delete">
-    <div class="border p-3 mt-4">
+    <div class="border p-3 mt-4 bg-gr-d">
         <div class="row pb-2">
             <h2 class="text-dark">Slett forslag</h2>
             <hr />
@@ -15,21 +18,25 @@
             <input asp-for="SuggestionId" type="hidden" class="form-control" />
         </div>
         <div class="mb-3">
-            <label asp-for="EmployeeId">Ansatt ID</label>
-            <input asp-for="EmployeeId" disabled="disabled" class="form-control" />
-        </div>
+            <label asp-for="EmployeeId">Opprettet av</label>
+            <input value="@string.Concat(Model.Employee.FirstName, " ", Model.Employee.LastName)" disabled="" class="form-control" />
+        </div>  
         <div class="mb-3">
             <label asp-for="Title">Tittel</label>
             <input asp-for="Title" disabled="disabled" class="form-control" />
         </div>
         <div class="mb-3">
             <label asp-for="Description">Beskrivelse</label>
-            <input asp-for="Description" disabled="disabled" class="form-control" />
+            <textarea asp-for="Description" disabled="disabled" class="form-control" style="min-height: 150px"></textarea>
         </div>
         <div class="mb-3">
             <label asp-for="TeamId">Team</label>
             <input asp-for="Team.TeamName" disabled="disabled" class="form-control" />
-        </div>        
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserId">Ansvarlig</label>
+            <input value="@string.Concat(Model.User.FirstName, " ", Model.User.LastName)" disabled="" class="form-control" />
+        </div>           
         <div class="mb-3">
             <label asp-for="Deadline">Tidsfrist</label>
             <input asp-for="Deadline" disabled="disabled" type="date" class="form-control" />
@@ -55,7 +62,7 @@
         <br />
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">
-                <button type="submit" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Slett</button>
+                <button type="submit" class="btn btn-light btn-outline-dark btn-lg extra-button-style text-danger" style="width: 150px"><b>Slett</b></button>
                 <a asp-controller="Suggestion" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Tilbake</a>
             </div>
         </div>

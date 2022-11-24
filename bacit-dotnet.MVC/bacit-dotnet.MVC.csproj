@@ -72,4 +72,7 @@
     <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
     <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\404.jpg" />
+  </ItemGroup>
 </Project>

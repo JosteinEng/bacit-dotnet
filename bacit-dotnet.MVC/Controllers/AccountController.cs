@@ -16,12 +16,16 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Net;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-//FJERNER WARNINGS!
+//Removes WARNINGS!
 #pragma warning disable
 ///////////////////////
 
+
 namespace bacit_dotnet.MVC.Controllers
 {
+    // This is the controller class for Account/Users. The controller is the C in MVC
+    // The methods in the controller class are used for different CRUD and login actions related to Account/Users.
+    // The class uses dependency injections of different repositories to use different CRUD and login related Db actions and methods.
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -74,12 +78,12 @@ namespace bacit_dotnet.MVC.Controllers
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning(2, "User account locked out.");
+                    _logger.LogWarning(2, "Brukeren har blitt låst ute.");
                     return View("Lockout");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Ugyldig login forsøk.");
                     return View(model);
                 }
             }
@@ -91,7 +95,7 @@ namespace bacit_dotnet.MVC.Controllers
         //
         // GET: /Account/Register
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -116,7 +120,8 @@ namespace bacit_dotnet.MVC.Controllers
                     {
                         Email = model.Email,
                         FirstName = model.FirstName,
-                        LastName = model.LastName
+                        LastName = model.LastName,
+                        Role = model.Role
                     });
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
@@ -572,18 +577,45 @@ namespace bacit_dotnet.MVC.Controllers
         {
             ViewData["ReturnUrl"] = returnUrl;
             var user = await _userManager.FindByEmailAsync(model.Email);
-            
+           
+            // The if statement checks if the user to delete is an admin.
+            // Because of foreign key connections to the AspNet login system, we want to avoid the possibility
+            // of deleting the user in an admin state.
+            //
+            // The status of role has to be changed before being able to delete the user.
+            if (userRepository.IsUserAdmin(model.Email))
+            {
+                TempData["error"] = "Kan ikke slette en administrator. Fjern admin status for å slette bruker!";
+                return RedirectToAction("Index", "Users");
+            }
+
+            // The if statements checks if the user to be deleted is connected(foreign key) to a team, suggestion
+            // or Justdoit in the db. If the user is wishes to delete a connected user, the if statements
+            // handles the request and avoids the potential following SQLException.
             if (userRepository.IsUserInUseTeam(model.Email))
             {
                 TempData["error"] = "Kan ikke slette bruker. Bruker tilhører et team!";
                 return RedirectToAction("Index", "Users");
             }
 
-            if (userRepository.IsUserInUseSuggestion(model.Email))
+            if (userRepository.IsUserInUseSuggestionUser(model.Email))
+            {
+                TempData["error"] = "Kan ikke slette bruker. Bruker er ansvarlig i et forslag!";
+                return RedirectToAction("Index", "Users");                
+            }
+            
+            if (userRepository.IsUserInUseSuggestionEmployee(model.Email))
             {
                 TempData["error"] = "Kan ikke slette bruker. Bruker tilhører et forslag!";
                 return RedirectToAction("Index", "Users");                
             }
+
+            if (userRepository.IsUserInUseJustDoIt(model.Email))
+            {
+                TempData["error"] = "Kan ikke slette bruker. Bruker tilhører et JustDoIt!";
+                return RedirectToAction("Index", "Users");                 
+            }
+            
 
             //var user = new IdentityUser { UserName = model.Email, Email = model.Email, EmailConfirmed = false, LockoutEnabled = false, LockoutEnd = null };
             var result = await _userManager.DeleteAsync(user);

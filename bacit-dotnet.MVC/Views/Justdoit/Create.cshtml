@@ -1,9 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 
+
+@* ### Create for Just do it ### *@
+
 @model bacit_dotnet.MVC.ViewModels.CreateJustdoitViewModel
 
 <form method="post" enctype="multipart/form-data">
-    <div class="border p-3 mt-4">
+    <div class="border p-3 mt-4 bg-gr-d">
         <div class="row pb-2">
             <h3 class="text-dark">Legg til ny Just Do It</h3>
             <hr/>
@@ -12,19 +15,32 @@
         This line of code will show a summary of all errors at the top of the page.
         <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
-            <label asp-for="EmployeeId">Ansatt ID</label>
-            <input asp-for="EmployeeId" class="form-control"/>
-            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+	        <label asp-for="EmployeeId">Opprettet av</label>
+	        <select asp-for="EmployeeId">
+		        @foreach (var user in Model.Users)
+		        {
+			        if (@User.Identity.Name == @user.Email)
+			        {
+				        <option value="@user.Id" selected>@user.FirstName @user.LastName</option>
+			        }
+			        if (user.Email.Equals("0") || user.Email.Equals(@User.Identity.Name))
+			        {
+				        continue;
+			        }
+			        <option value="@user.Id">@user.FirstName @user.LastName</option>
+		        }
+	        </select>
+	        <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Title">Tittel</label>
-            <input asp-for="Title" class="form-control" minlength="2" maxlength="30"/><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;">30/30</span>
+            <input asp-for="Title" class="form-control" minlength="2" maxlength="30"/><span id="countCharTitle" class="count-max-length">30/30</span>
             <span asp-validation-for="Title" class="text-danger">
             </span>
         </div>
         <div class="mb-3">
             <label asp-for="Description">Beskrivelse</label>
-            <textarea asp-for="Description" class="form-control" style="min-height: 150px"></textarea>
+            <textarea asp-for="Description" class="form-control" style="min-height: 150px;"></textarea>
             <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;">500/500</span>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
@@ -66,7 +82,7 @@
             <div class="row">
 
                 <!-- Image before -->
-                <div class="col-sm-5 text-black align-content-center">
+                <div class="col-sm-6 text-black align-content-center">
                 Bilde før
                     <input asp-for="Attachments" id="imageInputBefore" class="form-control pt-1 mb-1"
                         type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
@@ -76,7 +92,8 @@
                 </div>
 
                 <!-- Image after -->
-                <div class="col-sm-5 text-black align-content-center">
+                <div class="col-sm-6 text-black align-content-center">
+                    Bilde etter
                     <input asp-for="AttachmentsAfter" id="imageInputAfter" class="form-control pt-1"
                            type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
 
@@ -85,9 +102,8 @@
                 </div>
                 <!-- Image preview field -->
 
-                <img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>  
+                @*<img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>*@  
 
-            </div>
         </div>       
 
         <br/>
@@ -99,8 +115,8 @@
         *@
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">
-                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Opprett</button>
-                <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til liste</a>
+                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style-b">Opprett</button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
             </div>
         </div>
     </div>
@@ -119,13 +135,13 @@
 *@
 <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById('Justdoit_Title').onkeyup = function () {
+            document.getElementById('Title').onkeyup = function () {
                 document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30";
             };
         });
 
         document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById('Justdoit_Description').onkeyup = function () {
+            document.getElementById('Description').onkeyup = function () {
                 document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
             };
         });</script>

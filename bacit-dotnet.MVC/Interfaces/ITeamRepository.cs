@@ -15,7 +15,7 @@ namespace bacit_dotnet.MVC.Interfaces
         // returns if action was completed successfully ( true or false )
         public bool Delete(int teamId);
 
-        // returns a UserViewModel obj based on id or null if no category was found
+        // returns TeamsViewModel obj based on id or null if no team was found
         public Teams? GetTeamAndUserByTeamId(int teamId);
 
         // returns all teams added to the db

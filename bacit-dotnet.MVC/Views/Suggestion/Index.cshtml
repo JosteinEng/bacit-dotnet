@@ -14,18 +14,18 @@
 
 
 
-<div class="text-center">
+<div class="text-center p-2 mb-2">
     <h3>Ordinære forslag</h3>
 </div>
 
 
-<div class="border pt-0 pb-3">
+<div class="border pt-0 pb-3 bg-o-l">
     <div class="container-fluid mt-3">
         <div class="row">
-            <div class="col-3 text-black ms-2"><b>Tittel</b></div>
-            <div class="col-2 text-black ms-2"><b>Tidsfrist</b></div>
-            <div class="col-2 text-black p-0"><b>Team</b></div>
-            <div class="col-2 col-sm text-black p-0"><b>Status</b></div>
+            <div class="col-3 text-black p-0 px-3"><b>Tittel</b></div>
+            <div class="col-3 text-black"><b>Tidsfrist</b></div>
+            <div class="col-3 text-black"><b>Status</b></div>
+            <div class="col-3 text-black p-0"><b>PDSA</b></div>
         </div>
     </div>
 
@@ -44,265 +44,557 @@
 
         foreach (var objSuggestion in Model.Suggestions)
         {
-            <div class="container-fluid mt-3 p-0">
-                <div class="container-fluid">
-                    <div class="border">
-                        <div class="d-grid">
-                            <div class="col-md p-3 my-0 bg-light text-dark accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#forslag-@forslagsnr">
-                                <div class="row" style="width:100%;">
-                                    <div class="col-3 bg-light">@objSuggestion.Title</div>
-                                    <div class="col-2 bg-light">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
-                                    <div class="col-2 bg-light">@objSuggestion.Team.TeamName</div>
-                                    <div class="col-3 bg-light">@objSuggestion.Status</div>
-                                </div>
+            if (objSuggestion.Status == "Opprettet" || objSuggestion.Status == "Under behandling" || objSuggestion.Status == "Sluttfase")
+            {
+                <div class="container-fluid mt-3 p-0">
+                    <div class="container-fluid">
+                        <div class="border">
+                            <div class="d-grid">
+                                <div class="t-l col-md p-3 my-0 bg-white text-dark accordion-button background-color-cbaf89 collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#forslag-@forslagsnr">
+                                    <div class="row" style="width:100%;">
+                                        <div class="col-3">@objSuggestion.Title</div>
+                                        <div class="col-3">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
+                                        <div class="col-3 p-0 px-4">@objSuggestion.Status</div>
+                                        <div class="col-3 p-0 px-4">@objSuggestion.Phase</div>
+                                    </div>
 
+                                </div>
+                            </div>
+
+                            @*
+                                The following code is for the progress bar being shown below each listed suggestion in the list view.
+                                The progressbar is dynamic and will check the current status of each suggestion and fill the progress bar accordingly in four steps (25%, 50%, 75% and 100%).
+                                The color of the progressbar will also change depending on the status of the suggestion (i.e. red if a suggestion has been rejected).
+                            *@
+
+                            @if (objSuggestion.Status == "Opprettet")
+                            {
+                                status = 25;
+                                stateSuggestion = "info";
+                            }
+                            else if (objSuggestion.Status == "Under behandling")
+                            {
+                                status = 50;
+                                stateSuggestion = "warning";
+                            }
+                            else if (objSuggestion.Status == "Sluttfase")
+                            {
+                                status = 75;
+                                stateSuggestion = "warning";
+                            }
+                            else if (objSuggestion.Status == "Avslått")
+                            {
+                                status = 100;
+                                stateSuggestion = "danger";
+                            }
+                            else if (objSuggestion.Status == "Gjennomført")
+                            {
+                                status = 100;
+                                stateSuggestion = "success";
+                            }
+
+                            <div class="progress" style="height:5px;">
+                                <div class="progress-bar bg-@(stateSuggestion)" style="width:@(status)%;height:5px;"></div>
                             </div>
                         </div>
 
                         @*
-                            The following code is for the progress bar being shown below each listed suggestion in the list view.
-                            The progressbar is dynamic and will check the current status of each suggestion and fill the progress bar accordingly in four steps (25%, 50%, 75% and 100%).
-                            The color of the progressbar will also change depending on the status of the suggestion (i.e. red if a suggestion has been rejected).
+                            This code creates a unique div ID that is used by the loop to display each row.
+                            The last digit of the ID is an increasing number so that each row gets its own unique ID.
+                            This is needed for the expansion of the rows to work.
                         *@
 
-                        @if (objSuggestion.Status == "Opprettet")
-                        {
-                            status = 25;
-                            stateSuggestion = "info";
-                        }
-                        else if (objSuggestion.Status == "Under behandling")
-                        {
-                            status = 50;
-                            stateSuggestion = "warning";
-                        }
-                        else if (objSuggestion.Status == "Sluttfase")
-                        {
-                            status = 75;
-                            stateSuggestion = "warning";
-                        }
-                        else if (objSuggestion.Status == "Avslått")
-                        {
-                            status = 100;
-                            stateSuggestion = "danger";
-                        }
-                        else if (objSuggestion.Status == "Gjennomført")
-                        {
-                            status = 100;
-                            stateSuggestion = "success";
-                        }
-
-                        <div class="progress" style="height:2px;">
-                            <div class="progress-bar bg-@(stateSuggestion)" style="width:@(status)%;height:2px;"></div>
-                        </div>
-                    </div>
-
-                    @*
-                        This code creates a unique div ID that is used by the loop to display each row.
-                        The last digit of the ID is an increasing number so that each row gets its own unique ID.
-                        This is needed for the expansion of the rows to work.
-                    *@
-                    <div id="forslag-@forslagsnr" class="collapse">
-                        <div class="border border-top-0">
-                            <div class="container-fluid mt-3">
+                        <div id="forslag-@forslagsnr" class="collapse bg-gr">
+                            <div class="border border-top-0">
                                 <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
-                                                <p><b>Beskrivelse</b></p>
-                                                <p class="text-break">@objSuggestion.Description</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
-                                                <p><b>Tidslinje</b></p>
-                                                <b>Status:</b><i> @objSuggestion.Status </i>
-                                                <div class="col-md p-3 my-0 text-black bg-white accordion-button collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#timeline-@suggestionTimeline">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            Trykk for å utvide
-                                                        </div>
-                                                    </div>
+                                    <div class="container-xs">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6 p-2 text-black">
+                                                <div class="border bg-white" style="padding: 1rem;">
+                                                    <p><b>Beskrivelse</b></p>
+                                                    <p class="text-break">@objSuggestion.Description</p>
                                                 </div>
-                                                <div id="timeline-@suggestionTimeline" class="collapse">
-                                                    <div class="bg-white text-black">
-                                                        <section class="py-5">
-                                                            <ul class="timeline">
-                                                                <li class="timeline-item mb-5">
-                                                                    <h5>Forslag opprettet</h5>
-                                                                    <p class="text-muted mb-2">07-11-2022</p>
-                                                                    <p class="text-muted">
-                                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                                                                        necessitatibus adipisci, ad alias, voluptate pariatur officia
-                                                                        repellendus repellat inventore fugit perferendis totam dolor
-                                                                        voluptas et corrupti distinctio maxime corporis optio?
-                                                                    </p>
-                                                                </li>
-
-                                                                <li class="timeline-item mb-5">
-                                                                    <h5>Forslag sendt til ansvarlig person</h5>
-                                                                    <p class="text-muted mb-2">07-11-2022</p>
-                                                                    <p class="text-muted">
-                                                                        Quisque ornare dui nibh, sagittis egestas nisi luctus nec. Sed
-                                                                        aliquet laoreet sapien, eget pulvinar lectus maximus vel.
-                                                                        Phasellus suscipit porta mattis.
-                                                                    </p>
-                                                                </li>
-
-                                                                <li class="timeline-item mb-5">
-                                                                    <h5>Under behandling</h5>
-                                                                    <p class="text-muted mb-2">07-11-2022</p>
-                                                                    <p class="text-muted">
-                                                                        Orci varius natoque penatibus et magnis dis parturient montes,
-                                                                        nascetur ridiculus mus. Nulla ullamcorper arcu lacus, maximus
-                                                                        facilisis erat pellentesque nec. Duis et dui maximus dui aliquam
-                                                                        convallis. Quisque consectetur purus erat, et ullamcorper sapien
-                                                                        tincidunt vitae.
-                                                                    </p>
-                                                                </li>
-
-                                                                <li class="timeline-item mb-5">
-                                                                    <h5>Forslag er gjennomført</h5>
-                                                                    <p class="text-muted mb-2">09-11-2022</p>
-                                                                    <p class="text-muted">
-                                                                        Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
-                                                                        et urna sit amet massa dapibus tristique non finibus ligula. Nam
-                                                                        pharetra libero nibh, id feugiat tortor rhoncus vitae. Ut suscipit
-                                                                        vulputate mattis.
-                                                                    </p>
-                                                                </li>
-                                                            </ul>
-                                                        </section>
-                                                    </div>
-                                                </div>
-
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
-                                                <p><b>PDSA-fase</b></p>
-                                                <p>@objSuggestion.Phase</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
-                                                <p><b>Kategori</b></p>
-                                                <p>@objSuggestion.Category</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
-                                                <p><b>Ansvarlig</b></p>
-                                                <p>@objSuggestion.User.FirstName @objSuggestion.User.LastName</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
-                                                <p><b>Førbilde</b></p>
-
-                                                @*
-                                                    The following code will look for attached pictures for each of the suggestions.
-                                                    If a picture is found within the database it will be presented as a clickable thumbnail.
-                                                    When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
-                                                    size will depend on the viewport of the device that is being used.
-                                                *@
-
-                                                @if (objSuggestion.Attachments.Length == 0)
-                                                {
-                                                    @:<p>Ingen bilde vedlagt.</p>
-                                                }
-                                                else
-                                                {
-                                                    <center>
-                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachment-@(attachment)">
-                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" style="max-height: 300px; max-width: 100%;" />
-                                                        </button>
-                                                    </center>
-                                                    <p class="text-center">Trykk på bildet for å forstørre</p>
-                                                    <div id="attachment-@(attachment)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachment-@(attachment)Label" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" />
-                                                                </div>
+                                            <div class="col-sm-6 col-md-6 p-2 text-black">
+                                                <div class="border bg-white" style="padding: 1rem;">
+                                                    <p><b>Tidslinje</b></p>
+                                                    <b>Status:</b><i> @objSuggestion.Status </i>
+                                                    <div class="bg-o-l col-md p-2 my-0 text-black accordion-button background-color-cbaf89 collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#timeline-@suggestionTimeline">
+                                                        <div class="row">
+                                                            <div class="col-md-12 t-l">
+                                                                Trykk for å utvide
                                                             </div>
                                                         </div>
                                                     </div>
-                                                }
+                                                    <div id="timeline-@suggestionTimeline" class="collapse">
+                                                        <div class="bg-white text-black">
+                                                            <section class="py-4">
+                                                                <ul class="timeline">
+                                                                    <li class="timeline-item mb-4">
+                                                                        <h5>Forslag opprettet</h5>
+                                                                        <p class="text-muted mb-2">07-11-2022</p>
+                                                                        <p class="text-muted">
+                                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
+                                                                            necessitatibus adipisci, ad alias, voluptate pariatur.
+                                                                        </p>
+                                                                    </li>
+                                                                    <li class="timeline-item mb-4">
+                                                                        <h5>Forslag sendt til ansvarlig person</h5>
+                                                                        <p class="text-muted mb-2">07-11-2022</p>
+                                                                        <p class="text-muted">
+                                                                            Quisque ornare dui nibh, sagittis egestas nisi luctus nec. Sed
+                                                                            aliquet laoreet sapien, eget pulvinar lectus maximus vel.
+                                                                        </p>
+                                                                    </li>
+                                                                    <li class="timeline-item mb-4">
+                                                                        <h5>Under behandling</h5>
+                                                                        <p class="text-muted mb-2">07-11-2022</p>
+                                                                        <p class="text-muted">
+                                                                            Orci varius natoque penatibus et magnis dis parturient montes,
+                                                                            nascetur ridiculus mus.
+                                                                        </p>
+                                                                    </li>
+                                                                    <li class="timeline-item">
+                                                                        <h5>Forslag er gjennomført</h5>
+                                                                        <p class="text-muted mb-2">09-11-2022</p>
+                                                                        <p class="text-muted">
+                                                                            Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
+                                                                            et urna sit amet massa dapibus tristique non finibus ligula.
+                                                                        </p>
+                                                                    </li>
+                                                                </ul>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-6 p-2 text-black">
+                                                <div class="bg-white border" style="padding: 1rem;">
+                                                    <p><b>Kategori</b></p>
+                                                    <p>@objSuggestion.Category</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 p-2 text-black">
+                                                <div class="bg-white border" style="padding: 1rem;">
+                                                    <p><b>PDSA-fase</b></p>
+                                                    <p>@objSuggestion.Phase</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 p-2 text-black">
+                                                <div class="bg-white border" style="padding: 1rem;">
+                                                    <p><b>Opprettet av</b></p>
+                                                    <p>@objSuggestion.Employee.FirstName @objSuggestion.Employee.LastName</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 p-2 text-black">
+                                                <div class="bg-white border" style="padding: 1rem;">
+                                                    <p><b>Ansvarlig</b></p>
+                                                    <p>@objSuggestion.User.FirstName @objSuggestion.User.LastName</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6 p-2 text-black">
+                                                <div class="border bg-white" style="padding: 1rem;">
+                                                    <p><b>Førbilde</b></p>
 
-                                        <div class="col-sm-6 col-md-6 p-2 text-black">
-                                            <div class="border" style="padding: 1rem;">
-                                                <p><b>Etterbilde</b></p>
+                                                    @*
+                                                        The following code will look for attached pictures for each of the suggestions.
+                                                        If a picture is found within the database it will be presented as a clickable thumbnail.
+                                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                                        size will depend on the viewport of the device that is being used.
+                                                    *@
 
-                                                @*
-                                                    The following code will look for attached pictures for each of the suggestions.
-                                                    If a picture is found within the database it will be presented as a clickable thumbnail.
-                                                    When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
-                                                    size will depend on the viewport of the device that is being used.
-                                                *@
-
-                                                @if (objSuggestion.AttachmentsAfter.Length == 0)
-
-                                                {
-                                                    @:<p>Ingen bilde vedlagt.</p>
-                                                }
-                                                else
-                                                {
-                                                    <center>
-                                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachmentAfter-@(attachmentAfter)">
-                                                            <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" style="max-height: 300px; max-width: 100%;" />
-                                                        </button>
-                                                    </center>
-                                                    <p class="text-center">Trykk på bildet for å forstørre</p>
-                                                    <div id="attachmentAfter-@(attachmentAfter)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentAfter-@(attachmentAfter)Label" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" />
+                                                    @if (objSuggestion.Attachments.Length == 0)
+                                                    {
+                                                        @:<p>Ingen bilde vedlagt.</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <center>
+                                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachment-@(attachment)">
+                                                                <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                            </button>
+                                                        </center>
+                                                        <p class="text-center">Trykk på bildet for å forstørre</p>
+                                                        <div id="attachment-@(attachment)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachment-@(attachment)Label" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" />
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                }
+                                                    }
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-md-6 p-2 text-black">
+                                                <div class="border bg-white" style="padding: 1rem;">
+                                                    <p><b>Etterbilde</b></p>
+
+                                                    @*
+                                                        The following code will look for attached pictures for each of the suggestions.
+                                                        If a picture is found within the database it will be presented as a clickable thumbnail.
+                                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                                        size will depend on the viewport of the device that is being used.
+                                                    *@
+
+                                                    @if (objSuggestion.AttachmentsAfter.Length == 0)
+
+                                                    {
+                                                        @:<p>Ingen bilde vedlagt.</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <center>
+                                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#attachmentAfter-@(attachmentAfter)">
+                                                                <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" style="max-height: 300px; max-width: 100%;" />
+                                                            </button>
+                                                        </center>
+                                                        <p class="text-center">Trykk på bildet for å forstørre</p>
+                                                        <div id="attachmentAfter-@(attachmentAfter)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="attachmentAfter-@(attachmentAfter)Label" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="d-grid pb-3">
-                                        <div class="btn-group" role="group">
-                                            <a asp-controller="Suggestion" asp-action="Edit" asp-route-id="@objSuggestion.SuggestionId"
-                                               class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
-                                            <a asp-controller="Suggestion" asp-action="Delete" asp-route-id="@objSuggestion.SuggestionId"
-                                               class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
+                                        <div class="d-grid pb-3">
+                                            <div class="btn-group mt-2" role="group">
+                                                <a asp-controller="Suggestion" asp-action="Edit" asp-route-id="@objSuggestion.SuggestionId"
+                                                   class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
+                                                <a asp-controller="Suggestion" asp-action="Delete" asp-route-id="@objSuggestion.SuggestionId"
+                                                   class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-            forslagsnr++;
-            attachment++;
-            suggestionTimeline++;
-            attachmentAfter++;
-            suggestionStatus++;
+                forslagsnr++;
+                attachment++;
+                suggestionTimeline++;
+                attachmentAfter++;
+                suggestionStatus++;
 
+            }
         }
     }
-
 </div>
+
+
+
+
+@*Arkivert seksjon*@
+
+<hr />
+
+@*
+    ### All archived suggestions ###
+*@
+
+
+    <div class="text-center p-2 mb-2">
+        <h3>Arkiverte forslag</h3>
+    </div>
+
+
+    <div class="border pt-0 pb-3 bg-o-l-archived">
+        <div class="container-fluid mt-3">
+            <div class="row">
+                <div class="col-3 text-black p-0 px-3"><b>Tittel</b></div>
+                <div class="col-3 text-black"><b>Tidsfrist</b></div>
+                <div class="col-3 text-black"><b>Status</b></div>
+                <div class="col-3 text-black p-0"><b>PDSA</b></div>
+            </div>
+        </div>
+
+            @*
+            The following loop will loop through all the submitted suggestions and list them in a dropdown list
+            that can be expanded and collapsed by the user to view the details of each suggestion. The default value is collapsed.
+            *@
+            @{
+                var arkivertForslagsnr = 1;
+                var arkivertAttachment = 1;
+                var arkivertSuggestionTimeline = 1;
+                var arkivertStatus = 0;
+                var arkivertStateSuggestion = "success";
+                var arkivertAttachmentAfter = 1;
+
+                foreach (var objSuggestion in Model.Suggestions)
+                {
+                    if (objSuggestion.Status == "Avslått" || objSuggestion.Status == "Gjennomført")
+                    {
+                    <div class="container-fluid mt-3 p-0">
+                        <div class="container-fluid">
+                            <div class="border">
+                                <div class="d-grid">
+                                    <div class="t-l col-md p-3 my-0 bg-white text-dark accordion-button background-color-a9b0bd collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#arkivertForslag-@arkivertForslagsnr">
+                                        <div class="row" style="width:100%;">
+                                            <div class="col-3">@objSuggestion.Title</div>
+                                            <div class="col-3">@objSuggestion.Deadline.ToString("dd/MM/yyyy")</div>
+                                            <div class="col-3 p-0 px-4">@objSuggestion.Status</div>
+                                            <div class="col-3 p-0 px-4">@objSuggestion.Phase</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                @*
+                The following code is for the progress bar being shown below each listed suggestion in the list view.
+                The progressbar is dynamic and will check the current status of each suggestion and fill the progress bar accordingly in four steps (25%, 50%, 75% and 100%).
+                The color of the progressbar will also change depending on the status of the suggestion (i.e. red if a suggestion has been rejected).
+                                *@
+
+                                @if (objSuggestion.Status == "Opprettet")
+                                    {
+                                        arkivertStatus = 25;
+                                        arkivertStateSuggestion = "info";
+                                    }
+                                    else if (objSuggestion.Status == "Under behandling")
+                                    {
+                                        arkivertStatus = 50;
+                                        arkivertStateSuggestion = "warning";
+                                    }
+                                    else if (objSuggestion.Status == "Sluttfase")
+                                    {
+                                        arkivertStatus = 75;
+                                        arkivertStateSuggestion = "warning";
+                                    }
+                                    else if (objSuggestion.Status == "Avslått")
+                                    {
+                                        arkivertStatus = 100;
+                                        arkivertStateSuggestion = "danger";
+                                    }
+                                    else if (objSuggestion.Status == "Gjennomført")
+                                    {
+                                        arkivertStatus = 100;
+                                        arkivertStateSuggestion = "success";
+                                    }
+
+                                <div class="progress" style="height:5px;">
+                                    <div class="progress-bar bg-@(arkivertStateSuggestion)" style="width:@(arkivertStatus)%;height:5px;"></div>
+                                </div>
+                            </div>
+
+                            @*
+            This code creates a unique div ID that is used by the loop to display each row.
+            The last digit of the ID is an increasing number so that each row gets its own unique ID.
+            This is needed for the expansion of the rows to work.
+                            *@
+
+                            <div id="arkivertForslag-@arkivertForslagsnr" class="collapse bg-gr">
+                                <div class="border border-top-0">
+                                    <div class="container-fluid">
+                                        <div class="container-xs">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-md-6 p-2 text-black">
+                                                    <div class="border bg-white" style="padding: 1rem;">
+                                                        <p><b>Beskrivelse</b></p>
+                                                        <p class="text-break">@objSuggestion.Description</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 p-2 text-black">
+                                                    <div class="border bg-white" style="padding: 1rem;">
+                                                        <p><b>Tidslinje</b></p>
+                                                        <b>Status:</b><i> @objSuggestion.Status </i>
+                                                        <div class="bg-o-l-archived col-md p-2 my-0 text-black accordion-button background-color-a9b0bd collapsed accordion-flush" data-bs-toggle="collapse" data-bs-target="#arkivertTimeline-@arkivertSuggestionTimeline">
+                                                            <div class="row">
+                                                                <div class="col-md-12 t-l">
+                                                                    Trykk for å utvide
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="arkivertTimeline-@arkivertSuggestionTimeline" class="collapse">
+                                                            <div class="bg-white text-black">
+                                                                <section class="py-4">
+                                                                    <ul class="timeline">
+                                                                        <li class="timeline-item mb-4">
+                                                                            <h5>Forslag opprettet</h5>
+                                                                            <p class="text-muted mb-2">07-11-2022</p>
+                                                                            <p class="text-muted">
+                                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
+                                                                                necessitatibus adipisci, ad alias, voluptate pariatur.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="timeline-item mb-4">
+                                                                            <h5>Forslag sendt til ansvarlig person</h5>
+                                                                            <p class="text-muted mb-2">07-11-2022</p>
+                                                                            <p class="text-muted">
+                                                                                Quisque ornare dui nibh, sagittis egestas nisi luctus nec. Sed
+                                                                                aliquet laoreet sapien, eget pulvinar lectus maximus vel.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="timeline-item mb-4">
+                                                                            <h5>Under behandling</h5>
+                                                                            <p class="text-muted mb-2">07-11-2022</p>
+                                                                            <p class="text-muted">
+                                                                                Orci varius natoque penatibus et magnis dis parturient montes,
+                                                                                nascetur ridiculus mus.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="timeline-item">
+                                                                            <h5>Forslag er gjennomført</h5>
+                                                                            <p class="text-muted mb-2">09-11-2022</p>
+                                                                            <p class="text-muted">
+                                                                                Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
+                                                                                et urna sit amet massa dapibus tristique non finibus ligula.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 p-2 text-black">
+                                                    <div class="bg-white border" style="padding: 1rem;">
+                                                        <p><b>Kategori</b></p>
+                                                        <p>@objSuggestion.Category</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 p-2 text-black">
+                                                    <div class="bg-white border" style="padding: 1rem;">
+                                                        <p><b>PDSA-fase</b></p>
+                                                        <p>@objSuggestion.Phase</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 p-2 text-black">
+                                                    <div class="bg-white border" style="padding: 1rem;">
+                                                        <p><b>Opprettet av</b></p>
+                                                        <p>@objSuggestion.Employee.FirstName @objSuggestion.Employee.LastName</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 p-2 text-black">
+                                                    <div class="bg-white border" style="padding: 1rem;">
+                                                        <p><b>Ansvarlig</b></p>
+                                                        <p>@objSuggestion.User.FirstName @objSuggestion.User.LastName</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-md-6 p-2 text-black">
+                                                    <div class="border bg-white" style="padding: 1rem;">
+                                                        <p><b>Førbilde</b></p>
+
+                                                        @*
+                                        The following code will look for attached pictures for each of the suggestions.
+                                        If a picture is found within the database it will be presented as a clickable thumbnail.
+                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                        size will depend on the viewport of the device that is being used.
+                                                        *@
+
+                                                        @if (objSuggestion.Attachments.Length == 0)
+                                                        {
+                                                            @:<p>Ingen bilde vedlagt.</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <center>
+                                                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#arkivertAttachment-@(arkivertAttachment)">
+                                                                    <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" style="max-height: 300px; max-width: 100%;" />
+                                                                </button>
+                                                            </center>
+                                                            <p class="text-center">Trykk på bildet for å forstørre</p>
+                                                            <div id="arkivertAttachment-@(arkivertAttachment)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="arkivertAttachment-@(arkivertAttachment)Label" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.Attachments))" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6 col-md-6 p-2 text-black">
+                                                    <div class="border bg-white" style="padding: 1rem;">
+                                                        <p><b>Etterbilde</b></p>
+
+                                                        @*
+                                        The following code will look for attached pictures for each of the suggestions.
+                                        If a picture is found within the database it will be presented as a clickable thumbnail.
+                                        When a user clicks on the thumbnail a "full size" popup modal will appear. The size of the picture is responsive, meaning that the
+                                        size will depend on the viewport of the device that is being used.
+                                                        *@
+
+                                                        @if (objSuggestion.AttachmentsAfter.Length == 0)
+
+                                                        {
+                                                            @:<p>Ingen bilde vedlagt.</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <center>
+                                                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#arkivertAttachmentAfter-@(arkivertAttachmentAfter)">
+                                                                    <img class="img-fluid" alt="" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" style="max-height: 300px; max-width: 100%;" />
+                                                                </button>
+                                                            </center>
+                                                            <p class="text-center">Trykk på bildet for å forstørre</p>
+                                                            <div id="arkivertAttachmentAfter-@(arkivertAttachmentAfter)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="arkivertAttachmentAfter-@(arkivertAttachmentAfter)Label" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <img class="img-fluid" src="data:image/png;base64,@(Convert.ToBase64String(objSuggestion.AttachmentsAfter))" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-grid pb-3">
+                                                <div class="btn-group mt-2" role="group">
+                                                    <a asp-controller="Suggestion" asp-action="Edit" asp-route-id="@objSuggestion.SuggestionId"
+                                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Rediger forslag</a>
+                                                    <a asp-controller="Suggestion" asp-action="Delete" asp-route-id="@objSuggestion.SuggestionId"
+                                                       class="btn btn-light btn-outline-dark btn-lg extra-button-style"> Slett forslag</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        arkivertForslagsnr++;
+                        arkivertAttachment++;
+                        arkivertSuggestionTimeline++;
+                        arkivertAttachmentAfter++;
+                    }
+                }
+            }
+        </div>

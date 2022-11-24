@@ -9,18 +9,10 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spartan">
-    
-    <style>
-	    body {
-		    background-image: url('https://img.freepik.com/free-vector/copy-space-wavy-white-background-layers_23-2148845469.jpg?w=2000');
-		    margin: 0;
-	    }
-    </style>
-
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-nav border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/Image/nordic_door_logo.png" width="150px" height="auto" alt="nordicdoorlogo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -30,31 +22,38 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Hjem</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Hjem</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Suggestion" asp-action="Index">Forslag</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Suggestion" asp-action="Index">Forslag</a>
                         </li>
 	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-controller="Justdoit" asp-action="Index">Justdoit</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Justdoit" asp-action="Index">Justdoit</a>
 	                    </li>
-						<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Brukere</a>
-                        </li>	                    
-                    </ul>
-                    <ul class="navbar-nav flex-grow-2" style="float: right;">
-	                    <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOff">Logg ut</a>
-                        </li>
-                    </ul>
+                        @*Sjekker om bruker er rollen admin, og gir tilgang til teams og brukere om bruker er admin*@
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Users" asp-action="Index">Brukere</a>
+                            </li>
+                            }
+                        </ul>
+	                <ul class="navbar-nav flex-grow-2" style="float: right;">
+		                <li class="nav-item">
+			                <a class="nav-link text-light">Ansattnummer: @User.Identity.Name</a>
+		                </li>
+		                <li class="nav-item">
+			                <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="LogOff">Logg ut</a>
+		                </li>
+	                </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-lg p-0">
 
 
 

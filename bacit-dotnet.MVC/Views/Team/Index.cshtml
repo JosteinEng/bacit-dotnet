@@ -1,52 +1,42 @@
 ﻿@model bacit_dotnet.MVC.ViewModels.TeamViewModel
 
+@* ### Index for Teams ### *@
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <a asp-controller="Team" asp-action="Create" style="width:300px;" class="btn btn-outline-dark btn-lg create-suggestion-main p-4 mb-3">
-        Opprett Team
-    </a>
-</div>
 
-<hr />
-
-<div class="text-center">
-    <h3>Teams</h3>
-</div>
-
-<table class="table table-bordered table-striped" style="width: 100%">
-    <div class="border pt-0 pb-3">
-        <div class="container-fluid mt-3">
-            <div class="row">
-                <div class="col-3 text-black ms-2"><b>Teamnavn</b></div>
-                <div class="col-2 text-black p-0"><b>Teamleder</b></div>
+<div class="border p-4 mt-4 bg-white">
+    <h3 class="text-dark d-inline-block mb-5">Teams</h3>
+    <a asp-controller="Team" asp-action="Create" class="btn btn-outline-dark d-inline-block float-end">Lag nytt team</a>
+    <div class="row pt-3">
+        <div class="row pb-3">
+            <div class="col-md-3">
+                <b>Teamnavn</b>
+            </div>
+            <div class="col-md-3">
+                <b>Teamleder</b>
             </div>
         </div>
+        <hr />
+
+
         @foreach (var objTeam in Model.Teams)
         {
-        <tr>
-            <td width="40%">
-                @objTeam.TeamName
-            </td>
-            <td width="40%">
-                @string.Concat(objTeam.User.FirstName, " ", objTeam.User.LastName)
-            </td>
-            <td class="text-center">
-                <div class="w-75 btn-group text-center" role="group">
-                    <a asp-controller="Team" asp-action="Edit" asp-route-id="@objTeam.TeamId"
-                       class="btn btn-outline-dark create-suggestion-main">  Edit</a>
-                    <a asp-controller="Team" asp-action="Delete" asp-route-id="@objTeam.TeamId"
-                       class="btn btn-outline-dark create-suggestion-main">  Delete</a>
+            <div class="row">
+                <div class="col-md-3 pt-2">
+                    @objTeam.TeamName
                 </div>
-
-                @*                    <div class="w-75 btn-group" role="group">
-                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"
-                    class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> &nbsp; Delete</a>
-                    </div>*@
-                @*</td>*@
-        </tr>
-    }
+                <div class="col-md-6 pt-2">
+                    @string.Concat(objTeam.User.FirstName, " ", objTeam.User.LastName)
+                </div>
+                <div class="col-md-3 mb-3" style="text-align: right;">
+                    <a asp-controller="Team" asp-action="Edit" asp-route-id="@objTeam.TeamId" class="btn btn-outline-dark me-2 ps-0 pe-0" style="width: 85px;">Endre</a>
+                    <a asp-controller="Team" asp-action="Delete" asp-route-id="@objTeam.TeamId" class="btn btn-outline-dark ps-0 pe-0" style="width: 85px;">Slett</a>
+                </div>
+            </div>
+            <hr />
+        }
     </div>
-    </table>
+</div>

@@ -1,58 +1,76 @@
 ﻿@model bacit_dotnet.MVC.ViewModels.EditSuggestionViewModel
 
+@* ### Edit for Suggestions ### *@
+
 <form method="post" enctype="multipart/form-data" asp-action="Edit">
-    <div class="border p-3 mt-4">
+    <div class="border p-3 mt-4 bg-gr-d">
         <div class="row pb-2">
             <h2 class="text-dark">Rediger forslag</h2>
-            <hr/>
+            <hr />
         </div>
         @*
         This line of code will show a summary of all errors at the top of the page.
         <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
-            <label asp-for="SuggestionId">Forslags ID</label>
-            <h6>@Model.SuggestionId</h6>
-            <input asp-for="SuggestionId" type="hidden" class="form-control"/>
+            <label asp-for="SuggestionId">Forslags-ID</label>
+            <p>@Model.SuggestionId</p>
+            <input asp-for="SuggestionId" type="hidden" class="form-control" />
             <span asp-validation-for="SuggestionId" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="EmployeeId">Ansatt ID</label>
-            <input asp-for="EmployeeId" class="form-control"/>
+            <label asp-for="EmployeeId">Opprettet av</label>
+            <select asp-for="EmployeeId">
+                @foreach (var user in Model.Users)
+                {
+                    if (user.Email.Equals("0"))
+                    {
+                        continue;
+                    }
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
+                }
+            </select>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Title">Tittel</label>
-            <input asp-for="Title" class="form-control"/>
+            <input asp-for="Title" class="form-control" minlength="2" maxlength="30" /><span id="countCharTitle" style="float:right; font-size:14px; color:#4d4d4d;"></span>
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Description">Beskrivelse</label>
-            <input asp-for="Description" class="form-control"/>
+            <textarea asp-for="Description" class="form-control" style="min-height: 150px;"></textarea>
+            <span id="countCharDesc" style="float:right; font-size:14px; color:#4d4d4d;"></span>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-        <div class="mb-3">
-            <label asp-for="TeamId">Team</label>
-            <select asp-for="TeamId">
-                @foreach (var team in Model.Teams)
-                {
-                    <option value="@team.TeamId">@team.TeamName</option>
-                }
-            </select>
-            <span asp-validation-for="TeamId" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="UserId">Ansvar</label>
-            <select asp-for="UserId">
-                @foreach (var user in Model.Users)
-                {
-                    <option value="@user.Id">@user.FirstName @user.LastName</option>
-                }
-            </select>
-            <span asp-validation-for="UserId" class="text-danger"></span>
+        <div class="row">
+            <div class="mb-3 col-sm-3">
+                <label asp-for="TeamId">Team</label>
+                <select asp-for="TeamId">
+                    @foreach (var team in Model.Teams)
+                    {
+                        <option value="@team.TeamId">@team.TeamName</option>
+                    }
+                </select>
+                <span asp-validation-for="TeamId" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-sm-6">
+                <label asp-for="UserId">Ansvarlig</label>
+                <select asp-for="UserId">
+                    @foreach (var user in Model.Users)
+                    {
+                        if (user.Email.Equals("0"))
+                        {
+                            continue;
+                        }
+                        <option value="@user.Id">@user.FirstName @user.LastName</option>
+                    }
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
         </div>
         <div class="mb-3">
             <label asp-for="Deadline">Tidsfrist</label>
-            <input asp-for="Deadline" type="date" class="form-control"/>
+            <input asp-for="Deadline" type="date" class="form-control" />
             <span asp-validation-for="Deadline" class="text-danger"></span>
         </div>
 
@@ -80,7 +98,7 @@
             </select>
             <span asp-validation-for="Status" class="text-danger"></span>
         </div>
-        
+
         <div class="mb-3">
             <label asp-for="Category">Kategori</label>
             <select asp-for="Category" class="form-control">
@@ -106,17 +124,17 @@
             <div class="row">
 
                 <!-- Image before -->
-                <div class="col-sm-5 text-black align-content-center">
+                <div class="col-sm-6 text-black align-content-center">
                     Bilde før
                     <input asp-for="Attachment" id="imageInputBefore" class="form-control pt-1 mb-1"
-                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)"/>
+                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
 
                     <span id="imageSizeWarningBefore" class="text-danger" style="display: none;"></span>
                     <span id="imageTypeWarningBefore" class="text-danger" style="display: none"></span>
                 </div>
 
                 <!-- Image after -->
-                <div class="col-sm-5 text-black align-content-center">
+                <div class="col-sm-6 text-black align-content-center">
                         Bilde etter
                             <input asp-for="AttchmentsAfter" id="imageInputAfter" class="form-control pt-1"
                                    type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
@@ -126,14 +144,14 @@
                         </div>
                 <!-- Image preview field -->
 
-                <img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>  
+                @*<img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;" />*@
 
             </div>
         </div>
-        <br/>
+        <br />
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">
-                <button id="submitBtn" type="submit" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Oppdater</button>
+                <button id="submitBtn" type="submit" class="btn btn-dark btn-outline-dark text-white btn-lg extra-button-style-b" style="width: 150px">Oppdater</button>
                 <a asp-controller="Suggestion" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style" style="width: 150px">Tilbake</a>
             </div>
         </div>
@@ -142,10 +160,27 @@
 
 
 <!--This script makes sure that the validation process is done on client-side instead of server-side-->
-
 @section Scripts{
 
-    <partial name="_ValidationScriptsPartial"/>
+    <partial name="_ValidationScriptsPartial" />
     <script src="~/js/createSuggestion.js"></script>
 
 }
+
+    @*
+    This script is used to count the remaining characters in the create suggestion form for the "title" and "description" fields.
+    The function will count backwards from the fields' maximum value until it reaches zero.
+*@
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('Title').onkeyup = function () {
+                document.getElementById('countCharTitle').innerHTML = (30 - this.value.length) + "/30";
+            };
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('Description').onkeyup = function () {
+                document.getElementById('countCharDesc').innerHTML = (500 - this.value.length) + "/500";
+            };
+        });
+    </script>

@@ -16,15 +16,25 @@ using System.Net;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    //[Authorize(Roles = "Administrator")]
+    // This is the controller class for Users. The controller is the C in MVC
+    // The methods in the controller class are used for different CRUD actions related to Users.
+    // The class uses dependency injections of the userRepository to use different CRUD related Db actions and methods.
+    
+    // Keyword Authorize uses Microsoft's authorization system for checking if a user should have access to
+    // the page and it's functions. 
+    [Authorize(Roles = "Administrator")]
     public class UsersController : Controller
     {
+        // Field variables - dependency injections
         private readonly IUserRepository userRepository;
 
         public UsersController(IUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }
+        
+        // Method returns the index view.
+        // The view gets populated with users through the view model.
         [HttpGet]
         public IActionResult Index()
         {

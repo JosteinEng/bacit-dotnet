@@ -18,13 +18,13 @@
 
     
             <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
-	            <div class="border p-3 mt-4">
+	            <div class="border p-3 mt-4 bg-gr-d">
 		            <div class="row pb-2">
 			            <h3 class="text-dark">Legg til ny bruker</h3>
 			            <hr />
 			            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			            <div class="form-group">
-				            <label asp-for="Email" class="control-label">Ansattnummer</label>
+				            <label asp-for="Email" class="control-label pt-3">Ansattnummer</label>
 				            <div class="text-center d-flex justify-content-center">
 					            <input asp-for="Email" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" />
 				            </div>
@@ -32,7 +32,7 @@
 			            </div>
 			            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			            <div class="form-group">
-				            <label asp-for="FirstName" class="control-label">Fornavn</label>
+				            <label asp-for="FirstName" class="control-label pt-3">Fornavn</label>
 				            <div class="text-center d-flex justify-content-center">
 					            <input asp-for="FirstName" type="text" class="form-control" />
 				            </div>
@@ -41,40 +41,45 @@
 		            </div>
 		            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 		            <div class="form-group">
-			            <label asp-for="LastName" class="control-label">Etternavn</label>
+			<label asp-for="LastName" class="control-label pt-3">Etternavn</label>
 			            <div class="text-center d-flex justify-content-center">
 				            <input asp-for="LastName" type="text" class="form-control" />
 			            </div>
 			            <span asp-validation-for="LastName" class="text-danger"></span>
 		            </div>
 		            <div class="form-group">
-			            <label asp-for="Password" class="control-label">Passord</label>
+			<label asp-for="Password" class="control-label pt-3">Passord</label>
 			            <div class="text-center d-flex justify-content-center">
-				            <input asp-for="Password" class="form-control" />
+				            <input asp-for="Password" maxlength="128" class="form-control" />
 			            </div>
 			            <span asp-validation-for="Password" class="text-danger"></span>
 		            </div>
 		            <div class="form-group">
-			            <label asp-for="ConfirmPassword" class="control-label">Bekreft passord</label>
+			<label asp-for="ConfirmPassword" class="control-label pt-3">Bekreft passord</label>
 			            <div class="text-center d-flex justify-content-center">
 				            <input asp-for="ConfirmPassword" class="form-control" />
 			            </div>
 			            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 		            </div>
-
-		            <br />
-		            <br />
-		            <br />
-		            <br />
-
-		            <div class="d-grid pb-3">
-			            <div class="btn-group" role="group">
-				            <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Registrer</button>
-				            <a asp-controller="Users" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
+		            <div style="display: none">
+		            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			            <div class="form-group">
+				            <label asp-for="Role" class="control-label">Rolle</label>
+				            <div class="text-center d-flex justify-content-center">
+					            <input asp-for="Role" type="text" class="form-control" value="Ordinær" />
+				            </div>
+				            <span asp-validation-for="Role" class="text-danger"></span>
 			            </div>
 		            </div>
 	            </div>
-	            </form>
+
+		            <div class="d-grid pb-3 pt-5">
+			            <div class="btn-group" role="group">
+				            <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style-b">Registrer</button>
+				            <a asp-controller="Users" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til listen</a>
+			            </div>
+		            </div>
+            </form>
 
             @section Scripts {
                 @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }

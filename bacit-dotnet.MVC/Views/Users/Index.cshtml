@@ -1,45 +1,133 @@
 ﻿@using bacit_dotnet.MVC.Models
 @using bacit_dotnet.MVC.Models.Account
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@* ### Index for Users ### *@
+
 @model bacit_dotnet.MVC.ViewModels.UserViewModel
 
 <form method="post" enctype="multipart/form-data">
-    <div class="border p-4 mt-4">
-        <h3 class="text-dark d-inline-block">Brukere i systemet</h3>
-        <a class="btn btn-outline-dark d-inline-block float-end" href="https://localhost:7041/Account/Register?returnurl=%2F">Lag ny bruker</a>
-        <div class="row pt-3">
-            <hr />
-            <table>
-                <tr>
-                    <td>Fornavn</td>
-                    <td>Etternavn</td>
-                    <td>Ansattnummer</td>
-                    <td>Endre</td>
-                    <td>Slett</td>
-                    <br />
-                </tr>
-                @foreach (var user in Model.Users)
-                {
-                    <tr class="border-top mt-2">
-                        <td>@user.FirstName</td>
-                        <td>@user.LastName</td>
-                        <td>@user.Email</td>
-                        <td>
-                            <form asp-action="edit" asp-controller="users" method="get">
-                                <input type="hidden" name="Email" value="@user.Email" />
-                                <input class="btn btn-light btn-outline-dark extra-button-style" type="submit" value="Endre" />
-                            </form>
-                        </td>
+    <div class="border p-4 mt-4 bg-white">
+        <h3 class="text-dark d-inline-block mb-5">Brukere</h3>
+        <a class="btn btn-outline-dark d-inline-block float-end button-new-user" href="~/Account/Register?returnurl=%2F">Lag ny bruker</a>
+        <div class="row p-0 m-0 pt-3">
 
-                        <td>
-                            <form asp-action="delete" asp-controller="account" method="post" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')">
-                                <input type="hidden" name="Email" value="@user.Email" />
-                                <input class="btn btn-light btn-outline-dark extra-button-style" type="submit" value="Slett" />
-                            </form>
-                        </td>
-                    </tr>
-                }
-            </table>
+            <div class="row p-0 m-0 pb-3 top-text">
+                <div class="col-md-3">
+                    <b>Fornavn</b>
+                </div>
+                <div class="col-md-3">
+                    <b>Etternavn</b>
+                </div>
+                <div class="col-md-3">
+                    <b>Ansattnummer</b>
+                </div>
+            </div>
+            <hr />
+            @foreach (var user in Model.Users)
+            {
+	            <div class="row p-0 m-0">
+		            <div class="col-md-3 mb-4 pt-2">
+			            @user.FirstName
+			            @if (!user.Email.Equals("0") && user.Role.Equals("Admin"))
+			            {
+				            @: (@user.Role)
+			            }
+		            </div>
+		            <div class="col-md-3 mb-4 pt-2">
+			            @user.LastName
+		            </div>
+		            <div class="col-md-3 mb-4 pt-2">
+			            @user.Email
+		            </div>
+		            @if (user.Email.Equals("0"))
+		            {
+			            <div class="btn-group col-md-3 mb-3 justify-content-md-end" role="group">
+				            <div class="col-4">
+					            <form asp-action="edit" asp-controller="users" method="get">
+						            <input type="hidden" name="Email" value="@user.Email"/>
+						            <input class="btn btn-outline-dark me-5" style="width: 80px;" hidden type="submit" value="Endre"/>
+					            </form>
+				            </div>
+				            <div class="col-4">
+					            <form asp-action="delete" asp-controller="account" method="post">
+						            <input type="hidden" name="Email" value="@user.Email"/>
+						            <input class="btn btn-outline-dark" style="width: 80px;" hidden type="submit" value="Slett"/>
+					            </form>
+				            </div>
+			            </div>
+			            <hr/>
+			            continue;
+		            }
+		            <div class="btn-group col-md-3 mb-3 justify-content-md-end" role="group">
+			            <div class="col-4">
+				            <form asp-action="edit" asp-controller="users" method="get">
+					            <input type="hidden" name="Email" value="@user.Email"/>
+					            <input class="btn btn-outline-dark me-5" style="width: 80px;" type="submit" value="Endre"/>
+				            </form>
+			            </div>
+			            <div class="col-4">
+							
+							
+							
+							
+							
+
+				            <form asp-action="delete" asp-controller="account" method="post">
+					            <input type="hidden" name="Email" value="@user.Email"/>
+					            <input class="btn btn-outline-dark" style="width: 80px;" type="submit" value="Slett" onclick="return confirm('Er du sikker på at du ønsker å slette brukeren @user.FirstName?')"/>
+					            @*
+								SLETT MODAL IKKE FERDIG!
+								
+								<a type="button" class="btn btn-outline-dark" style="width: 80px;" data-bs-toggle="modal" data-bs-target="#deleteUser">
+						            Slett
+					            </a>*@
+				            </form>
+
+
+
+				            @*
+								
+							SLETT MODAL IKKE FERDIG!
+
+							The following code adds a popup modal which allows the user to DELETE other users from the system.
+							The popup can be closed by pressing the x-button toggle in the upper right corner or click anywhere outside of the popup. On a desktop computer a user can also press the ESC key.
+							
+				            <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+					            <div class="modal-dialog">
+						            <div class="modal-content">
+							            <div class="modal-header">
+								            <h5 class="modal-title text-center" id="deleteUserLabel">Ønsker du å slette denne brukeren?</h5>
+								            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							            </div>
+							            <div class="modal-body text-center">
+								            <div class="btn-group" role="group">
+									            <div class="col">
+										            <div class="btn-group-vertical me-2" role="group">
+											            <form asp-action="delete" asp-controller="account" method="post">
+												            <input type="hidden" name="Email" value="@user.Email"/>
+												            <input class="btn btn-outline-dark" style="width: 100px; ;" type="submit" value="Ja"/>
+											            </form>
+										            </div>
+									            </div>
+									            <div class="col">
+										            <div class="btn-group-vertical" role="group">
+											            <input class="btn btn-outline-dark" style="width: 100px;;" type="button" data-bs-dismiss="modal" value="Nei" />
+										            </div>
+									            </div>
+								            </div>
+							            </div>
+						            </div>
+					            </div>
+				            </div>*@
+
+
+
+			            </div>
+		            </div>
+	            </div>
+	            <hr/>
+            }
         </div>
     </div>
 </form>

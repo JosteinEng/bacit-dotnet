@@ -1,9 +1,10 @@
 ﻿@model bacit_dotnet.MVC.ViewModels.EditTeamViewModel
 
+@* ### Edit for Team ### *@
 
 <form method="post" asp-action="Edit">
     <input asp-for="TeamId" type="hidden" />
-    <div class="border p-3 mt-4">
+    <div class="border p-3 mt-4 bg-gr-d">
         <div class="row pb-2">
             <h3 class="text-dark">Endre team</h3>
             <hr />
@@ -25,7 +26,7 @@
             <select asp-for="UserId">
                 @foreach (var user in Model.Users)
                 {
-                    <option value="@user.Id">@user.FirstName</option>
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
                 }
             </select>
             <span asp-validation-for="UserId" class="text-danger">
@@ -34,8 +35,8 @@
         <br />
         <div class="d-grid pb-3">
             <div class="btn-group" role="group">
-                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style">Update</button>
-                <a asp-controller="Team" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake til listen</a>
+                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style-b">Lagre</button>
+                <a asp-controller="Team" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
             </div>
         </div>
     </div>

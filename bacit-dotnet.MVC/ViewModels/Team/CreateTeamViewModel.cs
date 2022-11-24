@@ -13,7 +13,7 @@ namespace bacit_dotnet.MVC.ViewModels
         [Range(1, int.MaxValue)]
         public int UserId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vennligst fyll inn et team navn.")]
         [StringLength(50, MinimumLength = 1)]
         public string TeamName { get; set; }
     }

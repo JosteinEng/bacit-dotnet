@@ -6,6 +6,9 @@
 
 namespace bacit_dotnet.MVC.Repositories
 {
+    // This is the Repository for users.
+    // The repository class functions as the main connection to the Db related to CRUD actions.
+    // Most of the methods defined in the Repository are used by the Controllers.
     public abstract class UserRepositoryBase
     {
         UserManager<IdentityUser> userManager;
@@ -14,6 +17,8 @@ namespace bacit_dotnet.MVC.Repositories
             this.userManager = userManager;
         }
 
+        // Method checks if a user in admin.
+        // Returns a bool based on the action result
         public bool IsAdmin(string email)
         {
             var identity = userManager.Users.FirstOrDefault(x => x.Email == email);
