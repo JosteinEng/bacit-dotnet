@@ -10,10 +10,6 @@ using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Manage.Internal;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-//FJERNER WARNINGS!
-#pragma warning disable
-///////////////////////
-
 namespace bacit_dotnet.MVC.Controllers
 {
     // This is the controller class for Users. The controller is the C in MVC

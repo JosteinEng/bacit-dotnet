@@ -11,8 +11,8 @@
             <hr />
         </div>
         @*
-        This line of code will show a summary of all errors at the top of the page.
-        <div asp-validation-summary="All" class="text-danger"></div>*@
+            This line of code will show a summary of all errors at the top of the page.
+            <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
             <label asp-for="EmployeeId">Opprettet av</label>
             <select asp-for="EmployeeId">
@@ -47,11 +47,11 @@
             <div class="mb-3 col-sm-3">
                 <label asp-for="TeamId">Team</label>
                 <select asp-for="TeamId">
-                <option value="" selected disabled>Velg et Team</option>
+                    <option value="" selected disabled>Velg et Team</option>
                     @foreach (var team in Model.Teams)
-                        {
+                    {
                         <option value="@team.TeamId">@team.TeamName</option>
-                        }
+                    }
                 </select>
                 <span asp-validation-for="TeamId" class="text-danger"></span>
             </div>
@@ -60,11 +60,11 @@
                 <select asp-for="UserId">
                     <option value="" selected disabled>Velg en ansvarlig ansatt</option>
                     @foreach (var user in Model.Users)
+                    {
+                        if (user.Email.Equals("0"))
                         {
-                            if (user.Email.Equals("0"))
-                            {
-                                continue;
-                            }
+                            continue;
+                        }
                         <option value="@user.Id">@user.FirstName @user.LastName </option>
                     }
                 </select>
@@ -136,9 +136,9 @@
 
             <br />
             @*
-        Creates a group of buttons for submit and return to list buttons.
-        The buttons are set to 100% width of the parent class.
-        Also using a custom button class that extends the bootstrap button classes to specify the font-size.
+                Creates a group of buttons for submit and return to list buttons.
+                The buttons are set to 100% width of the parent class.
+                Also using a custom button class that extends the bootstrap button classes to specify the font-size.
             *@
             <div class="d-grid pb-3">
                 <div class="btn-group" role="group">
@@ -147,6 +147,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 </form>
 
 <!--This script makes sure that the validation process is done on client-side instead of server-side-->

@@ -25,7 +25,11 @@
             *@
             <select asp-for="UserId">
                 @foreach (var user in Model.Users)
-                {
+                    {
+                        if (user.Email.Equals("0"))
+                        {
+                            continue;
+                        }
                     <option value="@user.Id">@user.FirstName @user.LastName</option>
                 }
             </select>

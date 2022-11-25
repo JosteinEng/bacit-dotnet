@@ -16,10 +16,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Net;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-//Removes WARNINGS!
-#pragma warning disable
-///////////////////////
-
 
 namespace bacit_dotnet.MVC.Controllers
 {
