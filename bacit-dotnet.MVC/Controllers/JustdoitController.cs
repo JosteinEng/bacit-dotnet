@@ -6,10 +6,6 @@ using bacit_dotnet.MVC.ViewModels.Justdoit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-// Removes WARNINGS!
-#pragma warning disable
-///////////////////////
-
 namespace bacit_dotnet.MVC.Controllers
 {
     

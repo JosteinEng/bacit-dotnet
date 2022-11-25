@@ -5,10 +5,6 @@ using bacit_dotnet.MVC.ViewModels.Home;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-// Removes WARNINGS!
-#pragma warning disable
-///////////////////////
-
 namespace bacit_dotnet.MVC.Controllers
 {
     // This is the controller class for the Home page. The controller is the C in MVC
