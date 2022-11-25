@@ -9,32 +9,32 @@
     <div class="border p-3 mt-4 bg-gr-d">
         <div class="row pb-2">
             <h3 class="text-dark">Legg til ny Just Do It</h3>
-            <hr/>
+            <hr />
         </div>
         @*
-        This line of code will show a summary of all errors at the top of the page.
-        <div asp-validation-summary="All" class="text-danger"></div>*@
+            This line of code will show a summary of all errors at the top of the page.
+            <div asp-validation-summary="All" class="text-danger"></div>*@
         <div class="mb-3">
-	        <label asp-for="EmployeeId">Opprettet av</label>
-	        <select asp-for="EmployeeId">
-		        @foreach (var user in Model.Users)
-		        {
-			        if (@User.Identity.Name == @user.Email)
-			        {
-				        <option value="@user.Id" selected>@user.FirstName @user.LastName</option>
-			        }
-			        if (user.Email.Equals("0") || user.Email.Equals(@User.Identity.Name))
-			        {
-				        continue;
-			        }
-			        <option value="@user.Id">@user.FirstName @user.LastName</option>
-		        }
-	        </select>
-	        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            <label asp-for="EmployeeId">Opprettet av</label>
+            <select asp-for="EmployeeId">
+                @foreach (var user in Model.Users)
+                {
+                    if (@User.Identity.Name == @user.Email)
+                    {
+                        <option value="@user.Id" selected>@user.FirstName @user.LastName</option>
+                    }
+                    if (user.Email.Equals("0") || user.Email.Equals(@User.Identity.Name))
+                    {
+                        continue;
+                    }
+                    <option value="@user.Id">@user.FirstName @user.LastName</option>
+                }
+            </select>
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Title">Tittel</label>
-            <input asp-for="Title" class="form-control" minlength="2" maxlength="30"/><span id="countCharTitle" class="count-max-length">30/30</span>
+            <input asp-for="Title" class="form-control" minlength="2" maxlength="30" /><span id="countCharTitle" class="count-max-length">30/30</span>
             <span asp-validation-for="Title" class="text-danger">
             </span>
         </div>
@@ -58,7 +58,7 @@
 
         <div class="mb-3">
             <label asp-for="Category">Kategori</label>
-            <select asp-for="Category"class="form-control">
+            <select asp-for="Category" class="form-control">
                 <option value="" selected disabled>Velg en kategori</option>
                 <option value="HMS">HMS</option>
                 <option value="Kvalitet">Kvalitet</option>
@@ -83,9 +83,9 @@
 
                 <!-- Image before -->
                 <div class="col-sm-6 text-black align-content-center">
-                Bilde før
+                    Bilde før
                     <input asp-for="Attachments" id="imageInputBefore" class="form-control pt-1 mb-1"
-                        type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
+                           type="file" accept=".jpg, .png, .jpeg, .heic, .heif" size="1" style="cursor: pointer" value="Choose file" data-max-size="@(8 * 1024.0 * 1024.0)" />
 
                     <span id="imageSizeWarningBefore" class="text-danger" style="display: none;"></span>
                     <span id="imageTypeWarningBefore" class="text-danger" style="display: none"></span>
@@ -101,24 +101,25 @@
                     <span id="imageTypeWarningAfter" class="text-danger" style="display: none"></span>
                 </div>
                 <!-- Image preview field -->
+                @*<img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>*@
 
-                @*<img id="imagePreview" style="max-height: 300px; max-width: 300px; display: none;"/>*@  
+            </div>
 
-        </div>       
+            <br />
 
-        <br/>
-
-        @*
-        Creates a group of buttons for submit and return to list buttons.
-        The buttons are set to 100% width of the parent class.
-        Also using a custom button class that extends the bootstrap button classes to specify the font-size.
-        *@
-        <div class="d-grid pb-3">
-            <div class="btn-group" role="group">
-                <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style-b">Opprett</button>
-                <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
+            @*
+                Creates a group of buttons for submit and return to list buttons.
+                The buttons are set to 100% width of the parent class.
+                Also using a custom button class that extends the bootstrap button classes to specify the font-size.
+            *@
+            <div class="d-grid pb-3">
+                <div class="btn-group" role="group">
+                    <button id="submitBtn" type="submit" class="btn btn-dark btn-lg btn-outline-dark text-white extra-button-style-b">Opprett</button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-light btn-outline-dark btn-lg extra-button-style">Tilbake</a>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 </form>
 
